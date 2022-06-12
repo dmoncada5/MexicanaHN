@@ -1,0 +1,21 @@
+const express = require('express');
+const salidaController = require('../../controller/ventas/salidaController.js');
+const router = express.Router();
+
+router.get('/compras', salidaController.getAllP);
+//router.get('/', pedidoController.getAll);
+router.post('/todo', salidaController.getAll);
+router.post('/correlativo', salidaController.getNumero);
+router.post('/correlativoOne', salidaController.getOneNumero);
+router.post('/formato', salidaController.formato);
+router.post('/Encabezado', salidaController.getOneEncabezado);
+router.post('/EncabezadoB', salidaController.getOneEncabezadoBuscar);
+router.post('/Detalle', salidaController.getOneDetalle);
+router.post('/postearEncabezado', salidaController.addNewDataEncabezado);
+router.post('/postearDetalle', salidaController.addNewDataDetalle);
+router.put('/Encabezado', salidaController.updateDataeEncabezado);
+router.put('/Detalle', salidaController.updateDataDetalle);
+router.put('/statusC', salidaController.upStatus);
+router.delete('/Encabezado', salidaController.deleteDataEncabezado);
+router.delete('/:DocNum', salidaController.deleteDataDetalle);
+module.exports = router;

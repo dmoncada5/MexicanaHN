@@ -1,0 +1,11 @@
+{
+    "SaldoClientes": "exec SaldoClientes @SocioCode, @desde, @hasta",
+    "pagosRecibidos": "exec pagoRecibido @Desde, @Hasta",
+    "articulosVendidos": "exec ArticulosVendidos @Desde, @Hasta",
+
+
+    "SociosGrupos": "exec SociosGrupo @grupo",
+    "SociosCategoria": "exec SociosCategoria @categoria",
+    "FacturaXTarjeta": "exec RFacturasxTarjeta @Desde, @Hasta",
+    "gastos": "exec Rgastos @Desde, @Hasta"
+}

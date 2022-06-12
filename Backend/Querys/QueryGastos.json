@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT  a.cgasto, b.empresa,c.sucursal,d.namecuenta,a.monto,a.fecha FROM [dbo].[gastos] a inner join company b on a.ccomp=b.ccomp inner join sucursales c on a.csuc=c.csuc inner join cuentasgastos d on d.ccuenta=a.ccuenta order by a.cgasto asc ",
+    "getOne": "SELECT  * FROM [dbo].[gastos] where cgasto=@cgasto",
+    "addNewGasto": "INSERT INTO [dbo].[gastos] (ccomp,csuc,ccuenta,monto,observaciones,fecha,tipopago,banco) VALUES (@ccomp,@csuc,@ccuenta,@monto,@observaciones,@fecha,@tipopago,@banco) ",
+    "deleteGasto": "DELETE FROM [dbo].[gastos] WHERE cgasto = @cgasto",
+    "updateGastoDetails": "UPDATE [dbo].[gastos] SET ccomp=@newCompany, csuc=@newSucursal,ccuenta=@newCcuenta,monto=@newMonto,observaciones=@newObservaciones,fecha=@newFecha,tipopago=@tipopago,banco=@banco WHERE cgasto=@cgasto"
+}

@@ -1,0 +1,14 @@
+{
+    "getAllData": "select a.ccita, b.cexp,b.name, a.pesoini, a.pesoact, a.talla,a.tallacms,a.imc,a.ptr,FORMAT(a.fechavisita, 'dd/MM/yyyy') as fechavisita,a.estado from citas a inner join expediente b on a.cexp=b.cexp where b.cexp=@exp  order by a.cexp asc",
+    "getOne": "SELECT  * FROM [dbo].[citas] where ccita=@ccita",
+    "addNewCita": "INSERT INTO [dbo].[citas] (cexp,pesoini,pesoact,talla,tallacms,imc,ptr,areagrasa,areamusc,fechavisita,proximavisita,telefono,correo,estado) VALUES (@cexp,@pesoini,@pesoact,@talla,@tallacms,@imc,@ptr,@areagrasa,@areamusc,@fechavisita,@proximavisita,@telefono,@correo,@estado) ",
+    "deleteCita": "DELETE FROM [dbo].[citas] WHERE ccita = @ccita",
+    "updateCitaDetails": "UPDATE [dbo].[citas] SET cexp=@newExp,pesoini=@newInicial,pesoact=@newActual,talla=@newTalla, tallacms=@newTallacms,imc=@newImc,ptr=@newPtr,areagrasa=@newGrasa,areamusc=@newMusc,fechavisita=@newFecha,proximavisita=@newProxima,telefono=@newTelefono,correo=@newCorreo,estado=@newEstado WHERE ccita = @ccita",
+    "AddProductsCita": "insert into productosCita ( cexp, ccita, ItemCode, ItemName, cantidad, ProximaCompra) values( @cexp, @ccita, @ItemCode, @ItemName, @cantidad, @ProximaCompra)",
+    "selectProductCita": "select * from productosCita where ccita=@ccita",
+    "citasnum": "select isnull(max(ccita),0)+1 as citaid from citas",
+    "EliminarProducts": "delete from productosCita where ccita=@ccita and ItemCode=@ItemCode",
+    "expedientes": "select t0.cexp,t0.name  from expediente t0 where t0.estado='ACTIVO'",
+    "expedientesData1": "select t0.cexp, t0.ccomp, t0.csuc, t0.[name], t0.pesoini, t0.talla, t0.tallacms, t0.imc, t0.ptr, t0.areagrasa, t0.areamusc, t0.estado, t0.fechacreacion, t0.birthdate, t0.telefono, t0.correo from expediente t0 where t0.cexp=@cexp",
+    "expedientesData": "exec citasExpendientes @cexp"
+}

@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT  * FROM [dbo].[paises]",
+    "getOne": "SELECT  * FROM [dbo].[paises] where cpais=@cpais",
+    "addNewPais": "INSERT INTO [dbo].[paises] (pais,estado) VALUES (@pais,@estado) ",
+    "deletePais": "DELETE FROM [dbo].[paises] WHERE cpais = @cpais",
+    "updatePaisDetails": "UPDATE [dbo].[paises] SET pais = @newPais , estado=@newEstado WHERE cpais = @cpais"
+}

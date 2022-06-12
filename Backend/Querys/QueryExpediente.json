@@ -1,0 +1,7 @@
+{
+    "getAllData": "select a.cexp, a.name, a.pesoini, a.talla,a.tallacms,a.imc,a.ptr,format(a.fechacreacion, 'dd/MM/yyyy') as fechacreacion,a.estado from expediente a  order by a.cexp asc",
+    "getOne": "SELECT  * FROM [dbo].[expediente] where cexp=@cexp",
+    "addNewExpediente": "INSERT INTO [dbo].[expediente] (ccomp,csuc,name,pesoini,talla,tallacms,imc,ptr,areagrasa,areamusc,fechacreacion,birthdate,telefono,correo,estado) VALUES (@ccomp,@csuc,@name,@pesoini,@talla,@tallacms,@imc,@ptr,@areagrasa,@areamusc,@fechacreacion,@birthdate,@telefono,@correo,@estado) ",
+    "deleteExpediente": "DELETE FROM [dbo].[expediente] WHERE cexp = @cexp",
+    "updateExpedienteDetails": "UPDATE [dbo].[expediente] SET ccomp=@newCompany, csuc=@newSucursal,name= @newName,pesoini=@newInicial,talla=@newTalla, tallacms=@newTallacms,imc=@newImc,ptr=@newPtr,areagrasa=@newGrasa,areamusc=@newMusc,fechacreacion=@newFecha,birthdate=@newBirthdate,telefono=@newTelefono,correo=@newCorreo,estado=@newEstado WHERE cexp = @cexp"
+}

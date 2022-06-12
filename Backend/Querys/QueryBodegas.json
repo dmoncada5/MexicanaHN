@@ -1,0 +1,10 @@
+{
+    "getAllData": "SELECT a.cbod, b.empresa,c.sucursal,a.bodega,a.observaciones,a.estado FROM [dbo].[bodegas] a inner join company b on a.ccomp=b.ccomp inner join sucursales c on a.csuc=c.csuc order by a.cbod asc",
+    "getOne": "SELECT  * FROM [dbo].[bodegas] where cbod=@cbod",
+    "addNewBodega": "INSERT INTO [dbo].[bodegas] (ccomp,csuc,bodega,observaciones,fecha_creacion,estado) VALUES (@ccomp,@csuc,@bodega,@observaciones,@fecha_creacion,@estado) ",
+    "deleteBodega": "DELETE FROM [dbo].[bodegas] WHERE cbod = @cbod",
+    "updateBodegaDetails": "UPDATE [dbo].[bodegas] SET ccomp=@newCompany, csuc=@newSucursal,bodega = @newBodega, observaciones=@newObservaciones,fecha_creacion=@newFecha,estado=@newEstado WHERE cbod = @cbod",
+    "getBodega": "SELECT a.cbod, b.empresa,c.sucursal,a.bodega,a.observaciones,a.estado FROM [dbo].[bodegas] a inner join company b on a.ccomp=b.ccomp inner join sucursales c on a.csuc=c.csuc where a.ccomp=@ccomp order by a.cbod asc",
+    "addNewDataExistencia": "INSERT INTO [dbo].[existencias] (ItemCode ,cbod ,stock ,minimo ,maximo , comprometido,solicitado) SELECT T1.ItemCode,T0.cbod,0,0,0,0,0 FROM  bodegas T0 INNER JOIN products T1 ON T0.ccomp=T1.ccomp where T1.tipo='I' AND T0.cbod  not IN (select T2.cbod from existencias T2 inner join bodegas T3 ON T2.cbod<>T3.cbod) "
+
+}

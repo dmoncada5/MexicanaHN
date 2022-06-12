@@ -1,0 +1,8 @@
+{
+    "getAllData": "SELECT cnum, Serie, csuc, cai, fact_emini, fact_emifin, tipo_documento, estado  FROM [dbo].[numeracion] where ccomp=@ccomp",
+    "getOne": "SELECT  * FROM [dbo].[numeracion] where cnum=@cnum",
+    "addNewNumeracion": "INSERT INTO [dbo].[numeracion] ( Serie, ccomp, csuc, cai, fact_emini, fact_emifin, correo, fecha_limite, fecha_creacion, correlativo, tipo_documento,prefijo, estado) VALUES ( @Serie, @ccomp, @csuc, @cai, @fact_emini, @fact_emifin, @correo, @fecha_limite, @fecha_creacion, @correlativo, @tipo_documento,@prefijo, @estado) ",
+    "deleteNumeracion": "DELETE FROM [dbo].[numeracion] WHERE cnum = @cnum",
+    "updateNumeracionaDetails": "UPDATE [dbo].[numeracion] SET Serie=@Serie, ccomp=@ccomp, csuc=@csuc, cai=@cai, fact_emini=@fact_emini, fact_emifin=@fact_emifin, correo=@correo, fecha_limite=@fecha_limite, fecha_creacion=@fecha_creacion, correlativo=@correlativo, tipo_documento=@tipo_documento,prefijo=@prefijo, estado=@estado WHERE cnum = @cnum",
+    "updatecorrelativo": "update numeracion set correlativo=correlativo+1 where cnum=@cnum"
+}

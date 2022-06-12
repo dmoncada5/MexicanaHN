@@ -1,0 +1,217 @@
+<!-- <p>sucursal works!</p>  -->
+
+
+<div id="gasto" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/gastos'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{gasto.gasto}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva Gasto
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle Gasto</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="gastoForm.invalid" *ngIf="pageType ==='new'" (click)="addGasto()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="gastoForm.invalid || gastoForm.pristine" *ngIf="pageType !='new'" (click)="saveGasto()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="gastoForm" [formGroup]="gastoForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Gastos">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p" *ngIf="pageType !='new'">
+                                    <mat-label>Codigo Gasto</mat-label>
+                                    <input matInput placeholder="Codigo" readonly="readonly" name="cgasto" formControlName="cgasto">
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Sucursal</mat-label>
+                                    <input matInput placeholder="Sucursal" name="sucursal" formControlName="sucursal" type="text">
+                                </mat-form-field> -->
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp">
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Sucursal</mat-label>
+                                        <mat-select formControlName='csuc' name="csuc">
+                                            <mat-option *ngFor="let suc of sucursales" [value]="suc.csuc">
+                                                {{suc.sucursal}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Gasto</mat-label>
+                                        <input matInput placeholder="Gasto" name="gasto" formControlName="gasto" pattern="[A-Za-z]+">
+                                         //<span matSuffix>cm</span> 
+                                   </mat-form-field> -->
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Gasto</mat-label>
+                                        <mat-select formControlName='ccuenta' name="ccuenta">
+                                            <mat-option *ngFor="let cuen of Cuenta" [value]="cuen.ccuenta">
+                                                {{cuen.namecuenta}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Monto</mat-label>
+                                        <input matInput placeholder="Monto" name="monto" formControlName="monto">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" class="mr-16" fxFlex="50">
+                                        <mat-label>Pagos</mat-label>
+                                        <mat-select placeholder="Mode" formControlName="tipopago" (selectionChange)="updateStatus($event)">
+                                            <mat-option value="Efectivo"> Efectivo </mat-option>
+                                           <mat-option value="Transferencia"> Transferencia </mat-option>
+                                            <mat-option value="Deposito"> Deposito </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
+                                        <mat-label>Banco</mat-label>
+                                        <input matInput  formControlName="banco" required>
+                                        <mat-icon matSuffix class="secondary-text">account_balance</mat-icon>
+
+                                    </mat-form-field>
+
+                            
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                  
+                            
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                                        <mat-label>Observaciones</mat-label>
+                                        <input matInput placeholder="Observaciones" name="Observaciones" formControlName="observaciones">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" fxFlex="45">
+                                        <mat-label>Fecha</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="fecha" formControlName="fecha">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[categorias]",
+    "getOne": "SELECT  * FROM [dbo].[categorias] where ccomp=@ccomp",
+    "addNewCategoria": "INSERT INTO [dbo].[categorias] (ccate, ccomp, categoria) VALUES (@ccate,@ccomp,@categoria) ",
+    "deleteCategoria": "DELETE FROM [dbo].[categorias] WHERE ccomp = @ccomp",
+    "updateCategoriaDetails": "UPDATE [dbo].[categorias] SET  ccomp=@ccomp, categoria=@categoria WHERE ccate = @ccate"
+}

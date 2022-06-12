@@ -1,0 +1,8 @@
+{
+    "getAllData":"SELECT  a.clbod,b.empresa,c.sucursal,d.bodega,a.lote,a.ubicacion,a.observaciones,a.estado FROM [dbo].[lote_bodega] a inner join company b on a.ccomp=b.ccomp inner join sucursales c on a.csuc=c.csuc inner join bodegas d on a.cbod=d.cbod order by a.clbod asc",
+    "getAllDataMio": "SELECT * FROM [dbo].[lote_bodega]",
+    "getOne": "SELECT * FROM [dbo].[lote_bodega] where clbod=@clbod",
+    "addNewLoteBodega": "INSERT INTO [dbo].[lote_bodega] (clbod,ccomp,csuc,cbod,lote,ubicacion,observaciones, fecha_creacion,estado) VALUES (@clbod,@ccomp,@csuc,@cbod,@lote,@ubicacion,@observaciones,@fecha_creacion,@estado) ",
+    "deleteLoteBodega": "DELETE FROM [dbo].[lote_bodega] WHERE clbod = @clbod",
+    "updateLoteBodegaDetails": "UPDATE [dbo].[lote_bodega] SET ccomp=@newCompany, csuc=@newSucursal,cbod= @newBodega,lote=@newLote,ubicacion =@newUbicacion, observaciones=@newObservaciones,fecha_creacion = @newFecha ,estado=@newEstado WHERE clbod = @clbod"
+}

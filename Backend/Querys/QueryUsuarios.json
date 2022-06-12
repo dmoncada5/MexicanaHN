@@ -1,0 +1,9 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[usuarios]",
+    "getOne": "SELECT  * FROM [dbo].[usuarios] where cuser=@cuser",
+    "addNewUsuario": "INSERT INTO [dbo].[usuarios] (ccomp, csuc,ctipou,cemp, usuario,clave, observaciones, estado ) VALUES ( @ccomp, @csuc,@ctipou , @cemp,@usuario, @clave, @observaciones, @estado) ",
+    "deleteUsuario": "DELETE FROM [dbo].[usuarios] WHERE cuser = @cuser",
+    "updateUsuarioDetails": "UPDATE [dbo].[usuarios] SET  ccomp=@ccomp, csuc=@csuc,ctipou=@ctipou , cemp=@cemp, usuario=@usuario, clave=@clave, observaciones=@observaciones, estado=@estado WHERE cuser = @cuser"
+
+
+}

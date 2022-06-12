@@ -1,0 +1,77 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {ConsultaExistenciaComponent} from './consultaexistencia.component'
+import { FuseSharedModule } from '../../../../@fuse/shared.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ConsultaExistenciaService } from './consultaexistencia.service';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { FuseConfirmDialogModule, FuseSidebarModule, FuseWidgetModule } from '../../../../@fuse/components';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { GuardallGuard } from 'app/main/autenticar/guardall.guard';
+import { RouterModule } from '@angular/router';
+
+const routes = [
+  {
+      path     : 'ventas/consultaexistencia',
+      component: ConsultaExistenciaComponent,
+      canActivate: [GuardallGuard],
+      resolve  : {
+        data:  ConsultaExistenciaService,
+       
+        
+    }
+   },
+
+ ];
+
+
+@NgModule({
+  declarations: [ConsultaExistenciaComponent],
+  imports: [
+    RouterModule.forChild(routes),
+    MatSortModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule, 
+    MatInputModule,
+    MatPaginatorModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatTabsModule,
+    NgxChartsModule,
+    FuseSharedModule,
+    FuseWidgetModule
+  ],
+  exports     : [
+    ConsultaExistenciaComponent
+      
+  ], 
+  providers   : [
+    
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+  ]
+})
+export class ConsultaExistenciaModule { }

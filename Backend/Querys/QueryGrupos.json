@@ -1,0 +1,8 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[grupos]",
+    "getAllData1": "SELECT * FROM [dbo].[grupos] where estado='Activo'",
+    "getOne": "SELECT  * FROM [dbo].[grupos] where grupoid=@grupoid",
+    "addNewGrupo": "INSERT INTO [dbo].[grupos] ( ccomp, nombre, fecha_creacion, estado) VALUES ( @ccomp, @nombre, @fecha_creacion, @estado) ",
+    "deleteGrupo": "DELETE FROM [dbo].[grupos] WHERE grupoid = @grupoid",
+    "updateGrupoDetails": "UPDATE [dbo].[grupos] SET   ccomp=@ccomp, nombre=@nombre, fecha_creacion=@fecha_creacion, estado=@estado WHERE grupoid = @grupoid"
+}

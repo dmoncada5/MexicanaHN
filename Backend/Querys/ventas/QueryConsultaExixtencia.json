@@ -1,0 +1,4 @@
+{
+    "getAllDataCE": "SELECT T0.ItemCode,T1.ItemName,T2.bodega,T0.stock,T0.minimo,T0.maximo,T0.comprometido,T0.solicitado FROM [dbo].[existencias] T0  inner join [dbo].[products] T1 on T0.ItemCode=T1.ItemCode  inner join [dbo].[bodegas] T2 on T0.cbod=T2.cbod "
+
+}

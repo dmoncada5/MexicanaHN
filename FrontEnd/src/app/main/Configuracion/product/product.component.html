@@ -1,0 +1,253 @@
+<!-- <p>product works!</p> -->
+
+
+
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/products'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{products.productos}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva Producto
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle del Productos</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="productForm.invalid" *ngIf="pageType ==='new'" (click)="addProduct()">
+                <span>ADD</span>
+            </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="productForm.invalid || productForm.pristine" *ngIf="pageType!='new'" (click)="saveProduct()">
+                <span>SAVE</span>
+            </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="productForm" [formGroup]="productForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Datos Generales">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Sucursal</mat-label>
+                                    <input matInput placeholder="Sucursal" name="sucursal" formControlName="sucursal" type="text">
+                                </mat-form-field> -->
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp" [disabled]=true>
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always"  fxFlex="30"
+                                    *ngIf="pageType !='new'"> -->
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Serie</mat-label>
+                                        <input matInput placeholder="Serie" name="serieprod" formControlName="serieprod">
+
+                                    </mat-form-field> -->
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Codigo Producto</mat-label>
+                                        <input matInput placeholder="Codigo" name="ItemCode" formControlName="ItemCode">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Nombre Producto</mat-label>
+                                        <input matInput placeholder="Nombre " name="ItemName" formControlName="ItemName">
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="FechaCreacion" formControlName="FechaCreacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Tipo</mat-label>
+                                        <mat-select formControlName="propiedad">
+                                            <mat-option [value]="'Promocional'">
+                                                Promocional
+                                            </mat-option>
+                                            <mat-option [value]="'Regalia'">
+                                                Regalia
+                                            </mat-option>
+                                            <mat-option [value]="'Vencido'">
+                                               Vencido
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Impuesto</mat-label>
+                                        <mat-select formControlName="impuesto">
+                                            <mat-option [value]="'Y'">
+                                                Si
+                                            </mat-option>
+                                            <mat-option [value]="'N'">
+                                                NO
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Costo</mat-label>
+                                        <input matInput placeholder="Costo" name="costo" formControlName="costo" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                    </mat-form-field> -->
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Observaciones</mat-label>
+                                        <input matInput placeholder="Observaciones" name="observaciones" formControlName="observaciones">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                </div>
+                                <!-- <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div> -->
+
+                                <!-- <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Precio</mat-label>
+                                        <input matInput placeholder="Observaciones" name="observaciones" formControlName="observaciones">
+                                       <span matSuffix>cm</span> -->
+                                <!--     </mat-form-field>
+
+
+                                </div>  -->
+
+
+
+
+                            </div>
+
+
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT  a.cdepa,a.cpais, b.pais,a.departamento,a.estado FROM [dbo].[departamentos] a inner join paises b on a.cpais=b.cpais order by cdepa asc",
+    "getOne": "SELECT  * FROM [dbo].[departamentos] where cdepa=@cdepa",
+    "addNewDepartamento": "INSERT INTO [dbo].[departamentos] (cpais,departamento,estado) VALUES (@cpais,@departamento,@estado)",
+    "deleteDepartamento": "update departamentos set estado='Inactivo' where cdepa = @cdepa",
+    "updateDepartamentoDetails": "UPDATE [dbo].[departamentos] SET cpais=@newPais, departamento = @newDepartamento, estado=@newEstado WHERE cdepa = @cdepa"
+}

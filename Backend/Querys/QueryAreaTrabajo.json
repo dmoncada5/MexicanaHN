@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT a.careat, b.empresa, a.area,a.estado FROM [dbo].[areas_trabajo] a inner join company b on a.ccomp=b.ccomp order by a.careat asc",
+    "getOne": "SELECT  * FROM [dbo].[areas_trabajo] where careat=@careat",
+    "addNewAreaTrabajo": "INSERT INTO [dbo].[areas_trabajo] (ccomp,area,estado) VALUES (@newCompany,@newArea,@newEstado) ",
+    "deleteAreaTrabajo": "DELETE FROM [dbo].[areas_trabajo] WHERE careat = @careat",
+    "updateAreaTrabajoDetails": "UPDATE [dbo].[areas_trabajo] SET ccomp=@newCompany, area=@newArea,estado=@newEstado WHERE careat=@careat"
+}

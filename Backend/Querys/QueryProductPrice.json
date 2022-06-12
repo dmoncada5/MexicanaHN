@@ -1,0 +1,8 @@
+{
+    "getAllData": "SELECT a.codPrice,a.ItemCode,b.ItemName, c.lista,a.price FROM [dbo].[productsPrice] a inner join products b on a.ItemCode=b.ItemCode inner join listaprecios c on a.Pricelist=c.codlista  order by b.ItemName asc",
+    "getOne": "SELECT  * FROM [dbo].[productsPrice] where codPrice=@codPrice",
+    "addNewProductsPrice": "INSERT INTO [dbo].[productsPrice] (ItemCode,Pricelist,price,CurrCode,factor) VALUES (@ItemCode,@Pricelist,@price,@CurrCode,@factor)",
+    "deleteProductsPrice": "DELETE FROM [dbo].[productsPrice] WHERE ItemCode = @ItemCode",
+    "updateProductsPriceDetails": "UPDATE [dbo].[productsPrice] SET  price = @newPrice, CurrCode=@newCurrCode ,factor=@newfactor  WHERE ItemCode = @newItemCode and Pricelist=@newPricelist"
+
+}

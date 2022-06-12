@@ -1,0 +1,127 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Numeraciones
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Buscar una numeracion">
+                </div>
+            </div>
+
+
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button [routerLink]="'/configuracion/numeraciones/new'" class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>AGREGAR NUEVA NUMERACION</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
+
+                <!-- CNUM Column -->
+                <ng-container matColumnDef="cnum">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cnum}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- SERIE Column -->
+                <ng-container matColumnDef="Serie">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Serie</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.Serie}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- CSUC Column -->
+                <ng-container matColumnDef="csuc">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sucursal</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.csuc}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- CAI Column -->
+                <ng-container matColumnDef="cai">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cai</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cai}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- FACT_EMINI Column -->
+                <ng-container matColumnDef="fact_emini">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Inicio</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.fact_emini}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- FACT_EMIFIN Column -->
+                <ng-container matColumnDef="fact_emifin">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fin</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.fact_emifin}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- TIPO_DOCUMENTO Column -->
+                <ng-container matColumnDef="tipo_documento">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Documento</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.tipo_documento}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Estado Column -->
+                <ng-container matColumnDef="estado">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Estado</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="product.estado=='Activo'" class="active-icon green-600 s-16">check</mat-icon>
+                        <mat-icon *ngIf="product.estado=='Inactivo'" class="active-icon red-500 s-16">close</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/configuracion/numeraciones/'+product.cnum">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]=" dataSource.filteredData.length " [pageIndex]="0 " [pageSize]="10 " [pageSizeOptions]="[5, 10, 25, 100] ">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

@@ -1,0 +1,24 @@
+{
+    "getAllDataNP": "SELECT * FROM [dbo].[products] where tipo='I'",
+    "getAllDataP": "SELECT * FROM [dbo].[products] where tipo='P'",
+    "getAllData": "SELECT  * FROM [dbo].[products] where tipo=@tipo",
+    "formato": "exec FormatNumeracion @numero",
+    "getCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo=@tipo ",
+    "getOneCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo=tipo and cnum=@csuc",
+    "getOneEncabezado": "SELECT t1.ItemCode, t1.ItemName, t1.FechaCreacion, t1.impuesto, t1.observaciones, t1.estado, t1.ccomp, t1.costo, t1.tipo, t1.DocNum from products t1  where t1.ItemCode=@DocNum",
+    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad,cbod from listmaterials where DocNum=@DocNum",
+    "addNewPromoEncabezado": "INSERT INTO [dbo].[products] (ItemCode ,ItemName ,FechaCreacion ,impuesto ,costo , observaciones,estado,ccomp,tipo,DocNum) VALUES (@ItemCode ,@ItemName ,@FechaCreacion ,@impuesto ,@costo ,@observaciones,@estado,@ccomp,'P',@DocNum)",
+    "deletePromoEncabezado": "DELETE FROM [dbo].[products] WHERE DocNum = @DocNum",
+    "updatePromoEncabezado": "UPDATE [dbo].[products] SET ItemName=@ItemName ,FechaCreacion=@FechaCreacion ,impuesto=@impuesto ,costo=@costo ,observaciones=@observaciones,estado=@estado,ccomp=@ccomp  WHERE ItemCode= @ItemCode and tipo='P'",
+    "addNewPromoDetalle": "INSERT INTO [dbo].[listmaterials] (DocNum, Linea, itemCode, itemName, cantidad,cbod) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad,@cbod)",
+    "deletePromoDetalle": "DELETE FROM [dbo].[listmaterials] WHERE DocNum=@DocNum",
+    "updatePromoDetalle": "UPDATE [dbo].[listmaterials] SET  itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad cbod=@cbod WHERE DocNum = @DocNum and Linea=@Linea",
+    "getInfo": "select t1.ItemCode, t1.ItemName  FROM products t1 where t1.ItemCode=@ItemCode and t1.tipo='I' ",
+    "addNewDataEPriceList": "INSERT INTO [dbo].[productsPrice] (ItemCode,Pricelist,price,CurrCode,factor,ccomp) SELECT T0.ItemCode ,T1.Pricelist,T0.costo,'LPS',0,1 FROM [dbo].[products] T0 INNER JOIN [dbo].[productsPrice] T1 ON T0.ITEMCODE<>T1.ITEMCODE WHERE tipo='P' AND T0.ItemCode NOT IN (SELECT T1.ItemCode FROM [dbo].[productsPrice] T1) GROUP BY T0.ItemCode, T1.Pricelist,T0.costo",
+    "updateNewDataPriceList": "UPDATE [dbo].[productsPrice] SET price=@costo WHERE ItemCode=@ItemCode ",
+
+
+    "updateSatusPromo": "UPDATE [dbo].[products] SET status=@status WHERE numero = @DocNum",
+    "getOneEncabezadoB": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate,t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero,t1.tipo,t1.RTN,t1.status from products t1  where t1.numero=@numero"
+
+}

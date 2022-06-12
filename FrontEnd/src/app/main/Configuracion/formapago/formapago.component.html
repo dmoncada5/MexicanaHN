@@ -1,0 +1,167 @@
+<div id="formapago" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/formapagos'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{fpago.cformap}} - {{nombreFormaPago}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva Forma de Pago
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de Formas de Pago</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="formapagoForm.invalid" *ngIf="pageType ==='new'" (click)="addFPago()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="formapagoForm.invalid || formapagoForm.pristine" *ngIf="pageType !='new'" (click)="saveFPago()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="formapagoForm" [formGroup]="formapagoForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Tipos de Usuarios">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar fxLayout="column">
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30" *ngIf="pageType !='new'">
+                                        <mat-label>Codigo Forma Pago</mat-label>
+                                        <input matInput placeholder="Codigo" readonly="readonly" name="cformap" formControlName="cformap">
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Compañia</mat-label>
+                                    <input matInput placeholder="Compañia" name="ccomp" formControlName="ccomp" type="text">
+                                </mat-form-field> -->
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp">
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Forma Pago</mat-label>
+                                        <input matInput placeholder="Forma Pago" name="forma_pago" formControlName="forma_pago" type="text" pattern="[A-Za-z\sáéíóú]+">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Observaciones</mat-label>
+                                        <input matInput placeholder="Observaciones" name="observaciones" formControlName="observaciones" type="text">
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+                                        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                <mat-error>Estado is required!</mat-error> -->
+                                    </mat-form-field>
+
+
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput placeholder="Estado" name="estado" formControlName="estado" type="text">
+                                </mat-form-field> -->
+
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <mat-select formControlName="estado">
+                                        <mat-option [value]="'Activo'">
+                                            Activo
+                                        </mat-option>
+                                        <mat-option [value]="'Inactivo'">
+                                            Inactivo
+                                        </mat-option>
+
+                                    </mat-select>
+                                    <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                    <mat-error>Estado is required!</mat-error>
+                                </mat-form-field> 
+                            -->
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

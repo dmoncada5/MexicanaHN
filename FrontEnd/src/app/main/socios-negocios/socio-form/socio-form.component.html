@@ -1,0 +1,228 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <!-- <img [src]="contact.avatar" class="avatar contact-avatar huge m-0"
+                 [alt]="contact.nombre"/> -->
+            <div class="contact-name mt-0">{{contact.nombre}} </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+
+        <form [formGroup]="contactForm">
+
+            <!-- csocio Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>ID</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <input name="csocio" formControlName="csocio" matInput required readonly={{onlyRead}}>
+                </mat-form-field>
+            </div>
+
+            <!-- Nombre Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Nombre</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <input name="nombre" formControlName="nombre" matInput required>
+                </mat-form-field>
+            </div>
+
+            <!-- RTN Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>RTN</mat-label>
+                    <mat-icon matSuffix class="secondary-text">confirmation_number</mat-icon>
+                    <input name="rtn" formControlName="rtn" matInput required>
+                </mat-form-field>
+
+            </div>
+
+            <!-- Compañia Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Compañia</mat-label>
+                    <mat-icon matSuffix class="secondary-text">business</mat-icon>
+                    <mat-select formControlName='ccomp' name='ccomp'>
+                        <mat-option *ngFor="let comp of company" [value]='comp.ccomp'>
+                            {{comp.empresa}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Categoria Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Categoria</mat-label>
+                    <mat-icon matSuffix class="secondary-text"> group_work</mat-icon>
+                    <mat-select formControlName='ccate' name='ccate' (selectionChange)="categoria($event.value)">
+                        <mat-option *ngFor="let cate of categorias" [value]='cate.ccate'>
+                            {{cate.categoria}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Grupos Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Grupo</mat-label>
+                    <mat-icon matSuffix class="secondary-text"> group_work</mat-icon>
+                    <mat-select formControlName='grupoid' name='grupoid'>
+                        <mat-option *ngFor="let grup of grupos" [value]='grup.grupoid'>
+                            {{grup.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start" *ngIf="tipoCat===1">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Lista de precio</mat-label>
+                    <mat-icon matSuffix class="secondary-text">business</mat-icon>
+                    <mat-select formControlName='codlista' name='codlista'>
+                        <mat-option *ngFor="let lista of listas" [value]='lista.codlista'>
+                            {{lista.lista}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <!-- <div fxLayout="row" fxLayoutAlign="start start" *ngIf="tipoCat===2">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Lista de precio</mat-label>
+                    <mat-icon matSuffix class="secondary-text">business</mat-icon>
+                    <mat-select [(value)]="listas[1].codlista" formControlName='codlista' name='codlista'>
+                        <mat-option *ngFor="let lista of listas" [value]='lista.codlista' [disabled]="true">
+                            {{lista.lista}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+            <!-- Telefono Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Telefono</mat-label>
+                    <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+                    <input formControlName="telefono" matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- Celular Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Celular</mat-label>
+                    <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+                    <input formControlName="celular" matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- Email Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Email</mat-label>
+                    <mat-icon matSuffix class="secondary-text">email</mat-icon>
+                    <input name="correo" formControlName="correo" matInput type="email">
+                </mat-form-field>
+            </div>
+
+            <!-- Sitio Web Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Sitio Web</mat-label>
+                    <mat-icon matSuffix class="secondary-text">web</mat-icon>
+                    <input name="sitio_web" formControlName="sitio_web" matInput required>
+                </mat-form-field>
+            </div>
+
+
+            <!-- Direccion Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Direccion</mat-label>
+                    <mat-icon matSuffix class="secondary-text">home</mat-icon>
+                    <input name="direccion" formControlName="direccion" matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- Contacto Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Contacto</mat-label>
+                    <mat-icon matSuffix class="secondary-text">contacts</mat-icon>
+                    <input name="contacto" formControlName="contacto" matInput required>
+                </mat-form-field>
+            </div>
+
+            <!-- Fecha Creacion Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Fecha Creacion</mat-label>
+                    <!-- <mat-icon matSuffix class="secondary-text">date_range</mat-icon> -->
+                    <input matInput [matDatepicker]="creacionDatePicker" name="fecha_creacion" formControlName="fecha_creacion">
+                    <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #creacionDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <!-- Notas Column -->
+            <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Notas</mat-label>
+                    <!-- <mat-icon matSuffix class="secondary-text">note</mat-icon> -->
+
+                    <textarea name="observaciones" formControlName="observaciones" matInput type="text" max-rows="4"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- Estado Column -->
+            <div fxLayout="row" fxLayoutAlign="start start">
+
+                <mat-form-field appearance="outline" floatLabel="always" fxFlex>
+                    <mat-label>Estado</mat-label>
+                    <mat-icon matSuffix class="secondary-text">create</mat-icon>
+
+                    <mat-select formControlName="estado">
+                        <mat-option [value]="'Activo'">
+                            Activo
+                        </mat-option>
+                        <mat-option [value]="'Inactivo'">
+                            Inactivo
+                        </mat-option>
+
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <button *ngIf="action === 'edit'" mat-button class="mr-8" (click)="matDialogRef.close(['delete',contactForm])" aria-label="Delete" matTooltip="Delete">
+            DELETE
+        </button>
+
+        <button *ngIf="action !== 'edit'" mat-button class="save-button" (click)="matDialogRef.close(contactForm)" [disabled]="contactForm.invalid" aria-label="SAVE">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'" mat-button class="save-button" (click)="matDialogRef.close(['save',contactForm])" [disabled]="contactForm.invalid" aria-label="SAVE">
+            SAVE
+        </button>
+
+    </div>
+</div>

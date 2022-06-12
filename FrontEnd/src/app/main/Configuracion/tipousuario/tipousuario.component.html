@@ -1,0 +1,188 @@
+<div id="tipousuario" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/tipousuarios'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{tusuario.tipou}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nuevo Tipo de Usuario
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de Tipo Usuario</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="tipousuarioForm.invalid" *ngIf="pageType ==='new'" (click)="addTipoUsuario()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="tipousuarioForm.invalid " *ngIf="pageType !='new'" (click)="saveTipoUsuario()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+
+                <mat-tab-group>
+
+                    <mat-tab label="Tipos de Usuarios">
+                        <form name="paisForm" [formGroup]="tipousuarioForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p" *ngIf="pageType !='new'">
+                                    <mat-label>Codigo Tipo Usuario</mat-label>
+                                    <input matInput placeholder="Codigo" readonly="readonly" name="ctipou" formControlName="ctipou">
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Compañia</mat-label>
+                                    <input matInput placeholder="Compañia" name="ccomp" formControlName="ccomp" type="text">
+                                </mat-form-field> -->
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Compañia</mat-label>
+                                    <mat-select formControlName='ccomp' name="ccomp">
+                                        <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                            {{comp.empresa}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Tipo Usuario</mat-label>
+                                    <input matInput placeholder="Tipo Usuario" name="tipou" formControlName="tipou" type="text">
+                                </mat-form-field>
+
+
+
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Observaciones</mat-label>
+                                    <input matInput placeholder="Observaciones" name="observaciones" formControlName="observaciones" type="text">
+                                </mat-form-field>
+
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput placeholder="Estado" name="estado" formControlName="estado" type="text">
+                                </mat-form-field> -->
+
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <mat-select formControlName="estado">
+                                        <mat-option [value]="'Activo'">
+                                            Activo
+                                        </mat-option>
+                                        <mat-option [value]="'Inactivo'">
+                                            Inactivo
+                                        </mat-option>
+
+                                    </mat-select>
+                                    <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                    <mat-error>Estado is required!</mat-error> -->
+                                </mat-form-field>
+
+
+
+
+                            </div>
+                        </form>
+                    </mat-tab>
+
+                    <mat-tab label="Permisos" *ngIf="pageType !='new'">
+                        <div class="content-card">
+
+                            <table mat-table class="products-table" [dataSource]="dataSource">
+
+
+
+                                <ng-container matColumnDef="Permisos">
+                                    <mat-header-cell *matHeaderCellDef> Permiso </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.permisos}} </mat-cell>
+                                </ng-container>
+                                <!-- Name Column -->
+
+                                <!-- 
+                                <ng-container matColumnDef="Status">
+                                    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <mat-form-field floatLabel="never">
+                                            <input type="number" matInput [value]="element.valor" (change)="Change(element)" [(ngModel)]="element.price">
+                                        </mat-form-field>
+                                    </mat-cell>
+                                </ng-container>
+ -->
+
+
+                                <ng-container matColumnDef="Status">
+                                    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <mat-select [(ngModel)]="element.valor" (selectionChange)="Change(element)">
+                                            <mat-option value='Y'> Yes</mat-option>
+                                            <mat-option value='N'> No</mat-option>
+                                            <mat-option value='SA'> Sin Asignar</mat-option>
+                                        </mat-select>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns "></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns; " class="product "></mat-row>
+
+                            </table>
+
+
+                        </div>
+
+                    </mat-tab>
+                </mat-tab-group>
+
+
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

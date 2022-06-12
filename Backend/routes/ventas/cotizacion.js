@@ -1,0 +1,20 @@
+const express = require('express');
+const cotizacionController = require('../../controller/ventas/cotizacionController.js');
+const router = express.Router();
+
+router.get('/', cotizacionController.getAll);
+router.get('/bcotizacion', cotizacionController.getAllP);
+router.post('/correlativo', cotizacionController.getNumero);
+router.post('/correlativoOne', cotizacionController.getOneNumero);
+router.post('/formato', cotizacionController.formato);
+router.post('/Encabezado', cotizacionController.getOneEncabezado);
+router.post('/EncabezadoB', cotizacionController.getOneEncabezadoBuscar);
+router.post('/Detalle', cotizacionController.getOneDetalle);
+router.post('/postearEncabezado', cotizacionController.addNewDataEncabezado);
+router.post('/postearDetalle', cotizacionController.addNewDataDetalle);
+router.put('/Encabezado', cotizacionController.updateDataeEncabezado);
+router.put('/Detalle', cotizacionController.updateDataDetalle);
+router.put('/statusC', cotizacionController.upStatus);
+router.delete('/Encabezado', cotizacionController.deleteDataEncabezado);
+router.delete('/:DocNum', cotizacionController.deleteDataDetalle);
+module.exports = router;

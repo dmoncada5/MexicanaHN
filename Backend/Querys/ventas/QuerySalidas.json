@@ -1,0 +1,20 @@
+{
+    "getAllDataP": "SELECT * FROM [dbo].[salidas]   order by DocNum desc",
+    "getAllData": "SELECT  * FROM [dbo].[salidas] where tipo=@tipo_documento   order by DocNum desc",
+    "formato": "exec FormatNumeracion @numero",
+    "getCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
+    "getOneCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
+    "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from salidas t1  where t1.numero=@DocNum",
+    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacen from salidasDetalle where DocNum=@DocNum",
+    "addNewPedidoEncabezado": "INSERT INTO [dbo].[salidas] ( fechaDoc, UserCreate, LastUpdate, comentarios, serie , ccomp, numero,tipo,status) VALUES (  @fechaDoc, @UserCreate, @LastUpdate, @comentarios, @serie,  @ccomp, @numero,@tipo,@status)",
+    "deletePedidoEncabezado": "DELETE FROM [dbo].[salidas] WHERE DocNum = @DocNum",
+    "updatePedidoEncabezado": "UPDATE [dbo].[salidas] SET fechaDoc=@fechaDoc, SocioCode=@SocioCode, NombreSocio=@NombreSocio, Direccion=@Direccion, impuesto=@impuesto, tasa=@tasa, TotalDoc=@TotalDoc, DescPorcentaje=@DescPorcentaje, Moneda=@Moneda, comentarios=@comentarios, vendedor=@vendedor, LastUpdate=@LastUpdate, UserCreate=@UserCreate , Serie=@Serie, ccomp=@ccomp, cai=@cai, fact_emini=@fact_emini, fact_emifin=@fact_emifin, correo=@correo, fecha_limite=@fecha_limite, numero=@numero, tipo=@tipo,RTN=@RTN, status=@status WHERE DocNum = @DocNum",
+    "addNewPedidoDetalle": "INSERT INTO [dbo].[salidasDetalle] (DocNum, Linea, itemCode, itemName, cantidad, precio, almacen) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad, @precio, @almacen)",
+    "deletePedidoDetalle": "DELETE FROM [dbo].[salidasDetalle] WHERE DocNum = @DocNum",
+    "updatePedidoDetalle": "UPDATE [dbo].[salidasDetalle] SET  Linea=@Linea, itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad, precio=@precio, DescuentoLine=@DescuentoLine, impuestocod=@impuestocod, totaLine=@totaLine, almacen=@almacen WHERE DocNum = @DocNum",
+
+
+    "updateSatusEntrada": "UPDATE [dbo].[salidas] SET status=@status WHERE numero = @DocNum",
+    "getOneEncabezadoB": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from salidas t1  where t1.numero=@numero"
+
+}

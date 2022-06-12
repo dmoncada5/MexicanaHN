@@ -1,0 +1,9 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[productos]", 
+    "getOne": "SELECT  * FROM [dbo].[productos] where cprod=@cprod",
+    "addNewProducto": "INSERT INTO [dbo].[productos] (cprod ,ccomp ,ccate ,clbod ,cprov , producto ,costo ,tipo  ,compratipounidad ,ventatipounidad ,impuesto,sinexistencia, fechaingreso,fechavenc ,observaciones ,serieprod ,estado ,imagen  ) VALUES (@cprod ,@ccomp ,@ccate ,@clbod ,@cprov ,@producto ,@costo ,@tipo  ,@compratipounidad ,@ventatipounidad ,@impuesto,@sinexistencia,@fechaingreso,@fechavenc ,@observaciones ,@serieprod ,@estado ,@imagen) ",
+    "deleteProducto": "DELETE FROM [dbo].[productos] WHERE cprod = @cprod",
+    "updateProductoDetails": "UPDATE [dbo].[productos] SET  ccomp=@ccomp ,ccate=@ccate ,clbod=@clbod ,cprov=@cprov ,producto=@producto ,costo=@costo ,tipo=@tipo  ,compratipounidad=@compratipounidad ,ventatipounidad=@ventatipounidad ,impuesto=@impuesto,sinexistencia=@sinexistencia,fechaingreso=@fechaingreso,fechavenc=@fechavenc ,observaciones=@observaciones ,serieprod=@serieprod ,estado=@estado ,imagen=@imagen  WHERE cprod = @cprod"
+
+
+}

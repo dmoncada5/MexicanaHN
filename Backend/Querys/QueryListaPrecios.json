@@ -1,0 +1,10 @@
+{
+    "getAllData": "select  codlista,lista, estado FROM [dbo].[listaprecios]",
+    "getOne": "SELECT  * FROM [dbo].[listaprecios] where codlista=@codlista",
+    "addNewListaPrecio": "INSERT INTO [dbo].[listaprecios] (lista,fechacreacion,estado) VALUES (@lista,@fechacreacion,@estado) ",
+    "deleteListaPrecio": "DELETE FROM [dbo].[listaprecios] WHERE codlista = @codlista",
+    "updateListaPrecioDetails": "UPDATE [dbo].[listaprecios] SET  lista=@newLista,fechacreacion = @newFecha, estado=@newEstado WHERE codlista = @codlista",
+    "productosWithPrice": "select t0.ItemCode, t0.ItemName,t1.Pricelist,t1.price from products t0  left join productsPrice t1 on t1.ItemCode=t0.ItemCode and t1.Pricelist=@Lista",
+    "ActualizarPrecio": "exec ActualizarPrecio @price, @ItemCode, @Pricelist, @CurrCode,@ccomp"
+
+}

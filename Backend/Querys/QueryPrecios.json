@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT a.cprod,b.ItemName, c.lista,a.price, d.moneda  FROM [dbo].[precios] a inner join products b on a.cprod=b.ItemCode inner join listaprecios c on a.codlista=c.codlista inner join monedas d on a.cmon=d.cmon order by b.ItemName asc",
+    "getOne": "SELECT  * FROM [dbo].[precios] where cprod=@cprod",
+    "addNewPrecio": "INSERT INTO [dbo].[precios] (cprod,codlista,price,cmon) VALUES (@cprod,@codlista,@price,@cmon) ",
+    "deletePrecio": "DELETE FROM [dbo].[precios] WHERE cprod = @cprod",
+    "updatePrecioDetails": "UPDATE [dbo].[precios] SET  codlista=@newCodlist,price = @newPrice, cmon=@newCmon WHERE cprod = @newCprod"
+}

@@ -1,0 +1,26 @@
+const express = require('express');
+const promoController = require('../../controller/ventas/promoController.js');
+const router = express.Router();
+
+router.get('/NPromo', promoController.getAllNP);
+router.get('/promo', promoController.getAllP);
+//router.get('/', promoController.getAll);
+router.post('/info', promoController.getInfo);
+router.post('/todo', promoController.getAll);
+router.post('/correlativo', promoController.getNumero);
+router.post('/correlativoOne', promoController.getOneNumero);
+router.post('/formato', promoController.formato);
+router.post('/Encabezado', promoController.getOneEncabezado);
+router.post('/EncabezadoB', promoController.getOneEncabezadoBuscar);
+router.post('/Detalle', promoController.getOneDetalle);
+router.post('/postearEncabezado', promoController.addNewDataEncabezado);
+router.post('/postearDetalle', promoController.addNewDataDetalle);
+router.put('/Encabezado', promoController.updateDataeEncabezado);
+router.put('/Detalle', promoController.updateDataDetalle);
+router.put('/statusP', promoController.upStatus);
+router.delete('/Encabezado', promoController.deleteDataEncabezado);
+//router.delete('/Eliminar', promoController.deleteDataDetalle);
+router.delete('/:DocNum', promoController.deleteDataDetalle);
+router.post('/PriceList', promoController.addNewDataPriceList);
+router.put('/PriceListUpdate', promoController.updateNewDataPriceList);
+module.exports = router;

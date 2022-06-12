@@ -1,0 +1,10 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[tipo_usuarios]",
+    "getOne": "SELECT  * FROM [dbo].[tipo_usuarios] where ctipou=@ctipou",
+    "addNewTipoUsuario": "INSERT INTO [dbo].[tipo_usuarios] (ccomp, tipou,observaciones, estado ) VALUES ( @ccomp, @tipou,@observaciones, @estado) ",
+    "deleteTipoUsuario": "DELETE FROM [dbo].[tipo_usuarios] WHERE ctipou = @ctipou",
+    "updateTipoUsuarioDetails": "UPDATE [dbo].[tipo_usuarios] SET  ccomp=@ccomp,tipou=@tipou , observaciones=@observaciones, estado=@estado WHERE ctipou=@ctipou",
+    "nombrepermiso": "select * from nombresPermisos",
+    "permisos": "select * from permisos where cuser=@cuser",
+    "Actualizarpermiso": "exec ActualizarPermisos @cuser, @nombre, @estructura, @permiso"
+}

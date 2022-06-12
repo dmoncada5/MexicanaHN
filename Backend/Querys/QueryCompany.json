@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[company]",
+    "getOne": "SELECT  * FROM [dbo].[company] where ccomp=@ccomp",
+    "addNewCompany": "INSERT INTO [dbo].[company] (cpais, cdepa, cmuni, empresa, empresa_sociedad, rtn, sucursales, direccion, telefono, celular, correo, sitio_web, fecha_creacion, estado) VALUES (@cpais, @cdepa, @cmuni, @empresa, @empresa_sociedad, @rtn, @sucursales, @direccion, @telefono, @celular, @correo, @sitio_web, @fecha_creacion, @estado) ",
+    "deleteCompany": "DELETE FROM [dbo].[company] WHERE ccomp = @ccomp",
+    "updateCompanyDetails": "UPDATE [dbo].[company] SET   cpais=@cpais, cdepa=@cdepa, cmuni=@cmuni, empresa=@empresa, empresa_sociedad=@empresa_sociedad, rtn=@rtn, sucursales=@sucursales, direccion=@direccion, telefono=@telefono, celular=@celular, correo=@correo, sitio_web=@sitio_web, fecha_creacion=@fecha_creacion, estado=@estado WHERE ccomp = @ccomp"
+}

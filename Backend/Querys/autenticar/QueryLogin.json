@@ -1,0 +1,8 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[usuarios]",
+    "getOne": "SELECT A.cuser, A.ccomp, A.csuc, A.ctipou, A.cemp, A.usuario, A.clave, A.observaciones, A.estado,B.tipou, C.nombres, C.apellidos FROM [dbo].[usuarios] A inner join tipo_usuarios B on A.ctipou=B.ctipou inner join empleados C on A.cemp = C.cemp where A.usuario=@usuario and A.clave=@clave and A.ccomp=@ccomp",
+
+    "getPermiso": "select * from permisos where cuser=@usuario and estructura=@estructura"
+
+
+}

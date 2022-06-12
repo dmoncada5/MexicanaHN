@@ -1,0 +1,308 @@
+<!-- <p>sucursal works!</p>  -->
+
+
+<div id="expediente" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/expedientes'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{ this.Expe}} - {{this.nombre}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nuevo Expediente
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle Expediente</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="expedienteForm.invalid" *ngIf="pageType ==='new'" (click)="addExpediente()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="expedienteForm.invalid || expedienteForm.pristine" *ngIf="pageType !='new'" (click)="saveExpediente()">
+        <span>SAVE</span>
+    </button>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="expedienteForm" [formGroup]="expedienteForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Expedientes">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p" *ngIf="pageType !='new'">
+                                    <mat-label>Expediente #</mat-label>
+                                    <input ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" matInput placeholder="Codigo" readonly="readonly" name="cexp" formControlName="cexp">
+                                </mat-form-field>
+
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Sucursal</mat-label>
+                                    <input matInput placeholder="Sucursal" name="sucursal" formControlName="sucursal" type="text">
+                                </mat-form-field> -->
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp">
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Sucursal</mat-label>
+                                        <mat-select formControlName='csuc' name="csuc">
+                                            <mat-option *ngFor="let suc of sucursal" [value]="suc.csuc">
+                                                {{suc.sucursal}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Cliente</mat-label>
+                                        <input matInput placeholder="Cliente" name="name" formControlName="name">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Cliente</mat-label>
+                                        <mat-select formControlName='csocio' name="csocio">
+                                            <mat-option *ngFor="let soc of socionegocio" [value]="soc.csocio">
+                                                {{soc.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field> -->
+
+
+                                </div>
+                                <!-- 
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="100">
+                                        <mat-label>Productos</mat-label>
+                                        <input matInput placeholder="Producto" name="producto" formControlName="producto">
+                                      
+                                    </mat-form-field>
+
+                                </div> -->
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Peso Inicial</mat-label>
+                                        <input matInput placeholder="Peso Inicial" name="pesoini" formControlName="pesoini" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="25">
+                                        <mat-label>Peso Actual</mat-label>
+                                        <input matInput placeholder="Peso Actual" name="pesoact" formControlName="pesoact" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                   
+                                    </mat-form-field> -->
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Talla</mat-label>
+                                        <mat-select formControlName="talla">
+                                            <mat-option [value]="'S'">
+                                                S
+                                            </mat-option>
+                                            <mat-option [value]="'M'">
+                                                M
+                                            </mat-option>
+                                            <mat-option [value]="'L'">
+                                                L
+                                            </mat-option>
+                                            <mat-option [value]="'XL'">
+                                                XL
+                                            </mat-option>
+                                            <mat-option [value]="'XXL'">
+                                                XXL
+                                            </mat-option>
+                                            <mat-option [value]="'XXXL'">
+                                                XXXL
+                                            </mat-option>
+
+                                        </mat-select>
+                                        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                        <mat-error>Estado is required!</mat-error> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Tallacms</mat-label>
+                                        <input matInput placeholder="Tallacms" name="tallacms" formControlName="tallacms" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="25">
+                                        <mat-label>IMC</mat-label>
+                                        <input matInput placeholder="IMC" name="imc" formControlName="imc" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="25">
+                                        <mat-label>PTR</mat-label>
+                                        <input matInput placeholder="PTR" name="ptr" formControlName="ptr" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required>
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="20">
+                                        <mat-label>Area Grasa</mat-label>
+                                        <input matInput placeholder="Area Grasa" name="areagrasa" formControlName="areagrasa">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="20">
+                                        <mat-label>Grasa Muscular</mat-label>
+                                        <input matInput placeholder="Grasa Muscular" name="areamusc" formControlName="areamusc">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                </div>
+
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Telefono</mat-label>
+                                        <input matInput placeholder="Telefono" name="telefono" formControlName="telefono">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput placeholder="Correo" name="correo" formControlName="correo">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Nacimiento</mat-label>
+                                        <input matInput [matDatepicker]="birthdateDatePicker" name="birthdate" formControlName="birthdate">
+                                        <mat-datepicker-toggle matSuffix [for]="birthdateDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #birthdateDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="fechacreacion" formControlName="fechacreacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+                                        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                        <mat-error>Estado is required!</mat-error> -->
+                                    </mat-form-field>
+
+                                    <span>
+                                        <button [routerLink]="'/configuracion/citas/'+ this.Expe"   class="pr-6" mat-raised-button class="save-product-button accent-800" fxFlex="90" >Ver Citas</button>
+        
+                                    </span>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

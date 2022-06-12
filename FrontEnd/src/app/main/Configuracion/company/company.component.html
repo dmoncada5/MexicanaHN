@@ -1,0 +1,253 @@
+<div id="company" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/companys'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{company.empresa}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva compañia
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de la compañia</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+
+            <button mat-raised-button class="save-product-button" [disabled]="companyForm.invalid" *ngIf="pageType ==='new'" (click)="addCompany()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="companyForm.invalid || companyForm.pristine" *ngIf="pageType !='new'" (click)="saveCompany()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="companyForm" [formGroup]="companyForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+
+                        <mat-tab label="Numeracion">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar fxLayout="column">
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="10" *ngIf="pageType !='new'">
+                                        <mat-label>ID</mat-label>
+                                        <input matInput placeholder="Id" readonly="readonly" name="ccomp" formControlName="ccomp">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="88">
+                                        <mat-label>Empresa</mat-label>
+                                        <input matInput placeholder="Empresa" name="empresa" formControlName="empresa">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Pais</mat-label>
+                                        <mat-select formControlName='cpais' name="cpais">
+                                            <mat-option *ngFor="let comp of paises" [value]="comp.cpais">
+                                                {{comp.pais}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Departamento</mat-label>
+                                        <mat-select formControlName='cdepa' name="cdepa">
+                                            <mat-option *ngFor="let comp of departamentos" [value]="comp.cdepa">
+                                                {{comp.departamento}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Municipio</mat-label>
+                                        <mat-select formControlName='cmuni' name="cmuni">
+                                            <mat-option *ngFor="let comp of municipios" [value]="comp.cmuni">
+                                                {{comp.municipio}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="65">
+                                        <mat-label>Empresa Sociedad</mat-label>
+                                        <input matInput placeholder="Sociedad" name="empresa_sociedad" formControlName="empresa_sociedad">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>RTN</mat-label>
+                                        <input matInput placeholder="RTN" name="rtn" formControlName="rtn">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="65">
+                                        <mat-label>Direccion</mat-label>
+                                        <input matInput placeholder="Direccion" name="direccion" formControlName="direccion">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Sucursales</mat-label>
+                                        <input matInput placeholder="No. Sucursal" name="sucursales" formControlName="sucursales" type="number">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                </div>
+
+
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Telefono</mat-label>
+                                        <input matInput placeholder="Telefono" name="telefono" formControlName="telefono">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Celular</mat-label>
+                                        <input matInput placeholder="Celular" name="celular" formControlName="celular">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput placeholder="Correo" name="correo" formControlName="correo">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Sitio web</mat-label>
+                                        <input matInput placeholder="Web" name="sitio_web" formControlName="sitio_web">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="fecha_creacion" formControlName="fecha_creacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

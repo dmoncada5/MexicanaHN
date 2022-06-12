@@ -1,0 +1,115 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                         Transferencias de Stock
+                        </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Buscar">
+                </div>
+            </div>
+
+            <!-- 
+            / SEARCH
+            <mat-form-field appearance="outline" fxFlex="20">
+                <mat-label>Copiar de:</mat-label>
+                <mat-select (selectionChange)="editContact($event.value)">
+                    <mat-option [value]="'ORDENCOMPRA'">Orden de Compra </mat-option>
+                </mat-select>
+
+            </mat-form-field> -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button [routerLink]="'/ventas/stocktransfer/new'" class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>AGREGAR TRANSFERENCIA</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
+                <!---->
+                <!-- ccomp Column -->
+                <ng-container matColumnDef="DocNum">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.numero}}</p>
+                        <!-- <p class="text-truncate">{{product.DocNum}}</p> -->
+                    </mat-cell>
+                </ng-container>
+
+                <!-- SocioCode Column -->
+                <ng-container matColumnDef="SocioCode">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.ItemName}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- NombreSocio Column -->
+                <ng-container matColumnDef="NombreSocio">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.NombreSocio}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- empresa_sociedad Column -->
+                <ng-container matColumnDef="TotalDoc">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Total</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.TotalDoc}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Fecha Documento Column -->
+                <ng-container matColumnDef="fechaDoc">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p>
+                            {{getFormattedDate( product.fechaDoc)| date:'dd/MM/yyyy' }}
+
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/ventas/stocktransfer/'+product.numero">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [pageIndex]="0" [length]=" dataSource.filteredData.length " [pageSize]="10 " [pageSizeOptions]="[5, 10, 25, 100] ">
+                <!--  -->
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

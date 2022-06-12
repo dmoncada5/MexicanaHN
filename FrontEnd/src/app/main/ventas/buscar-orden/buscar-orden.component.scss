@@ -1,0 +1,108 @@
+@import "src/@fuse/scss/fuse";
+.contact-form-dialog {
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+    @include media-breakpoint('gt-xs') {
+        width: 1000px;
+        height: 900px;
+    }
+    .mat-dialog-container {
+        padding: 0;
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+app-buscar-orden {
+    #products {
+        .top-bg {
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+        >.center {
+            >.header {
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+    .products-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        .mat-header-row {
+            min-height: 64px;
+        }
+        .product {
+            position: relative;
+            cursor: pointer;
+            height: 44px;
+        }
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            align-content: center;
+        }
+        .mat-column-DocNum {
+            flex: 0 1 184px;
+        }
+        .mat-column-SocioCode {
+            flex: 0 1 184px;
+        }
+        .mat-column-NombreSocio {
+            flex: 0 1 450px;
+        }
+        .mat-column-TotalDoc {
+            flex: 0 1 90px;
+        }
+        .mat-column-fechaDoc {
+            flex: 0 1 380px;
+        }
+        .active-icon {
+            border-radius: 50%;
+        }
+    }
+}

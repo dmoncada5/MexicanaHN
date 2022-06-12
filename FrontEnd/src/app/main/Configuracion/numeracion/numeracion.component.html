@@ -1,0 +1,257 @@
+<div id="pais" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/numeraciones'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{numeracion.Serie}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva Numeracion
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de numeracion</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="numeracionForm.invalid" *ngIf="pageType ==='new'" (click)="addNumeracion()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="numeracionForm.invalid || numeracionForm.pristine" *ngIf="pageType !='new'" (click)="saveNumeracion()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="numeracionForm" [formGroup]="numeracionForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Numeracion">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar fxLayout="column">
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30" *ngIf="pageType !='new'">
+                                        <mat-label>ID</mat-label>
+                                        <input matInput placeholder="Id" readonly="readonly" name="cnum" formControlName="cnum">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Serie</mat-label>
+                                        <input matInput placeholder="Serie" name="Serie" formControlName="Serie">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp">
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Sucursal</mat-label>
+                                        <mat-select formControlName='csuc' name="csuc">
+                                            <mat-option *ngFor="let suc of sucusal" [value]="suc.csuc">
+                                                {{suc.sucursal}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+                                </div>
+
+                                <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <mat-label>CAI</mat-label>
+                                    <input matInput placeholder="CAI" name="cai" formControlName="cai">
+                                    <!-- <span matSuffix>cm</span> -->
+                                </mat-form-field>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Factura Inicio</mat-label>
+                                        <input matInput placeholder="Inicio" name="fact_emini" formControlName="fact_emini" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Factura Fin</mat-label>
+                                        <input matInput placeholder="Fin" name="fact_emifin" formControlName="fact_emifin" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput placeholder="Correo" name="correo" formControlName="correo">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Limite</mat-label>
+                                        <input matInput [matDatepicker]="LimiteDatePicker" name="fecha_limite" formControlName="fecha_limite">
+                                        <mat-datepicker-toggle matSuffix [for]="LimiteDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #LimiteDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="fecha_creacion" formControlName="fecha_creacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Correlativo</mat-label>
+                                        <input matInput placeholder="Correlativo" name="correlativo" formControlName="correlativo" type="number">
+                                        <!-- <span matPrefix>$&nbsp;</span> -->
+                                    </mat-form-field>
+
+                                </div>
+
+
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Prefijo</mat-label>
+                                        <input matInput placeholder="Prefijo " name="prefijo" formControlName="prefijo">
+                                        <!-- <span matPrefix>$&nbsp;</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Tipo Documento</mat-label>
+                                        <mat-select formControlName="tipo_documento">
+                                            <mat-option [value]="'Cotizacion'">
+                                                Cotizacion
+                                            </mat-option>
+                                            <mat-option [value]="'Pedido'">
+                                                Pedido
+                                            </mat-option>
+                                            <mat-option [value]="'Factura'">
+                                                Factura
+                                            </mat-option>
+                                            <mat-option [value]="'Entrega'">
+                                                Entrega
+                                            </mat-option>
+                                            <mat-option [value]="'Nota Credito'">
+                                                Nota Credito
+                                            </mat-option>
+                                            <mat-option [value]="'Nota Debito'">
+                                                Nota Debito
+                                            </mat-option>
+                                            <mat-option [value]="'Compras'">
+                                                Compras
+                                            </mat-option>
+                                            <mat-option [value]="'Nota Credito Compras'">
+                                                Nota Credito Compras
+                                            </mat-option>
+                                            <mat-option [value]="'Orden Compra'">
+                                                Orden Compra
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,147 @@
+<div id="municipio" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/municipios'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{municipios.municipio}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nuevo Municipio
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de Municipio</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="municipioForm.invalid" *ngIf="pageType ==='new'" (click)="addMunicipio()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="municipioForm.invalid || municipioForm.pristine" *ngIf="pageType !='new'" (click)="saveMunicipio()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="municipioForm" [formGroup]="municipioForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Municipios">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar fxLayout="column">
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30" *ngIf="pageType !='new' ">
+                                        <mat-label>Codigo Municipio</mat-label>
+                                        <input matInput placeholder="Codigo " readonly="readonly " name="cmuni" formControlName="cmuni">
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Pais</mat-label>
+                                        <mat-select formControlName='cpais' name="cpais ">
+                                            <mat-option *ngFor="let pais of paises " [value]="pais.cpais ">
+                                                {{pais.pais}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Departamento</mat-label>
+                                        <mat-select formControlName='cdepa' name="cdepa ">
+                                            <mat-option *ngFor="let departamento of departamentos " [value]="departamento.cdepa ">
+                                                {{departamento.departamento}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Municipio</mat-label>
+                                        <input matInput placeholder="Municipio" name="municipio" formControlName="municipio" type="text " pattern="[A-Za-z\sáéíóú]+">
+                                    </mat-form-field>
+
+
+
+                                    <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput placeholder="Estado " name="estado " formControlName="estado " type="text ">
+                                </mat-form-field> -->
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]=" 'Activo' ">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]=" 'Inactivo' ">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+                                        <!-- <mat-icon matSuffix class="secondary-text ">outlined_flag</mat-icon>
+                                    <mat-error>Estado is required!</mat-error> -->
+                                    </mat-form-field>
+
+
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

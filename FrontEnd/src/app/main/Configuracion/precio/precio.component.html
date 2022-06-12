@@ -1,0 +1,121 @@
+<div id="precio" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/precios'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{precios.ItemCode}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nuevo Precio
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle de Precio</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="preciosForm.invalid" *ngIf="pageType ==='new'" (click)="addPrecio()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="preciosForm.invalid || preciosForm.pristine" *ngIf="pageType !='new'" (click)="savePrecio()">
+        <span>SAVE</span>
+    </button>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="preciosForm" [formGroup]="preciosForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Precios">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <mat-label>Productos</mat-label>
+                                    <mat-select formControlName='ItemCode' name="ItemCode">
+                                        <mat-option *ngFor="let prod of productos" [value]="prod.ItemCode">
+                                            {{prod.ItemName}}
+                                        </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <mat-label>Lista</mat-label>
+                                    <mat-select formControlName='Pricelist' name="Pricelist">
+                                        <mat-option *ngFor="let list of listas" [value]="list.codlista">
+                                            {{list.lista}}
+                                        </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput placeholder="Precio" name="price" formControlName="price" type="text">
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <mat-label>Moneda</mat-label>
+                                    <mat-select formControlName='cmon' name="cmon">
+                                        <mat-option *ngFor="let mon of monedas" [value]="mon.cmon">
+                                            {{mon.moneda}}
+                                        </mat-option>
+                                    </mat-select>
+
+                                </mat-form-field> -->
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput placeholder="Estado" name="estado" formControlName="estado" type="text">
+                                </mat-form-field> -->
+
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

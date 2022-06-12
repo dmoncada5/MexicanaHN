@@ -1,0 +1,9 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[orden_compra]",
+    "getOne": "SELECT  * FROM [dbo].[orden_compra] where cordenc=@cordenc",
+    "addNewOrdenCompra": "INSERT INTO [dbo].[orden_compra] (cordenc, ccomp, csuc,ctipou,ctipou, usuario,clave, observaciones, estado ) VALUES (@cuser, @ccomp, @csuc,@ctipou , @cemp,@usuario, @clave, @observaciones, @estado) ",
+    "deleteUsuario": "DELETE FROM [dbo].[orden_compra] WHERE cordenc = @cordenc",
+    "updateOrdenCompraDetails": "UPDATE [dbo].[orden_compra] SET  cordenc=@cordenc, csuc=@csuc,ctipou=@ctipou , ctipou=@ctipou, usuario=@usuario, clave=@clave, observaciones=@observaciones, estado=@estado WHERE cuser = @cuser"
+
+
+}

@@ -1,0 +1,231 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Empleados
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Buscar un empleado">
+                </div>
+            </div>
+
+
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button [routerLink]="'/configuracion/empleados/new'" class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>AGREGAR EMPLEADO</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="cemp">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cemp}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="empresa">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Compañía</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.empresa}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="sucursal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sucursal</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.sucursal}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column 
+                <ng-container matColumnDef="cpais">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Pais</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cpais}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 Name Column 
+                <ng-container matColumnDef="cdepa">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Departamento</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cdepa}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 Name Column  
+                <ng-container matColumnDef="cmuni">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Municipio</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.cmuni}}</p>
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="area">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Area</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.area}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombres">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.nombres}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="apellidos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Apellidos</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.apellidos}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="identidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Identidad</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.identidad}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column 
+                 <ng-container matColumnDef="genero">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Genero</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.genero}}</p>
+                    </mat-cell>
+                </ng-container>-->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="rtn">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>RTN</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.rtn}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column 
+                <ng-container matColumnDef="edad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>EDAD</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.edad}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 Name Column 
+                <ng-container matColumnDef="tipo_sangre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sangre</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.tipo_sangre}}</p>
+                    </mat-cell>
+                </ng-container>-->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="direccion">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Direccion</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.direccion}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="telefono">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Telefono</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.telefono}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="celular">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Celular</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.celular}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column 
+                <ng-container matColumnDef="correo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.correo}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 Name Column 
+                <ng-container matColumnDef="observaciones">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.observaciones}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 Name Column 
+                <ng-container matColumnDef="fecha_ingreso">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ingreso</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.fecha_ingreso}}</p>
+                    </mat-cell>
+                </ng-container>-->
+
+                <!-- Estado Column -->
+                <ng-container matColumnDef="estado">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Estado</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="product.estado=='Activo'" class="active-icon green-600 s-16">check</mat-icon>
+                        <mat-icon *ngIf="product.estado=='Inactivo'" class="active-icon red-500 s-16">close</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/configuracion/empleados/'+product.cemp">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]=" dataSource.filteredData.length " [pageIndex]="0 " [pageSize]="10 " [pageSizeOptions]="[5, 10, 25, 100] ">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

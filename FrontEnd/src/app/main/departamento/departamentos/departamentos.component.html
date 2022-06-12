@@ -1,0 +1,116 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <h2>Departamentos</h2>
+    <br />
+
+    <div>
+        <div class="card card-user">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body">
+                <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                <label for="" class="control-label">Departamento</label>
+                                <input type="text" [(ngModel)]="user.cdepa" name="cdepa" placeholder="Codigo" class="form-control" autofocus>
+                            </div>
+                        </div>
+
+                
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                <label for="" class="control-label">Pais</label>
+                                <select class="form-control" size="1" [(ngModel)]="user.cpais" name="cpais" required>
+                    <option *ngFor="let val of TPaises" value={{val.cpais}}>{{val.pais}}</option>
+                  </select>
+    
+                
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                <label for="" class="control-label">Descripcion</label>
+                                <input type="text" [(ngModel)]="user.departamento" name="departamento" placeholder="Departamento" class="form-control">
+                            </div>
+                        </div>
+                         <!--
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                <label for="" class="control-label">Estado</label>
+                                <input type="text" [(ngModel)]="user.estado" name="estado" placeholder="Estado" class="form-control">
+                            </div>
+                        </div> -->
+
+
+                    </div>   
+
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round btn-block" onclick="javascript:alert('Registro Guardado')"  [disabled]="f.invalid">
+                      Agregar
+                  </button>
+                   </div>
+    
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <br />
+<br />
+
+<div class="row-md-20">
+    <div class="col-md-16">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Departamentos</h4>
+            </div>
+
+
+
+
+            <div class="card-body">
+                <div class="container table-responsive py-5">
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table ">
+                            <thead class=" text-primary ">
+                                <tr>
+                                    <th>NO</th>
+                                    <th>PAIS</th>
+                                    <th>DEPARTAMENTO</th>
+                                    <th>DESCRIPCION</th>                                    
+                                    <th>ESTADO</th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let User of TUser">
+                                    <td>{{User.cdepa}}</td>
+                                    <td>{{User.pais}}</td>                                   
+                                    <td>{{User.departamento}}</td>                                    
+                                    <td>{{User.estado}}</td>
+                                    <td> <button [disabled]="User.estado=== 'Bloqueado'" class="btn btn-danger btn-block" (click)="EliminarData(User.cdepa)" onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
+                                    <td>
+                                      <button class="btn btn-success btn-block" [routerLink]="['/mejoras/edit', User.cmejora]">
+                      Actualizar
+                    </button>  
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

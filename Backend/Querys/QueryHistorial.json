@@ -1,0 +1,7 @@
+{
+    "getAllData": "select a.chist, b.nombre, a.producto, a.pesoini, a.pesoact, a.talla,a.imc,a.ptr,a.fechacreacion,a.estado from historial a inner join socionegocio b on a.csocio=b.csocio order by a.chist asc    ",
+    "getOne": "SELECT  * FROM [dbo].[historial] where chist=@chist",
+    "addNewHistorial": "INSERT INTO [dbo].[historial] (chist,ccomp,csuc,csocio,producto,pesoini,pesoact,talla,imc,ptr,areagrasa,areamusc,estado,fechacreacion) VALUES (@chist,@ccomp,@csuc,@csocio,@producto,@pesoini,@pesoact,@talla,@imc,@ptr,@areagrasa,@areamusc,@estado,@fechacreacion) ",
+    "deleteHistorial": "DELETE FROM [dbo].[historial] WHERE chist = @chist",
+    "updateHistorialDetails": "UPDATE [dbo].[historial] SET ccomp=@newCompany, csuc=@newSucursal,csoc = @newSocio, producto=@newProducto,pesoini=@newInicial,pesoact=@newActual,talla=@talla,imc=@newImc,ptr=@newPtr,areagrasa=@newGrasa,areamusc=@newMusc,estado=@newEstado=fechacreacion=@newFecha,estado=@newEstado WHERE chist = @chist"
+}

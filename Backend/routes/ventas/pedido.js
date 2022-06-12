@@ -1,0 +1,21 @@
+const express = require('express');
+const pedidoController = require('../../controller/ventas/pedidoController.js');
+const router = express.Router();
+
+router.get('/pedidos', pedidoController.getAllP);
+//router.get('/', pedidoController.getAll);
+router.post('/todo', pedidoController.getAll);
+router.post('/correlativo', pedidoController.getNumero);
+router.post('/correlativoOne', pedidoController.getOneNumero);
+router.post('/formato', pedidoController.formato);
+router.post('/Encabezado', pedidoController.getOneEncabezado);
+router.post('/EncabezadoB', pedidoController.getOneEncabezadoBuscar);
+router.post('/Detalle', pedidoController.getOneDetalle);
+router.post('/postearEncabezado', pedidoController.addNewDataEncabezado);
+router.post('/postearDetalle', pedidoController.addNewDataDetalle);
+router.put('/Encabezado', pedidoController.updateDataeEncabezado);
+router.put('/Detalle', pedidoController.updateDataDetalle);
+router.put('/statusP', pedidoController.upStatus);
+router.delete('/Encabezado', pedidoController.deleteDataEncabezado);
+router.delete('/:DocNum', pedidoController.deleteDataDetalle);
+module.exports = router;

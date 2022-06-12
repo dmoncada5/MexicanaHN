@@ -1,0 +1,10 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[formapago]",
+    "getOne": "SELECT  * FROM [dbo].[formapago] where cformap=@cformap",
+    "addNewFormaPagos": "INSERT INTO [dbo].[formapago] (ccomp,forma_pago,observaciones,estado ) VALUES (@ccomp,@forma_pago,@observaciones,@estado) ",
+    "deleteFormaPagos": "DELETE FROM [dbo].[formapago] WHERE cformap=@cformap",
+    "updateFormaPagosDetails": "UPDATE [dbo].[formapago] SET ccomp=@ccomp,forma_pago=@forma_pago,observaciones=@observaciones,estado=@estado WHERE cformap=@cformap"
+
+
+
+}

@@ -1,0 +1,245 @@
+<div id="order" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+
+                <!-- arreglar -->
+                <button mat-icon-button class="mr-16" [routerLink]="'/ventas/promos'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="subtitle secondary-text">
+                    <span>PROMOCION</span>
+                    <!-- <span>{{PromoE.SocioCode}} {{PromoE.NombreSocio}}</span> -->
+                </div>
+            </div>
+
+
+            <!-- / APP TITLE -->
+
+
+            <div>
+
+
+                <button mat-icon-button class="mr-16" *ngIf="pageType ==='new' " (click)="save()">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+
+                <button mat-icon-button class="mr-16" *ngIf="pageType !='new'" (click)="update()">
+                    <!-- <span>UPDATE</span> -->
+                    <mat-icon>update</mat-icon>
+
+                </button>
+
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <mat-tab-group fxLayout="column">
+                    <!-- <mat-tab-group fxLayout="column" fxFlex *ngIf="selectedSerie"> -->
+                    <mat-tab label="Informacion Basica">
+
+                        <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+
+                            <!-- REACTIVE FORM EXAMPLE -->
+
+                            <form class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="PromoForm">
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp" [disabled]=true>
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Codigo Promocion</mat-label>
+                                        <input matInput placeholder="Codigo" name="ItemCode" formControlName="ItemCode">
+                                    </mat-form-field>
+                                </div>
+
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Nombre Promocion</mat-label>
+                                        <input matInput placeholder="Nombre " name="ItemName" formControlName="ItemName">
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Precio Promocion</mat-label>
+                                        <input matInput placeholder="Costo" name="costo" formControlName="costo">
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="FechaCreacion" formControlName="FechaCreacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Impuesto</mat-label>
+                                        <mat-select formControlName="impuesto">
+                                            <mat-option [value]="'Y'">
+                                                Si
+                                            </mat-option>
+                                            <mat-option [value]="'N'">
+                                                NO
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Observaciones</mat-label>
+                                        <input matInput placeholder="Observaciones" name="observaciones" formControlName="observaciones">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </mat-tab>
+
+
+
+
+
+                    <mat-tab label="Productos">
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+
+                            <mat-form-field appearance="outline" fxFlex="70" class="pr-4 productItem">
+                                <mat-label>Productos</mat-label>
+                                <input matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
+                                <mat-autocomplete #autoproducts="matAutocomplete">
+                                    <mat-option *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
+
+                                        <span>{{products.ItemCode}} | </span>
+                                        <small>{{products.ItemName}}</small>
+
+                                    </mat-option>
+                                </mat-autocomplete>
+
+                            </mat-form-field>
+
+                            <button mat-raised-button [disabled]="productItem==null" class="save-product-button accent-800" fxFlex="10" (click)="Agregar($event)">Agregar</button>
+
+
+                        </div>
+                        <br>
+
+                        <div class="content-card">
+
+                            <table mat-table class="products-table" [dataSource]="dataSource">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="Line">
+                                    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.Linea}} </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ItemCode">
+                                    <mat-header-cell *matHeaderCellDef> ItemCode </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.itemCode}} </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="ItemName">
+                                    <mat-header-cell *matHeaderCellDef> ItemName </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.itemName}} </mat-cell>
+                                </ng-container>
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="Cantidad">
+                                    <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <mat-form-field floatLabel="never">
+                                            <input type="number" matInput (change)="Change(element)" [value]="element.cantidad" [(ngModel)]="element.cantidad">
+                                        </mat-form-field>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Bodega">
+                                    <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <mat-select placeholder="Bodegas" [(ngModel)]="element.cbod">
+                                            <mat-option *ngFor="let bod of bodegas" value={{bod.cbod}}> {{bod.bodega}}</mat-option>
+
+                                        </mat-select>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Actions</mat-header-cell>
+                                    <mat-cell *matCellDef="let element " fxHide fxShow.gt-xs>
+                                        <button mat-button matTooltip="Delete" color="warn" (click)="actions(element)">
+                                <mat-icon class="active-icon red-500 s-16 ">clear</mat-icon></button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns "></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns; " class="product "></mat-row>
+
+                            </table>
+
+
+
+                        </div>
+
+
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>

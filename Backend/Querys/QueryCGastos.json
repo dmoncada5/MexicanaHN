@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT  * from [dbo].[cuentasgastos] ",
+    "getOne": "SELECT  * FROM [dbo].[cuentasgastos] where ccuenta=@ccuenta",
+    "addNewCGasto": "INSERT INTO [dbo].[cuentasgastos] (namecuenta) VALUES (@namecuenta) ",
+    "deleteCGasto": "DELETE FROM [dbo].[cuentasgastos] WHERE ccuenta = @ccuenta",
+    "updateCGastoDetails": "UPDATE [dbo].[cuentasgastos] SET namecuenta=@namecuenta WHERE ccuenta = @ccuenta"
+}

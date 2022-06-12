@@ -1,0 +1,138 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Lotes Bodega
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Buscar un lote">
+                </div>
+            </div>
+
+
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button [routerLink]="'/configuracion/lotebodegas/new'" class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>AGREGAR NUEVO LOTE</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="clbod">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.clbod}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="empresa">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Compañía</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.empresa}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="sucursal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sucursal</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.sucursal}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="bodega">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Bodega</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.bodega}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="lote">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Lote</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.lote}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 <!-- Name Column -->
+                 <ng-container matColumnDef="ubicacion">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.ubicacion}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 <!-- Name Column -->
+                 <ng-container matColumnDef="observaciones">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.observaciones}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                 <!-- Name Column -->
+            <!--
+                 <ng-container matColumnDef="fecha_creacion">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.fecha_creacion}}</p>
+                    </mat-cell>
+                </ng-container> 
+                -->
+
+                <!-- Estado Column -->
+                <ng-container matColumnDef="estado">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Estado</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="product.estado=='Activo'" class="active-icon green-600 s-16">check</mat-icon>
+                        <mat-icon *ngIf="product.estado=='Inactivo'" class="active-icon red-500 s-16">close</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/configuracion/lotebodegas/'+product.clbod">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]=" dataSource.filteredData.length " [pageIndex]="0 " [pageSize]="10 " [pageSizeOptions]="[5, 10, 25, 100] ">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>
+

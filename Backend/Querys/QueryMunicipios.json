@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT a.cmuni,b.pais,c.departamento,a.municipio,a.estado FROM [dbo].[municipios] a inner join paises b on a.cpais=b.cpais inner join departamentos c on a.cdepa=c.cdepa order by a.cmuni asc",
+    "getOne": "SELECT  * FROM [dbo].[municipios] where cmuni=@cmuni",
+    "addNewMunicipio": "INSERT INTO [dbo].[municipios] (cpais,cdepa,municipio,estado) VALUES (@cpais,@cdepa,@municipio,@estado) ",
+    "deleteMunicipio": "DELETE FROM [dbo].[municipios] WHERE cmuni = @cmuni",
+    "updateMunicipioDetails": "UPDATE [dbo].[municipios] SET cpais=@newPais, cdepa=@newDepartamento,municipio = @newMunicipio, estado=@newEstado WHERE cmuni = @cmuni"
+}

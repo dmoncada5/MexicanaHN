@@ -1,0 +1,243 @@
+<!-- <p>sucursal works!</p>  -->
+
+
+<div id="sucursal" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/configuracion/sucursales'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                    <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <!-- <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{product.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Product
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Product Detail</span>
+                    </div>
+                </div> -->
+
+
+                <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType !='new'">
+                        {{sucursal.sucursal}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        Nueva Sucursal
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Detalle del Sucursal</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button class="save-product-button" [disabled]="sucursalForm.invalid" *ngIf="pageType ==='new'" (click)="addSucursal()">
+        <span>ADD</span>
+    </button>
+
+            <button mat-raised-button class="save-product-button" [disabled]="sucursalForm.invalid || sucursalForm.pristine" *ngIf="pageType !='new'" (click)="saveSucursal()">
+        <span>SAVE</span>
+    </button>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="sucursalForm" [formGroup]="sucursalForm" class="product w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Sucursales">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p" *ngIf="pageType !='new'">
+                                    <mat-label>Codigo Sucursal</mat-label>
+                                    <input matInput placeholder="Codigo" readonly="readonly" name="csuc" formControlName="csuc">
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Sucursal</mat-label>
+                                    <input matInput placeholder="Sucursal" name="sucursal" formControlName="sucursal" type="text">
+                                </mat-form-field> -->
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Compañia</mat-label>
+                                        <mat-select formControlName='ccomp' name="ccomp">
+                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
+                                                {{comp.empresa}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Pais</mat-label>
+                                        <mat-select formControlName='cpais' name="cpais">
+                                            <mat-option *ngFor="let pais of paises" [value]="pais.cpais">
+                                                {{pais.pais}}
+                                            </mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Numero de Sucursal</mat-label>
+                                        <input matInput placeholder="Numero Sucursal" name="numsuc" formControlName="numsuc">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Departamento</mat-label>
+                                        <mat-select formControlName='cdepa' name="cdepa">
+                                            <mat-option *ngFor="let d of departamentos" [value]="d.cdepa">
+                                                {{d.departamento}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Municipio</mat-label>
+                                        <mat-select formControlName='cmuni' name="cmuni">
+                                            <mat-option *ngFor="let m of municipios" [value]="m.cmuni">
+                                                {{m.municipio}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Sucursal</mat-label>
+                                        <input matInput placeholder="Sucursal" name="sucursal" formControlName="sucursal">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                </div>
+
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Direccion</mat-label>
+                                    <input matInput placeholder="Direccion" name="direccion" formControlName="direccion" type="text">
+                                </mat-form-field>
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Telefono</mat-label>
+                                        <input matInput placeholder="Telefono" name="telefono" formControlName="telefono" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Celular</mat-label>
+                                        <input matInput placeholder="Celular" name="celular" formControlName="celular" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput placeholder="Correo" name="correo" formControlName="correo" type="email" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" size="50" required>
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+                                </div>
+
+
+
+
+                                <div fxLayout="row" fxLayoutAlign="space-between">
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Responsable</mat-label>
+                                        <input matInput placeholder="Responsable" name="responsable" formControlName="responsable">
+                                        <!-- <span matSuffix>cm</span> -->
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="fecha_creacion" formControlName="fecha_creacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Estado</mat-label>
+                                        <mat-select formControlName="estado">
+                                            <mat-option [value]="'Activo'">
+                                                Activo
+                                            </mat-option>
+                                            <mat-option [value]="'Inactivo'">
+                                                Inactivo
+                                            </mat-option>
+
+                                        </mat-select>
+                                        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                    <mat-error>Estado is required!</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+
+
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

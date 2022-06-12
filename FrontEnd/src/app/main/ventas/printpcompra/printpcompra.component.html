@@ -1,0 +1,185 @@
+<div id="invoice" class="modern page-layout blank" fxLayout="row">
+
+    <div class="invoice-container">
+
+        <!-- INVOICE -->
+        <div class="card">
+
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+
+                <div class="ids" fxLayout="column">
+
+                    <div fxLayout="row" class="seller" fxLayoutAlign="start center">
+
+                        <div class="logo">
+                            <img src="assets/images/logos/Genesis.jpg">
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">GENESIS HEALTH</div>
+                            <!-- <div *ngIf="invoice?.from.address" class="address">
+                                {{invoice.from.address}}
+                            </div>
+                            <div *ngIf="invoice?.from.phone" class="phone">
+                                <span>Phone:</span> {{invoice.from.phone}}
+                            </div>
+                            <div *ngIf="invoice?.from.email" class="email">
+                                <span>Email:</span> {{invoice.from.email}}
+                            </div>
+                            <div *ngIf="invoice?.from.website" class="website">
+                                <span>Web:</span> {{invoice.from.website}}
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                            <div>CLIENTE</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">{{Encabezado.NombreSocio}}</div>
+                            <div class="address">
+                                Plaza Fesmar 13 avenida, 6 calle S.O. Barrio Suyapa, S.P.S Honduras
+                            </div>
+                            <div class="phone">
+                                <span>Phone:</span>
+                            </div>
+                            <div class="email">
+                                <span>Email:</span> genesis.sm@gmail.com
+                            </div>
+                            <div class="website">
+                                <span>Comentarios:</span> {{Encabezado.comentarios}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label">ORDEN DE COMPRA</td>
+                        <td class="value">{{Encabezado.numero}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">FECHA</td>
+                        <td class="value">{{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">TOTAL </td>
+                        <td class="value">{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <tr>
+                            <th>DESCRIPCION</th>
+
+                            <th class="text-right">PRECIO</th>
+                            <th class="text-right">CANTIDAD</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let det of Detalle">
+                            <td>
+                                <div class="title">{{det.itemCode}}</div>
+                                <div class="detail">{{det.itemName}}</div>
+                            </td>
+
+                            <td class="text-right">
+                                {{det.precio| currency:'LPS':'symbol'}}
+                            </td>
+                            <td class="text-right">
+                                {{det.cantidad}}
+                            </td>
+                            <td class="text-right">
+                                {{det.totaLine | currency:'LPS':'symbol'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+                        <tr class="subtotal">
+                            <td>SUBTOTAL</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                        </tr>
+                        <tr class="tax">
+                            <td>ISV</td>
+                            <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>DESCUENTO</td>
+                            <td>-{{0| currency:'LPS':'symbol'}}</td>
+                        </tr>
+                        <tr class="total">
+                            <td>TOTAL</td>
+                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <!-- <div class="note">Esta cotizacion tiene validez por 15 dias apartir de la fecha de impresion</div> -->
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div class="logo">
+                        <img src="assets/images/logos/Genesis.jpg">
+                    </div>
+                    <div class="small-note">
+                        Productos 100% natural para bajar de peso
+                    </div>
+                </div>
+            </div>
+
+            <!--
+
+            Use the following elements to add breaks to your pages. This will make sure that the section in between
+            these elements will be printed on a new page. The following two elements must be used before and after the
+            page content that you want to show as a new page. So, you have to wrap your content with them.
+
+            Elements:
+            ---------
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+            <!--
+
+            Example:
+            --------
+
+            Initial page content!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the second page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the third page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+        </div>
+        <!-- / INVOICE -->
+
+    </div>
+
+</div>

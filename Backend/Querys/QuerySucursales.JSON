@@ -1,0 +1,9 @@
+{
+    "getAllData": "SELECT * FROM [dbo].[sucursales]",
+    "getOne": "SELECT  * FROM [dbo].[sucursales] where csuc=@csuc",
+    "addNewSucursal": "INSERT INTO [dbo].[sucursales] ( ccomp, cpais,numsuc,cdepa, cmuni,sucursal, direccion, telefono, celular, correo,  responsable, fecha_creacion, estado ) VALUES ( @ccomp, @cpais,@numsuc , @cdepa,@cmuni, @sucursal, @direccion, @telefono, @celular, @correo, @responsable, @fecha_creacion, @estado) ",
+    "deleteSucursal": "DELETE FROM [dbo].[sucursales] WHERE csuc = @csuc",
+    "updateSucursalDetails": "UPDATE [dbo].[sucursales] SET  ccomp=@ccomp, cpais=@cpais,numsuc=@numsuc , cdepa=@cdepa, cmuni=@cmuni, sucursal=@sucursal, direccion=@direccion, telefono=@telefono, celular=@celular, correo=@correo, responsable=@responsable, fecha_creacion=@fecha_creacion, estado=@estado WHERE csuc = @csuc"
+
+
+}

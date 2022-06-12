@@ -1,0 +1,7 @@
+{
+    "getAllData": "SELECT  a.cmon, b.empresa,c.pais,a.moneda,a.abrev,a.pcompra,a.pventa,a.estado FROM [dbo].[monedas] a inner join company b on a.ccomp=b.ccomp inner join paises c on a.cpais=c.cpais order by a.cmon asc ",
+    "getOne": "SELECT  * FROM [dbo].[monedas] where cmon=@cmon",
+    "addNewMoneda": "INSERT INTO [dbo].[monedas] (ccomp,cpais,moneda,abrev,pcompra,pventa,fechaemi,estado) VALUES (@ccomp,@cpais,@moneda,@abrev,@pcompra,@pventa,@fechaemi,@estado) ",
+    "deleteMoneda": "DELETE FROM [dbo].[monedas] WHERE cmon = @cmon",
+    "updateMonedaDetails": "UPDATE [dbo].[monedas] SET ccomp=@newCompany, cpais=@newPais,moneda = @newMoneda,abrev=@NewAbrev,pcompra=@newPcompra,pventa=@newPventa, fechaemi=@newFecha,estado=@newEstado WHERE cmon = @cmon"
+}
