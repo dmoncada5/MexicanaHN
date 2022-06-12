@@ -127,21 +127,19 @@ products: any;
       this.Ftupdate = false;
       this.getNumerion();
       this.getbodegas();
-    //   this.getFormapagos();
+        //   this.getFormapagos();
       let buscarE;
       let buscarD;
-      if (params.tipo == 'entrada'){
+    //  if (params.tipo == 'ENTRADA'){
           buscarE = '/entrada/Encabezado';
           buscarD = '/entrada/Detalle';
-         }
+     //    }
 
       this.entradasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.EntradaE = res[0];
-                if (params.tipo != 'entrada'){
-
-                }
+             
                 // this.series.cnum=res["Serie"];
                 this.EntradaForm = this.createcotizacionForm();
             }
@@ -182,7 +180,7 @@ products: any;
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.entradasService.getnumeracion('/entrada/correlativo', user.company, 'Entrada').subscribe(
+    this.entradasService.getnumeracion('/entrada/correlativo', user.company, 'ENTRADA MERCADERIA').subscribe(
         (res) => {
          //   this.EntradaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
@@ -211,7 +209,7 @@ products: any;
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.entradasService.getOnenumeracion('/entrada/correlativoOne', user.company, 'Entrada', event).subscribe(
+    this.entradasService.getOnenumeracion('/entrada/correlativoOne', user.company, 'ENTRADA MERCADERIA', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
@@ -417,7 +415,7 @@ this.bodegas = res;
     this.EntradaE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     // this.EntradaE.fechaDoc=  format(new Date(this.EntradaE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
     this.docum.DocNum = this.EntradaE.DocNum;
-    this.EntradaE.tipo = 'ENTRADA';
+    this.EntradaE.tipo = 'ENTRADA MERCADERIA';
     this.EntradaE.Serie = this.selectSerie[0]['cnum'];
     this.EntradaE.ccomp = this.selectSerie[0]['ccomp']; 
     this.EntradaE.comentarios = this.EntradaForm.get('comentario').value;

@@ -130,19 +130,16 @@ products: any;
     //   this.getFormapagos();
       let buscarE;
       let buscarD;
-      if (params.tipo == 'salida'){
+    //  if (params.tipo == 'salida'){
           buscarE = '/salida/Encabezado';
           buscarD = '/salida/Detalle';
-         }
+   //      }
 
       this.salidasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.SalidaE = res[0];
-                if (params.tipo != 'salida'){
-
-                }
-                // this.series.cnum=res["Serie"];
+               
                 this.SalidaForm = this.createcotizacionForm();
             }
         );
@@ -182,7 +179,7 @@ products: any;
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida').subscribe(
+    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'SALIDA MERCADERIA').subscribe(
         (res) => {
          //   this.SalidaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
