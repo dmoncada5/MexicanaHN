@@ -15,34 +15,40 @@ app-printfactura {
         &.modern {
             padding: 0;
             .invoice-container {
-                padding: 64px;
+                padding: 40px;
                 margin: 0 auto;
                 .card {
-                    width: 1020px;
-                    min-width: 1020px;
-                    max-width: 1020px;
+                    width: 380px;
+                    min-width: 380px;
+                    max-width: 380px;
                     padding: 88px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
                     .header {
+                            .divider1 {
+                                width: 144px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
                         .ids {
-                            line-height: 22px;
+                            line-height: 5px;
                             color: rgba(0, 0, 0, 0.54);
                             .detail {
                                 width: 250px;
                             }
                             .seller {
-                                margin-bottom: 80px;
+                                margin-bottom: 50px;
                                 .logo {
-                                    width: 156px;
+                                    width: 50px;
                                 }
                             }
                             .client {
                                 .label {
-                                    width: 140px;
-                                    font-size: 24px;
-                                    font-weight: 300;
+                                    width: 50px;
+                                    font-size: 12px;
+                                    font-weight: 100;
                                 }
                             }
                             .divider {
@@ -51,30 +57,14 @@ app-printfactura {
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 144px;
                             }
+                        
                         }
-                        .summary {
-                            font-size: 15px;
-                            .label {
-                                color: rgba(0, 0, 0, 0.54);
-                                text-align: right;
-                                padding-right: 25px;
-                            }
-                            .value {
-                                color: rgba(0, 0, 0, 1);
-                            }
-                            .code {
-                                font-size: 35px;
-                                font-weight: 300;
-                                td {
-                                    padding-bottom: 32px;
-                                }
-                            }
-                        }
+                  
                     }
                     .content {
                         .invoice-table {
-                            margin-top: 96px;
-                            font-size: 15px;
+                            margin-top: 70px;
+                            font-size: 12px;
                             color: rgba(0, 0, 0, 0.87);
                             thead {
                                 tr {
@@ -82,16 +72,22 @@ app-printfactura {
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
+                                
+                                    td{
+                                        padding-right: 40px;
+                                    }
                                 }
                             }
                             tbody {
                                 tr {
-                                    td {
-                                        color: rgba(0, 0, 0, 0.87);
-                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                              
+                                    td{
+                                        padding-right: 65px;
                                     }
                                 }
+                               
                             }
+                         
                             .title {
                                 font-size: 17px;
                             }
