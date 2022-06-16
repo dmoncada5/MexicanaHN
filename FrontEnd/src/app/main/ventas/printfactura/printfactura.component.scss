@@ -10,6 +10,21 @@
     margin: 0 -6cm
 }
 
+.text1{
+    font-family: monospace;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    color: black;
+}
+.text{
+    font-family: monospace;
+    font-size: medium;
+    font-weight:normal;
+    text-align:  center;
+    color: black;
+}
+
 app-printfactura {
     #invoice {
         &.modern {
@@ -93,7 +108,7 @@ app-printfactura {
                             }
                             .detail {
                                 margin-top: 8px;
-                                font-size: 12px;
+                                font-size: 8px;
                                 color: rgba(0, 0, 0, 0.54);
                                 max-width: 360px;
                             }
@@ -102,9 +117,9 @@ app-printfactura {
                             margin: 32px 0 96px 0;
                             tr {
                                 td {
-                                    text-align: right;
-                                    font-size: 17px;
-                                    font-weight: 600;
+                                    text-align: left;
+                                    font-size: 12px;
+                                    font-weight: 500;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
                                     padding: 8px 8px;
@@ -114,14 +129,14 @@ app-printfactura {
                                 }
                                 &.discount {
                                     td {
-                                        padding-bottom: 32px;
+                                        padding-bottom: 12px;
                                     }
                                 }
                                 &.total {
                                     td {
                                         padding: 32px 8px;
                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
-                                        font-size: 35px;
+                                        font-size: 12px;
                                         font-weight: 300;
                                         color: rgba(0, 0, 0, 1);
                                     }
@@ -244,7 +259,7 @@ app-printfactura {
                                 margin: 16pt 0;
                                 tr {
                                     td {
-                                        font-size: 13pt;
+                                        font-size: 10pt;
                                         padding: 4pt 4pt;
                                         &:first-child {
                                             text-align: left;

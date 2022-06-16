@@ -17,9 +17,7 @@
 
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
-                        <div class="logo">
-                            <img src="assets/images/logos/Mexicana.jpeg">
-                        </div>
+                
 
                         <!-- <div class="divider"></div> -->
 
@@ -47,18 +45,19 @@
                
                  
                 </div>
-                
-                <div > Cliente - {{Encabezado.SocioCode}}</div>
-                <div >{{Encabezado.NombreSocio}}</div>
+                <div class="text1">MEXICANA HN</div>
+                <div class="divider1"></div>
+                <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
+                <div class="text" >{{Encabezado.NombreSocio}}</div>
         <div class="divider1"></div>
-<div>    FACTURA </div><div>    {{Encabezado.numero}}</div>
-<div><small>    FECHA </small><small>    {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</small></div>
+<div class="text">    FACTURA </div><div class="text">    {{Encabezado.numero}}</div>
+<div class="text">    FECHA </div><div class="text">    {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
 
-<div>    CAI </div>
-<div>   {{Encabezado.cai }}  </div>
-<div>    FECHA LIMITE EMISION  </div>
-<div> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}  </div>
-<div>    RANGO </div><div>    {{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</div>
+<div class="text">    CAI </div>
+<div class="text">   {{Encabezado.cai }}  </div>
+<div class="text">    FECHA LIMITE EMISION  </div>
+<div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}  </div>
+<div class="text">    RANGO </div><div class="text">    {{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</div>
 
 
 
@@ -161,7 +160,7 @@
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="total">
+                        <tr class="subtotal">
                             <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
                         </tr>
@@ -173,10 +172,10 @@
                 <div class="note"></div>
                 <div fxLayout="row" fxLayoutAlign="start start">
                     <div class="logo">
-                        <img src="assets/images/logos/Genesis.jpg">
+                        <!-- <img src="assets/images/logos/Genesis.jpg"> -->
                     </div>
                     <div class="small-note">
-                        Productos 100% natural para bajar de peso
+                   
                     </div>
                 </div>
             </div>
