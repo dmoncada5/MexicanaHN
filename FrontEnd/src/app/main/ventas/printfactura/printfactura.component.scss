@@ -11,20 +11,26 @@
 }
 
 .text1{
-    font-family:'Arial';
+    font-family:'monospace';
     font-size:small;
     font-weight: bolder;
     text-align: center;
     color: black;
 }
 .text{
-    font-family: 'Arial';
+    font-family:'monospace' ;
     font-size: smaller;
     font-weight:normal;
     text-align:  center;
     color: black;
 }
-
+.textCAI{
+    font-family:'monospace' ;
+    font-size: smaller;
+    font-weight:normal;
+    text-align:  left;
+    color: black;
+}
 app-printfactura {
     #invoice {
         &.modern {
