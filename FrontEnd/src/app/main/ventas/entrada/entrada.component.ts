@@ -130,7 +130,7 @@ products: any;
         //   this.getFormapagos();
       let buscarE;
       let buscarD;
-      if (params.tipo == 'ENTRADA'){
+      if (params.tipo == 'entrada'){
           buscarE = '/entrada/Encabezado';
           buscarD = '/entrada/Detalle';
          }
