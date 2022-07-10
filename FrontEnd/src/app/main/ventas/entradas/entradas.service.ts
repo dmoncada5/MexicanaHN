@@ -25,7 +25,7 @@ API_URI = environment.ipKey;
 
           Promise.all([ 
 
-              this.getEntradas('/entrada/todo', 'ENTRADA')
+              this.getEntradas('/entrada/todo', 'ENTRADA MERCADERIA')
             
           ]).then(
               () => { 
