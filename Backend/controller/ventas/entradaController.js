@@ -31,7 +31,7 @@ class MainController {
         }
     }
     async getNumero(req, res) {
-        console.log(res.body);
+        console.log(req.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()
