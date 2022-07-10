@@ -61,7 +61,7 @@ products: any;
   tipoPagos: any;
   order: Order;
   selectTypePago: any;
-
+  user: any;
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -71,7 +71,7 @@ products: any;
               private _matSnackBar: MatSnackBar,
               private router: Router) {
            
-
+                this.user=JSON.parse(localStorage.getItem('usuario'));
                 this.order = new Order();
       // Set the private defaults
                 this._unsubscribeAll = new Subject();
@@ -89,7 +89,7 @@ products: any;
                   );
           }
       );
-
+this.EntradaForm.get('id').setValue(this.user.usuario);
                 this.entradasService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
@@ -604,7 +604,7 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-
+        id:[this.EntradaE.id,Validators.required],
         fechaDoc: [this.EntradaE.fechaDoc, Validators.required],
         serie: [this.EntradaE.Serie, Validators.required],
         comentario: [this.EntradaE.comentarios],

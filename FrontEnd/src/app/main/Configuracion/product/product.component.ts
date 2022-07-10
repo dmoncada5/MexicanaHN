@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
     ItemCode : null,
     ItemName : null,
     FechaCreacion : null,
+    FechaVencimiento : null,
     impuesto : null,
     costo : null, 
     observaciones : null,
@@ -50,6 +51,7 @@ this.productForm = _formBuilder.group({
   ItemCode : ['', ],
   ItemName : ['', Validators.required],
   FechaCreacion : ['', Validators.required],
+  FechaVencimiento : ['', Validators.required],
   impuesto : ['', Validators.required],
   costo : [''],
   observaciones : ['', Validators.required],
@@ -87,6 +89,7 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
     this.productForm.controls.ItemCode.setValue(this.products['ItemCode']);
     this.productForm.controls.ItemName.setValue(this.products['ItemName']);
     this.productForm.controls.FechaCreacion.setValue(this.products['FechaCreacion']);
+    this.productForm.controls.FechaVencimiento.setValue(this.products['FechaVencimiento']);
     this.productForm.controls.impuesto.setValue(this.products['impuesto']);
     this.productForm.controls.costo.setValue(this.products['costo']); 
     this.productForm.controls.observaciones.setValue(this.products['observaciones']);

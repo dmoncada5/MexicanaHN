@@ -55,7 +55,6 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
 @import "src/app/main/configuracion/sucursales/sucursales.theme";
 @import "src/app/main/configuracion/usuarios/usuarios.theme";
 @import "src/app/main/configuracion/tipousuarios/tipousuarios.theme";
-@import "src/app/main/configuracion/productos/productos.theme";
 @import "src/app/main/configuracion/bodegas/bodegas.theme";
 @import "src/app/main/configuracion/products/products.theme";
 @import "src/app/main/ventas/stocktransfers/stocktransfers.theme";
@@ -90,7 +89,6 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
     @include app-cotizaciones-theme($theme);
     @include app-usuarios-theme($theme);
     @include app-tipousuarios-theme($theme);
-    @include app-productos-theme($theme);
     @include app-facturas-theme($theme);
     @include app-compras-theme($theme);
     @include app-pcompras-theme($theme);

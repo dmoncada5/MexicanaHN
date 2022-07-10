@@ -61,7 +61,7 @@ products: any;
   tipoPagos: any;
   order: Order;
   selectTypePago: any;
-
+  user:any;
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -71,7 +71,7 @@ products: any;
               private _matSnackBar: MatSnackBar,
               private router: Router) {
            
-
+                this.user=JSON.parse(localStorage.getItem('usuario'));
                 this.order = new Order();
       // Set the private defaults
                 this._unsubscribeAll = new Subject();
@@ -90,6 +90,7 @@ products: any;
           }
       );
 
+      this.SalidaForm.get('id').setValue(this.user.usuario);
                 this.salidasService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
@@ -139,7 +140,7 @@ products: any;
             (res) => {
                
                 this.SalidaE = res[0];
-                if (params.tipo != 'entrada'){
+                if (params.tipo != 'salida'){
 
                 }
                 // this.series.cnum=res["Serie"];
@@ -239,9 +240,12 @@ products: any;
   complete(event) {
       this.salidasService.getOneSocio('/usuarios/edit', event.target.value).subscribe(
           (res) => {
-
+            const user = JSON.parse(localStorage.getItem('usuario'));
+            this.SalidaForm.get('id').setValue(this.user.usuario);
             //this.SalidaE.cuser = event.target.value;
-            this.SalidaE.UserCreate = res[0]['UserCreate'];
+            // this.SalidaE.id = event.target.value;
+            // this.SalidaForm.get('id').setValue(this.SalidaE.UserCreate);
+            // this.SalidaE.id = res[0]['id'];
             //this.SalidaE.UserCreate = res[0]['UserCreate'];
             this.SalidaForm.get('comentario').setValue(this.SalidaE.comentarios);
      
@@ -410,7 +414,8 @@ this.bodegas = res;
 
   save() {
 
-    this.SalidaE.UserCreate = this.socios[0]['usuario'];
+   //this.SalidaE.UserCreate = this.socios[0]['usuario'];
+    this.SalidaE.UserCreate = this.SalidaForm.get('id').value;
     this.SalidaE.comentarios = '';
     //this.SalidaE.fechaDoc = this.SalidaForm.get(format('fechaDoc','yyyy-MM-dd HH:mm:ss')).value;
     this.SalidaE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
@@ -605,7 +610,7 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-
+        id:[this.SalidaE.id,Validators.required],
         fechaDoc: [this.SalidaE.fechaDoc, Validators.required],
         serie: [this.SalidaE.Serie, Validators.required],
         comentario: [this.SalidaE.comentarios],

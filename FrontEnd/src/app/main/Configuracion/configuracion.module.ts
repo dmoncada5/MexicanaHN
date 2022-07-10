@@ -1,7 +1,6 @@
 import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
 import { ProductModule} from './product/product.module';
-import { ProductosService } from './productos/productos.service';
 import { TipoUsuariosModule } from './tipousuarios/tipousuarios.module';
 import { TipoUsuariosService } from './tipousuarios/tipousuarios.service';
 import { UsuariosService } from './usuarios/usuarios.service';
@@ -92,8 +91,7 @@ import { TipoUsuarioModule } from './tipousuario/tipousuario.module';
 import { FormaPagosModule } from './formapagos/formapagos.module';
 import { FormaPagoModule } from './formapago/formapago.module';
 import { FormaPagosService } from './formapagos/formapagos.service';
-import { ProductosModule } from './productos/productos.module';
-import { ProductoModule} from './producto/producto.module';
+
 import { OrdencomprasComponent } from './ordencompras/ordencompras.component';
 import { OrdencompraComponent } from './ordencompra/ordencompra.component';
 import { CxpagarsComponent } from './cxpagars/cxpagars.component';
@@ -160,8 +158,6 @@ CxpagarComponent,
     TipoUsuarioModule,
     FormaPagosModule,
     FormaPagoModule,
-    ProductosModule,
-    ProductoModule,
     ListapreciosModule,
     ListaprecioModule,
     PreciosModule,
@@ -186,7 +182,6 @@ CxpagarComponent,
    UsuariosService,
    TipoUsuariosService,
    FormaPagosService,
-   ProductosService,
    ListapreciosService,
    PreciosService,
    HistorialsService ,
