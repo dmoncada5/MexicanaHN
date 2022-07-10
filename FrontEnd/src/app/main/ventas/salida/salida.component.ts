@@ -130,16 +130,19 @@ products: any;
     //   this.getFormapagos();
       let buscarE;
       let buscarD;
-    //  if (params.tipo == 'salida'){
+      if (params.tipo == 'salida'){
           buscarE = '/salida/Encabezado';
           buscarD = '/salida/Detalle';
-   //      }
+         }
 
-      this.salidasService.getOne(buscarE, params.id).subscribe(
+         this.salidasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.SalidaE = res[0];
-               
+                if (params.tipo != 'entrada'){
+
+                }
+                // this.series.cnum=res["Serie"];
                 this.SalidaForm = this.createcotizacionForm();
             }
         );
@@ -164,14 +167,11 @@ products: any;
             }
         );
     }
-    
-
- }
 
 
 
 
-
+   }
 
 
 
@@ -181,11 +181,13 @@ products: any;
     const user = JSON.parse(localStorage.getItem('usuario'));
     this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida Mercaderia').subscribe(
         (res) => {
-         //   this.SalidaE.DocNum=res[0]['Correlativo'];
+         //   this.EntradaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
         }
     );
    }
+
+
 
 
    borrarFila(DocNum: string) {
@@ -208,7 +210,7 @@ products: any;
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'Salida Mercaderia', event).subscribe(
+    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'salida', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  

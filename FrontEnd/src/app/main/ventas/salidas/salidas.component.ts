@@ -122,7 +122,7 @@ editContact(contact): void
                  */
                 case 'seleccion':
 
-                  this.router.navigate(['ventas/salidas/' + formData.numero + '/' + 'salisa']);
+                  this.router.navigate(['ventas/salidas/' + formData.numero + '/' + 'salida']);
                   //  this._contactsService.updateContact(formData.getRawValue());
 // console.log("selecc",formData.getRawValue());
 

@@ -130,16 +130,17 @@ products: any;
         //   this.getFormapagos();
       let buscarE;
       let buscarD;
-    //  if (params.tipo == 'ENTRADA'){
+      if (params.tipo == 'ENTRADA'){
           buscarE = '/entrada/Encabezado';
           buscarD = '/entrada/Detalle';
-     //    }
-
-      this.entradasService.getOne(buscarE, params.id).subscribe(
+         }
+         this.entradasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.EntradaE = res[0];
-             
+                if (params.tipo != 'entrada'){
+
+                }
                 // this.series.cnum=res["Serie"];
                 this.EntradaForm = this.createcotizacionForm();
             }
@@ -415,7 +416,7 @@ this.bodegas = res;
     this.EntradaE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     // this.EntradaE.fechaDoc=  format(new Date(this.EntradaE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
     this.docum.DocNum = this.EntradaE.DocNum;
-    this.EntradaE.tipo = 'ENTRADA MERCADERIA';
+    this.EntradaE.tipo = 'ENTRADA';
     this.EntradaE.Serie = this.selectSerie[0]['cnum'];
     this.EntradaE.ccomp = this.selectSerie[0]['ccomp']; 
     this.EntradaE.comentarios = this.EntradaForm.get('comentario').value;
