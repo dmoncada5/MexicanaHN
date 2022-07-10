@@ -182,7 +182,7 @@ products: any;
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida').subscribe(
+    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida Mercaderia').subscribe(
         (res) => {
          //   this.SalidaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
@@ -211,7 +211,7 @@ products: any;
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'Salida', event).subscribe(
+    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'Salida Mercaderia', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
