@@ -95,7 +95,7 @@
 
                                     <mat-form-field appearance="outline" fxFlex="30" class="pr-4">
                                         <mat-label>ID</mat-label>
-                                        <input matInput placeholder="ID" formControlName="UserCreate" [matAutocomplete]="auto" [formControl]="socioCtrl" (keydown.enter)="complete($event)">
+                                        <input matInput placeholder="ID" formControlName="id" [matAutocomplete]="auto" [formControl]="socioCtrl" (keydown.enter)="complete($event)">
                                         <mat-autocomplete #auto="matAutocomplete">
                                             <mat-option *ngFor="let socios of filteredSocios | async" [value]="socios.usuario">
 

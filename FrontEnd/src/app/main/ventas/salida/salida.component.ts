@@ -61,6 +61,7 @@ products: any;
   tipoPagos: any;
   order: Order;
   selectTypePago: any;
+  user:any;
 
   private _unsubscribeAll: Subject < any > ;
 
@@ -71,7 +72,7 @@ products: any;
               private _matSnackBar: MatSnackBar,
               private router: Router) {
            
-
+                this.user=JSON.parse(localStorage.getItem('usuario'));
                 this.order = new Order();
       // Set the private defaults
                 this._unsubscribeAll = new Subject();
@@ -90,6 +91,7 @@ products: any;
           }
       );
 
+      this.SalidaForm.get('id').setValue(this.user.usuario);
                 this.salidasService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
@@ -182,7 +184,7 @@ products: any;
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida').subscribe(
+    this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida Mercaderia').subscribe(
         (res) => {
          //   this.SalidaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
@@ -211,7 +213,7 @@ products: any;
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'Salida', event).subscribe(
+    this.salidasService.getOnenumeracion('/salida/correlativoOne', user.company, 'salida', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
@@ -607,6 +609,7 @@ update() {
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
 
+        id:[this.SalidaE.id,Validators.required],
         fechaDoc: [this.SalidaE.fechaDoc, Validators.required],
         serie: [this.SalidaE.Serie, Validators.required],
         comentario: [this.SalidaE.comentarios],

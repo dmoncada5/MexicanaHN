@@ -236,7 +236,7 @@ app.use('/api/notacreditop', notacreditopRoutes);
 app.use('/api/Rfinanzas', SaldoClientesRoutes);
 app.use('/api/Rsocios', SociosRRoutes);
 
-const port = 5000
+const port = 5010
 
 app.listen(process.env.PORT || port, (err) => {
     if (err)

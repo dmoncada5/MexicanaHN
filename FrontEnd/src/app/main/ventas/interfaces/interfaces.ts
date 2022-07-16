@@ -210,6 +210,7 @@ export interface promoDetalle
   }
 
   export interface entradaEncabezado {
+    id?: string;
     DocNum?: number;
     fechaDoc?: Date;
     UserCreate?: string;
@@ -235,6 +236,7 @@ export interface promoDetalle
 
 
     export interface salidaEncabezado {
+      id?:string;
       DocNum?: number;
       fechaDoc?: Date;
       UserCreate?: string;
