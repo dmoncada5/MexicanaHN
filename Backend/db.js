@@ -4,7 +4,7 @@ const config = {
     user: 'sa',
     password: 'Genesis20221',
     server: "localhost",
-    database: "MexicanaHN1",
+    database: "MexicanaHN",
     driver: 'msnodesqlv8'
 
 }

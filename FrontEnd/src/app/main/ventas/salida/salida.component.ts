@@ -62,10 +62,7 @@ products: any;
   order: Order;
   selectTypePago: any;
   user:any;
-<<<<<<< HEAD
-
-=======
->>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
+  
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -614,10 +611,6 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-<<<<<<< HEAD
-
-=======
->>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
         id:[this.SalidaE.id,Validators.required],
         fechaDoc: [this.SalidaE.fechaDoc, Validators.required],
         serie: [this.SalidaE.Serie, Validators.required],

@@ -38,8 +38,8 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
 @import "src/app/main/configuracion/empleados/empleados.theme";
 @import "src/app/main/ventas/cotizaciones/cotizaciones.theme";
 @import "src/app/main/ventas/facturas/facturas.themes";
-@import "src/app/main/ventas/notacreditos/notacreditos.themes";
-@import "src/app/main/ventas/notacreditosp/notacreditosp.themes";
+@import "src/app/main/ventas/notacreditos/notacreditos.theme";
+@import "src/app/main/ventas/notacreditosp/notacreditosp.theme";
 @import "src/app/main/ventas/promos/promos.theme";
 @import "src/app/main/ventas/entradas/entradas.theme";
 @import "src/app/main/ventas/salidas/salidas.theme";
@@ -95,15 +95,9 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
     @include app-tipousuarios-theme($theme);
     @include app-facturas-theme($theme);
     @include app-compras-theme($theme);
-<<<<<<< HEAD
-    @include app-entradas-theme($theme);
-    @include app-salidas-theme($theme);
-    @include app-pcompras-theme($theme);
-=======
     @include app-pcompras-theme($theme);
     @include app-entradas-theme($theme);
     @include app-salidas-theme($theme);
->>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
     @include app-pedidos-theme($theme);
     @include login-theme($theme);
     @include app-entregas-theme($theme);

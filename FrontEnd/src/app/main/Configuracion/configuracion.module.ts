@@ -105,6 +105,9 @@ import { ExpedienteComponent } from './expediente/expediente.component';
 import { CitasComponent } from './citas/citas.component';
 import { CitaComponent } from './cita/cita.component';
 //import { ListapreciosComponent } from './listaprecios/listaprecios.component';
+import { ProductosModule } from './productos/productos.module';
+import { ProductoModule } from './producto/producto.module';
+import { ProductosService } from './productos/productos.service';
 
  
 
@@ -169,7 +172,10 @@ CxpagarComponent,
     CitasModule,
     CitaModule,
     ProductsModule,
-    ProductModule   
+    ProductModule,
+    ProductosModule,
+    ProductoModule  
+
      
   ],
   providers   : [
@@ -188,6 +194,7 @@ CxpagarComponent,
    ExpedientesService,
    CitasService,
    ProductsService,
+   ProductosService,
    GastosService,
    MunicipiosService,
    BodegasService,

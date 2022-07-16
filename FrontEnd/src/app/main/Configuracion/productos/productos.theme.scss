@@ -1,7 +1,7 @@
-@mixin app-notacreditosp-theme($theme) {
+@mixin app-productos-theme($theme) {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    app-notacreditosp {
+    app-productos {
         .header {
             .search-wrapper {
                 background: map-get($background, card);
@@ -15,6 +15,6 @@
                     }
                 }
             }
-        } 
+        }
     }
-}  
+}
