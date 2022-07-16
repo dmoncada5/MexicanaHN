@@ -127,7 +127,7 @@ export class CompraComponent implements OnInit {
             buscarD = '/compra/Detalle';
            // this.Ftupdate = true;
           }
-        if (params.tipo == 'ordencompra'){
+        if (params.tipo == 'ordencompra'){ 
             buscarE = '/pcompra/Encabezado';
             buscarD = '/pcompra/Detalle';
             this.Ftupdate = true;

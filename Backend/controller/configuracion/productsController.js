@@ -18,7 +18,7 @@ class MainController {
         }
     }
     async getOne(req, res) {
- 
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -54,14 +54,15 @@ class MainController {
 
 
     async addNewData(req, res) {
-    
+
         try {
             if (req.body.ItemName != null && req.body.estado != null) {
-                const pool = await poolPromise 
+                const pool = await poolPromise
                 const result = await pool.request()
                     .input('ItemCode', sql.NVarChar, req.body.ItemCode)
                     .input('ItemName', sql.NVarChar, req.body.ItemName)
                     .input('FechaCreacion', sql.Date, req.body.FechaCreacion)
+                    .input('FechaVencimiento', sql.Date, req.body.FechaVencimiento)
                     .input('impuesto', sql.NVarChar, req.body.impuesto)
                     .input('costo', sql.Numeric, req.body.costo)
                     .input('observaciones', sql.VarChar, req.body.observaciones)
@@ -80,7 +81,7 @@ class MainController {
     }
 
     async addNewDataExistencia(req, res) {
-   
+
         try {
             if (req.body.ItemName != null) {
                 const pool = await poolPromise
@@ -109,6 +110,7 @@ class MainController {
                     .input('ItemCode', sql.NVarChar, req.body.ItemCode)
                     .input('ItemName', sql.NVarChar, req.body.ItemName)
                     .input('FechaCreacion', sql.Date, req.body.FechaCreacion)
+                    .input('FechaVencimiento', sql.Date, req.body.FechaVencimiento)
                     .input('impuesto', sql.NVarChar, req.body.impuesto)
                     .input('costo', sql.Numeric, req.body.costo)
                     .input('observaciones', sql.VarChar, req.body.observaciones)

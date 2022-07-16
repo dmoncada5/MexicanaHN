@@ -62,7 +62,10 @@ products: any;
   order: Order;
   selectTypePago: any;
   user:any;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -137,7 +140,7 @@ products: any;
           buscarD = '/salida/Detalle';
          }
 
-      this.salidasService.getOne(buscarE, params.id).subscribe(
+         this.salidasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.SalidaE = res[0];
@@ -169,14 +172,11 @@ products: any;
             }
         );
     }
-    
-
- }
 
 
 
 
-
+   }
 
 
 
@@ -186,11 +186,13 @@ products: any;
     const user = JSON.parse(localStorage.getItem('usuario'));
     this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida Mercaderia').subscribe(
         (res) => {
-         //   this.SalidaE.DocNum=res[0]['Correlativo'];
+         //   this.EntradaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
         }
     );
    }
+
+
 
 
    borrarFila(DocNum: string) {
@@ -242,9 +244,12 @@ products: any;
   complete(event) {
       this.salidasService.getOneSocio('/usuarios/edit', event.target.value).subscribe(
           (res) => {
-
+            const user = JSON.parse(localStorage.getItem('usuario'));
+            this.SalidaForm.get('id').setValue(this.user.usuario);
             //this.SalidaE.cuser = event.target.value;
-            this.SalidaE.UserCreate = res[0]['UserCreate'];
+            // this.SalidaE.id = event.target.value;
+            // this.SalidaForm.get('id').setValue(this.SalidaE.UserCreate);
+            // this.SalidaE.id = res[0]['id'];
             //this.SalidaE.UserCreate = res[0]['UserCreate'];
             this.SalidaForm.get('comentario').setValue(this.SalidaE.comentarios);
      
@@ -413,7 +418,8 @@ this.bodegas = res;
 
   save() {
 
-    this.SalidaE.UserCreate = this.socios[0]['usuario'];
+   //this.SalidaE.UserCreate = this.socios[0]['usuario'];
+    this.SalidaE.UserCreate = this.SalidaForm.get('id').value;
     this.SalidaE.comentarios = '';
     //this.SalidaE.fechaDoc = this.SalidaForm.get(format('fechaDoc','yyyy-MM-dd HH:mm:ss')).value;
     this.SalidaE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
@@ -608,7 +614,10 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
         id:[this.SalidaE.id,Validators.required],
         fechaDoc: [this.SalidaE.fechaDoc, Validators.required],
         serie: [this.SalidaE.Serie, Validators.required],

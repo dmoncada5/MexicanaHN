@@ -210,7 +210,11 @@ export interface promoDetalle
   }
 
   export interface entradaEncabezado {
+<<<<<<< HEAD
     id?: string;
+=======
+    id?:string;
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
     DocNum?: number;
     fechaDoc?: Date;
     UserCreate?: string;

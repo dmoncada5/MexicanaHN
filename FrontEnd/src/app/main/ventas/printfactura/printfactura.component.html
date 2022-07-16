@@ -8,7 +8,7 @@
         <!-- INVOICE -->
         <div class="card">
 
-            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+            <div class="header">
 
 
 
@@ -17,9 +17,13 @@
 
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
+<<<<<<< HEAD
                         <div class="logo">
                             <img src="assets/images/logos/Mexicana.jpeg">
                         </div>
+=======
+                
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
 
                         <!-- <div class="divider"></div> -->
 
@@ -41,92 +45,114 @@
 
                     </div>
 
-                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
-                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
-                            <div> CLIENTE</div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <div class="detail">
-                            <div class="title">{{Encabezado.SocioCode}}</div>
-                            <div class="title">{{Encabezado.NombreSocio}}</div>
-                            <!-- <div class="address">
-                                Plaza Fesmar 13 avenida, 6 calle S.O. Barrio Suyapa, S.P.S Honduras
-                            </div>
-                            <div class="phone">
-                                <span>Phone:</span>
-                            </div>
-                            <div class="email">
-                                <span>Email:</span> genesis.sm@gmail.com
-                            </div>
-                            <div class="website">
-                                <span>Comentarios:</span> {{Encabezado.comentarios}}
-                            </div> -->
-                        </div>
-                    </div>
+                   
+           
+                      
+               
+                 
                 </div>
+                <div class="text1">MEXICANA HN</div>
+                <div class="divider1"></div>
+                <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
+                <div class="text" >{{Encabezado.NombreSocio}}</div>
+        <div class="divider1"></div>
+<div class="text">    FACTURA </div><div class="text">    {{Encabezado.numero}}</div>
+<div class="text">    FECHA </div><div class="text">    {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
 
-                <table class="summary">
-                    <tr>
-                        <td class="label">FACTURA</td>
-                        <td class="value">{{Encabezado.numero}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">CAI</td>
-                        <td class="value">{{Encabezado.cai }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">RANGO</td>
-                        <td class="value">{{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">FECHA LIMITE EMISION</td>
-                        <td class="value">{{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">FECHA</td>
-                        <td class="value">{{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</td>
-                    </tr>
+<div class="text">    CAI </div>
+<p class="text1">{{Encabezado.cai }} </p>
+<div> <p class="text1">{{Encabezado.cai }} </p>    </div>
+<div class="text">    FECHA LIMITE EMISION  </div>
+<div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}  </div>
+<div class="text">    RANGO </div><div class="text">    {{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</div>
 
-                    <tr>
-                        <td class="label">TOTAL </td>
-                        <td class="value">{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
-                    </tr>
-                </table>
+
+
+        
+             
+          
+               
+
+            
             </div>
 
-            <div class="content">
+      
+        <div class="content">
                 <table class="simple invoice-table">
                     <thead>
-                        <tr>
-                            <th>DESCRIPCION</th>
+                        <th>
+                        </th>
+                     
+                           <tr>
+                            <div> <td > CODIGO</td>  </div>
+                            
+                           </tr> 
+                            <tr>
+                                <div>
+                             <td >DESCRIPCION</td>   
+                            </div>
+                            </tr> 
+          
 
-                            <th class="text-right">PRECIO</th>
-                            <th class="text-right">CANTIDAD</th>
-                            <th class="text-right">TOTAL</th>
-                        </tr>
+
+                            <tr>
+                                <div  >
+                   
+                                    <td >    PRECIO</td>  
+                                    <td class="text-right detal" >   CANTIDAD</td>  
+                                    <td class="text-right">  TOTAL</td>  
+                                    
+                                  
+                                </div>
+                            </tr>
+                      
+                            <tr>
+                                <th>
+                                </th>   
+                                <th>
+                                </th>   
+                                <th>
+                                </th>   
+                            </tr>
+                                 
+                          
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let det of Detalle">
-                            <td>
-                                <div class="title">{{det.itemCode}}</div>
-                                <div class="detail">{{det.itemName}}</div>
-                            </td>
 
-                            <td class="text-right">
-                                {{det.precio| currency:'LPS':'symbol'}}
-                            </td>
-                            <td class="text-right">
-                                {{det.cantidad}}
-                            </td>
-                            <td class="text-right">
-                                {{det.totaLine | currency:'LPS':'symbol'}}
-                            </td>
-                        </tr>
+
+             <tbody>
+                <tr *ngFor="let det of Detalle">
+
+            
+                    
+                      
+                 
+                <div >{{det.itemCode}}</div>   
+                <div >{{det.itemName}}</div>   
+    
+                <div  >
+                   
+                    <td >    {{det.precio}}</td>  
+                    <td  >   {{det.cantidad}}</td>  
+                    <td  class="text-right">    {{det.totaLine }}</td>  
+                    
+                  
+                </div>
+            
+                       
+                
+               
+                        
+                  
+
+
+
+
+
+                
+                </tr>
                     </tbody>
-                </table>
-
+                 
+                </table> 
                 <table class="simple invoice-table-footer">
                     <tbody>
                         <tr class="subtotal">
@@ -141,7 +167,7 @@
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="total">
+                        <tr class="subtotal">
                             <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
                         </tr>
@@ -153,10 +179,14 @@
                 <div class="note"></div>
                 <div fxLayout="row" fxLayoutAlign="start start">
                     <div class="logo">
+<<<<<<< HEAD
                         <img src="assets/images/logos/Mexicana.jpeg">
+=======
+                        <!-- <img src="assets/images/logos/Genesis.jpg"> -->
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
                     </div>
                     <div class="small-note">
-                        Productos 100% natural para bajar de peso
+                   
                     </div>
                 </div>
             </div>

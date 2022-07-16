@@ -62,7 +62,10 @@ products: any;
   order: Order;
   selectTypePago: any;
   user: any;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -90,7 +93,11 @@ products: any;
                   );
           }
       );
+<<<<<<< HEAD
       this.EntradaForm.get('id').setValue(this.user.usuario);
+=======
+this.EntradaForm.get('id').setValue(this.user.usuario);
+>>>>>>> 13626501b00bbb2658fdf62c4f6dfa57b87b4ae3
                 this.entradasService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
@@ -128,15 +135,14 @@ products: any;
       this.Ftupdate = false;
       this.getNumerion();
       this.getbodegas();
-    //   this.getFormapagos();
+        //   this.getFormapagos();
       let buscarE;
       let buscarD;
       if (params.tipo == 'entrada'){
           buscarE = '/entrada/Encabezado';
           buscarD = '/entrada/Detalle';
          }
-
-      this.entradasService.getOne(buscarE, params.id).subscribe(
+         this.entradasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.EntradaE = res[0];
