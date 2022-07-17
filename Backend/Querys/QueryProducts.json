@@ -1,9 +1,9 @@
 {
     "getAllData": "SELECT * FROM [dbo].[products]",
     "getOne": "SELECT  * FROM [dbo].[products] where ItemCode=@ItemCode",
-    "addNewProduct": "INSERT INTO [dbo].[products] (ItemCode ,ItemName ,FechaCreacion,FechaVencimiento ,impuesto ,costo , observaciones,estado,ccomp,tipo,propiedad,cbod) VALUES (@ItemCode ,@ItemName ,@FechaCreacion,@FechaVencimiento ,@impuesto ,@costo ,@observaciones,@estado,@ccomp,'I',@propiedad,@cbod) ",
+    "addNewProduct": "INSERT INTO [dbo].[products] (ItemCode ,ItemName ,FechaCreacion ,impuesto ,costo , observaciones,estado,ccomp,tipo,cbod) VALUES (@ItemCode ,@ItemName ,@FechaCreacion ,@impuesto ,@costo ,@observaciones,@estado,@ccomp,'I',@cbod) ",
     "deleteProduct": "DELETE FROM [dbo].[products] WHERE ItemCode = @ItemCode",
-    "updateProductDetails": "UPDATE [dbo].[products] SET ItemName=@ItemName ,FechaCreacion=@FechaCreacion ,FechaVencimiento=@FechaVencimiento ,impuesto=@impuesto ,costo=@costo ,observaciones=@observaciones,estado=@estado,ccomp=@ccomp ,propiedad=@propiedad ,cbod=@cbod WHERE ItemCode= @ItemCode",
+    "updateProductDetails": "UPDATE [dbo].[products] SET ItemName=@ItemName ,FechaCreacion=@FechaCreacion ,impuesto=@impuesto ,costo=@costo ,observaciones=@observaciones,estado=@estado,ccomp=@ccomp , cbod=@cbod WHERE ItemCode= @ItemCode",
     "addNewDataExistencia": "INSERT INTO [dbo].[existencias] (ItemCode ,cbod ,stock ,minimo ,maximo , comprometido,solicitado) SELECT T1.ItemCode,T0.cbod,0,0,0,0,0 FROM  bodegas T0 INNER JOIN products T1 ON T0.ccomp=T1.ccomp where T1.tipo='I' AND T1.ItemCode NOT IN (select ItemCode from existencias)"
 
 }

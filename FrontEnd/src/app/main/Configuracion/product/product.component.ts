@@ -23,13 +23,13 @@ export class ProductComponent implements OnInit {
     ItemCode : null,
     ItemName : null,
     FechaCreacion : null,
-    FechaVencimiento : null,
+   // FechaVencimiento : null,
     impuesto : null,
     costo : null, 
     observaciones : null,
     estado : null,
     ccomp:null,
-    propiedad : null,
+   // propiedad: null,
     cbod:null
     };
 
@@ -53,13 +53,13 @@ this.productForm = _formBuilder.group({
   ItemCode : ['', ],
   ItemName : ['', Validators.required],
   FechaCreacion : ['', Validators.required],
-  FechaVencimiento : ['', ],
+ // FechaVencimiento : ['', ],
   impuesto : ['', Validators.required],
   costo : [''],
   observaciones : ['', Validators.required],
   estado : ['', Validators.required],
   ccomp:['', Validators.required],
-  propiedad:['', ],
+ // propiedad:['', ],
   cbod:['', ]
 });
 }
@@ -92,13 +92,13 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
     this.productForm.controls.ItemCode.setValue(this.products['ItemCode']);
     this.productForm.controls.ItemName.setValue(this.products['ItemName']);
     this.productForm.controls.FechaCreacion.setValue(this.products['FechaCreacion']);
-    this.productForm.controls.FechaVencimiento.setValue(this.products['FechaVencimiento']);
+   // this.productForm.controls.FechaVencimiento.setValue(this.products['FechaVencimiento']);
     this.productForm.controls.impuesto.setValue(this.products['impuesto']);
     this.productForm.controls.costo.setValue(this.products['costo']); 
     this.productForm.controls.observaciones.setValue(this.products['observaciones']);
     this.productForm.controls.estado.setValue(this.products['estado']);
     this.productForm.controls.ccomp.setValue(this.products['ccomp']);
-    this.productForm.controls.propiedad.setValue(this.products['propiedad']);
+   // this.productForm.controls.propiedad.setValue(this.products['propiedad']);
     this.productForm.controls.cbod.setValue(this.products['cbod']);
 });
 
