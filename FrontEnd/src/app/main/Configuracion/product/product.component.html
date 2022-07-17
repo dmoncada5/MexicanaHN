@@ -161,8 +161,8 @@
                                     <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
                                         <mat-label>Bodega</mat-label>
                                         <mat-select formControlName='cbod' name="cbod">
-                                            <mat-option *ngFor="let comp of bodega" [value]="comp.cbod">
-                                                {{comp.bodega}}
+                                            <mat-option *ngFor="let cbod of bodega" [value]="cbod.cbod">
+                                                {{cbod.bodega}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
