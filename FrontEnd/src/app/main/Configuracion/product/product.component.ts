@@ -28,13 +28,15 @@ export class ProductComponent implements OnInit {
     costo : null, 
     observaciones : null,
     estado : null,
-    ccomp:null
+    ccomp:null,
+    propiedad : null,
+    cbod:null
     };
 
     pageType: string;
     productForm: FormGroup;
     company: any = [];
-    lbodega: any = [];
+    bodega: any = [];
     sucursal: any = [];
     categorias: any = [];
     proveedor: any = [];
@@ -51,19 +53,20 @@ this.productForm = _formBuilder.group({
   ItemCode : ['', ],
   ItemName : ['', Validators.required],
   FechaCreacion : ['', Validators.required],
-  FechaVencimiento : ['', Validators.required],
+  FechaVencimiento : ['', ],
   impuesto : ['', Validators.required],
   costo : [''],
   observaciones : ['', Validators.required],
   estado : ['', Validators.required],
   ccomp:['', Validators.required],
-  propiedad:['', ]
+  propiedad:['', ],
+  cbod:['', ]
 });
 }
  
   ngOnInit(): void {
     this.getCompany();
-    this.getLBodega();
+    this.getBodega();
      // tslint:disable-next-line: align
     this.getProveedor();
     this.getCategorias();
@@ -96,6 +99,7 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
     this.productForm.controls.estado.setValue(this.products['estado']);
     this.productForm.controls.ccomp.setValue(this.products['ccomp']);
     this.productForm.controls.propiedad.setValue(this.products['propiedad']);
+    this.productForm.controls.cbod.setValue(this.products['cbod']);
 });
 
   }
@@ -166,14 +170,7 @@ this.company = res;
  }
 
  
-  // tslint:disable-next-line: typedef
-  getLBodega(){
-    this.productsService.getAllMio('/lotebodega').subscribe(
-      (res) => {
- this.lbodega = res;
-      }
-    );
-  }
+
 
   // tslint:disable-next-line: typedef
   getCategorias(){
@@ -194,7 +191,14 @@ this.company = res;
     );
   }
 
-
+  // tslint:disable-next-line: typedef
+  getBodega(){
+    this.productsService.getAllMio('/bodegas').subscribe(
+      (res) => {
+ this.bodega = res;
+      }
+    );
+  }
 
 
 }

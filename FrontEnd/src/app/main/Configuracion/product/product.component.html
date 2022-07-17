@@ -132,8 +132,10 @@
                                         <mat-datepicker #creacionDatePicker></mat-datepicker>
                                     </mat-form-field>
                                 </div>
+
+
                                 <div fxLayout="row" fxLayoutAlign="space-between">
-                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <!--   <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
                                         <mat-label>Tipo</mat-label>
                                         <mat-select formControlName="propiedad">
                                             <mat-option [value]="'Promocional'">
@@ -147,16 +149,23 @@
                                             </mat-option>
                                         </mat-select>
 
-                                    </mat-form-field>
+                                    </mat-form-field> -->
 
 
-                                    <mat-form-field appearance="outline" fxFlex="30">
+                                    <!-- <mat-form-field appearance="outline" fxFlex="30">
                                         <mat-label>Fecha Vencimiento</mat-label>
                                         <input matInput [matDatepicker]="vencimientoDatePicker" name="FechaVencimiento" formControlName="FechaVencimiento">
                                         <mat-datepicker-toggle matSuffix [for]="vencimientoDatePicker"></mat-datepicker-toggle>
                                         <mat-datepicker #vencimientoDatePicker></mat-datepicker>
+                                    </mat-form-field> -->
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                        <mat-label>Bodega</mat-label>
+                                        <mat-select formControlName='cbod' name="cbod">
+                                            <mat-option *ngFor="let cbod of bodega" [value]="cbod.cbod">
+                                                {{cbod.bodega}}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
-
 
                                 </div>
                                 <div fxLayout="row" fxLayoutAlign="space-between">

@@ -13,7 +13,7 @@ import { CotizacionesService } from './cotizaciones/cotizaciones.service';
 import {PrintCotizacionModule} from './print-cotizacion/print-cotizacion.module';
 import { FacturasComponent } from './facturas/facturas.component';
 import { PrintfacturaComponent } from './printfactura/printfactura.component';
-import {PrintfacturaModule} from './printfactura/printfactura.module'
+import {PrintfacturaModule} from './printfactura/printfactura.module';
 import {FacturasModule} from 'app/main/ventas/facturas/facturas.module';
 import { FacturasService } from './facturas/facturas.service';
 import { PedidosModule } from 'app/main/ventas/pedidos/pedidos.module';
@@ -24,8 +24,11 @@ import { EntregasService } from './entregas/entregas.service';
 import { ComprasService } from './compras/compras.service';
 import { CompraModule } from './compra/compra.module';
 import { ComprasModule } from 'app/main/ventas/compras/compras.module';
+
 import { EntregaModule } from './entrega/entrega.module';
 import { EntregasModule } from './entregas/entregas.module';
+import {PrintentregaModule} from './printentrega/printentrega.module';
+
 import { PedidoModule } from './pedido/pedido.module';
 import { PromoModule } from './promo/promo.module';
 import { BuscarPedidoComponent } from './buscar-pedido/buscar-pedido.component';
@@ -121,6 +124,7 @@ import { StockTransfersService } from './stocktransfers/stocktransfers.service';
         PrintpcompraModule,
         EntregasModule,
         EntregaModule,
+        PrintentregaModule,
         StockTransfersModule,
         StockTransferModule,
         BuscarPedidoModule,
