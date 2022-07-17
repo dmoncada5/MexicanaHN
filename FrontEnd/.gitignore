@@ -7,9 +7,9 @@
 
 # dependencies
 /node_modules
-/logs
+access.log
 /environments
-/db.js
+db.js
 
 # IDEs and editors
 /.idea
