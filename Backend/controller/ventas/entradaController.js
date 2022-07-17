@@ -6,7 +6,7 @@ var queries = JSON.parse(rawdata);
 class MainController {
 
     async getAll(req, res) {
-        console.log(req.body);
+        console.log('entro', req.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()

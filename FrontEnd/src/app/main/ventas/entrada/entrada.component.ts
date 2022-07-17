@@ -61,7 +61,8 @@ products: any;
   tipoPagos: any;
   order: Order;
   selectTypePago: any;
-
+  user: any;
+  
   private _unsubscribeAll: Subject < any > ;
 
 
@@ -71,7 +72,7 @@ products: any;
               private _matSnackBar: MatSnackBar,
               private router: Router) {
            
-
+                this.user=JSON.parse(localStorage.getItem('usuario'));
                 this.order = new Order();
       // Set the private defaults
                 this._unsubscribeAll = new Subject();
@@ -89,7 +90,7 @@ products: any;
                   );
           }
       );
-
+this.EntradaForm.get('id').setValue(this.user.usuario);
                 this.entradasService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
@@ -127,15 +128,14 @@ products: any;
       this.Ftupdate = false;
       this.getNumerion();
       this.getbodegas();
-    //   this.getFormapagos();
+        //   this.getFormapagos();
       let buscarE;
       let buscarD;
       if (params.tipo == 'entrada'){
           buscarE = '/entrada/Encabezado';
           buscarD = '/entrada/Detalle';
          }
-
-      this.entradasService.getOne(buscarE, params.id).subscribe(
+         this.entradasService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
                 this.EntradaE = res[0];
@@ -182,7 +182,7 @@ products: any;
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.entradasService.getnumeracion('/entrada/correlativo', user.company, 'Entrada').subscribe(
+    this.entradasService.getnumeracion('/entrada/correlativo', user.company, 'Entrada Mercaderia').subscribe(
         (res) => {
          //   this.EntradaE.DocNum=res[0]['Correlativo'];
            this.series = res; 
@@ -211,7 +211,7 @@ products: any;
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.entradasService.getOnenumeracion('/entrada/correlativoOne', user.company, 'Entrada', event).subscribe(
+    this.entradasService.getOnenumeracion('/entrada/correlativoOne', user.company, 'entrada', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
@@ -605,7 +605,7 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-
+        id:[this.EntradaE.id,Validators.required],
         fechaDoc: [this.EntradaE.fechaDoc, Validators.required],
         serie: [this.EntradaE.Serie, Validators.required],
         comentario: [this.EntradaE.comentarios],

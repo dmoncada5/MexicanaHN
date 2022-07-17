@@ -82,6 +82,9 @@ payment: any;
 totapagado= 0;
 saldo= 0;
 PermisoEPago:any;
+
+
+
   constructor(private facturaService: FacturasService,
               private activatedRoute: ActivatedRoute,
               private _formBuilder: FormBuilder,
@@ -336,6 +339,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   return valor; 
 }
   completeProducts(event) {
+
+    //this.almacen =JSON.parse(localStorage.getItem('almacen'));
     if (this.Ftupdate == true){
         if ( !this.codlista) {
             this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
@@ -355,11 +360,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
+                precio: Number(((this.Detalle.price)).toFixed(2)),
+               // precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
-                almacen: 0,
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+               // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
+               almacen: this.Detalle.almacen,
+               //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
               });      
@@ -395,11 +403,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
+                //precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
+                precio: Number(((this.Detalle.price)).toFixed(2)),
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
-                almacen: 0,
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+               // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
+                almacen: this.bodegas.almacen,
+                //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
             });

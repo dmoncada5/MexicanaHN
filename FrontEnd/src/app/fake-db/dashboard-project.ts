@@ -5,7 +5,7 @@ export class ProjectDashboardDb
 
     public static projects = [
         {
-            'name': 'Genesis Health'
+            'name': 'MexicanaHN'
         }
         // ,
         // {
