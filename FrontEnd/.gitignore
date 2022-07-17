@@ -7,8 +7,8 @@
 
 # dependencies
 /node_modules
-access.log
-/environments
+logs/*.log
+environments/*.ts
 db.js
 
 # IDEs and editors
