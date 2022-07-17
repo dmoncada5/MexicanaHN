@@ -105,7 +105,7 @@ class MainController {
         console.log(req.body)
         try {
             if (req.body.ItemName != null && req.body.estado != null) {
-
+console .log(req.body)
                 const pool = await poolPromise
                 const result = await pool.request()
                     .input('ItemCode', sql.NVarChar, req.body.ItemCode)

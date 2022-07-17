@@ -138,13 +138,13 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
  saveProduct(){
    const data = this.productForm.getRawValue();
    data.handle = FuseUtils.handleize(data.ItemCode);
-
+   console.log(data);
 
    this.productsService.saveProduct(data)
  //  this.productsService.saveProductExistencia(data)
 
        .then((res) => {
-      
+    
            // Trigger the subscription with new data
 
            // Show the success message

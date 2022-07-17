@@ -4,6 +4,8 @@ const config = {
     user: 'sa',
     password: 'Genesis2022',
     //password: 'ejrolo59',
+    
+   // password: 'albertom',
     server: "localhost",
     database: "MexicanaHN",
     driver: 'msnodesqlv8'
