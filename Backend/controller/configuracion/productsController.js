@@ -54,7 +54,7 @@ class MainController {
 
 
     async addNewData(req, res) {
-
+        console.log(req.body)
         try {
             if (req.body.ItemName != null && req.body.estado != null) {
                 const pool = await poolPromise
@@ -69,6 +69,7 @@ class MainController {
                     .input('estado', sql.VarChar, req.body.estado)
                     .input('ccomp', sql.Int, req.body.ccomp)
                     .input('propiedad', sql.VarChar, req.body.propiedad)
+                    .input('cbod', sql.Int, req.body.cbod)
                     .query(queries.addNewProduct)
                 res.json(result)
             } else {
@@ -101,7 +102,7 @@ class MainController {
 
 
     async updateData(req, res) {
-
+        console.log(req.body)
         try {
             if (req.body.ItemName != null && req.body.estado != null) {
 
@@ -117,6 +118,7 @@ class MainController {
                     .input('estado', sql.VarChar, req.body.estado)
                     .input('ccomp', sql.Int, req.body.ccomp)
                     .input('propiedad', sql.VarChar, req.body.propiedad)
+                    .input('cbod', sql.Int, req.body.cbod)
                     .query(queries.updateProductDetails)
                 res.json(result)
             } else {

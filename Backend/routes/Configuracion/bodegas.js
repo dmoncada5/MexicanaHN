@@ -3,6 +3,7 @@ const bodegasController = require('../../controller/configuracion/bodegasControl
 const router = express.Router();
 
 router.get('/', bodegasController.getAll);
+router.get('/', bodegasController.getAllMio);
 router.post('/edit', bodegasController.getOne);
 router.post('/bodega', bodegasController.getOneBodega);
 router.post('/', bodegasController.addNewData);

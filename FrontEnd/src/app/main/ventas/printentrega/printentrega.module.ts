@@ -15,33 +15,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule,} from '@angular/material-moment-adapter';
-import { EntregasComponent } from '../entregas/entregas.component';
-import { CotizacionComponent } from '../cotizacion/cotizacion.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatAutocomplete, MatAutocompleteModule} from '@angular/material/autocomplete';
-import { MatMenuModule } from '@angular/material/menu';
-import {PrintentregaComponent} from '../printentrega/printentrega.component';
-import { EntregaComponent } from './entrega.component';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule,} from '@angular/material-moment-adapter';
+import { CotizacionesComponent } from '../cotizaciones/cotizaciones.component'
+import { EntregasComponent } from '../entregas/entregas.component'
 
+import { MatMenuModule } from '@angular/material/menu';
+import { PrintentregaComponent } from './printentrega.component';
 const routes = [
   {
-      
       path     : 'ventas/entregas',
       component: EntregasComponent,
-  }
-  ,
-  {
-    path:'ventas/printentregas/:id',
-    component: PrintentregaComponent
   }];
-
 @NgModule({
-  declarations: [EntregaComponent],
+  declarations: [PrintentregaComponent],
   imports: [
+    CommonModule,
     RouterModule.forChild(routes),
     MatFormFieldModule,
     MatAutocompleteModule,
@@ -57,20 +50,13 @@ const routes = [
     MatTableModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    MatDatepickerModule,
+    MatDatepickerModule, 
     MatChipsModule,
     MatSortModule,
      NgxChartsModule,
      MatMenuModule,
     FuseSharedModule,
     FuseWidgetModule
-  ],
-  providers: [ 
-
-    // {provide: DateAdapter, useClass: AppDateAdapter},
-    // {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
-  ] 
+  ]
 })
-export class EntregaModule { }
+export class PrintentregaModule { }

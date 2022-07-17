@@ -18,6 +18,19 @@ class MainController {
         }
     }
 
+    async getAllMio(req, res) {
+
+        try {
+            const pool = await poolPromise
+            const result = await pool.request()
+                .query(queries.getAllDataMio)
+            res.json(result.recordset)
+        } catch (error) {
+            res.status(500)
+            res.send(error.message)
+        }
+    }
+
     async getOne(req, res) {
 
         try {
@@ -47,7 +60,7 @@ class MainController {
 
 
     async addNewData(req, res) {
-
+        console.log(req.body)
         try {
             if (req.body.bodega != null && req.body.estado != null) {
                 const pool = await poolPromise

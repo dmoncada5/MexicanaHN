@@ -1,5 +1,6 @@
 {
     "getAllData": "SELECT a.cbod, b.empresa,c.sucursal,a.bodega,a.observaciones,a.estado FROM [dbo].[bodegas] a inner join company b on a.ccomp=b.ccomp inner join sucursales c on a.csuc=c.csuc order by a.cbod asc",
+    "getAllDataMio": "SELECT * FROM [dbo].[bodegas]",
     "getOne": "SELECT  * FROM [dbo].[bodegas] where cbod=@cbod",
     "addNewBodega": "INSERT INTO [dbo].[bodegas] (ccomp,csuc,bodega,observaciones,fecha_creacion,estado) VALUES (@ccomp,@csuc,@bodega,@observaciones,@fecha_creacion,@estado) ",
     "deleteBodega": "DELETE FROM [dbo].[bodegas] WHERE cbod = @cbod",
