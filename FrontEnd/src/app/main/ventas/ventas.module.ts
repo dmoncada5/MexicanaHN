@@ -72,6 +72,11 @@ import { EntradasModule } from './entradas/entradas.module';
 import { EntradaModule } from './entrada/entrada.module';
 import { EntradasService } from './entradas/entradas.service';
 
+// solicitudes de Traslados  de Mercaderia 
+import { SolicitudtsModule } from './solicitudts/solicitudts.module';
+import { SolicitudtModule } from './solicitudt/solicitudt.module';
+import { SolicitudtsService } from './solicitudts/solicitudts.service';
+
 
 // Salidas de Mercaderia 
 import { SalidasModule } from './salidas/salidas.module';
@@ -117,6 +122,8 @@ import { StockTransfersService } from './stocktransfers/stocktransfers.service';
         SalidaModule,
         EntradasModule,
         EntradaModule,
+        SolicitudtsModule,
+        SolicitudtModule,
         PrintfacturaModule,
         PrintentregaModule,
         PrintcompraModule,
@@ -151,6 +158,7 @@ NotaCreditosService,
 NotaCreditosPService,
 SalidasService,
 EntradasService,
+SolicitudtsService,
 StockTransfersService,
 BuscarPService,
 BuscarCService,

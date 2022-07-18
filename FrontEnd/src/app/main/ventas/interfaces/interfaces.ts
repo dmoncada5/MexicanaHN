@@ -235,6 +235,31 @@ export interface promoDetalle
     }
 
 
+    export interface solicitudtEncabezado {
+      id?:string;
+      DocNum?: number;
+      fechaDoc?: Date;
+      UserCreate?: string;
+      comentarios?: string;
+      LastUpdate?: string;
+      Serie?: string;
+      ccomp?: string;
+      numero?: string;
+      tipo?: string;
+      status?:string;
+      }
+  
+    export interface solicitudtDetalle
+     {
+        DocNum?: number;
+        Linea?: number;
+        itemCode?: string;
+        itemName?: string;
+        cantidad?: number;
+        precio?: number;
+        almacen?: string;
+      }
+
     export interface salidaEncabezado {
       id?:string;
       DocNum?: number;
