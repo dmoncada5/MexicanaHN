@@ -229,7 +229,9 @@
                                     <mat-header-cell *matHeaderCellDef> Precio Compra </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <mat-form-field floatLabel="never">
-                                            <input [disabled]="!Ftupdate" type="number" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio">
+                                            <input type="number" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio">
+                                            <!-- <input [disabled]="!Ftupdate" type="number" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio"> -->
+
                                         </mat-form-field>
                                     </mat-cell>
                                 </ng-container>
