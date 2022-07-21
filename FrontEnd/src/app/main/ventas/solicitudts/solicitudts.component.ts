@@ -37,7 +37,8 @@ export class SolicitudtsComponent implements OnInit {
     itemName: null,
     cantidad: null,
     precio: null,  
-    almacen: null,
+    almacenOrigen : null,
+    almacenDestino :null,
   };
   dataSource: FilesDataSource | null;
   @ViewChild(MatPaginator, {static: true})
@@ -122,7 +123,7 @@ editContact(contact): void
                  */
                 case 'seleccion':
 
-                  this.router.navigate(['ventas/solicitudts/' + formData.numero + '/' + 'entreda']);
+                  this.router.navigate(['ventas/solicitudts/' + formData.numero + '/' + 'solicitudt']);
                   //  this._contactsService.updateContact(formData.getRawValue());
 // console.log("selecc",formData.getRawValue());
 

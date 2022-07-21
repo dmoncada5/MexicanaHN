@@ -150,7 +150,7 @@ class MainController {
                     .input('numero', sql.NVarChar, req.body.numero)
                     .input('tipo', sql.NVarChar, req.body.tipo)
                     .input('status', sql.NVarChar, req.body.status)
-                    .query(queries.addNewPedidoEncabezado)
+                    .query(queries.addNewSolicitudEncabezado)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -181,7 +181,7 @@ class MainController {
     //                 .input('totaLine', sql.Numeric, req.body.totaLine)
     //                 .input('almacen', sql.NVarChar, req.body.almacen)
 
-    //             .query(queries.addNewPedidoDetalle)
+    //             .query(queries.addNewSolicitudDetalle)
     //             res.json(result)
     //         } else {
     //             res.send('Please fill all the details!')
@@ -205,8 +205,9 @@ class MainController {
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
                     .input('precio', sql.Numeric(7, 2), req.body.precio)
-                    .input('almacen', sql.NVarChar, req.body.almacen)
-                    .query(queries.addNewPedidoDetalle)
+                    .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                    .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
+                    .query(queries.addNewSolicitudDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -235,7 +236,7 @@ class MainController {
                 .input('numero', sql.NVarChar, req.body.numero)
                 .input('tipo', sql.NVarChar, req.body.tipo)
                 .input('status', sql.NVarChar, req.body.status)
-                .query(queries.updatePedidoEncabezado)
+                .query(queries.updateSolicitudEncabezado)
             res.json(result)
 
         } catch (error) {
@@ -259,9 +260,9 @@ class MainController {
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
                 .input('precio', sql.Numeric(7, 2), req.body.precio)
-                .input('almacen', sql.NVarChar, req.body.almacen)
-
-            .query(queries.updatePedidoDetalle)
+                .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
+                .query(queries.updateSolicitudDetalle)
             res.json(result)
 
         } catch (error) {
@@ -294,7 +295,7 @@ class MainController {
                 const pool = await poolPromise
                 const result = await pool.request()
                     .input('DocNum', sql.NVarChar, DocNum)
-                    .query(queries.deletePedidoDetalle)
+                    .query(queries.deleteSolicitudDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')

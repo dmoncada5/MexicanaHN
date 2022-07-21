@@ -16,7 +16,7 @@
                     shopping_basket
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                  Solicitud de Traslado de Mercaderia
+                  Solicitud Traslado de Mercaderia
               </span>
             </div>
 
@@ -31,7 +31,7 @@
 
 
             <button mat-raised-button [routerLink]="'/ventas/solicitudts/new/solicitudt'" class="add-product-button fuse-white mt-24 mt-md-0">
-              <span>AGREGAR ENTRADA MERCADERIA </span>
+              <span>AGREGAR SOLICITUD</span>
           </button>
             <!-- / ADD BUTTON -->
 
@@ -75,7 +75,7 @@
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
-                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/ventas/solicitudts/'+product.numero+'/solicitudt'">
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/ventas/solicitudts/'+product.numero+'/solicitud'">
                 </mat-row>
 
             </mat-table>

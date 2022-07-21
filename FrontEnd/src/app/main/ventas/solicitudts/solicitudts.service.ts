@@ -25,7 +25,7 @@ API_URI = environment.ipKey;
 
           Promise.all([ 
 
-              this.getSolicitudts('/solicitudt/todo', 'ENTRADA')
+              this.getSolicitudts('/solicitudt/todo', 'SOLICITUD')
             
           ]).then(
               () => { 

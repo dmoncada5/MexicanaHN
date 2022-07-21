@@ -146,9 +146,10 @@ const facturaRoutes = require('./routes/ventas/factura');
 const pedidoRoutes = require('./routes/ventas/pedido');
 const pcompraRoutes = require('./routes/ventas/pcompra');
 const entradaRoutes = require('./routes/ventas/entrada');
+const solicitudtRoutes = require('./routes/ventas/solicitudt');
 const salidaRoutes = require('./routes/ventas/salida');
 const compraRoutes = require('./routes/ventas/compra');
-const tstockRoutes = require('./routes/ventas/tstock');
+const stocktransferRoutes = require('./routes/ventas/stocktransfer');
 
 const promoRoutes = require('./routes/ventas/promo');
 const consultaexistenciaRoutes = require('./routes/ventas/consultaexistencia');
@@ -219,10 +220,11 @@ app.use('/api/pedido', pedidoRoutes);
 app.use('/api/pcompra', pcompraRoutes);
 app.use('/api/salida', salidaRoutes);
 app.use('/api/entrada', entradaRoutes);
+app.use('/api/solicitudt', solicitudtRoutes);
 app.use('/api/consultaexistencia', consultaexistenciaRoutes);
 app.use('/api/compra', compraRoutes);
 app.use('/api/promo', promoRoutes);
-app.use('/api/tstock', tstockRoutes);
+app.use('/api/stocktransfer', stocktransferRoutes);
 
 
 /*URL PAGO */

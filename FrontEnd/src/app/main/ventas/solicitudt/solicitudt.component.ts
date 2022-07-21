@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SolicitudtComponent implements OnInit {
 
-  displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad','Bodega', 'actions'];
+  displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad','de_Almacen','Almacen_Destino', 'actions'];
   ELEMENT_DATA: Element[] = [];
   ELEMENT_VALIDADOR: valida[] = []; 
  formap: validapago[] = [];
@@ -131,7 +131,7 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
         //   this.getFormapagos();
       let buscarE;
       let buscarD;
-      if (params.tipo == 'solicitudt'){
+      if (params.tipo == 'solicitud'){
           buscarE = '/solicitudt/Encabezado';
           buscarD = '/solicitudt/Detalle';
          }
@@ -139,7 +139,7 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
             (res) => {
                
                 this.SolicitudtE = res[0];
-                if (params.tipo != 'solicitudt'){
+                if (params.tipo != 'solicitud'){
 
                 }
                 // this.series.cnum=res["Serie"];
@@ -156,7 +156,8 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
                       itemName: res[index]['itemName'],
                       precio: res[index]['precio'],
                       cantidad: res[index]['cantidad'],
-                      almacen: res[index]['almacen'],
+                      almacenOrigen: res[index]['almacenOrigen'],
+                      almacenDestino: res[index]['almacenDestino'],
                       //tipo:res[index]['tipo'],
                   });
               }
@@ -182,7 +183,7 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.solicitudtsService.getnumeracion('/solicitudt/correlativo', user.company, 'Solicitudt Mercaderia').subscribe(
+    this.solicitudtsService.getnumeracion('/solicitudt/correlativo', user.company, 'Solicitud Traslado').subscribe(
         (res) => {
          //   this.SolicitudtE.DocNum=res[0]['Correlativo'];
            this.series = res; 
@@ -211,7 +212,7 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.solicitudtsService.getOnenumeracion('/solicitudt/correlativoOne', user.company, 'solicitudt', event).subscribe(
+    this.solicitudtsService.getOnenumeracion('/solicitudt/correlativoOne', user.company, 'solicitud', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
@@ -318,7 +319,8 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
               // precio: this.Detalle.price,
               cantidad: 1,
               // totaLine: this.total(1, this.Detalle.price,0),
-              almacen: 0,
+              almacenOrigen: 0,
+              almacenDestino: 0,
              // tipo:this.Detalle.tipo,
               });      
            
@@ -358,7 +360,8 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
                 // precio: this.Detalle.price,
                 cantidad: 1,
                 // totaLine: this.total(1, this.Detalle.price,0),
-                almacen: 0,
+                almacenOrigen: 0,
+                almacenDestino: 0,
                 //tipo:this.Detalle.tipo,
             });
         
@@ -417,7 +420,7 @@ this.bodegas = res;
     this.SolicitudtE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     // this.SolicitudtE.fechaDoc=  format(new Date(this.SolicitudtE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
     this.docum.DocNum = this.SolicitudtE.DocNum;
-    this.SolicitudtE.tipo = 'ENTRADA';
+    this.SolicitudtE.tipo = 'SOLICITUD';
     this.SolicitudtE.Serie = this.selectSerie[0]['cnum'];
     this.SolicitudtE.ccomp = this.selectSerie[0]['ccomp']; 
     this.SolicitudtE.comentarios = this.SolicitudtForm.get('comentario').value;
@@ -438,7 +441,7 @@ this.bodegas = res;
 
                         this.solicitudtsService.addpedidoDetalle(this.ELEMENT_DATA[index]);
                      
-                        this.solicitudtsService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
+                      //  this.solicitudtsService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
                                           
   
 
@@ -578,7 +581,7 @@ update() {
     this.SolicitudtE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     this.SolicitudtE.fechaDoc = this.SolicitudtForm.get('fechaDoc').value;
     // this.SolicitudtE.fechaDoc=   format(new Date(this.SolicitudtE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
-    this.SolicitudtE.tipo = 'ORDENCOMPRA';
+    this.SolicitudtE.tipo = 'SOLICITUD';
     this.docum.DocNum = this.SolicitudtE.numero;
     this.SolicitudtE.comentarios = this.SolicitudtForm.get('comentario').value;
 
@@ -616,7 +619,7 @@ createcotizacionForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacen: number
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacenOrigen: number;  almacenDestino: number
 }
 export interface valida {
     Linea: number;

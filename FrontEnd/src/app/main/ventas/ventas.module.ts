@@ -94,9 +94,10 @@ import { PComprasService } from './pcompras/pcompras.service';
 import { PrintpcompraModule } from './printpcompra/printpcompra.module';
 import { BuscarOrdenModule} from './buscar-orden/buscar-orden.module';
 import { BuscarOService } from './buscar-orden/buscar-o.service';
-import { StockTransfersModule } from './stocktransfers/stocktransfers.module';
-import { StockTransferModule } from './stocktransfer/stocktransfer.module';
-import { StockTransfersService } from './stocktransfers/stocktransfers.service';
+
+import { StocktransfersModule } from './stocktransfers/stocktransfers.module';
+import { StocktransferModule } from './stocktransfer/stocktransfer.module';
+import { StocktransfersService } from './stocktransfers/stocktransfers.service';
 
 
  @NgModule({
@@ -132,8 +133,8 @@ import { StockTransfersService } from './stocktransfers/stocktransfers.service';
         EntregasModule,
         EntregaModule,
         PrintentregaModule,
-        StockTransfersModule,
-        StockTransferModule,
+        StocktransfersModule,
+        StocktransferModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,
@@ -159,7 +160,7 @@ NotaCreditosPService,
 SalidasService,
 EntradasService,
 SolicitudtsService,
-StockTransfersService,
+StocktransfersService,
 BuscarPService,
 BuscarCService,
 BuscarFService,

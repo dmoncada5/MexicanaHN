@@ -21,7 +21,7 @@
 
                 <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2">
-                        Solicitudt de Mercaderia Manual - # {{SolicitudtE.numero}}
+                        Solicitudt de Traslado Mercaderia - # {{SolicitudtE.numero}}
                     </div>
                     <div class="subtitle secondary-text">
                         <span>Cliente: </span>
@@ -48,7 +48,7 @@
             <div>
 
 
-                <button mat-icon-button class="mr-16" [disabled]="!selecSerieS || !validaciones || ELEMENT_DATA.length==0" *ngIf="pageType ==='new' || typeDocum=='ENTRADA MERCADERIA'" (click)="save()">
+                <button mat-icon-button class="mr-16" [disabled]="!selecSerieS || !validaciones || ELEMENT_DATA.length==0" *ngIf="pageType ==='new' || typeDocum=='SOLICITUDTRASLADO'" (click)="save()">
                     <mat-icon>add_circle_outline</mat-icon>
                 </button>
 
@@ -160,7 +160,7 @@
 
 
 
-                    <mat-tab label="Productos"> -->
+                          <mat-tab label="Productos"> -->
 
                         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
@@ -225,33 +225,34 @@
                                 </ng-container>
 
 
-                                <!-- 
-                                <ng-container matColumnDef="Descuento">
-                                    <mat-header-cell *matHeaderCellDef> Descuento </mat-header-cell>
+
+
+                                <ng-container matColumnDef="de_Almacen">
+                                    <mat-header-cell *matHeaderCellDef> de Almacen </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
-                                        <mat-form-field floatLabel="never ">
-                                            <input [disabled]="!Ftupdate" type="number" matInput (change)="Change(element)" [value]="element.DescuentoLine" [(ngModel)]="element.DescuentoLine">
+                                        <mat-form-field floatLabel="never">
+                                            <mat-select [disabled]="!Ftupdate" placeholder="de_Almacen" [(ngModel)]="element.almacenOrigen">
+                                                <!-- <mat-select [disabled]="!Ftupdate" placeholder="Bodegas" [(ngModel)]="element.almacen" (selectionChange)="validarExist(element)"> -->
+                                                <mat-option *ngFor="let bod of bodegas" value={{bod.cbod}}> {{bod.bodega}}</mat-option>
+
+                                            </mat-select>
                                         </mat-form-field>
                                     </mat-cell>
                                 </ng-container>
 
-                                <ng-container matColumnDef="Total">
-                                    <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-                                    <mat-cell *matCellDef="let element"> {{element.totaLine}} </mat-cell>
-                                </ng-container>
 
--->
 
-                                <ng-container matColumnDef="Bodega">
-                                    <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <mat-select [disabled]="!Ftupdate" placeholder="Bodegas" [(ngModel)]="element.almacen">
+                                <ng-container matColumnDef="Almacen_Destino">
+                                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs> Almacen Destino </mat-header-cell>
+                                    <mat-cell *matCellDef="let element" fxHide fxShow.gt-xs>
+                                        <mat-select [disabled]="!Ftupdate" placeholder="Almacen_Destino" [(ngModel)]="element.almacenDestino">
                                             <!-- <mat-select [disabled]="!Ftupdate" placeholder="Bodegas" [(ngModel)]="element.almacen" (selectionChange)="validarExist(element)"> -->
                                             <mat-option *ngFor="let bod of bodegas" value={{bod.cbod}}> {{bod.bodega}}</mat-option>
 
                                         </mat-select>
                                     </mat-cell>
                                 </ng-container>
+
 
                                 <ng-container matColumnDef="actions">
                                     <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Actions</mat-header-cell>
@@ -262,10 +263,6 @@
                                 </ng-container>
 
 
-
-
-
-
                                 <mat-header-row *matHeaderRowDef="displayedColumns "></mat-header-row>
                                 <mat-row *matRowDef="let row; columns: displayedColumns; " class="product "></mat-row>
 
@@ -274,35 +271,6 @@
 
 
                         </div>
-
-
-
-                        <!-- 
-
-                        <table *ngIf="ELEMENT_DATA.length>0" class="simple invoice-table-footer Subs">
-                            <tbody>
-                                <tr class="subtotal">
-                                    <td>SUBTOTAL</td>
-                                    <td>{{ totalGeneral() | currency:'LPS':'symbol'}}</td>
-                                </tr>
-                                <tr class="tax">
-                                    <td>TAX</td>
-                                    <td>{{ isv() | currency:'LPS':'symbol'}}</td>
-                                </tr>
-
-                                <tr class="total">
-                                    <td>TOTAL</td>
-                                    <td>{{ grandTotal() | currency:'LPS':'symbol'}}</td>
-                                </tr>
-                            </tbody>
-                        </table> -->
-
-
-
-
-
-
-
 
 
 
