@@ -24,6 +24,7 @@ import {ReportesModule} from './main/Reportes/reportes.module'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { CitasComponent } from './main/Configuracion/citas/citas.component';
+import { ValidacionesComponent } from './main/Configuracion/validaciones/validaciones.component';
 const appRoutes: Routes = [
     {
         path        : 'autenticar',
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent
+        
      
     ],
     imports     : [

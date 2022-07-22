@@ -108,8 +108,9 @@ import { CitaComponent } from './cita/cita.component';
 import { ProductosModule } from './productos/productos.module';
 import { ProductoModule } from './producto/producto.module';
 import { ProductosService } from './productos/productos.service';
-
- 
+import { ValidacionesComponent } from './validaciones/validaciones.component';
+import {ValidacionesModule} from './validaciones/validaciones.module'
+import { ValidacionesService} from './validaciones/validaciones.service'
 
 
 @NgModule({
@@ -123,7 +124,7 @@ OrdencompraComponent,
 CxpagarsComponent,
       
 CxpagarComponent,
-
+      
 
       
 ]
@@ -174,8 +175,8 @@ CxpagarComponent,
     ProductsModule,
     ProductModule,
     ProductosModule,
-    ProductoModule  
-
+    ProductoModule  ,
+    ValidacionesModule
      
   ],
   providers   : [
@@ -199,8 +200,8 @@ CxpagarComponent,
    MunicipiosService,
    BodegasService,
    MonedasService,
-   EmpleadosService
-
+   EmpleadosService,
+   ValidacionesService
 
 ]
 })
