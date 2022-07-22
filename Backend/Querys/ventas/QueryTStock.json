@@ -1,26 +1,20 @@
 {
-    "getAllDataP": "SELECT * FROM [dbo].[Compra] where  status ='A'",
-    "getAllData": "SELECT  * FROM [dbo].[Compra]  where tipo=@tipo_documento",
-
-
+    "getAllDataP": "SELECT * FROM [dbo].[traslado]   order by DocNum desc",
+    "getAllData": "SELECT  * FROM [dbo].[traslado] where tipo=@tipo_documento  order by DocNum desc",
     "formato": "exec FormatNumeracion @numero",
-    "getCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
-    "getOneCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
-    "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate, t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero, t1.tipo, t1.RTN, t1.status from [dbo].[Compra] t1  where t1.numero=@DocNum",
-    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, DescuentoLine, impuestocod, totaLine, almacen from [dbo].[compraDetalle] where DocNum=@DocNum",
-    "addNewCompraEncabezado": "INSERT INTO [dbo].[Compra] ( fechaDoc, SocioCode, NombreSocio, Direccion, impuesto, tasa, TotalDoc, DescPorcentaje, Moneda, comentarios, vendedor, LastUpdate, UserCreate, Serie, ccomp, cai, fact_emini, fact_emifin, correo, fecha_limite, numero, tipo, RTN, status,BaseRef,BaseDocRef) VALUES ( @fechaDoc, @SocioCode, @NombreSocio, @Direccion, @impuesto,@tasa, @TotalDoc, @DescPorcentaje, @Moneda, @comentarios, @vendedor, @LastUpdate, @UserCreate, @Serie, @ccomp, @cai, @fact_emini, @fact_emifin, @correo, @fecha_limite, @numero, @tipo, @RTN, @status,@BaseRef,@BaseDocRef)",
-    "deleteCompraEncabezado": "DELETE FROM [dbo].[Compra]WHERE DocNum = @DocNum",
-    "updateCompraEncabezado": "UPDATE [dbo].[Compra] SET fechaDoc=@fechaDoc, SocioCode=@SocioCode, NombreSocio=@NombreSocio, Direccion=@Direccion, impuesto=@impuesto, tasa=@tasa, TotalDoc=@TotalDoc, DescPorcentaje=@DescPorcentaje, Moneda=@Moneda, comentarios=@comentarios, vendedor=@vendedor, LastUpdate=@LastUpdate, UserCreate=@UserCreate WHERE DocNum = @DocNum",
-    "addNewCompraDetalle": "INSERT INTO [dbo].[compraDetalle] (DocNum, Linea, itemCode, itemName, cantidad, precio, DescuentoLine, impuestocod, totaLine, almacen,tipo) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad, @precio, @DescuentoLine, @impuestocod, @totaLine, @almacen,@tipo)",
-    "deleteCompraDetalle": "DELETE FROM [dbo].[compraDetalle] WHERE DocNum = @DocNum",
-    "updateCompraDetalle": "UPDATE [dbo].[compraDetalle] SET  Linea=@Linea, itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad, precio=@precio, DescuentoLine=@DescuentoLine, impuestocod=@impuestocod, totaLine=@totaLine, almacen=@almacen WHERE DocNum = @DocNum",
+    "getCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
+    "getOneCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
+    "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from traslado t1  where t1.numero=@DocNum",
+    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacenOrigen,almacenDestino from trasladoDetalle where DocNum=@DocNum",
+    "addNewtrasladoEncabezado": "INSERT INTO [dbo].[traslado] ( fechaDoc, UserCreate, LastUpdate, comentarios, serie , ccomp, numero,tipo,status) VALUES (  @fechaDoc, @UserCreate, @LastUpdate, @comentarios, @serie,  @ccomp, @numero,@tipo,@status)",
+    "deletetrasladoEncabezado": "DELETE FROM [dbo].[traslado] WHERE DocNum = @DocNum",
+    "updatetrasladoEncabezado": "UPDATE [dbo].[traslado] SET fechaDoc=@fechaDoc, SocioCode=@SocioCode, NombreSocio=@NombreSocio, Direccion=@Direccion, impuesto=@impuesto, tasa=@tasa, TotalDoc=@TotalDoc, DescPorcentaje=@DescPorcentaje, Moneda=@Moneda, comentarios=@comentarios, vendedor=@vendedor, LastUpdate=@LastUpdate, UserCreate=@UserCreate , Serie=@Serie, ccomp=@ccomp, cai=@cai, fact_emini=@fact_emini, fact_emifin=@fact_emifin, correo=@correo, fecha_limite=@fecha_limite, numero=@numero, tipo=@tipo,RTN=@RTN, status=@status WHERE DocNum = @DocNum",
+    "addNewtrasladoDetalle": "INSERT INTO [dbo].[trasladoDetalle] (DocNum, Linea, itemCode, itemName, cantidad, precio, almacenOrigen,almacenDestino) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad, @precio,@almacenOrigen,@almacenDestino)",
+    "deletetrasladoDetalle": "DELETE FROM [dbo].[trasladoDetalle] WHERE DocNum = @DocNum",
+    "updatetrasladoDetalle": "UPDATE [dbo].[trasladoDetalle] SET  Linea=@Linea, itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad, precio=@precio, DescuentoLine=@DescuentoLine, impuestocod=@impuestocod, totaLine=@totaLine, almacenOrigen=@almacenOrigen,almacenDestino=@almacenDestino WHERE DocNum = @DocNum",
 
 
-    "updateSatusCompra": "UPDATE [dbo].[Compra] SET status=@status WHERE numero = @DocNum",
-    "getOneEncabezadoB": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate,t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero,t1.tipo,t1.RTN,t1.status from Compra t1  where t1.numero=@numero",
-
-    "widgetFactura": "exec [widget-Facturas]",
-    "widbanner": "exec widbanner",
-    "widTop10": "exec widgetTop10"
+    "updateSatusEntrada": "UPDATE [dbo].[traslado] SET status=@status WHERE numero = @DocNum",
+    "getOneEncabezadoB": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from traslado t1  where t1.numero=@numero"
 
 }

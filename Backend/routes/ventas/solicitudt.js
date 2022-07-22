@@ -1,0 +1,21 @@
+const express = require('express');
+const solicitudtController = require('../../controller/ventas/solicitudtController.js');
+const router = express.Router();
+
+router.get('/solicitudes', solicitudtController.getAllP);
+//router.get('/', pedidoController.getAll);
+router.post('/todo', solicitudtController.getAll);
+router.post('/correlativo', solicitudtController.getNumero);
+router.post('/correlativoOne', solicitudtController.getOneNumero);
+router.post('/formato', solicitudtController.formato);
+router.post('/Encabezado', solicitudtController.getOneEncabezado);
+router.post('/EncabezadoB', solicitudtController.getOneEncabezadoBuscar);
+router.post('/Detalle', solicitudtController.getOneDetalle);
+router.post('/postearEncabezado', solicitudtController.addNewDataEncabezado);
+router.post('/postearDetalle', solicitudtController.addNewDataDetalle);
+router.put('/Encabezado', solicitudtController.updateDataeEncabezado);
+router.put('/Detalle', solicitudtController.updateDataDetalle);
+router.put('/statusC', solicitudtController.upStatus);
+router.delete('/Encabezado', solicitudtController.deleteDataEncabezado);
+router.delete('/:DocNum', solicitudtController.deleteDataDetalle);
+module.exports = router;

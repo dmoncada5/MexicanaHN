@@ -15,21 +15,21 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, } from '@angular/material-moment-adapter';
-import { StocktransfersComponent } from '../stocktransfers/stocktransfers.component';
+import { SolicitudtsComponent } from '../solicitudts/solicitudts.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
-//import {PrintstocktransferComponent} from '../printstocktransfer/printstocktransfer.component';
-import { StocktransferComponent } from './stocktransfer.component';
+//import {PrintsolicitudtComponent} from '../printsolicitudt/printsolicitudt.component';
+import { SolicitudtComponent } from './solicitudt.component';
 
 const routes = [
     {
         
-        path     : 'ventas/stocktransfers',
-        component: StocktransfersComponent,
+        path     : 'ventas/solicitudts',
+        component: SolicitudtsComponent,
     }
 ];
   
@@ -37,7 +37,7 @@ const routes = [
 
 
 @NgModule({
-        declarations: [StocktransferComponent],
+        declarations: [SolicitudtComponent],
         imports: [
           RouterModule.forChild(routes),
           MatFormFieldModule,
@@ -71,6 +71,6 @@ const routes = [
         ] 
         
       })
-export class StocktransferModule
+export class SolicitudtModule
 {
 }

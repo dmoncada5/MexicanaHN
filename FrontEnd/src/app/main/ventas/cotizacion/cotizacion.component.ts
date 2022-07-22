@@ -9,6 +9,7 @@ import { CotizacionesService } from '../cotizaciones/cotizaciones.service';
 import { cotizacionDetalle, cotizacionEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BodegasComponent } from 'app/main/Configuracion/bodegas/bodegas.component';
 
 // this.userForm.get('cproy').value; obtener data de form
 
@@ -38,7 +39,7 @@ export class CotizacionComponent implements OnInit {
   
   CotizacionForm: FormGroup;
   pageType: any;
-  
+
   series: any;
   selectSerie: any;
   selecSerieS: any;
@@ -130,6 +131,8 @@ export class CotizacionComponent implements OnInit {
       if (params.id == 'new') {
         this.cotizacionE.fechaDoc=new Date();
         this.CotizacionForm.get("fechaDoc").setValue(this.cotizacionE.fechaDoc);
+      //  this.CotizacionForm.get("cbod").setValue(this.cotizacionD.cbod);
+
         this.getNumerion();
         this.getbodegas();
         this.Ftupdate = true;
@@ -313,7 +316,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 cantidad: 1,
                 DescuentoLine: 0,
                 totaLine: this.total(1, this.Detalle.price,0),
-                almacen:1,
+                //almacen:1,
+                almacen:this.Detalle.cbod,
                 impuestocod:0,
                 tipo:this.Detalle.tipo
               });        
@@ -351,7 +355,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 cantidad: 1,
                 DescuentoLine: 0,
                 totaLine: this.total(1, this.Detalle.price,0),
-                almacen:1,
+                almacen:this.Detalle.cbod,
+               // almacen:1,
                 impuestocod:0,
                 tipo:this.Detalle.tipo
             });
@@ -372,6 +377,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.CotizacionesService.getbodegasCompany('/bodegas/bodega', comp).subscribe(
         (res) => {
 this.bodegas = res;
+
 console.log(res,'bodegas')
         }
     )

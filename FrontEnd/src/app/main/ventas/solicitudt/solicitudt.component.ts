@@ -5,19 +5,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { StocktransfersService } from '../stocktransfers/stocktransfers.service';
-import { Order, stocktransferDetalle, stocktransferEncabezado } from '../interfaces/interfaces';
+import { SolicitudtsService } from '../solicitudts/solicitudts.service';
+import { Order, solicitudtDetalle, solicitudtEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-stocktransfer',
-  templateUrl: './stocktransfer.component.html',
-  styleUrls: ['./stocktransfer.component.scss'],
+  selector: 'app-solicitudt',
+  templateUrl: './solicitudt.component.html',
+  styleUrls: ['./solicitudt.component.scss'],
   encapsulation: ViewEncapsulation.None, 
   animations   : fuseAnimations
 })
-export class StocktransferComponent implements OnInit {
+export class SolicitudtComponent implements OnInit {
 
   displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad','de_Almacen','Almacen_Destino', 'actions'];
   ELEMENT_DATA: Element[] = [];
@@ -25,8 +25,8 @@ export class StocktransferComponent implements OnInit {
  formap: validapago[] = [];
 //   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.ELEMENT_DATA);
-  StocktransferE: stocktransferEncabezado = {};
-  StocktransferD: stocktransferDetalle = {};
+  SolicitudtE: solicitudtEncabezado = {};
+  SolicitudtD: solicitudtDetalle = {};
   selectedSerie: boolean;
   validaciones = false;
   Ftupdate = true;
@@ -36,7 +36,7 @@ export class StocktransferComponent implements OnInit {
           DocNum: ''   
     };
     selectBod: any;
-  StocktransferForm: FormGroup;
+  SolicitudtForm: FormGroup;
   pageType: any;
   typeDocum: any;
   series: any;
@@ -66,7 +66,7 @@ products: any;
   private _unsubscribeAll: Subject < any > ;
 
 
-  constructor(private stocktransfersService: StocktransfersService,
+  constructor(private solicitudtsService: SolicitudtsService,
               private activatedRoute: ActivatedRoute,
               private _formBuilder: FormBuilder,  
               private _matSnackBar: MatSnackBar,
@@ -77,8 +77,8 @@ products: any;
       // Set the private defaults
                 this._unsubscribeAll = new Subject();
 
-                this.StocktransferForm = this.createcotizacionForm();
-                this.stocktransfersService.getAll('/usuarios').subscribe( 
+                this.SolicitudtForm = this.createcotizacionForm();
+                this.solicitudtsService.getAll('/usuarios').subscribe( 
           (res) => {
               this.socios=res;
         //    this.socios[0] = res[0];
@@ -90,8 +90,8 @@ products: any;
                   );
           }
       );
-this.StocktransferForm.get('id').setValue(this.user.usuario);
-                this.stocktransfersService.getAll('/products').subscribe(
+this.SolicitudtForm.get('id').setValue(this.user.usuario);
+                this.solicitudtsService.getAll('/products').subscribe(
           (res) => {
               this.products = res;
             //   this.products[0] = res[0];
@@ -118,8 +118,8 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
     this.pageType = params.id;
     this.typeDocum = params.tipo;
     if (params.id == 'new') {
-        this.StocktransferE.fechaDoc=new Date();
-        this.StocktransferForm.get("fechaDoc").setValue(this.StocktransferE.fechaDoc);
+        this.SolicitudtE.fechaDoc=new Date();
+        this.SolicitudtForm.get("fechaDoc").setValue(this.SolicitudtE.fechaDoc);
     this.getNumerion();
     this.getbodegas();
     this.Ftupdate = true;
@@ -131,22 +131,22 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
         //   this.getFormapagos();
       let buscarE;
       let buscarD;
-      if (params.tipo == 'traslado'){
-          buscarE = '/stocktransfer/Encabezado';
-          buscarD = '/stocktransfer/Detalle';
+      if (params.tipo == 'solicitud'){
+          buscarE = '/solicitudt/Encabezado';
+          buscarD = '/solicitudt/Detalle';
          }
-         this.stocktransfersService.getOne(buscarE, params.id).subscribe(
+         this.solicitudtsService.getOne(buscarE, params.id).subscribe(
             (res) => {
                
-                this.StocktransferE = res[0];
-                if (params.tipo != 'traslado'){
+                this.SolicitudtE = res[0];
+                if (params.tipo != 'solicitud'){
 
                 }
                 // this.series.cnum=res["Serie"];
-                this.StocktransferForm = this.createcotizacionForm();
+                this.SolicitudtForm = this.createcotizacionForm();
             }
         );
-      this.stocktransfersService.getOne(buscarD, params.id).subscribe(
+      this.solicitudtsService.getOne(buscarD, params.id).subscribe(
           (res: any[]) => {
               for (let index = 0; index < res.length; index++){
                   this.ELEMENT_DATA.push({
@@ -183,9 +183,9 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
    getNumerion(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.stocktransfersService.getnumeracion('/stocktransfer/correlativo', user.company, 'Traslado Mercaderia').subscribe(
+    this.solicitudtsService.getnumeracion('/solicitudt/correlativo', user.company, 'Solicitud Traslado').subscribe(
         (res) => {
-         //   this.StocktransferE.DocNum=res[0]['Correlativo'];
+         //   this.SolicitudtE.DocNum=res[0]['Correlativo'];
            this.series = res; 
         }
     );
@@ -196,7 +196,7 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
 
     if (confirm("Realmente quiere borrarlo?"+DocNum)) {
   
-        this.stocktransfersService.updatestatusC(DocNum,'C');
+        this.solicitudtsService.updatestatusC(DocNum,'C');
   
     //     this.dataSource.splice(cod, 1);
     //   this.tabla1.renderRows();
@@ -205,24 +205,24 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
    
     }
   
-    this.router.navigate(['ventas/stocktransfers']);
+    this.router.navigate(['ventas/solicitudts']);
   }
 
 
    numerosuc(event){
 
     const user = JSON.parse(localStorage.getItem('usuario'));
-    this.stocktransfersService.getOnenumeracion('/stocktransfer/correlativoOne', user.company, 'solicitud', event).subscribe(
+    this.solicitudtsService.getOnenumeracion('/solicitudt/correlativoOne', user.company, 'solicitud', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
  
-            this.stocktransfersService.getformato('/stocktransfer/formato', res1[0]['correlativo']).subscribe(
+            this.solicitudtsService.getformato('/solicitudt/formato', res1[0]['correlativo']).subscribe(
                 (res) => {
                     this.selecSerieS = true;
-                    this.StocktransferE.DocNum = res1[0]['correlativo'];
-                    this.StocktransferE.numero = res1[0]['prefijo'] + res[0]['Numero'];
+                    this.SolicitudtE.DocNum = res1[0]['correlativo'];
+                    this.SolicitudtE.numero = res1[0]['prefijo'] + res[0]['Numero'];
                     for (let index = 0; index < this.ELEMENT_DATA.length; index++){
-                        this.ELEMENT_DATA[index]['DocNum'] = this.StocktransferE.numero;
+                        this.ELEMENT_DATA[index]['DocNum'] = this.SolicitudtE.numero;
                         }
 
                 }
@@ -239,18 +239,18 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
 
 
   complete(event) {
-      this.stocktransfersService.getOneSocio('/usuarios/edit', event.target.value).subscribe(
+      this.solicitudtsService.getOneSocio('/usuarios/edit', event.target.value).subscribe(
           (res) => {
 
-            //this.StocktransferE.cuser = event.target.value;
-            this.StocktransferE.UserCreate = res[0]['UserCreate'];
-            //this.StocktransferE.UserCreate = res[0]['UserCreate'];
-            this.StocktransferForm.get('comentario').setValue(this.StocktransferE.comentarios);
+            //this.SolicitudtE.cuser = event.target.value;
+            this.SolicitudtE.UserCreate = res[0]['UserCreate'];
+            //this.SolicitudtE.UserCreate = res[0]['UserCreate'];
+            this.SolicitudtForm.get('comentario').setValue(this.SolicitudtE.comentarios);
      
-           // this.StocktransferE.comentarios = res[0]['observaciones'];
-            //this.StocktransferE.comentarios = res[0]['observaciones'];
+           // this.SolicitudtE.comentarios = res[0]['observaciones'];
+            //this.SolicitudtE.comentarios = res[0]['observaciones'];
           //  this.codlista = res[0]['codlista'];
-          //  this.StocktransferForm.get('comentario').setValue(this.StocktransferE.comentarios);
+          //  this.SolicitudtForm.get('comentario').setValue(this.SolicitudtE.comentarios);
      
 
       },
@@ -306,12 +306,12 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
             this.validaciones = false;
         }else{
             this.validaciones = true;
-            this.stocktransfersService.getInfoComp('/products/infoComp', event.target.value).subscribe(
+            this.solicitudtsService.getInfoComp('/products/infoComp', event.target.value).subscribe(
           (res) => {
             this.Detalle = res[0];
             const index = this.ELEMENT_DATA.length + 1;
             this.ELEMENT_DATA.push({
-                DocNum: this.StocktransferE.numero,
+                DocNum: this.SolicitudtE.numero,
               Linea: index,
               itemCode: this.Detalle.ItemCode,
               itemName: this.Detalle.ItemName,
@@ -347,12 +347,12 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
             this.validaciones = false;
         }else{*/
             this.validaciones = true;
-            this.stocktransfersService.getInfoComp('/products/infoComp', this.productItem).subscribe(
+            this.solicitudtsService.getInfoComp('/products/infoComp', this.productItem).subscribe(
         (res) => {
            this.Detalle = res[0];
            const index = this.ELEMENT_DATA.length + 1;
            this.ELEMENT_DATA.push({
-                DocNum: this.StocktransferE.numero,
+                DocNum: this.SolicitudtE.numero,
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
@@ -380,7 +380,7 @@ getbodegas(){
     
     const user = JSON.parse(localStorage.getItem('usuario'));
     const comp = Number(user.company);
-    this.stocktransfersService.getbodegasCompany('/bodegas/bodega', comp).subscribe(
+    this.solicitudtsService.getbodegasCompany('/bodegas/bodega', comp).subscribe(
         (res) => {
 this.bodegas = res;
         }
@@ -414,49 +414,43 @@ this.bodegas = res;
 
   save() {
 
-    this.StocktransferE.UserCreate = this.socios[0]['usuario'];
-    this.StocktransferE.comentarios = '';
-    //this.StocktransferE.fechaDoc = this.StocktransferForm.get(format('fechaDoc','yyyy-MM-dd HH:mm:ss')).value;
-    this.StocktransferE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    // this.StocktransferE.fechaDoc=  format(new Date(this.StocktransferE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
-    this.docum.DocNum = this.StocktransferE.DocNum;
-    this.StocktransferE.tipo = 'TRASLADO';
-    this.StocktransferE.Serie = this.selectSerie[0]['cnum'];
-    this.StocktransferE.ccomp = this.selectSerie[0]['ccomp']; 
-    this.StocktransferE.comentarios = this.StocktransferForm.get('comentario').value;
+    this.SolicitudtE.UserCreate = this.socios[0]['usuario'];
+    this.SolicitudtE.comentarios = '';
+    //this.SolicitudtE.fechaDoc = this.SolicitudtForm.get(format('fechaDoc','yyyy-MM-dd HH:mm:ss')).value;
+    this.SolicitudtE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+    // this.SolicitudtE.fechaDoc=  format(new Date(this.SolicitudtE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
+    this.docum.DocNum = this.SolicitudtE.DocNum;
+    this.SolicitudtE.tipo = 'SOLICITUD';
+    this.SolicitudtE.Serie = this.selectSerie[0]['cnum'];
+    this.SolicitudtE.ccomp = this.selectSerie[0]['ccomp']; 
+    this.SolicitudtE.comentarios = this.SolicitudtForm.get('comentario').value;
 
     const cnum = this.selectSerie[0]['cnum'];
-    this.StocktransferE.status="A";
+    this.SolicitudtE.status="A";
 
-    delete this.StocktransferE.DocNum;
+    delete this.SolicitudtE.DocNum;
 
 
 
      
  
-            this.stocktransfersService.addpedidoEncabezado(this.StocktransferE).then(respuesta => {
+            this.solicitudtsService.addpedidoEncabezado(this.SolicitudtE).then(respuesta => {
 
            
                     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
 
-                        this.stocktransfersService.addpedidoDetalle(this.ELEMENT_DATA[index]);
-                        this.stocktransfersService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacenDestino'], this.ELEMENT_DATA[index]['cantidad']); 
-                                          
-                        this.stocktransfersService.setExistencia('/products/setExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacenOrigen'], this.ELEMENT_DATA[index]['cantidad']);
-                  
-  
-
-
-                      //  this.stocktransfersService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
+                        this.solicitudtsService.addpedidoDetalle(this.ELEMENT_DATA[index]);
+                     
+                      //  this.solicitudtsService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
                                           
   
 
                    
                     }
                     if (this.typeDocum === 'cotizacion'){
-                        this.stocktransfersService.updatestatusC(this.pageType, 'C');
+                        this.solicitudtsService.updatestatusC(this.pageType, 'C');
                        }
-                    this.stocktransfersService.updateCorrelativo(cnum);
+                    this.solicitudtsService.updateCorrelativo(cnum);
 
                 })
                 .then(resp => {
@@ -467,7 +461,7 @@ this.bodegas = res;
 
                     // Change the location with new one
 
-                    this.router.navigate(['ventas/stocktransfers']);
+                    this.router.navigate(['ventas/solicitudts']);
                 });
 
 }
@@ -483,7 +477,7 @@ this.ELEMENT_VALIDADOR = [];
 for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
 
 
-    this.stocktransfersService.ExcExistencia('/products/ExecExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'],this.ELEMENT_DATA[index]['tipo']).subscribe(
+    this.solicitudtsService.ExcExistencia('/products/ExecExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'],this.ELEMENT_DATA[index]['tipo']).subscribe(
         (res: any[]) => {
 
             if (this.ELEMENT_DATA[index]['tipo']==='I'){
@@ -584,17 +578,17 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
 
 update() {
 
-    this.StocktransferE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-    this.StocktransferE.fechaDoc = this.StocktransferForm.get('fechaDoc').value;
-    // this.StocktransferE.fechaDoc=   format(new Date(this.StocktransferE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
-    this.StocktransferE.tipo = 'TRASLADO';
-    this.docum.DocNum = this.StocktransferE.numero;
-    this.StocktransferE.comentarios = this.StocktransferForm.get('comentario').value;
+    this.SolicitudtE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+    this.SolicitudtE.fechaDoc = this.SolicitudtForm.get('fechaDoc').value;
+    // this.SolicitudtE.fechaDoc=   format(new Date(this.SolicitudtE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
+    this.SolicitudtE.tipo = 'SOLICITUD';
+    this.docum.DocNum = this.SolicitudtE.numero;
+    this.SolicitudtE.comentarios = this.SolicitudtForm.get('comentario').value;
 
 
 
 
-    this.stocktransfersService.updatepedidoEncabezado(this.StocktransferE).then(respuesta => {
+    this.solicitudtsService.updatepedidoEncabezado(this.SolicitudtE).then(respuesta => {
 
 
         })
@@ -606,7 +600,7 @@ update() {
 
             // Change the location with new one
 
-            this.router.navigate(['ventas/stocktransfers']);
+            this.router.navigate(['ventas/solicitudts']);
         });
 
 
@@ -614,10 +608,10 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-        id:[this.StocktransferE.id,Validators.required],
-        fechaDoc: [this.StocktransferE.fechaDoc, Validators.required],
-        serie: [this.StocktransferE.Serie, Validators.required],
-        comentario: [this.StocktransferE.comentarios],
+        id:[this.SolicitudtE.id,Validators.required],
+        fechaDoc: [this.SolicitudtE.fechaDoc, Validators.required],
+        serie: [this.SolicitudtE.Serie, Validators.required],
+        comentario: [this.SolicitudtE.comentarios],
 
     });
 }

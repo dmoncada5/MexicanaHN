@@ -3,16 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { retry, catchError } from 'rxjs/operators';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { throwError, Observable, BehaviorSubject } from 'rxjs';
-import { stocktransferEncabezado, stocktransferDetalle} from '../interfaces/interfaces';
+import { solicitudtEncabezado, solicitudtDetalle} from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class StocktransfersService {
+export class SolicitudtsService {
   onProductsChanged: BehaviorSubject<any>;
-  stocktransfers: stocktransferEncabezado[];
-pedidosD: stocktransferDetalle[];
+  solicitudts: solicitudtEncabezado[];
+pedidosD: solicitudtDetalle[];
  
 API_URI = environment.ipKey;
 
@@ -25,7 +25,7 @@ API_URI = environment.ipKey;
 
           Promise.all([ 
 
-              this.getStocktransfers('/stocktransfer/todo', 'TRASLADO')
+              this.getSolicitudts('/solicitudt/todo', 'SOLICITUD')
             
           ]).then(
               () => { 
@@ -35,7 +35,7 @@ API_URI = environment.ipKey;
           ); 
       });
   } 
-  getStocktransfers(url: string, documento: string): Promise<any>
+  getSolicitudts(url: string, documento: string): Promise<any>
   {
 
     return new Promise((resolve, reject) => {
@@ -44,9 +44,9 @@ API_URI = environment.ipKey;
       const body = JSON.stringify({tipo_documento: documento});
       this.http.post(`${this.API_URI}` + url, body, {headers: headers} )
               .subscribe((response: any) => {
-                  this.stocktransfers = response;
+                  this.solicitudts = response;
        
-                  this.onProductsChanged.next(this.stocktransfers);
+                  this.onProductsChanged.next(this.solicitudts);
                   resolve(response);
               }, reject);
       });
@@ -156,7 +156,7 @@ API_URI = environment.ipKey;
  updatepedidoEncabezado(cotizacion: any): Promise<any>
  {
         return new Promise((resolve, reject) => {
-         this.http.put(`${this.API_URI}` + '/stocktransfer/Encabezado', cotizacion)
+         this.http.put(`${this.API_URI}` + '/solicitudt/Encabezado', cotizacion)
              .subscribe((response: any) => {
                    resolve(response);
              }, reject);
@@ -168,7 +168,7 @@ API_URI = environment.ipKey;
  {
 
         return new Promise((resolve, reject) => {
-         this.http.put(`${this.API_URI}` + '/stocktransfer/Detalle', cotizacion)
+         this.http.put(`${this.API_URI}` + '/solicitudt/Detalle', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
@@ -178,7 +178,7 @@ API_URI = environment.ipKey;
  {
 
         return new Promise((resolve, reject) => {
-         this.http.post(`${this.API_URI}` + '/stocktransfer/postearEncabezado', cotizacion)
+         this.http.post(`${this.API_URI}` + '/solicitudt/postearEncabezado', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
@@ -188,7 +188,7 @@ addpedidoDetalle(cotizacion: any): Promise<any>
  {
 
         return new Promise((resolve, reject) => {
-         this.http.post(`${this.API_URI}` + '/stocktransfer/postearDetalle', cotizacion)
+         this.http.post(`${this.API_URI}` + '/solicitudt/postearDetalle', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
@@ -213,7 +213,7 @@ updatestatusC(DocNum: number|string, status: string): Promise<any>
          let headers = new HttpHeaders();
          headers = new HttpHeaders().set('Content-Type', 'application/json');
          const body = JSON.stringify({DocNum: DocNum, status: status});
-         this.http.put(`${this.API_URI}` + '/stocktransfer/statusP', body, {headers: headers})
+         this.http.put(`${this.API_URI}` + '/solicitudt/statusP', body, {headers: headers})
             .subscribe((response: any) => {
                   resolve(response);
             }, reject);
@@ -263,7 +263,7 @@ comprasExistencia(url: string, id: number | string, cbod: number, cantidad: numb
 
  DeletepedidoDetalle(DocNum: number)
  {
-    return this.http.delete(`${this.API_URI}` + '/stocktransfer' + `/${DocNum}`);
+    return this.http.delete(`${this.API_URI}` + '/solicitudt' + `/${DocNum}`);
  }
 }
 

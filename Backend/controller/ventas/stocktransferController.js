@@ -97,7 +97,7 @@ class MainController {
                 .input('status', sql.Char, req.body.status)
                 .input('DocNum', sql.NVarChar, req.body.DocNum)
                 // .input('DocNum', sql.Int, req.body.DocNum) //lo que cambie 
-                .query(queries.updateSatusCompra)
+                .query(queries.updateSatustraslado)
             res.json(result.recordset)
         } catch (error) {
             res.status(500)
@@ -184,38 +184,21 @@ class MainController {
     async addNewDataEncabezado(req, res) {
         console.log('entro', req.body)
         try {
-            if (req.body.SocioCode != null) {
+            if (req.body.UserCreate != null) {
                 const pool = await poolPromise
                 const result = await pool.request()
 
-                .input('DocNum', sql.Int, req.body.DocNum)
-                    .input('fechaDoc', sql.DateTime, req.body.fechaDoc)
-                    .input('SocioCode', sql.NVarChar, req.body.SocioCode)
-                    .input('NombreSocio', sql.NVarChar, req.body.NombreSocio)
-                    .input('Direccion', sql.NVarChar, req.body.Direccion)
-                    .input('impuesto', sql.Numeric(7, 2), req.body.impuesto)
-                    .input('tasa', sql.Numeric, req.body.tasa)
-                    .input('TotalDoc', sql.Numeric(10, 2), req.body.TotalDoc)
-                    .input('DescPorcentaje', sql.Numeric, req.body.DescPorcentaje)
-                    .input('Moneda', sql.NVarChar, req.body.Moneda)
-                    .input('comentarios', sql.NVarChar, req.body.comentarios)
-                    .input('vendedor', sql.Int, req.body.vendedor)
-                    .input('LastUpdate', sql.DateTime, req.body.LastUpdate)
+                .input('fechaDoc', sql.DateTime, req.body.fechaDoc)
                     .input('UserCreate', sql.NVarChar, req.body.UserCreate)
+                    .input('comentarios', sql.NVarChar, req.body.comentarios)
+                    .input('LastUpdate', sql.DateTime, req.body.LastUpdate)
                     .input('Serie', sql.NVarChar, req.body.Serie)
                     .input('ccomp', sql.Numeric, req.body.ccomp)
-                    .input('cai', sql.NVarChar, req.body.cai)
-                    .input('fact_emini', sql.NVarChar, req.body.fact_emini)
-                    .input('fact_emifin', sql.NVarChar, req.body.fact_emifin)
-                    .input('correo', sql.NVarChar, req.body.correo)
-                    .input('fecha_limite', sql.DateTime, req.body.fecha_limite)
                     .input('numero', sql.NVarChar, req.body.numero)
                     .input('tipo', sql.NVarChar, req.body.tipo)
-                    .input('RTN', sql.NVarChar, req.body.RTN)
-                    .input('status', sql.Char, req.body.status)
-                    .input('BaseRef', sql.NVarChar, req.body.BaseRef)
-                    .input('BaseDocRef', sql.NVarChar, req.body.BaseDocRef)
-                    .query(queries.addNewCompraEncabezado)
+                    .input('status', sql.NVarChar, req.body.status)
+                    .query(queries.addNewtrasladoEncabezado)
+
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -232,19 +215,15 @@ class MainController {
             if (req.body.DocNum != null && req.body.itemCode != null) {
                 const pool = await poolPromise
                 const result = await pool.request()
-
-                .input('DocNum', sql.NVarChar, req.body.DocNum)
+                    .input('DocNum', sql.NVarChar, req.body.DocNum)
                     .input('Linea', sql.Int, req.body.Linea)
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('precio', sql.Numeric, req.body.precio)
-                    .input('DescuentoLine', sql.Float, req.body.DescuentoLine)
-                    .input('impuestocod', sql.Int, req.body.impuestocod)
-                    .input('totaLine', sql.Numeric, req.body.totaLine)
-                    .input('almacen', sql.NVarChar, req.body.almacen)
-                    .input('tipo', sql.Char, req.body.tipo)
-                    .query(queries.addNewCompraDetalle)
+                    .input('precio', sql.Numeric(7, 2), req.body.precio)
+                    .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                    .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
+                    .query(queries.addNewtrasladoDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -261,32 +240,16 @@ class MainController {
 
             const pool = await poolPromise
             const result = await pool.request()
-                .input('DocNum', sql.Int, req.body.DocNum)
                 .input('fechaDoc', sql.DateTime, req.body.fechaDoc)
-                .input('SocioCode', sql.NVarChar, req.body.SocioCode)
-                .input('NombreSocio', sql.NVarChar, req.body.NombreSocio)
-                .input('Direccion', sql.NVarChar, req.body.Direccion)
-                .input('impuesto', sql.Numeric(7, 2), req.body.impuesto)
-                .input('tasa', sql.Numeric, req.body.tasa)
-                .input('TotalDoc', sql.Numeric(10, 2), req.body.TotalDoc)
-                .input('DescPorcentaje', sql.Numeric, req.body.DescPorcentaje)
-                .input('Moneda', sql.NVarChar, req.body.Moneda)
-                .input('comentarios', sql.NVarChar, req.body.comentarios)
-                .input('vendedor', sql.Int, req.body.vendedor)
-                .input('LastUpdate', sql.DateTime, req.body.LastUpdate)
                 .input('UserCreate', sql.NVarChar, req.body.UserCreate)
+                .input('comentarios', sql.NVarChar, req.body.comentarios)
+                .input('LastUpdate', sql.DateTime, req.body.LastUpdate)
                 .input('Serie', sql.NVarChar, req.body.Serie)
                 .input('ccomp', sql.Numeric, req.body.ccomp)
-                .input('cai', sql.NVarChar, req.body.cai)
-                .input('fact_emini', sql.NVarChar, req.body.fact_emini)
-                .input('fact_emifin', sql.NVarChar, req.body.fact_emifin)
-                .input('correo', sql.NVarChar, req.body.correo)
-                .input('fecha_limite', sql.DateTime, req.body.fecha_limite)
                 .input('numero', sql.NVarChar, req.body.numero)
                 .input('tipo', sql.NVarChar, req.body.tipo)
-                .input('RTN', sql.NVarChar, req.body.RTN)
-                .input('status', sql.Char, req.body.status)
-                .query(queries.updateCompraEncabezado)
+                .input('status', sql.NVarChar, req.body.status)
+                .query(queries.updatetrasladoEncabezado)
             res.json(result)
 
         } catch (error) {
@@ -308,13 +271,11 @@ class MainController {
                 .input('itemCode', sql.NVarChar, req.body.itemCode)
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
-                .input('precio', sql.Numeric, req.body.precio)
-                .input('DescuentoLine', sql.Numeric, req.body.DescuentoLine)
-                .input('impuestocod', sql.NVarChar, req.body.impuestocod)
-                .input('totaLine', sql.Numeric, req.body.totaLine)
-                .input('almacen', sql.NVarChar, req.body.almacen)
+                .input('precio', sql.Numeric(7, 2), req.body.precio)
+                .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
 
-            .query(queries.updateCompraDetalle)
+            .query(queries.updatetrasladoDetalle)
             res.json(result)
 
         } catch (error) {
@@ -346,7 +307,7 @@ class MainController {
                 const pool = await poolPromise
                 const result = await pool.request()
                     .input('DocNum', sql.Int, DocNum)
-                    .query(queries.deleteCompraDetalle)
+                    .query(queries.deletetrasladoDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')

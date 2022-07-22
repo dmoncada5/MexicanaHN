@@ -1,28 +1,28 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
-import {stocktransferEncabezado, stocktransferDetalle} from '../interfaces/interfaces';
+import {solicitudtEncabezado, solicitudtDetalle} from '../interfaces/interfaces';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, fromEvent, BehaviorSubject, Observable, merge } from 'rxjs';
-import { StocktransfersService } from './stocktransfers.service';
+import { SolicitudtsService } from './solicitudts.service';
 import { takeUntil, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { DataSource } from '@angular/cdk/collections';
 import { FuseUtils } from '@fuse/utils';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
-import { BuscarTrasladoComponent } from '../buscar-traslado/buscar-traslado.component';
+import { BuscarOrdenComponent } from '../buscar-orden/buscar-orden.component';
 @Component({
-  selector: 'app-stocktransfers',
-  templateUrl: './stocktransfers.component.html',
-  styleUrls: ['./stocktransfers.component.scss'],
+  selector: 'app-solicitudts',
+  templateUrl: './solicitudts.component.html',
+  styleUrls: ['./solicitudts.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations   : fuseAnimations
 })
-export class StocktransfersComponent implements OnInit {
+export class SolicitudtsComponent implements OnInit {
 
   displayedColumns = [ 'DocNum', 'UserCreate', 'fechaDoc'];
-  cztEncabezado: stocktransferEncabezado = {
+  cztEncabezado: solicitudtEncabezado = {
     DocNum: null,
     fechaDoc: null,	
     comentarios: null,
@@ -30,7 +30,7 @@ export class StocktransfersComponent implements OnInit {
     UserCreate: null,
 
   };
-  cztDetalle: stocktransferDetalle = {
+  cztDetalle: solicitudtDetalle = {
     DocNum: null,
     Linea: null,
     itemCode: null,
@@ -56,7 +56,7 @@ export class StocktransfersComponent implements OnInit {
   dialogRef: any;
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
   
-  constructor(private stocktransfersServices: StocktransfersService,
+  constructor(private solicitudtsServices: SolicitudtsService,
               public _matDialog: MatDialog,
               private router: Router) {
 
@@ -70,7 +70,7 @@ export class StocktransfersComponent implements OnInit {
 
    ngOnInit(): void {
     
-    this.dataSource = new FilesDataSource(this.stocktransfersServices, this.paginator, this.sort);
+    this.dataSource = new FilesDataSource(this.solicitudtsServices, this.paginator, this.sort);
    
     fromEvent(this.filter.nativeElement, 'keyup')
         .pipe(
@@ -95,8 +95,8 @@ export class StocktransfersComponent implements OnInit {
 
 editContact(contact): void
 {
-    if (contact ==='SOLICITUD'){
-        this.dialogRef = this._matDialog.open(BuscarTrasladoComponent, {
+    if (contact ==='ORDENCOMPRA'){
+        this.dialogRef = this._matDialog.open(BuscarOrdenComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 contact: contact,
@@ -123,7 +123,7 @@ editContact(contact): void
                  */
                 case 'seleccion':
 
-                  this.router.navigate(['ventas/stocktransfers/' + formData.numero + '/' + 'stocktransfer']);
+                  this.router.navigate(['ventas/solicitudts/' + formData.numero + '/' + 'solicitudt']);
                   //  this._contactsService.updateContact(formData.getRawValue());
 // console.log("selecc",formData.getRawValue());
 
@@ -169,14 +169,14 @@ export class FilesDataSource extends DataSource<any>
      * @param {MatSort} _matSort
      */
     constructor(
-        private stocktransfersServices: StocktransfersService,
+        private solicitudtsServices: SolicitudtsService,
         private _matPaginator: MatPaginator,
         private _matSort: MatSort
     )
     {
         super();
 
-        this.filteredData = this.stocktransfersServices.stocktransfers;
+        this.filteredData = this.solicitudtsServices.solicitudts;
     }
 
     /**
@@ -187,7 +187,7 @@ export class FilesDataSource extends DataSource<any>
     connect(): Observable<any[]>
     {
         const displayDataChanges = [
-            this.stocktransfersServices.onProductsChanged,
+            this.solicitudtsServices.onProductsChanged,
            this._matPaginator.page,
             this._filterChange,
            this._matSort.sortChange
@@ -196,7 +196,7 @@ export class FilesDataSource extends DataSource<any>
         return merge(...displayDataChanges)
             .pipe(
                 map(() => {
-                        let data = this.stocktransfersServices.stocktransfers.slice();
+                        let data = this.solicitudtsServices.solicitudts.slice();
 
                         data = this.filterData(data);
 

@@ -1,12 +1,12 @@
 const { sql, poolPromise } = require('../../db.js')
 const fs = require('fs');
-var rawdata = fs.readFileSync('././Querys/ventas/QuerySalidas.json');
+var rawdata = fs.readFileSync('././Querys/ventas/QuerySolicitudts.json');
 var queries = JSON.parse(rawdata);
 
 class MainController {
 
     async getAll(req, res) {
-        console.log(res.body);
+        console.log('entro', req.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -31,7 +31,7 @@ class MainController {
         }
     }
     async getNumero(req, res) {
-        console.log(res.body);
+        console.log(req.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -53,7 +53,7 @@ class MainController {
                 .input('status', sql.Char, req.body.status)
                 .input('DocNum', sql.NVarChar, req.body.DocNum)
                 // .input('DocNum', sql.Int, req.body.DocNum) //lo que cambie 
-                .query(queries.updateSatusEntrada)
+                .query(queries.updateSatusSolicitudt)
             res.json(result.recordset)
         } catch (error) {
             res.status(500)
@@ -150,7 +150,7 @@ class MainController {
                     .input('numero', sql.NVarChar, req.body.numero)
                     .input('tipo', sql.NVarChar, req.body.tipo)
                     .input('status', sql.NVarChar, req.body.status)
-                    .query(queries.addNewSalidaEncabezado)
+                    .query(queries.addNewSolicitudEncabezado)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -181,7 +181,7 @@ class MainController {
     //                 .input('totaLine', sql.Numeric, req.body.totaLine)
     //                 .input('almacen', sql.NVarChar, req.body.almacen)
 
-    //             .query(queries.addNewSalidaDetalle)
+    //             .query(queries.addNewSolicitudDetalle)
     //             res.json(result)
     //         } else {
     //             res.send('Please fill all the details!')
@@ -205,8 +205,9 @@ class MainController {
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
                     .input('precio', sql.Numeric(7, 2), req.body.precio)
-                    .input('almacen', sql.NVarChar, req.body.almacen)
-                    .query(queries.addNewSalidaDetalle)
+                    .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                    .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
+                    .query(queries.addNewSolicitudDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')
@@ -235,7 +236,7 @@ class MainController {
                 .input('numero', sql.NVarChar, req.body.numero)
                 .input('tipo', sql.NVarChar, req.body.tipo)
                 .input('status', sql.NVarChar, req.body.status)
-                .query(queries.updateSalidaEncabezado)
+                .query(queries.updateSolicitudEncabezado)
             res.json(result)
 
         } catch (error) {
@@ -259,9 +260,9 @@ class MainController {
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
                 .input('precio', sql.Numeric(7, 2), req.body.precio)
-                .input('almacen', sql.NVarChar, req.body.almacen)
-
-            .query(queries.updateSalidaDetalle)
+                .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
+                .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
+                .query(queries.updateSolicitudDetalle)
             res.json(result)
 
         } catch (error) {
@@ -294,7 +295,7 @@ class MainController {
                 const pool = await poolPromise
                 const result = await pool.request()
                     .input('DocNum', sql.NVarChar, DocNum)
-                    .query(queries.deleteSalidaDetalle)
+                    .query(queries.deleteSolicitudDetalle)
                 res.json(result)
             } else {
                 res.send('Please fill all the details!')

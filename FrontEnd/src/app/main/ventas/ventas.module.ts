@@ -14,6 +14,9 @@ import {PrintCotizacionModule} from './print-cotizacion/print-cotizacion.module'
 import { FacturasComponent } from './facturas/facturas.component';
 import { PrintfacturaComponent } from './printfactura/printfactura.component';
 import {PrintfacturaModule} from './printfactura/printfactura.module';
+
+import {PrintTrasladoModule} from './printtraslado/printtraslado.module';
+
 import {FacturasModule} from 'app/main/ventas/facturas/facturas.module';
 import { FacturasService } from './facturas/facturas.service';
 import { PedidosModule } from 'app/main/ventas/pedidos/pedidos.module';
@@ -72,6 +75,11 @@ import { EntradasModule } from './entradas/entradas.module';
 import { EntradaModule } from './entrada/entrada.module';
 import { EntradasService } from './entradas/entradas.service';
 
+// solicitudes de Traslados  de Mercaderia 
+import { SolicitudtsModule } from './solicitudts/solicitudts.module';
+import { SolicitudtModule } from './solicitudt/solicitudt.module';
+import { SolicitudtsService } from './solicitudts/solicitudts.service';
+
 
 // Salidas de Mercaderia 
 import { SalidasModule } from './salidas/salidas.module';
@@ -84,14 +92,17 @@ import { PCompraModule } from './pcompra/pcompra.module';
 import { PComprasService } from './pcompras/pcompras.service';
 
 
+import { BuscarTrasladoModule} from './buscar-traslado/buscar-traslado.module';
+import { BuscarTrasladoService } from './buscar-traslado/buscar-traslado.service';
 
 
 import { PrintpcompraModule } from './printpcompra/printpcompra.module';
 import { BuscarOrdenModule} from './buscar-orden/buscar-orden.module';
 import { BuscarOService } from './buscar-orden/buscar-o.service';
-import { StockTransfersModule } from './stocktransfers/stocktransfers.module';
-import { StockTransferModule } from './stocktransfer/stocktransfer.module';
-import { StockTransfersService } from './stocktransfers/stocktransfers.service';
+
+import { StocktransfersModule } from './stocktransfers/stocktransfers.module';
+import { StocktransferModule } from './stocktransfer/stocktransfer.module';
+import { StocktransfersService } from './stocktransfers/stocktransfers.service';
 
 
  @NgModule({
@@ -117,6 +128,8 @@ import { StockTransfersService } from './stocktransfers/stocktransfers.service';
         SalidaModule,
         EntradasModule,
         EntradaModule,
+        SolicitudtsModule,
+        SolicitudtModule,
         PrintfacturaModule,
         PrintcompraModule,
         PrintnotacreditoModule,
@@ -125,18 +138,20 @@ import { StockTransfersService } from './stocktransfers/stocktransfers.service';
         EntregasModule,
         EntregaModule,
         PrintentregaModule,
-        StockTransfersModule,
-        StockTransferModule,
+        StocktransfersModule,
+        StocktransferModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,
        BuscarCotizacionModule,
        BuscarCotizacionModule,
        BuscarNCPModule,
-     BuscarEntregaModule,
-     BuscarFacturaModule,
+       BuscarEntregaModule,
+       BuscarFacturaModule,
        BuscarOrdenModule,
-       ConsultaExistenciaModule
+       ConsultaExistenciaModule,
+       PrintTrasladoModule,
+       BuscarTrasladoModule,
        
     ],
     providers   : [
@@ -151,12 +166,14 @@ NotaCreditosService,
 NotaCreditosPService,
 SalidasService,
 EntradasService,
-StockTransfersService,
+SolicitudtsService,
+StocktransfersService,
 BuscarPService,
 BuscarCService,
 BuscarFService,
 BuscarEntregaService,
 BuscarOService,
+BuscarTrasladoService,
 ConsultaExistenciaService,
 
   ],

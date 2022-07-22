@@ -344,6 +344,55 @@ export const navigation: FuseNavigation[] = [
                         url: '/configuracion/bodegas',
                         exactMatch: true,
                     },
+
+
+
+                    {
+                        id: 'stock',
+                        title: 'Operaciones de Stock',
+                        translate: 'NAV.CONFIGURACION',
+                        type: 'collapsable',
+                        icon: 'settings',
+                        children: [
+                            {
+                                id: 'solicitudts',
+                                title: 'Solicitud de Traslados',
+                                type: 'item',
+                                url: '/ventas/solicitudts',
+                                exactMatch: true,
+                            },
+                            {
+                               id: 'stocktransfer',
+                               title: 'Transferencia de Stock',
+                               type: 'item',
+                               url: 'ventas/stocktransfers',
+                               exactMatch: true,
+                            },
+                            // {
+                            //     id: 'departments',
+                            //     title: 'Departments',
+                            //     type: 'item',
+                            //     url: '/configuracion/departments',
+                            //     exactMatch: true,
+                            // },
+
+                            // {
+                            //     id: 'municipios',
+                            //     title: 'Municipios',
+                            //     type: 'item',
+                            //     url: '/configuracion/municipios',
+                            //     exactMatch: true,
+                            // },
+
+                            // {
+                            //     id: 'monedas',
+                            //     title: 'Monedas',
+                            //     type: 'item',
+                            //     url: '/configuracion/monedas',
+                            //     exactMatch: true,
+                            // },
+                        ],
+                    },
                     // {
                     //     id: 'stocktransfer',
                     //     title: 'Transferencia de Stock',

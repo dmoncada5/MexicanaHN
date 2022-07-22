@@ -16,7 +16,7 @@
                     shopping_basket
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                  Traslado de Mercaderia
+                  Solicitud Traslado de Mercaderia
               </span>
             </div>
 
@@ -30,19 +30,8 @@
             </div>
 
 
-
-            <mat-form-field appearance="outline" fxFlex="20">
-                <mat-label>Copiar de:</mat-label>
-                <mat-select (selectionChange)="editContact($event.value)">
-                    <mat-option [value]="'SOLICITUD'">Solicitud</mat-option>
-                    <!-- <mat-option [value]="'ENTREGA'">Entrega </mat-option> -->
-
-                </mat-select>
-
-            </mat-form-field>
-
-            <button mat-raised-button [routerLink]="'/ventas/stocktransfers/new/stocktransfer'" class="add-product-button fuse-white mt-24 mt-md-0">
-              <span>AGREGAR TRASLADO</span>
+            <button mat-raised-button [routerLink]="'/ventas/solicitudts/new/solicitudt'" class="add-product-button fuse-white mt-24 mt-md-0">
+              <span>AGREGAR SOLICITUD</span>
           </button>
             <!-- / ADD BUTTON -->
 
@@ -86,7 +75,7 @@
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
-                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/ventas/stocktransfers/'+product.numero+'/traslado'">
+                <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple [routerLink]="'/ventas/solicitudts/'+product.numero+'/solicitud'">
                 </mat-row>
 
             </mat-table>
