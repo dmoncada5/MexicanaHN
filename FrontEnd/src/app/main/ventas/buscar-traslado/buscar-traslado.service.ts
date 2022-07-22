@@ -41,6 +41,7 @@ API_URI = environment.ipKey;
           this.http.get(`${this.API_URI}` + url )
               .subscribe((response: any) => {
                   this.facturas = response;
+
                   this.onProductsChanged.next(this.facturas);
                   resolve(response);
               }, reject);

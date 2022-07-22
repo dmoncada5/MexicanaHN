@@ -67,28 +67,28 @@
                 </ng-container> -->
 
                 <!-- SocioCode Column -->
-                <ng-container matColumnDef="SocioCode">
+                <!-- <ng-container matColumnDef="SocioCode">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.SocioCode}}</p>
                     </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- NombreSocio Column -->
-                <ng-container matColumnDef="NombreSocio">
+                <!-- <ng-container matColumnDef="NombreSocio">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.NombreSocio}}</p>
                     </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- empresa_sociedad Column -->
-                <ng-container matColumnDef="TotalDoc">
+                <!-- <ng-container matColumnDef="TotalDoc">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Total</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.TotalDoc|number}}</p>
                     </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Fecha Documento Column -->
                 <ng-container matColumnDef="fechaDoc">
@@ -101,7 +101,12 @@
                     </mat-cell>
                 </ng-container>
 
-
+       <ng-container matColumnDef="UserCreate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Total</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.UserCreate}}</p>
+                    </mat-cell>
+                </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
                 <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" (click)="matDialogRef.close(['seleccion',product])" matRipple>

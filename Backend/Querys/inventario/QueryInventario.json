@@ -2,13 +2,8 @@
     "getAllData": "SELECT * FROM [dbo].[products]",
     "getOne": "select * from [dbo].[products] where ItemCode=@ItemCode",
     "getPrice": "select * from [dbo].[productsPrice] where ItemCode=@ItemCode and Pricelist=@Pricelist",
-<<<<<<< HEAD
     "getInfo": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo, t1.cbod FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode and t2.Pricelist=@Pricelist",
     "getInfo2": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo,t1.cbod  FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode",
-=======
-    "getInfo": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo,t1.cbod  FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode and t2.Pricelist=@Pricelist",
-    "getInfo2": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo  FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode",
->>>>>>> 04e50a7df8ce827154598b8b0726b98f05bd0957
     "getInfoComp": "select t1.ItemCode, t1.ItemName,t1.tipo  FROM products t1  where t1.ItemCode=@ItemCode",
 
     "getExistencia": "select t1.ItemCode, t1.ItemName,  t2.cbod, t2.stock,t2.minimo, t2.maximo, t2.comprometido, t2.solicitado FROM products t1 inner join  existencias t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode and t2.cbod=@cbod",

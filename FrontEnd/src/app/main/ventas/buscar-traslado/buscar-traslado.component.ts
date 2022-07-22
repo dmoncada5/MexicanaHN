@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 })
 
 export class BuscarTrasladoComponent implements OnInit {
-    displayedColumns = [ 'DocNum', 'UserCreate', 'fechaDoc'];
+    displayedColumns = [ 'DocNum', 'fechaDoc','UserCreate'];
     
     facturas:any;
   dataSource: FilesDataSource | null;

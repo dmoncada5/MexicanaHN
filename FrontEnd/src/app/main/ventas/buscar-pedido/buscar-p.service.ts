@@ -43,6 +43,7 @@ API_URI = environment.ipKey;
           this.http.get(`${this.API_URI}` + url )
               .subscribe((response: any) => {
                   this.pedidos = response;
+                
                   this.onProductsChanged.next(this.pedidos);
                   resolve(response);
               }, reject);
