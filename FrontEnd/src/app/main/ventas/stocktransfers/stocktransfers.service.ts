@@ -3,19 +3,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { retry, catchError } from 'rxjs/operators';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { throwError, Observable, BehaviorSubject } from 'rxjs';
-import { compraEncabezado, compraDetalle} from '../interfaces/interfaces';
+import { stocktransferEncabezado, stocktransferDetalle} from '../interfaces/interfaces';
+import { format } from 'date-fns';
 import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class StockTransfersService {
+export class StocktransfersService {
   onProductsChanged: BehaviorSubject<any>;
-  compras: compraEncabezado[];
-comprasD: compraDetalle[];
+  stocktransfers: stocktransferEncabezado[];
+pedidosD: stocktransferDetalle[];
  
 API_URI = environment.ipKey;
- 
- 
+
   constructor(private http: HttpClient) { 
     this.onProductsChanged = new BehaviorSubject({});
   }
@@ -23,69 +23,50 @@ API_URI = environment.ipKey;
   {
       return new Promise<void>((resolve, reject) => {
 
-          Promise.all([
+          Promise.all([ 
 
-              this.getcompras('/tstock/todo')
+              this.getStocktransfers('/stocktransfer/todo', 'TRASLADO')
             
           ]).then(
-              () => {
-                  resolve(); 
+              () => { 
+                  resolve();
               },
               reject
-          );
+          ); 
       });
-  }
-  // getcompras(url: string): Promise<any>
-  // {
-  //   return new Promise((resolve, reject) => {
-  //     let headers = new HttpHeaders();
-  //     headers = new HttpHeaders().set('Content-Type', 'application/json');
-  //     const body = JSON.stringify({tipo_documento: documento});
-  //     this.http.post(`${this.API_URI}` + url, body, {headers: headers} )
-  //             .subscribe((response: any) => {
-  //                 this.compras = response;
-    
-  //                 this.onProductsChanged.next(this.compras);
-  //                 resolve(response);
-  //             }, reject);
-  //     });
-  // }
-
-
-  getcompras(url: string): Promise<any>
+  } 
+  getStocktransfers(url: string, documento: string): Promise<any>
   {
-      return new Promise((resolve, reject) => {
-          this.http.get(`${this.API_URI}`+url )
+
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = new HttpHeaders().set('Content-Type', 'application/json');
+      const body = JSON.stringify({tipo_documento: documento});
+      this.http.post(`${this.API_URI}` + url, body, {headers: headers} )
               .subscribe((response: any) => {
-                  this.compras = response;
-                      this.onProductsChanged.next(this.compras);
+                  this.stocktransfers = response;
+       
+                  this.onProductsChanged.next(this.stocktransfers);
                   resolve(response);
               }, reject);
       });
   }
-
-
-
-  getAll(url: string) {
-    return this.http.get(`${this.API_URI}` + url);
-  }
-
-  getnumeracion(url: string, ccomp: number | string,documento:string ) {
+  getnumeracion(url: string, ccomp: number | string, documento: string ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify({ccomp:ccomp,tipo_documento:documento});
+    const body = JSON.stringify({ccomp: ccomp, tipo_documento: documento});
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
+
 
   getformato(url: string, numero: number ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify({numero:numero});
+    const body = JSON.stringify({numero: numero});
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-
   getOnenumeracion(url: string, ccomp: number | string, documento: string, csuc: number ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -93,27 +74,23 @@ API_URI = environment.ipKey;
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-
-  getOne(url: string, id: number | string, ) {
+  getAll(url: string) {
+    return this.http.get(`${this.API_URI}` + url); 
+  }
+  getAllT(url: string) {
+    return this.http.get(`${this.API_URI}` + url);
+  }
+  getOne(url: string, id: number | string ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({DocNum: id});
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-
   getbodegasCompany(url: string, ccomp: number  ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ccomp: ccomp});
-    return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
-    .pipe(retry(1), catchError(this.errorHandl));
-  }
-
-  getExistencia(url: string, id: number | string, cbod: number) {
-    let headers = new HttpHeaders();
-    headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify({ItemCode: id, cbod: cbod});
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
@@ -145,11 +122,24 @@ API_URI = environment.ipKey;
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-
   getInfoComp(url: string, id: number | string) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ItemCode: id});
+    return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+  getExistencia(url: string, id: number | string, cbod: number) {
+    let headers = new HttpHeaders();
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify({ItemCode: id, cbod: cbod});
+    return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+  ExcExistencia(url: string, id: number | string, cbod: number,tipo:string) {
+    let headers = new HttpHeaders();
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify({ItemCode: id, cbod: cbod,tipo:tipo});
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
@@ -163,54 +153,77 @@ API_URI = environment.ipKey;
     console.log(errorMessage);
     return throwError(errorMessage);
  }
- 
- updateCompraEncabezado(cotizacion: any): Promise<any>
+ updatepedidoEncabezado(cotizacion: any): Promise<any>
  {
         return new Promise((resolve, reject) => {
-         this.http.put(`${this.API_URI}` + '/compra/Encabezado', cotizacion)
+         this.http.put(`${this.API_URI}` + '/stocktransfer/Encabezado', cotizacion)
              .subscribe((response: any) => {
                    resolve(response);
              }, reject);
      });
  }
 
-  
- updateCompraDetalle(cotizacion: any): Promise<any>
+ 
+ updatepedidoDetalle(cotizacion: any): Promise<any>
  {
 
         return new Promise((resolve, reject) => {
-         this.http.put(`${this.API_URI}` + '/compra/Detalle', cotizacion)
+         this.http.put(`${this.API_URI}` + '/stocktransfer/Detalle', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
      });
  }
- addCompraEncabezado(cotizacion: any): Promise<any>
+ addpedidoEncabezado(cotizacion: any): Promise<any>
  {
 
         return new Promise((resolve, reject) => {
-         this.http.post(`${this.API_URI}` + '/compra/postearEncabezado', cotizacion)
+         this.http.post(`${this.API_URI}` + '/stocktransfer/postearEncabezado', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
      });
  }
-addCompraDetalle(cotizacion: any): Promise<any>
+addpedidoDetalle(cotizacion: any): Promise<any>
  {
 
         return new Promise((resolve, reject) => {
-         this.http.post(`${this.API_URI}` + '/compra/postearDetalle', cotizacion)
+         this.http.post(`${this.API_URI}` + '/stocktransfer/postearDetalle', cotizacion)
              .subscribe((response: any) => {
               resolve(response);
              }, reject);
      });
  }
-
-
- comprasExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ setExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
+  const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
+  return new Promise((resolve, reject) => {
+    this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+        .subscribe((response: any) => {
+         resolve(response);
+        }, reject);
+});
+}
+
+
+updatestatusC(DocNum: number|string, status: string): Promise<any>
+{
+       return new Promise((resolve, reject) => {
+         let headers = new HttpHeaders();
+         headers = new HttpHeaders().set('Content-Type', 'application/json');
+         const body = JSON.stringify({DocNum: DocNum, status: status});
+         this.http.put(`${this.API_URI}` + '/stocktransfer/statusP', body, {headers: headers})
+            .subscribe((response: any) => {
+                  resolve(response);
+            }, reject);
+    });
+}
+
+ ordenExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+  let headers = new HttpHeaders();
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
   return new Promise((resolve, reject) => {
     this.http.post(`${this.API_URI}` + url, body, { headers: headers })
         .subscribe((response: any) => {
@@ -234,40 +247,23 @@ updateCorrelativo(cnum: number): Promise<any>
 }
 
 
-updatestatusC(DocNum: number, status: string): Promise<any>
-{
-       return new Promise((resolve, reject) => {
-         let headers = new HttpHeaders();
-         headers = new HttpHeaders().set('Content-Type', 'application/json');
-         const body = JSON.stringify({DocNum: DocNum, status: status});
-         this.http.put(`${this.API_URI}` + '/cotizacion/statusC', body, {headers: headers})
-            .subscribe((response: any) => {
-                  resolve(response);
-            }, reject);
-    });
+comprasExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+  let headers = new HttpHeaders();
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
+  return new Promise((resolve, reject) => {
+    this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+        .subscribe((response: any) => {
+         resolve(response);
+        }, reject);
+});
 }
 
 
 
-// compraExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
-//   let headers = new HttpHeaders();
-//   headers = new HttpHeaders().set('Content-Type', 'application/json');
-//   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
-//   return new Promise((resolve, reject) => {
-//     this.http.post(`${this.API_URI}` + url, body, { headers: headers })
-//         .subscribe((response: any) => {
-//          resolve(response);
-//         }, reject);
-// });
-// }
-
-
-
-
-
- DeleteCompraDetalle(DocNum: number)
+ DeletepedidoDetalle(DocNum: number)
  {
-    return this.http.delete(`${this.API_URI}` + '/compra' + `/${DocNum}`);
+    return this.http.delete(`${this.API_URI}` + '/stocktransfer' + `/${DocNum}`);
  }
 }
 

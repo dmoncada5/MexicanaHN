@@ -1,5 +1,6 @@
 import { DateFilterFn } from '@angular/material/datepicker';
 import { FuseUtils } from '@fuse/utils';
+import { NodeCompatibleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 export interface cotizacionEncabezado {
   DocNum?: number;
   fechaDoc?: Date;	
@@ -40,6 +41,7 @@ export interface cotizacionDetalle
     impuestocod?: number;
     totaLine?: number;
     almacen?: number;
+
   }
 export interface facturaEncabezado {
     DocNum?: number;
@@ -234,6 +236,60 @@ export interface promoDetalle
       almacen?: string;
     }
 
+
+    export interface solicitudtEncabezado {
+      id?:string;
+      DocNum?: number;
+      fechaDoc?: Date;
+      UserCreate?: string;
+      comentarios?: string;
+      LastUpdate?: string;
+      Serie?: string;
+      ccomp?: string;
+      numero?: string;
+      tipo?: string;
+      status?:string;
+      }
+  
+    export interface solicitudtDetalle
+     {
+        DocNum?: number;
+        Linea?: number;
+        itemCode?: string;
+        itemName?: string;
+        cantidad?: number;
+        precio?: number;
+        almacenOrigen?: string;
+        almacenDestino?: string;
+      }
+
+
+      export interface stocktransferEncabezado {
+        id?:string;
+        DocNum?: number;
+        fechaDoc?: Date;
+        UserCreate?: string;
+        comentarios?: string;
+        LastUpdate?: string;
+        Serie?: string;
+        ccomp?: string;
+        numero?: string;
+        tipo?: string;
+        status?:string;
+        }
+    
+      export interface stocktransferDetalle
+       {
+          DocNum?: number;
+          Linea?: number;
+          itemCode?: string;
+          itemName?: string;
+          cantidad?: number;
+          precio?: number;
+          almacenOrigen?: string;
+          almacenDestino?: string;
+        }
+  
 
     export interface salidaEncabezado {
       id?:string;

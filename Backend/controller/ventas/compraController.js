@@ -345,7 +345,7 @@ class MainController {
             if (DocNum != null) {
                 const pool = await poolPromise
                 const result = await pool.request()
-                    .input('DocNum', sql.Int, DocNum)
+                    .input('DocNum', sql.NVarChar, DocNum)
                     .query(queries.deleteCompraDetalle)
                 res.json(result)
             } else {

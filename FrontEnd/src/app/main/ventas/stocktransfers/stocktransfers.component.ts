@@ -1,20 +1,17 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
-import {compraEncabezado, compraDetalle} from '../interfaces/interfaces';
+import {stocktransferEncabezado, stocktransferDetalle} from '../interfaces/interfaces';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, fromEvent, BehaviorSubject, Observable, merge } from 'rxjs';
-import { StockTransfersService } from '../stocktransfers/stocktransfers.service';
+import { StocktransfersService } from './stocktransfers.service';
 import { takeUntil, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { DataSource } from '@angular/cdk/collections';
 import { FuseUtils } from '@fuse/utils';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
-
-//import { BuscarOrdenComponent } from '../buscar-orden/buscar-orden.component';
-
-
+import { BuscarTrasladoComponent } from '../buscar-traslado/buscar-traslado.component';
 @Component({
   selector: 'app-stocktransfers',
   templateUrl: './stocktransfers.component.html',
@@ -22,74 +19,58 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   animations   : fuseAnimations
 })
-export class StockTransfersComponent implements OnInit {
-displayedColumns = [ 'DocNum', 'SocioCode', 'NombreSocio', 'TotalDoc', 'fechaDoc'];
-cztEncabezado: compraEncabezado = {
-      DocNum: null,
-      fechaDoc: null,	
-      SocioCode: null,
-      NombreSocio: null,
-      Direccion: null,
-      impuesto: null,
-      tasa: null,
-      TotalDoc: null,
-      DescPorcentaje: null,
-      Moneda: null,
-      comentarios: null,
-      vendedor: null,
-      LastUpdate: null,	 
-      UserCreate: null,
+export class StocktransfersComponent implements OnInit {
+
+  displayedColumns = [ 'DocNum', 'UserCreate', 'fechaDoc'];
+  cztEncabezado: stocktransferEncabezado = {
+    DocNum: null,
+    fechaDoc: null,	
+    comentarios: null,
+    LastUpdate: null,	 
+    UserCreate: null,
+
+  };
+  cztDetalle: stocktransferDetalle = {
+    DocNum: null,
+    Linea: null,
+    itemCode: null,
+    itemName: null,
+    cantidad: null,
+    precio: null,  
+    almacenOrigen : null,
+    almacenDestino :null,
+  };
+  dataSource: FilesDataSource | null;
+  @ViewChild(MatPaginator, {static: true})
+  paginator: MatPaginator;
+
+  @ViewChild(MatSort, {static: true})
+  sort: MatSort;
+
+  @ViewChild('filter', {static: true})
+  filter: ElementRef;
+
+  // Private
+  private _unsubscribeAll: Subject<any>;
+
+  dialogRef: any;
+  confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
   
-    };
-cztDetalle: compraDetalle = {
-      DocNum: null,
-      Linea: null,
-      itemCode: null,
-      itemName: null,
-      cantidad: null,
-      precio: null,  
-      DescuentoLine: null,
-      impuestocod: null,
-      totaLine: null,
-      almacen: null,
-    };
-
-
-
-
-dataSource: FilesDataSource | null;
-@ViewChild(MatPaginator, {static: true})
-paginator: MatPaginator;
-  
-@ViewChild(MatSort, {static: true})
-sort: MatSort;
-  
-@ViewChild('filter', {static: true})
-filter: ElementRef;
-  
-    // Private
-    private _unsubscribeAll: Subject<any>;
-
-    dialogRef: any;
-    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-
-constructor(private comprasServcies: StockTransfersService,
-            public _matDialog: MatDialog,
-            private router: Router     ) {
+  constructor(private stocktransfersServices: StocktransfersService,
+              public _matDialog: MatDialog,
+              private router: Router) {
 
     this._unsubscribeAll = new Subject();
 
+   }
+   getFormattedDate( originalDate ){
+       originalDate = new Date(originalDate);
+       return originalDate.toISOString().substring(0, originalDate.toISOString().length - 1);
 }
 
-getFormattedDate( originalDate ){
-    originalDate = new Date(originalDate);
-    return originalDate.toISOString().substring(0, originalDate.toISOString().length - 1);
-}
-
-
-
-ngOnInit(): void { 
-    this.dataSource = new FilesDataSource(this.comprasServcies, this.paginator, this.sort);
+   ngOnInit(): void {
+    
+    this.dataSource = new FilesDataSource(this.stocktransfersServices, this.paginator, this.sort);
    
     fromEvent(this.filter.nativeElement, 'keyup')
         .pipe(
@@ -105,157 +86,218 @@ ngOnInit(): void {
 
             this.dataSource.filter = this.filter.nativeElement.value;
         });
-  };
+  }
 
-}
 
-  // tslint:disable-next-line: align
-  export class FilesDataSource extends DataSource<any>
-  {
-      private _filterChange = new BehaviorSubject('');
-      private _filteredDataChange = new BehaviorSubject('');
+
+
+
+
+editContact(contact): void
+{
+    if (contact ==='SOLICITUD'){
+        this.dialogRef = this._matDialog.open(BuscarTrasladoComponent, {
+            panelClass: 'contact-form-dialog',
+            data      : {
+                contact: contact,
+                action : 'edit'
+                        },
+                      
+        });
+        this.dialogRef.afterClosed()
+        .subscribe(response => {
   
-      /**
-       * Constructor
-       *
-       * @param {paisesServices} paisesServices
-       * @param {MatPaginator} _matPaginator
-       * @param {MatSort} _matSort
-       */
-      constructor(
-          private comprasServcies: StockTransfersService,
-          private _matPaginator: MatPaginator,
-          private _matSort: MatSort
-      )
-      {
-          super();
-  
-          this.filteredData = this.comprasServcies.compras;
+            if ( !response )
+            {
+                return;
+            }
+            const actionType: string = response[0];
+            const formData: any = response[1];
+
+        
+ 
+            switch ( actionType )
+            {
+                /**
+                 * Save
+                 */
+                case 'seleccion':
+
+                  this.router.navigate(['ventas/stocktransfers/' + formData.numero + '/' + 'stocktransfer']);
+                  //  this._contactsService.updateContact(formData.getRawValue());
+// console.log("selecc",formData.getRawValue());
+
+
+                  break;
+                /**
+                 * Delete
+                 */
+                case 'delete':
+
+                    this.deleteContact(contact);
+
+                    break;
+            }
+        });
+
       }
-  
-      /**
-       * Connect function called by the table to retrieve one stream containing the data to render.
-       *
-       * @returns {Observable<any[]>}
-       */
-      connect(): Observable<any[]>
-      {
-          const displayDataChanges = [
-              this.comprasServcies.onProductsChanged,
-             this._matPaginator.page,
-              this._filterChange,
-             this._matSort.sortChange
-          ];
-  
-          return merge(...displayDataChanges)
-              .pipe(
-                  map(() => {
-                          let data = this.comprasServcies.compras.slice();
-  
-                          data = this.filterData(data);
-  
-                          this.filteredData = [...data];
-  
-                          data = this.sortData(data);
-  
-                          // Grab the page's slice of data.
-                          const startIndex = this._matPaginator.pageIndex * this._matPaginator.pageSize;
-                          return data.splice(startIndex, this._matPaginator.pageSize);
-                      }
-                  ));
-      }
-  
-      // -----------------------------------------------------------------------------------------------------
-      // @ Accessors
-      // -----------------------------------------------------------------------------------------------------
-  
-      // Filtered data
-      get filteredData(): any
-      {
-          return this._filteredDataChange.value;
-      }
-  
-      set filteredData(value: any)
-      {
-          this._filteredDataChange.next(value);
-      }
-  
-      // Filter
-      get filter(): string
-      {
-          return this._filterChange.value;
-      }
-  
-      set filter(filter: string)
-      {
-          this._filterChange.next(filter);
-      }
-  
-      // -----------------------------------------------------------------------------------------------------
-      // @ Public methods
-      // -----------------------------------------------------------------------------------------------------
-  
-      /**
-       * Filter data
-       *
-       * @param data
-       * @returns {any}
-       */
-      filterData(data): any
-      {
-          if ( !this.filter )
-          {
-              return data;
-          }
-          return FuseUtils.filterArrayByString(data, this.filter);
-      }
-  
-      /**
-       * Sort data 
-       *
-       * @param data
-       * @returns {any[]}
-       */
-      sortData(data): any[]
-      {
-          if ( !this._matSort.active || this._matSort.direction === '' )
-          {
-              return data;
-          }
-  
-          return data.sort((a, b) => {
-              let propertyA: number | string = '';
-              let propertyB: number | string = '';
-  
-              switch ( this._matSort.active )
-              {
-                  case 'DocNum':
-                      [propertyA, propertyB] = [a.DocNum, b.DocNum];
-                      break;
-                  case 'NombreSocio':
-                      [propertyA, propertyB] = [a.NombreSocio, b.NombreSocio];
-                      break;
-                  case 'fechadoc':
-                      [propertyA, propertyB] = [a.fechadoc, b.fechadoc];
-                      break;
-              }
-  
-              const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-              const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-  
-              return (valueA < valueB ? -1 : 1) * (this._matSort.direction === 'asc' ? 1 : -1);
-          });
-      }
-  
-      /**
-       * Disconnect 
-       */
-      disconnect(): void
-      {
-      }
+
 
 
 
 
 
 }
+
+deleteContact(contact): void
+{}
+
+
+
+}
+
+export class FilesDataSource extends DataSource<any>
+{
+    private _filterChange = new BehaviorSubject('');
+    private _filteredDataChange = new BehaviorSubject('');
+
+    /**
+     * Constructor
+     *
+     * @param {paisesServices} paisesServices
+     * @param {MatPaginator} _matPaginator
+     * @param {MatSort} _matSort
+     */
+    constructor(
+        private stocktransfersServices: StocktransfersService,
+        private _matPaginator: MatPaginator,
+        private _matSort: MatSort
+    )
+    {
+        super();
+
+        this.filteredData = this.stocktransfersServices.stocktransfers;
+    }
+
+    /**
+     * Connect function called by the table to retrieve one stream containing the data to render.
+     *
+     * @returns {Observable<any[]>}
+     */
+    connect(): Observable<any[]>
+    {
+        const displayDataChanges = [
+            this.stocktransfersServices.onProductsChanged,
+           this._matPaginator.page,
+            this._filterChange,
+           this._matSort.sortChange
+        ];
+
+        return merge(...displayDataChanges)
+            .pipe(
+                map(() => {
+                        let data = this.stocktransfersServices.stocktransfers.slice();
+
+                        data = this.filterData(data);
+
+                        this.filteredData = [...data];
+
+                        data = this.sortData(data);
+
+                        // Grab the page's slice of data.
+                        const startIndex = this._matPaginator.pageIndex * this._matPaginator.pageSize;
+                        return data.splice(startIndex, this._matPaginator.pageSize);
+                    }
+                ));
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    // Filtered data
+    get filteredData(): any
+    {
+        return this._filteredDataChange.value;
+    }
+
+    set filteredData(value: any)
+    {
+        this._filteredDataChange.next(value);
+    }
+
+    // Filter
+    get filter(): string
+    {
+        return this._filterChange.value;
+    }
+
+    set filter(filter: string)
+    {
+        this._filterChange.next(filter);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Filter data
+     *
+     * @param data
+     * @returns {any}
+     */
+    filterData(data): any
+    {
+        if ( !this.filter )
+        {
+            return data;
+        }
+        return FuseUtils.filterArrayByString(data, this.filter);
+    }
+
+    /**
+     * Sort data 
+     *
+     * @param data
+     * @returns {any[]}
+     */
+    sortData(data): any[]
+    {
+        if ( !this._matSort.active || this._matSort.direction === '' )
+        {
+            return data;
+        }
+
+        return data.sort((a, b) => {
+            let propertyA: number | string = '';
+            let propertyB: number | string = '';
+
+            switch ( this._matSort.active )
+            {
+                case 'DocNum':
+                    [propertyA, propertyB] = [a.DocNum, b.DocNum];
+                    break;
+                case 'UserCreate':
+                    [propertyA, propertyB] = [a.UserCreate, b.UserCreate];
+                    break;
+                case 'fechadoc':
+                    [propertyA, propertyB] = [a.fechadoc, b.fechadoc];
+                    break;
+            }
+
+            const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+            const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+            return (valueA < valueB ? -1 : 1) * (this._matSort.direction === 'asc' ? 1 : -1);
+        });
+    }
+
+    /** 
+     * Disconnect
+     */
+    disconnect(): void
+    {
+    }
+}
+
