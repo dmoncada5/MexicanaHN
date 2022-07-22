@@ -39,6 +39,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
-/logs/*.log
-db.js
