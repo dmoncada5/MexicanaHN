@@ -40,5 +40,5 @@ testem.log
 Thumbs.db
 
 
-/logs/*.log
-db.js
+/Backend/logs/*.log
+/Backend/db.js
