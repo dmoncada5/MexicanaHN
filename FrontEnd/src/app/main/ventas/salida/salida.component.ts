@@ -322,7 +322,7 @@ products: any;
               // precio: this.Detalle.price,
               cantidad: 1,
               // totaLine: this.total(1, this.Detalle.price,0),
-              almacen: 0,
+              almacen: this.Detalle.cbod+"",
              // tipo:this.Detalle.tipo,
               });      
            
@@ -362,7 +362,7 @@ products: any;
                 // precio: this.Detalle.price,
                 cantidad: 1,
                 // totaLine: this.total(1, this.Detalle.price,0),
-                almacen: 0,
+                almacen: this.Detalle.cbod+"",
                 //tipo:this.Detalle.tipo,
             });
         
@@ -622,7 +622,7 @@ createcotizacionForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacen: number
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacen: string
 }
 export interface valida {
     Linea: number;

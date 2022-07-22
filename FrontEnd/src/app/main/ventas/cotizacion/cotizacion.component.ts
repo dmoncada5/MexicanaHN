@@ -317,7 +317,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 DescuentoLine: 0,
                 totaLine: this.total(1, this.Detalle.price,0),
                 //almacen:1,
-                almacen:this.Detalle.cbod,
+                almacen:this.Detalle.cbod+"",
                 impuestocod:0,
                 tipo:this.Detalle.tipo
               });        
@@ -355,7 +355,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 cantidad: 1,
                 DescuentoLine: 0,
                 totaLine: this.total(1, this.Detalle.price,0),
-                almacen:this.Detalle.cbod,
+                almacen:this.Detalle.cbod+"",
                // almacen:1,
                 impuestocod:0,
                 tipo:this.Detalle.tipo
@@ -507,7 +507,7 @@ delete this.cotizacionE.DocNum;
     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
 
 
-        this.CotizacionesService.getExistencia('/products/Existencia', this.ELEMENT_DATA[index]["itemCode"], this.ELEMENT_DATA[index]["almacen"]).subscribe(
+        this.CotizacionesService.getExistencia('/products/Existencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen']).subscribe(
             (res: any[]) => {
                 if (res.length === 0){
                     const line = this.ELEMENT_VALIDADOR.length + 1;
@@ -518,7 +518,7 @@ delete this.cotizacionE.DocNum;
                         Stock: "BODEGA"
                     }, );
                 
-                }else{
+                }else{ 
                 
 
                 stock = res[0]["stock"];
@@ -651,7 +651,7 @@ this.CotizacionesService.updateCotizacionEncabezado(this.cotizacionE).then(respu
   }
 
   export interface Element {
-   DocNum:string, Linea: number, itemCode: string, itemName: string, precio: number, cantidad: number, DescuentoLine: number, totaLine: number,almacen:number,impuestocod: number,tipo:string
+   DocNum:string, Linea: number, itemCode: string, itemName: string, precio: number, cantidad: number, DescuentoLine: number, totaLine: number,almacen: string,impuestocod: number,tipo:string
   }
   export interface valida {
     Linea: number;

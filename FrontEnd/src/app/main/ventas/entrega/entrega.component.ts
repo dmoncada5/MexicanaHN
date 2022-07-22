@@ -356,7 +356,7 @@ PermisoEPago:any;
                   cantidad: 1,
                   DescuentoLine: 0,
                   totaLine: this.total(1, this.Detalle.price, 0),
-                  almacen: 0,
+                  almacen: this.Detalle.cbod+"",
                   impuestocod: 0,
                 });      
              
@@ -394,7 +394,7 @@ PermisoEPago:any;
                   cantidad: 1,
                   DescuentoLine: 0,
                   totaLine: this.total(1, this.Detalle.price, 0),
-                  almacen: 0,
+                  almacen: this.Detalle.cbod+"",
                   impuestocod: 0,
               });
           
@@ -967,7 +967,7 @@ PermisoEliminarPago(){
   }
   
 export interface Element {
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: number; impuestocod: number;
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number;
 }
 export interface valida {
     Linea: number;

@@ -88,7 +88,7 @@ export class CotizacionesService {
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-  getExistencia(url: string, id: number | string, cbod: number) {
+  getExistencia(url: string, id: number | string, cbod: number | string) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ItemCode: id, cbod: cbod});
