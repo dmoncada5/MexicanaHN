@@ -180,7 +180,7 @@ PermisoEPago:any;
           );
         this.facturaService.getOne(buscarD, params.id).subscribe(
             (res: any[]) => {
-  
+
                 for (let index = 0; index < res.length; index++){
                     this.ELEMENT_DATA.push({
                         DocNum: params.id,
@@ -366,7 +366,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 DescuentoLine: 0,
                 totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
                // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
-               almacen: this.Detalle.almacen,
+               almacen: this.Detalle.cbod+"",
                //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
@@ -395,7 +395,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
             this.validaciones = true;
             this.facturaService.getInfo('/products/info', this.productItem, this.codlista).subscribe(
         (res) => {
-      
+   
            this.Detalle = res[0];
            const index = this.ELEMENT_DATA.length + 1;
            this.ELEMENT_DATA.push({
@@ -409,12 +409,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 DescuentoLine: 0,
                 totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
                // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
-                almacen: this.bodegas.almacen,
+                almacen: this.Detalle.cbod+"",
                 //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
             });
-        
+   
            this.productItem = null;
            this.refreshTable();
         },
@@ -431,6 +431,7 @@ getbodegas(){
     const comp = Number(user.company);
     this.facturaService.getbodegasCompany('/bodegas/bodega', comp).subscribe(
         (res) => {
+            console.log("bodega",res)
 this.bodegas = res;
         }
     );
@@ -1030,7 +1031,7 @@ createcotizacionForm(): FormGroup {
 }
 
 export interface Element {
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: number; impuestocod: number; tipo: string;
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number; tipo: string;
 }
 export interface valida {
     Linea: number;

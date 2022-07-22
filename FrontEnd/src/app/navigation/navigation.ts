@@ -165,6 +165,13 @@ export const navigation: FuseNavigation[] = [
                         icon: 'settings',
                         children: [
                             {
+                                id: 'Configuraciones',
+                                title: 'Configuraciones',
+                                type: 'item',
+                                url: '/configuracion/validaciones',
+                                exactMatch: true,
+                            },
+                            {
                                 id: 'areatrabajos',
                                 title: 'Areas Trabajos',
                                 type: 'item',

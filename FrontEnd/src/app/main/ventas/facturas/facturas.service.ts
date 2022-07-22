@@ -136,7 +136,7 @@ API_URI = environment.ipKey;
     return this.http.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
-  ExcExistencia(url: string, id: number | string, cbod: number,tipo:string) {
+  ExcExistencia(url: string, id: number | string, cbod: number | string,tipo:string) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ItemCode: id, cbod: cbod,tipo:tipo});
@@ -237,7 +237,7 @@ addfacturaDetalle(cotizacion: any): Promise<any>
   }, reject);
 });
  }
- setExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ setExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
