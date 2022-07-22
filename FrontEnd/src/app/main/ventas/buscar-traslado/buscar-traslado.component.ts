@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 export class BuscarTrasladoComponent implements OnInit {
     displayedColumns = [ 'DocNum', 'UserCreate', 'fechaDoc'];
     
-    facturas:any;
+    traslados:any;
   dataSource: FilesDataSource | null;
   private _unsubscribeAll: Subject<any>;
 @ViewChild(MatPaginator, {static: true})
@@ -74,11 +74,7 @@ getFormattedDate( originalDate ){
     
                 this.dataSource.filter = this.filter.nativeElement.value;
             });
-    
-       
-
-
-   
+              
   }
 
 }
@@ -92,14 +88,14 @@ export class FilesDataSource extends DataSource<any>
 
 
     constructor(
-        private FacturasService: BuscarTrasladoService,
+        private TrasladoService: BuscarTrasladoService,
         private _matPaginator: MatPaginator,
         private _matSort: MatSort
     )
     {
         super();
 
-        this.filteredData = this.FacturasService.facturas;
+        this.filteredData = this.TrasladoService.traslados;
        
     }
 
@@ -111,7 +107,7 @@ export class FilesDataSource extends DataSource<any>
     connect(): Observable<any[]>
     {
         const displayDataChanges = [
-            this.FacturasService.onProductsChanged,
+            this.TrasladoService.onProductsChanged,
            this._matPaginator.page,
             this._filterChange,
           this._matSort.sortChange
@@ -120,7 +116,7 @@ export class FilesDataSource extends DataSource<any>
         return merge(...displayDataChanges)
             .pipe(
                 map(() => {
-                        let data = this.FacturasService.facturas.slice();
+                        let data = this.TrasladoService.traslados.slice();
 
                         data = this.filterData(data);
 

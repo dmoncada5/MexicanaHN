@@ -1,7 +1,7 @@
 <div class="dialog-content-wrapper">
     <mat-toolbar matDialogTitle class="mat-accent m-0">
         <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-            <span class="title dialog-title">Buscar en Solicitud </span>
+            <span class="title dialog-title">Buscar en Solicitud</span>
             <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
                 <mat-icon>close</mat-icon>
             </button>
@@ -59,36 +59,15 @@
                     </mat-cell>
                 </ng-container>
 
-                <!-- <ng-container matColumnDef="DocNum">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.numero}}</p>
-                    </mat-cell>
-                </ng-container> -->
-
                 <!-- SocioCode Column -->
-                <ng-container matColumnDef="SocioCode">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+                <ng-container matColumnDef="UserCreate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
                     <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.SocioCode}}</p>
+                        <p class="text-truncate">{{product.UserCreate}}</p>
                     </mat-cell>
                 </ng-container>
 
-                <!-- NombreSocio Column -->
-                <ng-container matColumnDef="NombreSocio">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
-                    <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.NombreSocio}}</p>
-                    </mat-cell>
-                </ng-container>
 
-                <!-- empresa_sociedad Column -->
-                <ng-container matColumnDef="TotalDoc">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Total</mat-header-cell>
-                    <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.TotalDoc|number}}</p>
-                    </mat-cell>
-                </ng-container>
 
                 <!-- Fecha Documento Column -->
                 <ng-container matColumnDef="fechaDoc">

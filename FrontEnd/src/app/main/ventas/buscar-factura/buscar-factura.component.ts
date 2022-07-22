@@ -1,7 +1,6 @@
 import { Component, ElementRef, Inject, OnInit ,ViewChild,ViewEncapsulation} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BuscarFService} from './buscar-f.service'
-import { pedidoEncabezado} from '../interfaces/interfaces'
 import { fuseAnimations } from '@fuse/animations';
 import { DataSource } from '@angular/cdk/collections';
 import { FuseUtils } from '@fuse/utils';
@@ -21,6 +20,7 @@ import { Router } from '@angular/router';
 
 export class BuscarFacturaComponent implements OnInit {
   displayedColumns = [ 'DocNum', 'SocioCode', 'NombreSocio','TotalDoc', 'fechaDoc'];
+
   facturas:any;
   dataSource: FilesDataSource | null;
   private _unsubscribeAll: Subject<any>;
@@ -75,11 +75,7 @@ getFormattedDate( originalDate ){
                 this.dataSource.filter = this.filter.nativeElement.value;
             });
     
-       
-
-
-   
-  }
+   }
 
 }
 

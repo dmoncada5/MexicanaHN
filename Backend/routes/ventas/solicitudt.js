@@ -2,7 +2,7 @@ const express = require('express');
 const solicitudtController = require('../../controller/ventas/solicitudtController.js');
 const router = express.Router();
 
-router.get('/solicitudes', solicitudtController.getAllP);
+router.get('/solicitudes', solicitudtController.getAllS);
 //router.get('/', pedidoController.getAll);
 router.post('/todo', solicitudtController.getAll);
 router.post('/correlativo', solicitudtController.getNumero);
