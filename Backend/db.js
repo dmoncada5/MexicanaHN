@@ -1,5 +1,5 @@
 const sql = require('mssql/msnodesqlv8')
-    //prueba--222
+    //prueba--2455
 const config = {
     user: 'sa',
  //   password: 'Genesis2022',
