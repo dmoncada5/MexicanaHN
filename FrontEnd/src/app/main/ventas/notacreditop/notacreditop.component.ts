@@ -347,7 +347,7 @@ isv(): number{
                 DescuentoLine: 0,
                 totaLine: this.total(1, 0, 0),
                 // totaLine: this.total(1, this.Detalle.price,0),
-                almacen: 0,
+                almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
                // tipo:this.Detalle.tipo,
               });      
@@ -387,7 +387,7 @@ isv(): number{
                 DescuentoLine: 0,
                 totaLine: this.total(1, 0, 0),
                 // totaLine: this.total(1, this.Detalle.price,0),
-                almacen: 0,
+                almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
                 //tipo:this.Detalle.tipo,
             });
@@ -674,7 +674,7 @@ createNCPForm(): FormGroup {
 }
 
 export interface Element {
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: number; impuestocod: number;
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number;
 }
 export interface valida {
     Linea: number;

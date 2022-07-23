@@ -194,7 +194,7 @@ addpedidoDetalle(cotizacion: any): Promise<any>
              }, reject);
      });
  }
- setExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ setExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
@@ -220,7 +220,7 @@ updatestatusC(DocNum: number|string, status: string): Promise<any>
     });
 }
 
- ordenExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ ordenExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
@@ -247,7 +247,7 @@ updateCorrelativo(cnum: number): Promise<any>
 }
 
 
-comprasExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+comprasExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});

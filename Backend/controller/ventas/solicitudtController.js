@@ -18,12 +18,12 @@ class MainController {
             res.send(error.message)
         }
     }
-    async getAllP(req, res) {
+    async getAllS(req, res) {
         console.log(res.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()
-                .query(queries.getAllDataP)
+                .query(queries.getAllDataS)
             res.json(result.recordset)
         } catch (error) {
             res.status(500)

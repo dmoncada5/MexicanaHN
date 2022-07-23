@@ -319,8 +319,8 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
               // precio: this.Detalle.price,
               cantidad: 1,
               // totaLine: this.total(1, this.Detalle.price,0),
-              almacenOrigen: 0,
-              almacenDestino: 0,
+              almacenOrigen: this.Detalle.cbod+"",
+              almacenDestino: this.Detalle.cbod+"",
              // tipo:this.Detalle.tipo,
               });      
            
@@ -360,8 +360,8 @@ this.SolicitudtForm.get('id').setValue(this.user.usuario);
                 // precio: this.Detalle.price,
                 cantidad: 1,
                 // totaLine: this.total(1, this.Detalle.price,0),
-                almacenOrigen: 0,
-                almacenDestino: 0,
+                almacenOrigen: this.Detalle.cbod+"",
+                almacenDestino: this.Detalle.cbod+"",
                 //tipo:this.Detalle.tipo,
             });
         
@@ -619,7 +619,7 @@ createcotizacionForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacenOrigen: number;  almacenDestino: number
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number;  almacenOrigen: string;  almacenDestino: string
 }
 export interface valida {
     Linea: number;

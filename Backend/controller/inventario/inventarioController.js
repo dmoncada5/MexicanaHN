@@ -36,7 +36,7 @@ class MainController {
 
 
     async getPrice(req, res) {
- 
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -229,9 +229,6 @@ class MainController {
             res.send(error.message)
         }
     }
-
-
-
 
 
 }

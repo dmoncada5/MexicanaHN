@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class BuscarTrasladoService {
   onProductsChanged: BehaviorSubject<any>;
-  facturas: solicitudtEncabezado[];
+  traslados: solicitudtEncabezado[];
 comprasD: solicitudtDetalle[];
  
 API_URI = environment.ipKey;
@@ -24,25 +24,25 @@ API_URI = environment.ipKey;
 
           Promise.all([
 
-              this.getFacturas('/solicitudt/solicitudes')
+              this.getTraslado('/solicitudt/solicitudes')
             
           ]).then(
               () => {
                   resolve();
               },
               reject
-          );
+          ); 
       });
   }
-  getFacturas(url: string): Promise<any>
+  getTraslado(url: string): Promise<any>
   {
   
     return new Promise((resolve, reject) => {
           this.http.get(`${this.API_URI}` + url )
               .subscribe((response: any) => {
-                  this.facturas = response;
+                  this.traslados = response;
 
-                  this.onProductsChanged.next(this.facturas);
+                  this.onProductsChanged.next(this.traslados);
                   resolve(response);
               }, reject);
       });
@@ -53,7 +53,7 @@ API_URI = environment.ipKey;
   //   return this.http.get(`${this.API_URI}` + url);
   // }
  getAll(url: string) {
-    this.getFacturas('/solicitudt/solicitudes');
+    this.getTraslado('/solicitudt/solicitudes');
     return this.http.get(`${this.API_URI}` + url);
    }
 }
