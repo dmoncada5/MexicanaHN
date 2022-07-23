@@ -90,9 +90,8 @@ import { BuscarOService } from './buscar-orden/buscar-o.service';
 
 import { StocktransfersModule } from './stocktransfers/stocktransfers.module';
 import { StocktransferModule } from './stocktransfer/stocktransfer.module';
-import { StocktransfersService } from './stocktransfers/stocktransfers.service';
 
-
+import {StocktransfersService} from './stocktransfers/stocktransfers.service'
  @NgModule({
     imports: [
         CotizacionesModule,
