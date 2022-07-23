@@ -204,6 +204,19 @@ addCompraDetalle(cotizacion: any): Promise<any>
 });
 }
 
+setOrdenExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
+  let headers = new HttpHeaders();
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
+  return new Promise((resolve, reject) => {
+    this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+        .subscribe((response: any) => {
+         resolve(response);
+        }, reject);
+});
+}
+
+
 updateCorrelativo(cnum: number): Promise<any>
 {
  let headers = new HttpHeaders();

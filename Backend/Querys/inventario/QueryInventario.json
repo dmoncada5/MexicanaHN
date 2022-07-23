@@ -11,6 +11,7 @@
     "setcomprometido": "exec BajarcomprometidoExistencia @ItemCode, @cbod, @cantidad",
     "pedidoExistencia": "exec comprometidoExistencia @ItemCode, @cbod, @cantidad",
     "ordenExistencia": "exec solicitadoExistencia @ItemCode, @cbod, @cantidad",
+    "setOrdenExistencia": "exec restarSolicitadoExistencia @ItemCode, @cbod, @cantidad",
     "comprasExistencia": "exec comprasExistencia @ItemCode, @cbod, @cantidad",
     "NCExistencia": "exec NCExistencia @ItemCode, @cbod, @cantidad",
     "ExecExistencia": "exec ValidarExistencias @tipo, @ItemCode, @cbod"

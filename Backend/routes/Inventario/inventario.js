@@ -16,4 +16,5 @@ router.post('/pedidoExistencia', inventarioController.pedidoExistencia);
 router.post('/comprasExistencia', inventarioController.comprasExistencia);
 router.post('/getNCExistencia', inventarioController.getNCExistencia);
 router.post('/ordenExistencia', inventarioController.ordenExistencia);
+router.post('/setOrdenExistencia', inventarioController.setOrdenExistencia);
 module.exports = router;
