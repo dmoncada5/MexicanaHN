@@ -95,7 +95,7 @@ API_URI = environment.ipKey;
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getExistencia(url: string, id: number | string, cbod: number) {
+  getExistencia(url: string, id: number | string, cbod: number | string) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ItemCode: id, cbod: cbod});
@@ -192,7 +192,7 @@ addCompraDetalle(cotizacion: any): Promise<any>
  }
 
 
- comprasExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ comprasExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
@@ -203,6 +203,19 @@ addCompraDetalle(cotizacion: any): Promise<any>
         }, reject);
 });
 }
+
+setOrdenExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
+  let headers = new HttpHeaders();
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
+  return new Promise((resolve, reject) => {
+    this.http.post(`${this.API_URI}` + url, body, { headers: headers })
+        .subscribe((response: any) => {
+         resolve(response);
+        }, reject);
+});
+}
+
 
 updateCorrelativo(cnum: number): Promise<any>
 {

@@ -204,7 +204,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('precio', sql.Numeric(7, 2), req.body.precio)
+                    .input('precio', sql.Numeric(12, 2), req.body.precio)
                     .input('almacen', sql.NVarChar, req.body.almacen)
                     .query(queries.addNewEntradaDetalle)
                 res.json(result)
@@ -258,7 +258,7 @@ class MainController {
                 .input('itemCode', sql.NVarChar, req.body.itemCode)
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
-                .input('precio', sql.Numeric(7, 2), req.body.precio)
+                .input('precio', sql.Numeric(12, 2), req.body.precio)
                 .input('almacen', sql.NVarChar, req.body.almacen)
 
             .query(queries.updateEntradaDetalle)

@@ -142,7 +142,7 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
 
    this.productsService.saveProduct(data)
  //  this.productsService.saveProductExistencia(data)
-
+ this.productsService.addProductExistencia(data)
        .then((res) => {
     
            // Trigger the subscription with new data

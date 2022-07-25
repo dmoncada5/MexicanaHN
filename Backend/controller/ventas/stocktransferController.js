@@ -220,7 +220,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('precio', sql.Numeric(7, 2), req.body.precio)
+                    .input('precio', sql.Numeric(12, 2), req.body.precio)
                     .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
                     .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
                     .query(queries.addNewtrasladoDetalle)
@@ -271,7 +271,7 @@ class MainController {
                 .input('itemCode', sql.NVarChar, req.body.itemCode)
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
-                .input('precio', sql.Numeric(7, 2), req.body.precio)
+                .input('precio', sql.Numeric(12, 2), req.body.precio)
                 .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
                 .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
 

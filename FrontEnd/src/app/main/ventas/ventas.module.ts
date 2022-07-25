@@ -1,18 +1,13 @@
 import { PrintcompraModule } from './printcompra/printcompra.module';
 
-import { PrintPedidoModule } from './printpedido/printpedido.module';
 import { PedidosService } from './pedidos/pedidos.service';
 import { PromosService } from './promos/promos.service';
 import { NgModule } from '@angular/core';
 import {facturaModule} from 'app/main/ventas/factura/factura.module';
 import {CotizacionesModule} from 'app/main/ventas/cotizaciones/cotizaciones.module';
-import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
-import { CotizacionComponent } from './cotizacion/cotizacion.component';
 import {CotizacionModule} from '../ventas/cotizacion/cotizacion.module';
 import { CotizacionesService } from './cotizaciones/cotizaciones.service';
 import {PrintCotizacionModule} from './print-cotizacion/print-cotizacion.module';
-import { FacturasComponent } from './facturas/facturas.component';
-import { PrintfacturaComponent } from './printfactura/printfactura.component';
 import {PrintfacturaModule} from './printfactura/printfactura.module';
 
 import {PrintTrasladoModule} from './printtraslado/printtraslado.module';
@@ -21,8 +16,6 @@ import {FacturasModule} from 'app/main/ventas/facturas/facturas.module';
 import { FacturasService } from './facturas/facturas.service';
 import { PedidosModule } from 'app/main/ventas/pedidos/pedidos.module';
 import { PromosModule } from 'app/main/ventas/promos/promos.module';
-import { CompraComponent } from './compra/compra.component';
-import { ComprasComponent } from './compras/compras.component';
 import { EntregasService } from './entregas/entregas.service';
 import { ComprasService } from './compras/compras.service';
 import { CompraModule } from './compra/compra.module';
@@ -34,7 +27,6 @@ import {PrintentregaModule} from './printentrega/printentrega.module';
 
 import { PedidoModule } from './pedido/pedido.module';
 import { PromoModule } from './promo/promo.module';
-import { BuscarPedidoComponent } from './buscar-pedido/buscar-pedido.component';
 import {BuscarPedidoModule} from './buscar-pedido/buscar-pedido.module'
 import {BuscarcotizacionModule} from './buscarcotizacion/buscarcotizacion.module'
 import { BuscarCotizacionModule } from './buscar-cotizacion/buscar-cotizacion.module'
@@ -45,7 +37,6 @@ import { BuscarCService } from './buscarcotizacion/buscar-c.service';
 import {NotaCreditosModule} from 'app/main/ventas/notacreditos/notacreditos.module';
 import { NotaCreditoModule } from 'app/main/ventas/notacredito/notacredito.module';
 import { NotaCreditosService } from './notacreditos/notacreditos.service';
-import { PrintnotacreditoComponent } from './printnotacredito/printnotacredito.component';
 import {PrintnotacreditoModule} from './printnotacredito/printnotacredito.module';
 
 
@@ -53,15 +44,12 @@ import {BuscarPService} from './buscar-pedido/buscar-p.service'
 import { BuscarFService } from './buscar-factura/buscar-f.service';
 import { BuscarEntregaService } from './buscar-entrega/buscar-entrega.service';
 
-import { BuscarNCPComponent } from './buscar-ncp/buscar-ncp.component';
 
 import {NotaCreditosPModule} from './notacreditosp/notacreditosp.module';
 import {NotaCreditoPModule} from './notacreditop/notacreditop.module';
 import {NotaCreditosPService} from './notacreditosp/notacreditosp.service';
 import {PrintnotacreditopModule} from './printnotacreditop/printnotacreditop.module' 
 import {BuscarNCPModule} from './buscar-ncp/buscar-ncp.module';
-import { BuscarEntregaComponent } from './buscar-entrega/buscar-entrega.component'
-import { BuscarFacturaComponent } from './buscar-factura/buscar-factura.component';
 
 // import { ConsultaExistenciaModule} from './consulta-existencia/consulta-existencia.module'
 // import { ConsultaExistenciaService } from './consulta-existencia/consulta-esistencia.service';
@@ -129,28 +117,27 @@ import {StocktransfersService} from './stocktransfers/stocktransfers.service'
         EntradaModule,
         SolicitudtsModule,
         SolicitudtModule,
+        StocktransfersModule,
+        StocktransferModule,
+        ConsultaExistenciaModule,
         PrintfacturaModule,
         PrintcompraModule,
         PrintnotacreditoModule,
         PrintnotacreditopModule,
         PrintpcompraModule,
+        PrintTrasladoModule,
         EntregasModule,
         EntregaModule,
         PrintentregaModule,
-        StocktransfersModule,
-        StocktransferModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,
-       BuscarCotizacionModule,
        BuscarCotizacionModule,
        BuscarNCPModule,
        BuscarEntregaModule,
        BuscarFacturaModule,
        BuscarOrdenModule,
-       ConsultaExistenciaModule,
-       PrintTrasladoModule,
-       BuscarTrasladoModule,
+       BuscarTrasladoModule,   
        
     ],
     providers   : [
@@ -167,13 +154,14 @@ SalidasService,
 EntradasService,
 SolicitudtsService,
 StocktransfersService,
+ConsultaExistenciaService,
 BuscarPService,
 BuscarCService,
 BuscarFService,
 BuscarEntregaService,
 BuscarOService,
 BuscarTrasladoService,
-ConsultaExistenciaService,
+
 
   ],
   entryComponents: [

@@ -40,7 +40,7 @@ export interface cotizacionDetalle
     DescuentoLine?: number;
     impuestocod?: number;
     totaLine?: number;
-    almacen?: number;
+    almacen?: string;
 
   }
 export interface facturaEncabezado {

@@ -35,6 +35,7 @@
                 </div> -->
 
 
+
                 <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2" *ngIf="pageType !='new'">
                         {{listaprecios.lista}}
@@ -50,6 +51,12 @@
 
             </div>
             <!-- / APP TITLE -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Buscar una lista">
+                </div>
+            </div>
 
             <button mat-raised-button class="save-product-button" [disabled]="listaprecioForm.invalid" *ngIf="pageType ==='new'" (click)="addListaPrecio()">
         <span>ADD</span>
@@ -162,6 +169,8 @@
                                     <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <mat-form-field floatLabel="never">
+                                            <!-- <input type="number | number:'1.4-4'" matInput [value]="element.price" (change)="Change(element)" [(ngModel)]="element.price"> -->
+
                                             <input type="number" matInput [value]="element.price" (change)="Change(element)" [(ngModel)]="element.price">
                                         </mat-form-field>
                                     </mat-cell>

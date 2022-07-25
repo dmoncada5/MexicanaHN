@@ -4,13 +4,14 @@
     "getPrice": "select * from [dbo].[productsPrice] where ItemCode=@ItemCode and Pricelist=@Pricelist",
     "getInfo": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo, t1.cbod FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode and t2.Pricelist=@Pricelist",
     "getInfo2": "select t1.ItemCode, t1.ItemName,  t2.Pricelist, t2.price,t1.tipo,t1.cbod  FROM products t1 inner join productsPrice t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode",
-    "getInfoComp": "select t1.ItemCode, t1.ItemName,t1.tipo  FROM products t1  where t1.ItemCode=@ItemCode",
+    "getInfoComp": "select t1.ItemCode, t1.ItemName,t1.tipo,t1.cbod   FROM products t1  where t1.ItemCode=@ItemCode",
 
     "getExistencia": "select t1.ItemCode, t1.ItemName,  t2.cbod, t2.stock,t2.minimo, t2.maximo, t2.comprometido, t2.solicitado FROM products t1 inner join  existencias t2 on t1.ItemCode = t2.ItemCode where t1.ItemCode=@ItemCode and t2.cbod=@cbod",
     "setExistencia": "exec BajarExistencia @ItemCode, @cbod, @cantidad",
     "setcomprometido": "exec BajarcomprometidoExistencia @ItemCode, @cbod, @cantidad",
     "pedidoExistencia": "exec comprometidoExistencia @ItemCode, @cbod, @cantidad",
     "ordenExistencia": "exec solicitadoExistencia @ItemCode, @cbod, @cantidad",
+    "setOrdenExistencia": "exec restarSolicitadoExistencia @ItemCode, @cbod, @cantidad",
     "comprasExistencia": "exec comprasExistencia @ItemCode, @cbod, @cantidad",
     "NCExistencia": "exec NCExistencia @ItemCode, @cbod, @cantidad",
     "ExecExistencia": "exec ValidarExistencias @tipo, @ItemCode, @cbod"

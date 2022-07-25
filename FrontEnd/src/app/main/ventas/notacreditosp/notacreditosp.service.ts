@@ -128,7 +128,7 @@ API_URI = environment.ipKey;
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getExistencia(url: string, id: number | string, cbod: number) {
+  getExistencia(url: string, id: number | string, cbod: number | string) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ItemCode: id, cbod: cbod});
@@ -210,7 +210,7 @@ addnotacreditoDetalle(cotizacion: any): Promise<any>
      });
  }
 
- setExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ setExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});
@@ -222,7 +222,7 @@ addnotacreditoDetalle(cotizacion: any): Promise<any>
 });
 }
 
- getNCExistencia(url: string, id: number | string, cbod: number, cantidad: number) {
+ getNCExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   const body = JSON.stringify({ItemCode: id, cbod: cbod, cantidad: cantidad});

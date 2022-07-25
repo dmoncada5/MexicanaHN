@@ -18,12 +18,12 @@ class MainController {
             res.send(error.message)
         }
     }
-    async getAllP(req, res) {
+    async getAllS(req, res) {
         console.log(res.body);
         try {
             const pool = await poolPromise
             const result = await pool.request()
-                .query(queries.getAllDataP)
+                .query(queries.getAllDataS)
             res.json(result.recordset)
         } catch (error) {
             res.status(500)
@@ -204,7 +204,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('precio', sql.Numeric(7, 2), req.body.precio)
+                    .input('precio', sql.Numeric(12, 2), req.body.precio)
                     .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
                     .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
                     .query(queries.addNewSolicitudDetalle)
@@ -259,7 +259,7 @@ class MainController {
                 .input('itemCode', sql.NVarChar, req.body.itemCode)
                 .input('itemName', sql.NVarChar, req.body.itemName)
                 .input('cantidad', sql.Int, req.body.cantidad)
-                .input('precio', sql.Numeric(7, 2), req.body.precio)
+                .input('precio', sql.Numeric(12, 2), req.body.precio)
                 .input('almacenOrigen', sql.NVarChar, req.body.almacenOrigen)
                 .input('almacenDestino', sql.NVarChar, req.body.almacenDestino)
                 .query(queries.updateSolicitudDetalle)
