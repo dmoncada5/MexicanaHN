@@ -229,7 +229,7 @@
                                     <mat-header-cell *matHeaderCellDef> Precio Compra </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <mat-form-field floatLabel="never">
-                                            <input type="number" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio">
+                                            <input type="number | number '1.4-4'" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio">
                                             <!-- <input [disabled]="!Ftupdate" type="number" matInput (change)="Change(element)" [value]="element.precio" [(ngModel)]="element.precio"> -->
                                         </mat-form-field>
                                     </mat-cell>
@@ -257,7 +257,7 @@
 
                                 <ng-container matColumnDef="Total">
                                     <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-                                    <mat-cell *matCellDef="let element"> {{element.totaLine}} </mat-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.totaLine | number:'1.4-4'}} </mat-cell>
                                 </ng-container>
 
                                 <!-- <ng-container matColumnDef="actions ">
@@ -353,7 +353,7 @@
 
                                 <tr class="total">
                                     <td>TOTAL</td>
-                                    <td>{{ grandTotal() | currency:'LPS':'symbol'}}</td>
+                                    <td>{{ grandTotal() | currency:'LPS':'symbol':'1.4-4' }}</td>
                                 </tr>
                             </tbody>
                         </table>

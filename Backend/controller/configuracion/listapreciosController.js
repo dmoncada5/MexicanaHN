@@ -50,7 +50,7 @@ class MainController {
         try {
             const pool = await poolPromise
             const result = await pool.request()
-                .input('price', sql.Numeric(10, 2), req.body.price)
+                .input('price', sql.Numeric(12, 4), req.body.price)
                 .input('ItemCode', sql.NVarChar, req.body.ItemCode)
                 .input('Pricelist', sql.Int, req.body.Pricelist)
                 .input('CurrCode', sql.NVarChar, req.body.CurrCode)
