@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ValidacionesComponent } from './validaciones.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,14 +15,23 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
+import { ValidacionesService } from './validaciones.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
  
-const routes = [
-  {
-      path     : 'configuracion/validaciones', 
-      component: ValidacionesComponent
 
-  }]; 
+
+  const routes = [
+    {
+      path     : 'configuracion/validaciones', 
+        component: ValidacionesComponent,
+       // canActivate: [GuardallGuard],
+        // resolve  : {
+        //     data: ValidacionesService
+        // }
+    }
+   ];
 
 @NgModule({
   declarations: [
@@ -31,11 +39,13 @@ const routes = [
   ],
   
     exports     : [
+  
         ValidacionesComponent
     ],
   imports: [
+
     RouterModule.forChild(routes),
-    CommonModule,
+  
     MatFormFieldModule,
     TranslateModule,
     MatButtonModule,
@@ -50,7 +60,9 @@ const routes = [
     MatPaginatorModule,
     FuseSharedModule,
     FuseWidgetModule,
-    MatDatepickerModule,
-  ]
+  ],
+  providers   : [
+      ValidacionesService
+]
 })
 export class ValidacionesModule { }

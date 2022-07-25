@@ -12,13 +12,13 @@
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
                         <div class="logo">
-                            <img src="assets/images/logos/Mexicana.jpeg">
+                            <img src="assets/images/logos/logo.jpg">
                         </div>
 
                         <div class="divider"></div>
 
                         <div class="detail">
-                            <div class="title">MEXICANAHN</div>
+                            <div class="title">{{company.empresa}}</div>
                             <!-- <div *ngIf="invoice?.from.address" class="address">
                                 {{invoice.from.address}}
                             </div>
@@ -44,13 +44,13 @@
                         <div class="detail">
                             <div class="title">{{Encabezado.NombreSocio}}</div>
                             <div class="address">
-                                Plaza Fesmar 13 avenida, 6 calle S.O. Barrio Suyapa, S.P.S Honduras
+                 {{company.direccion}}
                             </div>
                             <div class="phone">
                                 <span>Phone:</span>
                             </div>
                             <div class="email">
-                                <span>Email:</span> genesis.sm@gmail.com
+                                <span>Email:</span>  {{company.correo}}
                             </div>
                             <div class="website">
                                 <span>Comentarios:</span> {{Encabezado.comentarios}}
@@ -134,10 +134,10 @@
                 <!-- <div class="note">Esta cotizacion tiene validez por 15 dias apartir de la fecha de impresion</div> -->
                 <div fxLayout="row" fxLayoutAlign="start start">
                     <div class="logo">
-                        <img src="assets/images/logos/Mexicana.jpeg">
+                        <img src="assets/images/logos/logo.jpg">
                     </div>
                     <div class="small-note">
-                        Productos 100% natural para bajar de peso
+      {{company.comentarios}}
                     </div>
                 </div>
             </div>

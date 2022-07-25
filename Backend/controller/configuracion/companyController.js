@@ -6,7 +6,7 @@ var queries = JSON.parse(rawdata);
 class MainController {
 
     async getAll(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -18,7 +18,7 @@ class MainController {
         }
     }
     async getOne(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()

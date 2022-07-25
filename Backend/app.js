@@ -161,6 +161,7 @@ const notacreditopRoutes = require('./routes/ventas/notacreditop');
 /*Reportes */
 const SaldoClientesRoutes = require('./routes/Reportes/ReportesFinanzas');
 const SociosRRoutes = require('./routes/Reportes/ReportesSocios');
+const validacionesRoutes = require('./routes/configuracion/validacions');
 
 
 
@@ -225,7 +226,7 @@ app.use('/api/consultaexistencia', consultaexistenciaRoutes);
 app.use('/api/compra', compraRoutes);
 app.use('/api/promo', promoRoutes);
 app.use('/api/stocktransfer', stocktransferRoutes);
-
+app.use('/api/validaciones', validacionesRoutes);
 
 /*URL PAGO */
 app.use('/api/pago', pagoRoutes);

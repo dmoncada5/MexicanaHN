@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import {PrintCotizacionService} from '../print-cotizacion.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 @Component({
   selector: 'app-print-cotizacion',
   templateUrl: './print-cotizacion.component.html',
@@ -19,8 +20,13 @@ export class PrintCotizacionComponent implements OnInit {
 DocNum:''
   }
   pageType:any;
+
+  company:any={
+empresa:null
+  }
   constructor(private prtservice: PrintCotizacionService,
               private activatedRoute: ActivatedRoute,
+              private companyServices:CompanysService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -41,7 +47,15 @@ console.log(this.pageType)
     );
     
 
+    this.companyServices.getCompanyOne("/company/edit/",1).subscribe(
+      (res)=>{
+      
+      this.company=res[0];
+    
 
+    
+      }
+    )
 
   }
 

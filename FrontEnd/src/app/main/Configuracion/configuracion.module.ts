@@ -111,26 +111,18 @@ import { ProductosService } from './productos/productos.service';
 import { ValidacionesComponent } from './validaciones/validaciones.component';
 import {ValidacionesModule} from './validaciones/validaciones.module'
 import { ValidacionesService} from './validaciones/validaciones.service'
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [
-  
-
-OrdencomprasComponent,
-      
-OrdencompraComponent,
-      
-CxpagarsComponent,
-      
-CxpagarComponent,
-      
-
       
 ]
 ,
   imports: [
 
+    CommonModule,
+    ValidacionesModule,
     GruposModule,
     GrupoModule,    
     NumeracionesModule,
@@ -176,7 +168,7 @@ CxpagarComponent,
     ProductModule,
     ProductosModule,
     ProductoModule  ,
-    ValidacionesModule
+
      
   ],
   providers   : [

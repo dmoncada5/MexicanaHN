@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import {PrintNotaCreditoService} from '../print-notacredito.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 
 @Component({
   selector: 'app-printnotacredito',
@@ -19,8 +20,12 @@ export class PrintnotacreditoComponent implements OnInit {
 DocNum:''
   }
   pageType:any;
+  company :any={
+    empresa:null
+  }
   constructor(private prtservice: PrintNotaCreditoService,
               private activatedRoute: ActivatedRoute,
+              private companyServices:  CompanysService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -42,7 +47,15 @@ console.log(this.pageType)
     
 
 
+    this.companyServices.getCompanyOne("/company/edit/",1).subscribe(
+      (res)=>{
+      
+      this.company=res[0];
+    
 
+    
+      }
+    )
   }
 
   ngOnInit(): void {

@@ -32,12 +32,12 @@
 
             </div>
             <!-- / APP TITLE -->
-
+<!-- 
             <button mat-raised-button class="save-product-button" [disabled]="areatrabajoForm.invalid" *ngIf="pageType ==='new'" (click)="addAreaT()">
         <span>ADD</span>
-    </button>
+    </button> -->
 
-            <button mat-raised-button class="save-product-button" [disabled]="areatrabajoForm.invalid || areatrabajoForm.pristine" *ngIf="pageType !='new'" (click)="saveAreaT()">
+            <button mat-raised-button class="save-product-button"  (click)="update()">
         <span>SAVE</span>
     </button>
 
@@ -57,24 +57,32 @@
             <!-- CONTENT -->
             <div class="content">
 
-                <form name="areatrabajoForm" [formGroup]="areatrabajoForm" class="product w-100-p" fxLayout="column" fxFlex>
-
+          
                     <mat-tab-group>
 
                        <mat-tab label="Ventas">
 
-                            <div class="tab-content p-24" fusePerfectScrollbar>
-                
-                                
-                                <div fxLayout="row" fxLayoutAlign="space-between">
-                                    <button mat-button class="toggle-complete-button" (click)="toggleCompleted($event)"
+                         <div class="tab-content p-24" fusePerfectScrollbar>
+                           <!-- <div *ngFor="let val of TValidas" fxLayout="row" fxLayoutAlign="space-between">
+                                    <button mat-button class="toggle-complete-button" (click)="toggleCompleted($event,val.validacionid)"
                                     aria-label="Toggle completed" fxFlex="0 1 auto">
-                                <mat-icon *ngIf="todo.completed">check_box</mat-icon>
-                                <mat-icon *ngIf="!todo.completed">check_box_outline_blank</mat-icon>
-                                <span class="ml-8">Mark as Done</span>
-                            </button>      
+                                <mat-icon *ngIf="val.valido">check_box</mat-icon>
+                                <mat-icon *ngIf="!val.valido">check_box_outline_blank</mat-icon>
+                                <span class="ml-8">{{val.Validacion}}</span>
+                            </button> 
+     
+        
+                                </div>  -->
 
+                                <div *ngFor="let val of TValidas" fxLayout="row" fxLayoutAlign="space-between">
+                                    <label >
+                                        <input type="checkbox" [(ngModel)]="val.valido"  (change)="toggleCompleted($event,val.validacionid)"/>
+                                       {{val.Validacion}}
+                                       </label>
                                 </div>
+          
+                         
+                    
 
                             </div>
 
@@ -85,67 +93,13 @@
 
                             <div class="tab-content p-24" fusePerfectScrollbar>
 
-                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p" *ngIf="pageType !='new'">
-                                    <mat-label>Codigo Area</mat-label>
-                                    <input matInput placeholder="Codigo" readonly="readonly" name="careat" formControlName="careat">
-                                </mat-form-field>
+                 
 
                                 <div fxLayout="row" fxLayoutAlign="space-between">
-                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
-                                        <mat-label>Compañía</mat-label>
-                                        <mat-select formControlName='ccomp' name="ccomp">
-                                            <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
-                                     
-                                            </mat-option>
-                                        </mat-select>
- 
-                                    </mat-form-field>
+                    
 
 
-                                    <!--
-                                            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
-                                                <mat-label>Area</mat-label>
-                                                <input matInput placeholder="Area" name="area" formControlName="area" type="text">
-                                            </mat-form-field>
-                                            -->
-                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
-                                        <mat-label>Area</mat-label>
-                                        <input matInput placeholder="Area" name="area" formControlName="area">
-                                        <!-- <span matSuffix>cm</span> -->
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
-                                        <mat-label>Estado</mat-label>
-                                        <mat-select formControlName="estado">
-                                            <mat-option [value]="'Activo'">
-                                                Activo
-                                            </mat-option>
-                                            <mat-option [value]="'Inactivo'">
-                                                Inactivo
-                                            </mat-option>
-
-                                        </mat-select>
-                                        <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
-                                                <mat-error>Estado is required!</mat-error> -->
-                                    </mat-form-field>
-
-
-                                    <!--                                            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
-                                                <mat-label>Estado</mat-label>
-                                                <mat-select formControlName="estado">
-                                                    <mat-option [value]="'Activo'">
-                                                        Activo
-                                                    </mat-option>
-                                                    <mat-option [value]="'Inactivo'">
-                                                        Inactivo
-                                                    </mat-option>
-            
-                                                </mat-select> -->
-
-                                    <!-- <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
-                                                <mat-error>Estado is required!</mat-error> -->
-                                    <!-- </mat-form-field> -->
-
+                     
 
 
                                 </div>
@@ -156,7 +110,7 @@
 
                     </mat-tab-group>
 
-                </form>
+      
 
             </div>
             <!-- / CONTENT -->

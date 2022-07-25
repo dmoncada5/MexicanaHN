@@ -7,8 +7,7 @@ class MainController {
 
 
     async getAllMio(req, res) {
-        console.log(req.body)
-        console.log(res.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -22,8 +21,7 @@ class MainController {
 
 
     async getAll(req, res) {
-        console.log(req.body)
-        console.log(res.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -36,7 +34,7 @@ class MainController {
     }
 
     async getOne(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -50,7 +48,7 @@ class MainController {
     }
 
     async addNewData(req, res) {
-        console.log(req.body)
+
         try {
             if (req.body.clbod != null && req.body.lote != null && req.body.estado != null) {
                 const pool = await poolPromise
@@ -76,7 +74,7 @@ class MainController {
     }
     async updateData(req, res) {
 
-        console.log(req.body)
+
         try {
             if (req.body.lote != null && req.body.estado != null) {
 
@@ -102,7 +100,7 @@ class MainController {
         }
     }
     async deleteData(req, res) {
-        console.log(req.body)
+
         try {
             if (req.body.clbod != null) {
                 const pool = await poolPromise

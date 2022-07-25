@@ -20,7 +20,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FacturaComponent implements OnInit {
   displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad', 'Descuento', 'Total', 'Bodega', 'actions'];
-  ELEMENT_DATA: Element[] = [];
+  ELEMENT_DATA: Element[] = []; 
   ELEMENT_VALIDADOR: valida[] = [];
   formap: validapago[] = [];
 //   dataSource = new MatTableDataSource(this.ELEMENT_DATA);

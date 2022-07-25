@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import {PrintFacturaService} from '../print-factura.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 
 @Component({
   selector: 'app-printfactura',
@@ -19,8 +20,12 @@ export class PrintfacturaComponent implements OnInit {
 DocNum:1
   }
   pageType:any;
+  company:any={
+empresa:null
+  }
   constructor(private prtservice: PrintFacturaService,
               private activatedRoute: ActivatedRoute,
+              private companyServices: CompanysService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -40,7 +45,15 @@ console.log(this.pageType)
       (err)=>{console.log(err);}
     );
     
+    this.companyServices.getCompanyOne("/company/edit/",1).subscribe(
+      (res)=>{
+      
+      this.company=res[0];
+    
 
+    
+      }
+    )
 
 
   }

@@ -24,10 +24,10 @@
 
     <div class="user" fxLayout="column" [ngClass]="fuseConfig.layout.navbar.secondaryBackground">
 
-        <div class="h3 username">MexicanaHN</div>
-        <div class="h5 email hint-text mt-8">Dulces Mexicanos y Mas...</div>
+        <div class="h3 username">{{this.company.empresa}}</div>
+        <div class="h5 email hint-text mt-8">{{this.company.comentarios}}</div>
         <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground">
-            <img class="avatar" src="assets/images/avatars/Velazquez.jpg">
+            <img class="avatar" src="assets/images/logos/logo.jpg">
         </div>
 
     </div>

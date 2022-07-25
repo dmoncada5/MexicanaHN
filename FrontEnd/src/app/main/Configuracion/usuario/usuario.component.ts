@@ -119,6 +119,7 @@ usuario: any = {
  }
  saveUsuario(){
    const data = this.usuarioForm.getRawValue();
+
    data.handle = FuseUtils.handleize(data.csuc);
 
 

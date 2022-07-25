@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import {PrintPCompraService} from '../print-pcompra.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 
 @Component({
   selector: 'app-printpcompra',
@@ -19,8 +20,12 @@ export class PrintpcompraComponent implements OnInit {
 DocNum:''
   }
   pageType:any; 
+  company:any={
+    empresa:null,
+  }
   constructor(private prtservice: PrintPCompraService,
               private activatedRoute: ActivatedRoute,
+              private companyServices: CompanysService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -41,6 +46,15 @@ console.log(this.pageType)
     );
     
 
+    this.companyServices.getCompanyOne("/company/edit/",1).subscribe(
+      (res)=>{
+      
+      this.company=res[0];
+    
+
+    
+      }
+    )
  
 
   }
