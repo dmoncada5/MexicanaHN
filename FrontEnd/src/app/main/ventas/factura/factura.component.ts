@@ -281,6 +281,9 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     );
     this.selectedSerie = true;
    }
+
+
+   
   complete(event) {
       this.facturaService.getOneSocio('/socios/edit', event.target.value).subscribe(
           (res) => {

@@ -41,6 +41,32 @@ export class PrintFacturaService
         .pipe(retry(1),catchError(this.errorHandl));
       
     }
+
+    getformato(url: string, numero: number ) {
+      let headers = new HttpHeaders();
+      headers = new HttpHeaders().set('Content-Type', 'application/json');
+      const body = JSON.stringify({numero: numero});
+      return this._httpClient.post(`${this.API_URI}` + url, body, { headers: headers })
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
+
+    getnumeracion(url: string, ccomp: number | string, documento: string ) {
+      let headers = new HttpHeaders();
+      headers = new HttpHeaders().set('Content-Type', 'application/json');
+      const body = JSON.stringify({ccomp: ccomp, tipo_documento: documento});
+      return this._httpClient.post(`${this.API_URI}` + url, body, { headers: headers })
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
+    getOnenumeracion(url: string, ccomp: number | string, documento: string, csuc: number ) {
+      let headers = new HttpHeaders();
+      headers = new HttpHeaders().set('Content-Type', 'application/json');
+      const body = JSON.stringify({ccomp: ccomp, tipo_documento: documento, csuc: csuc});
+      return this._httpClient.post(`${this.API_URI}` + url, body, { headers: headers })
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
     errorHandl(error) {
       let errorMessage = '';
       if (error.error instanceof ErrorEvent) {
