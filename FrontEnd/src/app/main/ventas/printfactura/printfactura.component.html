@@ -1,4 +1,3 @@
-
 <div id="invoice" class="modern page-layout blank" fxLayout="row">
 
 
@@ -18,7 +17,7 @@
 
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
-                
+
 
                         <!-- <div class="divider"></div> -->
 
@@ -40,114 +39,123 @@
 
                     </div>
 
-                   
-           
-                      
-               
-                 
+
+
+
+
+
                 </div>
                 <div class="text1">{{company.empresa}}</div>
                 <div class="divider1"></div>
                 <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
-                <div class="text" >{{Encabezado.NombreSocio}}</div>
-        <div class="divider1"></div>
-<div class="text">    FACTURA </div><div class="text">    {{Encabezado.numero}}</div>
-<div class="text">    FECHA </div><div class="text">    {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
+                <div class="text">{{Encabezado.NombreSocio}}</div>
+                <div class="divider1"></div>
+                <div class="text"> FACTURA </div>
+                <div class="text"> {{Encabezado.numero}}</div>
+                <div class="text"> FECHA </div>
+                <div class="text"> {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
 
-<div class="text">    CAI </div>
-<p class="text1">{{Encabezado.cai }} </p>
-<div> <p class="text1">{{Encabezado.cai }} </p>    </div>
-<div class="text">    FECHA LIMITE EMISION  </div>
-<div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}  </div>
-<div class="text">    RANGO </div><div class="text">    {{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</div>
+                <div class="text"> CAI </div>
+                <div class="text1">{{Encabezado.cai.substring(0,21) }}</div>
+
+                <div class="text1">{{Encabezado.cai.substring(21,37) }} </div>
+
+                <div class="text"> FECHA LIMITE EMISION </div>
+                <div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </div>
+                <div class="text"> RANGO </div>
+                <div class="text"> {{Encabezado.fact_emini }} </div>
+                <div class="text"> hasta </div>
+                <div class="text"> {{Encabezado.fact_emifin}}</div>
 
 
 
-        
-             
-          
-               
 
-            
+
+
+
+
+
             </div>
 
-      
-        <div class="content">
+
+            <div class="content">
                 <table class="simple invoice-table">
                     <thead>
                         <th>
                         </th>
-                     
-                           <tr>
-                            <div> <td > CODIGO</td>  </div>
-                            
-                           </tr> 
-                            <tr>
-                                <div>
-                             <td >DESCRIPCION</td>   
+
+                        <tr>
+                            <div>
+                                <td> CODIGO</td>
                             </div>
-                            </tr> 
-          
+
+                        </tr>
+                        <tr>
+                            <div>
+                                <td>DESCRIPCION</td>
+                            </div>
+                        </tr>
 
 
-                            <tr>
-                                <div  >
-                   
-                                    <td >    PRECIO</td>  
-                                    <td class="text-right detal" >   CANTIDAD</td>  
-                                    <td class="text-right">  TOTAL</td>  
-                                    
-                                  
-                                </div>
-                            </tr>
-                      
-                            <tr>
-                                <th>
-                                </th>   
-                                <th>
-                                </th>   
-                                <th>
-                                </th>   
-                            </tr>
-                                 
-                          
+
+                        <tr>
+                            <div>
+
+                                <td> PRECIO</td>
+                                <td class="text-right detal"> CANTIDAD</td>
+                                <td class="text-right"> TOTAL</td>
+
+
+                            </div>
+                        </tr>
+
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+
+
                     </thead>
 
 
-             <tbody>
-                <tr *ngFor="let det of Detalle">
-
-            
-                    
-                      
-                 
-                <div >{{det.itemCode}}</div>   
-                <div >{{det.itemName}}</div>   
-    
-                <div  >
-                   
-                    <td >    {{det.precio}}</td>  
-                    <td  >   {{det.cantidad}}</td>  
-                    <td  class="text-right">    {{det.totaLine }}</td>  
-                    
-                  
-                </div>
-            
-                       
-                
-               
-                        
-                  
+                    <tbody>
+                        <tr *ngFor="let det of Detalle">
 
 
 
 
 
-                
-                </tr>
+                            <div>{{det.itemCode}}</div>
+                            <div>{{det.itemName}}</div>
+
+                            <div>
+
+                                <td> {{det.precio}}</td>
+                                <td> {{det.cantidad}}</td>
+                                <td class="text-right"> {{det.totaLine }}</td>
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        </tr>
                     </tbody>
-                 
-                </table> 
+
+                </table>
                 <table class="simple invoice-table-footer">
                     <tbody>
                         <tr class="subtotal">
@@ -177,7 +185,7 @@
                         <!-- <img src="assets/images/logos/Genesis.jpg"> -->
                     </div>
                     <div class="small-note">
-                   {{company.comentarios}}
+                        {{company.comentarios}}
                     </div>
                 </div>
             </div>
