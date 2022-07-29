@@ -94,14 +94,14 @@
                         <th>
                         </th>
 
-                        <tr>
-                            <div>
+                        <tr class="detalle">
+                            <div >
                                 <td> CODIGO</td>
                             </div>
 
                         </tr>
                         <tr>
-                            <div>
+                            <div class="detalle">
                                 <td>DESCRIPCION</td>
                             </div>
                         </tr>
@@ -111,9 +111,9 @@
                         <tr>
                             <div>
 
-                                <td> PRECIO</td>
-                                <td class="text-right detal"> CANTIDAD</td>
-                                <td class="text-right"> TOTAL</td>
+                                <td class="detalle"> PRECIO</td>
+                                <td class="text-right detal detalle"> CANTIDAD</td>
+                                <td class="text-right detalle"> TOTAL</td>
 
 
                             </div>
@@ -139,10 +139,10 @@
 
 
 
-                            <div>{{det.itemCode}}</div>
-                            <div>{{det.itemName}}</div>
+                            <div class="detalle">{{det.itemCode}}</div>
+                            <div class="detalle">{{det.itemName}}</div>
 
-                            <div>
+                            <div class="detalle">
 
                                 <td> {{det.precio}}</td>
                                 <td> {{det.cantidad}}</td>
@@ -180,17 +180,17 @@
                             <td>SUBTOTAL</td>
                             <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L.':'symbol'}}</td>
                         </tr>
-                        <tr class="tax">
+                        <tr >
                             <td>ISV</td>
                             <td>{{Encabezado.impuesto| currency:'L.':'symbol'}}</td>
                         </tr>
-                        <tr class="discount">
+                        <tr class="discount" >
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="subtotal">
-                            <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'L.':'symbol'}}</td>
+                        <tr class="total" >
+                            <td >TOTAL</td>
+                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
                         </tr>
                     </tbody>
                 </table>

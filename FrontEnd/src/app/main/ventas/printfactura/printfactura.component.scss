@@ -9,7 +9,13 @@
 @page {
     margin: 0 -6cm
 }
-
+.detalle{
+    font-family:'Arial';
+    font-size:small;
+    font-weight: bolder;
+    text-align:  left;
+    color: black;
+}
 .text1{
     font-family:'Arial';
     font-size:small;
@@ -123,9 +129,9 @@ app-printfactura {
                             margin: 32px 0 96px 0;
                             tr {
                                 td {
-                                    text-align: left;
+                                    text-align: right;
                                     font-size: 12px;
-                                    font-weight: 500;
+                                    font-weight: bold;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
                                     padding: 8px 8px;
@@ -136,6 +142,7 @@ app-printfactura {
                                 &.discount {
                                     td {
                                         padding-bottom: 12px;
+                                        font-weight: bolder;
                                     }
                                 }
                                 &.total {
@@ -143,7 +150,8 @@ app-printfactura {
                                         padding: 32px 8px;
                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
                                         font-size: 12px;
-                                        font-weight: 300;
+                                        font-weight: bolder;
+                                      
                                         color: rgba(0, 0, 0, 1);
                                     }
                                 }

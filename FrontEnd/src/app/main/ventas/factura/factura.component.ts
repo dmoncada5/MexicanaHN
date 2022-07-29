@@ -10,6 +10,7 @@ import { facturaDetalle, facturaEncabezado, Order, pago, tarjeta, efectivo, cheq
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
+import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
 
 @Component({
   selector: 'app-factura',
@@ -82,14 +83,15 @@ payment: any;
 totapagado= 0;
 saldo= 0;
 PermisoEPago:any;
-
+reglas :any;
 
 
   constructor(private facturaService: FacturasService,
               private activatedRoute: ActivatedRoute,
               private _formBuilder: FormBuilder,
               private _matSnackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private ValidacionesServices:ValidacionesService) {
            
                 this.order = new Order();
       // Set the private defaults
@@ -120,6 +122,14 @@ PermisoEPago:any;
                       map(state => state ? this._filterProducts(state) : this.products.slice())
                   );
           }
+      );
+
+
+      this.ValidacionesServices.getAll('/validaciones').subscribe(
+        (res:any[]) => {
+   this.reglas = res;
+   console.log(this.reglas)
+        }
       );
   }
 
@@ -180,7 +190,9 @@ PermisoEPago:any;
           );
         this.facturaService.getOne(buscarD, params.id).subscribe(
             (res: any[]) => {
-
+console.log(
+    "pedido",res
+)
                 for (let index = 0; index < res.length; index++){
                     this.ELEMENT_DATA.push({
                         DocNum: params.id,
@@ -194,6 +206,7 @@ PermisoEPago:any;
                         almacen: res[index]['almacen'],
                         impuestocod: 0,
                         tipo:res[index]['tipo'],
+                        costo:res[index]['costo']
                     });
                 }
                 this.selectedSerie = true;
@@ -309,13 +322,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
           }
       );
   }
-  Change(event) {
-  
-      const indice: number = this.ELEMENT_DATA.indexOf(event);
-      this.ELEMENT_DATA[indice]['totaLine'] = this.total(event['cantidad'], event['precio'], event['DescuentoLine']);
-      this.validarExist(event);
-      this.refreshTable();
-  }
+
 
   total(cant: number, precio: number, descuento: number): number {
       return (cant * precio) - (cant * precio) * (descuento / 100);
@@ -373,6 +380,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
+                costo:this.Detalle.costo
               });      
            
               this.productItem = null;
@@ -416,6 +424,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 //almacen: 0,
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
+                costo:this.Detalle.costo
             });
    
            this.productItem = null;
@@ -434,43 +443,140 @@ getbodegas(){
     const comp = Number(user.company);
     this.facturaService.getbodegasCompany('/bodegas/bodega', comp).subscribe(
         (res) => {
-            console.log("bodega",res)
+
 this.bodegas = res;
         }
     );
 }
-validarExist(eve) {
-   if( eve.tipo=== "I"){
-    let stock = 0;
-    this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
-        (res: any[]) => {
-                if (res.length === 0){
-                    this.validaciones = false;
-                    this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
-                  verticalPosition: 'top',
-                  duration: 2000
-              });
-            }else{
-            stock = res[0]['stock'];
-            if (eve.cantidad > stock) {
-                this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
-                    verticalPosition: 'top',
-                    duration: 2000
-                });
-                this.validaciones = false;
-            } else {
-                if (this.selecSerieS == true){
 
-                    this.validaciones = true;
-                }else{
-                    this.validaciones = false;
-                }
-            }
-          }
-        }
-    );
+Change(event) {
+  
+    const indice: number = this.ELEMENT_DATA.indexOf(event);
+    this.ELEMENT_DATA[indice]['totaLine'] = this.total(event['cantidad'], event['precio'], event['DescuentoLine']);
+  //  this.validarExist(event);
+ this. validarExist(event,valor=>{
+
+
+this.Vreglas((err,ValorRegla)=>{
+
+    if (err){
+        return console.log(err);
+    }
+
+    if (valor && ValorRegla)  {
+this.validaciones=true;
+    }else{
+        this.validaciones=false;   
+    }
+
+})
+
+
+  });
+    this.refreshTable();
 }
+
+
+  Vreglas=(callback)=>
+  {
+
+
+    if (this.reglas[0].valido){
+    for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+
+       if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+        this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+            verticalPosition: 'top',
+            duration: 2000
+        });
+        this.validaciones = false;
+        callback(null,this.validaciones); 
+        return;
+       }  else{             this.validaciones = true;
+        callback(null,this.validaciones); }  }
+    }else{
+        callback(null,true);
+    }
+
+    }  
+
+
+
+     validarExist=(eve,callback)=>{
+    if( eve.tipo=== "I"){
+     let stock = 0;
+     this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
+         (res: any[]) => {
+                 if (res.length === 0){
+                     this.validaciones = false;
+                     this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
+                   verticalPosition: 'top',
+                   duration: 2000
+               });
+             }else{
+             stock = res[0]['stock'];
+             if (eve.cantidad > stock) {
+                 this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
+                     verticalPosition: 'top',
+                     duration: 2000
+                 });
+                 this.validaciones = false;
+                 
+ callback(this.validaciones);
+                 
+             } else {
+                 if (this.selecSerieS == true){
+ 
+                     this.validaciones = true;
+                     
+ callback(this.validaciones);
+                 }else{
+                     this.validaciones = false;
+                     
+ callback(this.validaciones);
+                 }
+             }
+           }
+         }
+      
+     );
+ }
+
 }
+ 
+
+// validarExist(eve) {
+//    if( eve.tipo=== "I"){
+//     let stock = 0;
+//     this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
+//         (res: any[]) => {
+//                 if (res.length === 0){
+//                     this.validaciones = false;
+//                     this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
+//                   verticalPosition: 'top',
+//                   duration: 2000
+//               });
+//             }else{
+//             stock = res[0]['stock'];
+//             if (eve.cantidad > stock) {
+//                 this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
+//                     verticalPosition: 'top',
+//                     duration: 2000
+//                 });
+//                 this.validaciones = false;
+//             } else {
+//                 if (this.selecSerieS == true){
+
+//                     this.validaciones = true;
+//                 }else{
+//                     this.validaciones = false;
+//                 }
+//             }
+//           }
+//         }
+//     );
+// }
+// }
   actions(event) {
       const indice: number = this.ELEMENT_DATA.indexOf(event);
       this.ELEMENT_DATA.splice(indice, 1);
@@ -535,7 +641,9 @@ validarExist(eve) {
 
         ///////////////////// grabar en tabla//////////////////////////////////
         if (!validaciones) {
-            console.log('fencabezado',this.FacturaE)
+      
+
+
             this.facturaService.addfacturaEncabezado(this.FacturaE).then(respuesta => {
 
                     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
@@ -610,7 +718,7 @@ validarExist(eve) {
 //         }
 //     }
 // }}
-guardarValidaciones = (meal, callback) => {
+guardarValidaciones = (msj, callback) => {
 
     let stock = 0;
 
@@ -1034,7 +1142,7 @@ createcotizacionForm(): FormGroup {
 }
 
 export interface Element {
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number; tipo: string;
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number; tipo: string; costo: number;
 }
 export interface valida {
     Linea: number;

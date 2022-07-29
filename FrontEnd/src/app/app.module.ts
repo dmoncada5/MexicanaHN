@@ -26,6 +26,7 @@ import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { CitasComponent } from './main/Configuracion/citas/citas.component';
 import { ValidacionesComponent } from './main/Configuracion/validaciones/validaciones.component';
 import { CommonModule } from '@angular/common';
+
 const appRoutes: Routes = [
     {
         path        : 'autenticar',
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        
         
      
     ],
