@@ -128,7 +128,7 @@ reglas :any;
       this.ValidacionesServices.getAll('/validaciones').subscribe(
         (res:any[]) => {
    this.reglas = res;
-   console.log(this.reglas)
+
         }
       );
   }
@@ -190,9 +190,7 @@ reglas :any;
           );
         this.facturaService.getOne(buscarD, params.id).subscribe(
             (res: any[]) => {
-console.log(
-    "pedido",res
-)
+
                 for (let index = 0; index < res.length; index++){
                     this.ELEMENT_DATA.push({
                         DocNum: params.id,
@@ -544,39 +542,6 @@ this.validaciones=true;
 
 }
  
-
-// validarExist(eve) {
-//    if( eve.tipo=== "I"){
-//     let stock = 0;
-//     this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
-//         (res: any[]) => {
-//                 if (res.length === 0){
-//                     this.validaciones = false;
-//                     this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
-//                   verticalPosition: 'top',
-//                   duration: 2000
-//               });
-//             }else{
-//             stock = res[0]['stock'];
-//             if (eve.cantidad > stock) {
-//                 this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
-//                     verticalPosition: 'top',
-//                     duration: 2000
-//                 });
-//                 this.validaciones = false;
-//             } else {
-//                 if (this.selecSerieS == true){
-
-//                     this.validaciones = true;
-//                 }else{
-//                     this.validaciones = false;
-//                 }
-//             }
-//           }
-//         }
-//     );
-// }
-// }
   actions(event) {
       const indice: number = this.ELEMENT_DATA.indexOf(event);
       this.ELEMENT_DATA.splice(indice, 1);
@@ -1098,7 +1063,7 @@ updateStatus(): void
 }
 
 EliminarPago(eve){
-console.log(eve)
+
 this.facturaService.Deletepago(eve).subscribe((res)=>{
 
     
@@ -1117,7 +1082,7 @@ this.facturaService.Deletepago(eve).subscribe((res)=>{
 PermisoEliminarPago(){
     this.facturaService.permisoEliminarPago().then(res=>
         {
-            console.log('permiso',res)
+           
             if(res[0]['permiso']==='Y'){
             this.PermisoEPago=true;
             }

@@ -8,5 +8,6 @@ router.post('/pagosRecibidos', RfinanzasController.pagosRecibidos);
 router.post('/FacturaXTarjeta', RfinanzasController.FacturaXTarjeta);
 router.post('/gastos', RfinanzasController.gastos);
 router.post('/articulosVendidos', RfinanzasController.articulosVendidos);
+router.post('/CierreDiario', RfinanzasController.CierreDiario);
 
 module.exports = router;

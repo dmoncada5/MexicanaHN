@@ -18,17 +18,17 @@
 
             <div fxLayout="row">
 
-                <div class="selected-project">{{selectedProject.name}}</div>
+                <div class="selected-project">{{company.empresa}}</div>
 
-                <button mat-icon-button class="project-selector" [matMenuTriggerFor]="projectsMenu" aria-label="Select project">
+                <!-- <button mat-icon-button class="project-selector" [matMenuTriggerFor]="projectsMenu" aria-label="Select project">
                     <mat-icon>more_horiz</mat-icon>
-                </button>
+                </button> -->
 
-                <mat-menu #projectsMenu="matMenu">
-                    <button mat-menu-item *ngFor="let project of projects" (click)="selectedProject = project">
-                        <span>{{project.name}}</span>
+                <!-- <mat-menu #projectsMenu="matMenu">
+                    <button mat-menu-item >
+                        <span>{{company.empresa}}</span>
                     </button>
-                </mat-menu>
+                </mat-menu> -->
             </div>
         </div>
         <!-- / HEADER -->

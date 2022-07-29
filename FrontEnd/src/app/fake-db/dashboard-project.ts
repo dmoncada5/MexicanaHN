@@ -1,11 +1,14 @@
+import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 import {ProjectDashboardServiceService} from '../main/sample/project-dashboard-service.service'
 
 export class ProjectDashboardDb
 {
 
+  
+
     public static projects = [
         {
-            'name': 'MexicanaHN'
+            'name': 'FF'
         }
         // ,
         // {

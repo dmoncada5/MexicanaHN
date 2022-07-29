@@ -1,1 +1,142 @@
-<p>cierre works!</p>
+<div id="invoice" class="modern page-layout blank" fxLayout="row">
+
+
+    <div class="invoice-container">
+        <div class="card">
+ 
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="ids" fxLayout="column">
+              
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                        <div fxLayout="row" class="seller" fxLayoutAlign="start center">
+
+                            <div class="logo">
+                                <img src="assets/images/logos/logo.jpg">
+                            </div>
+    
+                            <div fxLayout="row" fxLayoutAlign="start center">
+    
+                                <h1>CIERRE DIARO
+                                </h1>
+    
+    
+                            </div>
+    
+                        </div>
+                        <mat-form-field appearance="outline" fxFlex="48" class="pl-4">
+                            <mat-label>Desde </mat-label>
+                            <input matInput [matDatepicker]="FechaDatePicker" name="desde" [(ngModel)]='desde'>
+                            <mat-datepicker-toggle matSuffix [for]="FechaDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #FechaDatePicker></mat-datepicker>
+                        </mat-form-field>
+
+
+                        <mat-form-field appearance="outline" fxFlex="48" class="pl-4">
+                            <mat-label>Hasta </mat-label>
+                            <input matInput [matDatepicker]="FechaDatePicker1" name="hasta" [(ngModel)]='hasta'>
+                            <mat-datepicker-toggle matSuffix [for]="FechaDatePicker1"></mat-datepicker-toggle>
+                            <mat-datepicker #FechaDatePicker1></mat-datepicker>
+                        </mat-form-field>
+                        <!-- (keydown.enter)="complete($event)" -->
+                        <button mat-raised-button class="pl-4 button accent-800" fxFlex="20" (click)="report()"> Buscar </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <tr>
+                         
+                            <th >Tipo Pago.</th>
+                            <th class="text-right">Total</th>
+                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let det of  datos">
+                            <!-- <td>
+                                <div class="title">{{det.itemCode}}</div>
+                                <div class="detail">{{det.itemName}}</div>
+                            </td> -->
+
+                            <td>
+                                {{det.formapago}}
+                            </td>
+                       
+                            <td class="text-right">
+                                {{det.Total| number:'1.2-2' }}
+                            </td>
+                       
+
+                        </tr>
+                    </tbody>
+                </table>  
+
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+                        <tr class="total">
+                            <td>TOTAL RECIBIDO</td>
+                            <td>{{totalpagado| currency:'LPS':'symbol'}}</td>
+                        </tr>
+             
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="footer">
+                <div class="note">Reporte de Saldos de Cliente</div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div class="logo">
+                        <img src="assets/images/logos/Genesis.jpg">
+                    </div>
+                    <div class="small-note">
+                        Productos 100% natural para bajar de peso
+                    </div>
+                </div>
+            </div> -->
+
+            <!--
+
+            Use the following elements to add breaks to your pages. This will make sure that the section in between
+            these elements will be printed on a new page. The following two elements must be used before and after the
+            page content that you want to show as a new page. So, you have to wrap your content with them.
+
+            Elements:
+            ---------
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+            <!--
+
+            Example: 
+            --------
+
+            Initial page content!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the second page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the third page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+        </div>
+        <!-- / INVOICE -->
+
+    </div>
+
+</div>

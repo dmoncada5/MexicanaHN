@@ -37,6 +37,22 @@ class MainController {
             res.send(error.message)
         }
     }
+
+    async CierreDiario(req, res) {
+        console.log(req.body)
+
+        try {
+            const pool = await poolPromise
+            const result = await pool.request()
+                .input('fecha1', sql.Date, req.body.Desde)
+                .input('fecha2', sql.Date, req.body.Hasta)
+                .query(queries.Cierrediario)
+            res.json(result.recordset)
+        } catch (error) {
+            res.status(500)
+            res.send(error.message)
+        }
+    }
     async FacturaXTarjeta(req, res) {
 
 

@@ -5,6 +5,7 @@ import * as shape from 'd3-shape';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { fuseAnimations } from '@fuse/animations';
+import { CompanysService } from '../Configuracion/companys/companys.service';
 
 @Component({
     selector   : 'sample',
@@ -31,7 +32,9 @@ Top10:any[];
     widget8: any = {};
     widget9: any = {};
     widget11: any = {};
-
+    company:any={
+        compania:null
+    }
     dateNow = Date.now();
     alertas:any;
     Calertas:any;
@@ -41,9 +44,17 @@ Top10:any[];
  }
     constructor(
         private _fuseSidebarService: FuseSidebarService,
-        private _projectDashboardService:ProjectDashboardServiceService
+        private _projectDashboardService:ProjectDashboardServiceService,
+        private _companyServices: CompanysService
     )
     { 
+        this._companyServices.getCompanyOne("/company/edit/",1).subscribe(
+            (res)=>{
+ 
+            this.company=res[0];
+     
+            })
+
         this._projectDashboardService.getWidFactura('/factura/Columnasalertas').subscribe(
             (res: any[])=>{
 this.Calertas=res;

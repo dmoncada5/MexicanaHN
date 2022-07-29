@@ -39,12 +39,12 @@ empresa:null
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
 this.doc.DocNum=this.pageType; 
-console.log(this.pageType)
+
     this.prtservice.getFactura('/factura/Encabezado',this.doc).then(
       res=>{
         this.Encabezado=res[0];
         this.numero1=res[0]['fact_emini']
-        console.log('detalle',this.Encabezado)
+
       }
     );
     this.prtservice.getDetalle('/factura/Detalle',this.doc.DocNum).subscribe(

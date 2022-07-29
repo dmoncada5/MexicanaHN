@@ -109,7 +109,6 @@ report(){
       this.totalpagado+=this.datos[i]["TotalPagado"];
       this.totalvencido+=this.datos[i]["SaldoVencido"];
 
-      console.log(this.datos[i]["TotalDoc"])
     }
     
               }

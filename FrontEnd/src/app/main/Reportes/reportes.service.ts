@@ -41,6 +41,13 @@ export class ReportesService {
     return this._httpClient.post(`${this.API_URI}` + url, body, { headers: headers })
     .pipe(retry(1), catchError(this.errorHandl));
   }
+  CierreDiario(url: string, desde : Date, hasta:Date ) {
+    let headers = new HttpHeaders();
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify({Desde: desde, Hasta: hasta});
+    return this._httpClient.post(`${this.API_URI}` + url, body, { headers: headers })
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
   getarticulosVendidos(url: string, desde : Date, hasta:Date ) {
     let headers = new HttpHeaders();
     headers = new HttpHeaders().set('Content-Type', 'application/json');

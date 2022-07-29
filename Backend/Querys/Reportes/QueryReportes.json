@@ -2,6 +2,7 @@
     "SaldoClientes": "exec SaldoClientes @SocioCode, @desde, @hasta",
     "pagosRecibidos": "exec pagoRecibido @Desde, @Hasta",
     "articulosVendidos": "exec ArticulosVendidos @Desde, @Hasta",
+    "Cierrediario":"SELECT distinct t0.formapago,(select sum(A.totalPago ) from pagos A where A.formaPago = t0.formaPago and A.fechaPago between @fecha1 and @fecha2 ) as 'Total' from pagos t0 where t0.fechaPago between @fecha1 and @fecha2 ",
 
 
     "SociosGrupos": "exec SociosGrupo @grupo",
