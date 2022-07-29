@@ -1,5 +1,5 @@
 {
-    "getAll": "select * from Validaciones",
+    "getAll": "select * from Validaciones order by validacionid asc",
     "update":" update Validaciones SET    valido =@valido WHERE validacionid = @validacionid"
    
 
