@@ -488,6 +488,14 @@ export const navigation: FuseNavigation[] = [
                 icon: 'attach_money',
                 children: [
                     {
+                        id: 'cierrecaja',
+                        title: 'Cierre Caja',
+                        type: 'item',
+                        url: 'reporte/cierrecaja',
+                        exactMatch: true,
+                    
+                    },
+                    {
                         id: 'saldocliente',
                         title: 'Saldo Cliente',
                         type: 'item',

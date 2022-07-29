@@ -9,7 +9,8 @@ import { EstadiscoItemsComponent } from './Finanzas/estadisco-items/estadisco-it
 import { DatosSociosComponent } from './Socios/datos-socios/datos-socios.component';
 import { FacturasXTarjetasModule } from './Finanzas/facturas-xtarjetas/facturas-xtarjetas.module';
 import { GastosComponent } from './Finanzas/gastos/gastos.component';
-import { GastosModule } from '../Reportes/Finanzas/gastos/gastos.module'
+import { GastosModule } from '../Reportes/Finanzas/gastos/gastos.module';
+import {CierreModule} from '../Reportes/Finanzas/cierre/cierre.module'
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ PagosRecibidosModule,
 EstadiscoItemsModule,
 DatosSociosModule,
 FacturasXTarjetasModule,
-GastosModule
+GastosModule,
+CierreModule
 ],
 providers   : [
 ReportesService
