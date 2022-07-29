@@ -46,26 +46,36 @@
 
                 </div>
                 <div class="text1">{{company.empresa}}</div>
+                <div class="text1">{{company.empresa_sociedad}}</div>
+                <div class="text1">{{company.direccion}}</div>
+                <div class="text1">Tel. : {{company.telefono}}</div>
+                <div class="text1">RTN : {{company.rtn}}</div>
+                <div class="text1">Correo : {{company.correo}}</div>
                 <div class="divider1"></div>
-                <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
-                <div class="text">{{Encabezado.NombreSocio}}</div>
                 <div class="divider1"></div>
-                <div class="text"> FACTURA </div>
-                <div class="text"> {{Encabezado.numero}}</div>
-                <div class="text"> FECHA </div>
-                <div class="text"> {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
-
-                <div class="text"> CAI </div>
+                <div class="text1"> Cliente - {{Encabezado.SocioCode}}</div>
+                <div class="text1">Nombre:{{Encabezado.NombreSocio}}</div>
+                <div class="text1">RTN:{{Encabezado.SocioCode}}</div>
+                <div class="divider1"></div>
+                <div class="text1"> FACTURA </div>
+                <div class="text1"> {{Encabezado.numero}} </div>
+                <!-- <section id="date"></section> -->
+                <div class="divider1"></div>
+                <!-- <div class="text1"> FECHA </div> -->
+                <div class="text1">FECHA : {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
+                <div class="divider1"></div>
+                <div class="text1"> CAI </div>
                 <div class="text1">{{Encabezado.cai.substring(0,21) }}</div>
 
                 <div class="text1">{{Encabezado.cai.substring(21,37) }} </div>
-
-                <div class="text"> FECHA LIMITE EMISION </div>
-                <div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </div>
-                <div class="text"> RANGO </div>
-                <div class="text"> {{Encabezado.fact_emini }} </div>
-                <div class="text"> hasta </div>
-                <div class="text"> {{Encabezado.fact_emifin}}</div>
+                <div class="divider1"></div>
+                <div class="text1"> FECHA LIMITE EMISION </div>
+                <div class="text1"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </div>
+                <div class="divider1"></div>
+                <div class="text1"> RANGO </div>
+                <div class="text1"> {{Encabezado.fact_emini }} </div>
+                <div class="text1"> hasta </div>
+                <div class="text1"> {{Encabezado.fact_emifin}}</div>
 
 
 
@@ -159,12 +169,20 @@
                 <table class="simple invoice-table-footer">
                     <tbody>
                         <tr class="subtotal">
+                            <td>IMP. EXENTO</td>
+                            <td>{{0 | currency:'L.':'symbol'}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td>IMP. EXONERADO</td>
+                            <td>{{0 | currency:'L.':'symbol'}}</td>
+                        </tr>
+                        <tr class="subtotal">
                             <td>SUBTOTAL</td>
-                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L.':'symbol'}}</td>
                         </tr>
                         <tr class="tax">
                             <td>ISV</td>
-                            <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.impuesto| currency:'L.':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>DESCUENTO</td>
@@ -172,11 +190,25 @@
                         </tr>
                         <tr class="subtotal">
                             <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc | currency:'L.':'symbol'}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+
+
+            <div class="text1">
+
+                ORDEN COMPRA EXENTA_____
+            </div>
+            <div class="text1">
+                No REG. EXONERADO________
+            </div>
+            <div class="text1">
+                No REGISTRO SAG___________
+            </div>>
+
 
             <div class="footer">
                 <div class="note"></div>
