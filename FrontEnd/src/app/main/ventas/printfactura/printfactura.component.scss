@@ -15,74 +15,73 @@ app-printfactura {
         &.modern {
             padding: 0;
             .invoice-container {
-                padding: 40px;
+                padding: 20px; //prueba de cambio de valor 40 a 20
+                //margin: 0;
                 margin: 0 auto;
                 .card {
                     width: 380px;
                     min-width: 380px;
                     max-width: 380px;
-                    padding: 88px;
+                    padding: 40px; //prueba de cambio de valor 88 a 40
                     overflow: hidden;
                     background: #FFFFFF;
-                    @include mat-elevation(7);
+                    @include mat-elevation(5); //cambiar el valor de 7 a 5
                     .header {
-                        .detalle{
-                            font-family:'Arial';
-                            font-size:small;
+                        .detalle {
+                            font-family: 'Arial';
+                            font-size: small;
                             font-weight: bolder;
-                            text-align:  left;
+                            text-align: left;
                             color: black;
                         }
-                        .text1{
-                            font-family:'Arial';
-                            font-size:small;
+                        .text1 {
+                            font-family: 'Arial';
+                            font-size: small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-                        .cliente{
-                            font-family:'Arial';
-                            font-size:small;
-                            font-weight: bolder;
-                            text-align: left;
-                            margin-top: 35px;
-                            color: black;
-                        }
-                        .nombre{
-                            font-family:'Arial';
-                            font-size:small;
-                            font-weight: bolder;
-                            text-align: left;
-                           
-                            color: black;
-                        }
-                        .text{
-                            font-family:'Arial' ;
+                        .cliente {
+                            font-family: 'Arial';
                             font-size: small;
-                            font-weight:normal;
-                            text-align:  center;
+                            font-weight: bolder;
+                            text-align: left;
+                            margin-top: 1px;
                             color: black;
                         }
-                        .textCAI{
-                            font-family:'Arial' ;
+                        .nombre {
+                            font-family: 'Arial';
+                            font-size: small;
+                            font-weight: bolder;
+                            text-align: left;
+                            color: black;
+                        }
+                        .text {
+                            font-family: 'Arial';
+                            font-size: small;
+                            font-weight: normal;
+                            text-align: center;
+                            color: black;
+                        }
+                        .textCAI {
+                            font-family: 'Arial';
                             font-size: small;
                             font-weight: lighter;
-                            text-align:  left;
+                            text-align: left;
                             color: black;
                         }
-                            .divider1 {
-                                width: 144px;
-                                margin: 0 48px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 1px;
-                            }
-                            .divider2 {
-                         
-                                width: 250px;
-                                margin:0 0px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 1px;
-                            }
+                        .divider1 {
+                            width: 144px;
+                            margin: 0 48px;
+                            background-color: rgba(0, 0, 0, 0.12);
+                            height: 1px;
+                        }
+                        .divider2 {
+                            width: 250px;
+                            margin: 0 0px;
+                            background-color: rgba(0, 0, 0, 0.12);
+                            height: 1px;
+                        }
                         .ids {
                             line-height: 5px;
                             color: rgba(0, 0, 0, 0.54);
@@ -90,7 +89,7 @@ app-printfactura {
                                 width: 250px;
                             }
                             .seller {
-                                margin-bottom: 50px;
+                                margin-bottom: 15px; // cambio de 50 a 15
                                 .logo {
                                     width: 50px;
                                 }
@@ -106,108 +105,98 @@ app-printfactura {
                                 width: 1px;
                                 margin: 0 48px;
                                 background-color: rgba(0, 0, 0, 0.12);
-                                height: 144px;
+                                height: 50px; // cambiar 144 a 100
                             }
-                    
                         }
-                  
                     }
                     .content {
                         // width: 100%;
                         // min-width: 0px;
                         // padding: 20px;
                         // margin-left: 10px;
-                        margin-top: 5px;
-                        .detalle{
-                            font-family:'Arial';
-                            font-size:small;
+                        margin-top: 1px;
+                        .detalle {
+                            font-family: 'Arial';
+                            font-size: small;
                             font-weight: bolder;
-                            text-align:  left;
+                            text-align: left;
                             color: black;
                         }
-                        .text1{
-                            font-family:'Arial';
-                            font-size:small;
+                        .text1 {
+                            font-family: 'Arial';
+                            font-size: small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-                        .cliente{
-                            font-family:'Arial';
-                            font-size:small;
-                            font-weight: bolder;
-                            text-align: left;
-                            margin-top: 35px;
-                            color: black;
-                        }
-                        .nombre{
-                            font-family:'Arial';
-                            font-size:small;
-                            font-weight: bolder;
-                            text-align: left;
-                           
-                            color: black;
-                        }
-                        .text{
-                            font-family:'Arial' ;
+                        .cliente {
+                            font-family: 'Arial';
                             font-size: small;
-                            font-weight:normal;
-                            text-align:  center;
+                            font-weight: bolder;
+                            text-align: left;
+                            margin-top: 1px;
                             color: black;
                         }
-                        .textCAI{
-                            font-family:'Arial' ;
+                        .nombre {
+                            font-family: 'Arial';
+                            font-size: small;
+                            font-weight: bolder;
+                            text-align: left;
+                            color: black;
+                        }
+                        .text {
+                            font-family: 'Arial';
+                            font-size: small;
+                            font-weight: normal;
+                            text-align: center;
+                            color: black;
+                        }
+                        .textCAI {
+                            font-family: 'Arial';
                             font-size: small;
                             font-weight: lighter;
-                            text-align:  left;
+                            text-align: left;
                             color: black;
                         }
-
-
                         .invoice-table {
-                            margin-top: 70px;
+                            margin-top: 1px;
                             font-size: 12px;
                             color: rgba(0, 0, 0, 0.87);
-
                             // width: 100%;
                             // min-width: 0px;
                             // padding: 20px;
                             // margin-left: 10px;
-                            margin-top: 5px;
+                            margin-top: 1px;
                             thead {
                                 tr {
                                     th {
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
-                                
-                                    td{
+                                    td {
                                         padding-right: 40px;
                                     }
                                 }
                             }
                             tbody {
                                 tr {
-                              
-                                    td{
-                                        padding-right: 65px;
+                                    td {
+                                        padding-right: 55px;
                                     }
                                 }
-                               
                             }
-                         
                             .title {
                                 font-size: 17px;
                             }
                             .detail {
-                                margin-top: 8px;
+                                margin-top: 1px;
                                 font-size: 8px;
                                 color: rgba(0, 0, 0, 0.54);
                                 max-width: 360px;
                             }
                         }
                         .invoice-table-footer {
-                        margin: 36px 0 96px 0;
+                            margin: 36px 0 96px 0;
                             tr {
                                 td {
                                     text-align: left;
@@ -215,7 +204,7 @@ app-printfactura {
                                     font-weight: bold;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
-                                    padding: 5px 5px;
+                                    padding: 5px 15px;
                                     &:first-child {
                                         text-align: left;
                                     }
@@ -225,16 +214,15 @@ app-printfactura {
                                         font-size: 12px;
                                         font-weight: bolder;
                                         padding: 4px 8px;
-                                        color:rgba(0, 0, 0, 1);
+                                        color: rgba(0, 0, 0, 1);
                                     }
                                 }
                                 &.total {
                                     td {
-                                        padding: 32px 8px;
+                                        padding: 16px 8px; //cambio de 32 a 16
                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
                                         font-size: 12px;
                                         font-weight: bolder;
-                                      
                                         color: rgba(0, 0, 0, 1);
                                     }
                                 }
@@ -242,19 +230,18 @@ app-printfactura {
                         }
                     }
                     .footer {
-                        .text1{
-                            margin-top: 15px;
-                            font-family:'Arial';
-                            font-size:small;
+                        .text1 {
+                            margin-top: 1px;
+                            font-family: 'Arial';
+                            font-size: smal;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-
-                        .Exijela{
-                            margin-top: 35px;
-                            font-family:'Arial';
-                            font-size:small;
+                        .Exijela {
+                            margin-top: 1px;
+                            font-family: 'Arial';
+                            font-size: small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
@@ -262,7 +249,7 @@ app-printfactura {
                         .note {
                             font-size: 15px;
                             font-weight: 600;
-                            margin-bottom: 24px;
+                            margin-bottom: 10px; //cambias de 24 a 10
                         }
                         // IE10 fix
                         .logo,
@@ -278,27 +265,22 @@ app-printfactura {
                             font-size: 12px;
                             font-weight: 600;
                             color: rgba(0, 0, 0, 0.54);
-                            line-height: 18px;
+                            line-height: 1px; //cambio de 18 a 1
                         }
                     }
                 }
             }
         }
     }
- /* PRINT STYLES */
+    /* PRINT STYLES */
     @media print {
-      
         /* Invoice Specific Styles */
         #invoice {
-          
             &.modern {
-             
                 background: white;
                 .invoice-container {
-                   
                     padding: 0;
-                
-               .card {
+                    .card {
                         // width: 100%;
                         // min-width: 0;
                         // background: none;
@@ -307,52 +289,51 @@ app-printfactura {
                         width: 100%;
                         min-width: 0px;
                         padding: 0px;
-                       // overflow: hidden;
+                        // overflow: hidden;
                         background: #FFFFFF;
-                       
                         .header {
-                            .detalle{
-                                font-family:'Arial';
-                                font-size:small;
+                            .detalle {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
-                                text-align:  left;
+                                text-align: left;
                                 color: black;
                             }
-                            .text1{
-                                font-family:'Arial';
-                                font-size:small;
+                            .text1 {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-                            .cliente{
-                                font-family:'Arial';
-                                font-size:small;
-                                font-weight: bolder;
-                                text-align: left;
-                                margin-left: 90px;
-                                color: black;
-                            }
-                            .nombre{
-                                font-family:'Arial';
-                                font-size:small;
-                                font-weight: bolder;
-                                text-align: left;
-                                margin-left: 90px;
-                                color: black;
-                            }
-                            .text{
-                                font-family:'Arial' ;
+                            .cliente {
+                                font-family: 'Arial';
                                 font-size: small;
-                                font-weight:normal;
-                                text-align:  center;
+                                font-weight: bolder;
+                                text-align: left;
+                                margin-left: 90px;
                                 color: black;
                             }
-                            .textCAI{
-                                font-family:'Arial' ;
+                            .nombre {
+                                font-family: 'Arial';
+                                font-size: small;
+                                font-weight: bolder;
+                                text-align: left;
+                                margin-left: 90px;
+                                color: black;
+                            }
+                            .text {
+                                font-family: 'Arial';
+                                font-size: small;
+                                font-weight: normal;
+                                text-align: center;
+                                color: black;
+                            }
+                            .textCAI {
+                                font-family: 'Arial';
                                 font-size: small;
                                 font-weight: lighter;
-                                text-align:  left;
+                                text-align: left;
                                 color: black;
                             }
                             .divider1 {
@@ -362,9 +343,8 @@ app-printfactura {
                                 height: 1px;
                             }
                             .divider2 {
-                         
                                 width: 250px;
-                                margin:0 0px;
+                                margin: 0 0px;
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 1px;
                             }
@@ -373,7 +353,7 @@ app-printfactura {
                                     width: 120pt;
                                 }
                                 .seller {
-                                    margin-bottom: 8pt;
+                                    margin-bottom: 4pt; // cambio de 8 a 4
                                     .logo {
                                         width: 60pt;
                                     }
@@ -389,9 +369,8 @@ app-printfactura {
                                     height: 100pt;
                                 }
                                 &.divider2 {
-                         
                                     width: 250px;
-                                    margin:0 0px;
+                                    margin: 0 0px;
                                     background-color: rgba(0, 0, 0, 0.12);
                                     height: 1px;
                                 }
@@ -407,67 +386,65 @@ app-printfactura {
                             }
                         }
                         .content {
-                            .detalle{
-                                font-family:'Arial';
-                                font-size:small;
+                            .detalle {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
-                                text-align:  left;
+                                text-align: left;
                                 color: black;
                             }
-                            .text1{
-                                font-family:'Arial';
-                                font-size:small;
+                            .text1 {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-                            .cliente{
-                                font-family:'Arial';
-                                font-size:small;
+                            .cliente {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
                                 margin-left: 135px;
-                                color:  red;
+                                color: red;
                             }
-                            .nombre{
-                                font-family:'Arial';
-                                font-size:small;
+                            .nombre {
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
-                               
                                 color: black;
                             }
-                            .text{
-                                font-family:'Arial' ;
+                            .text {
+                                font-family: 'Arial';
                                 font-size: small;
-                                font-weight:normal;
-                                text-align:  center;
+                                font-weight: normal;
+                                text-align: center;
                                 color: black;
                             }
-                            .textCAI{
-                                font-family:'Arial' ;
+                            .textCAI {
+                                font-family: 'Arial';
                                 font-size: small;
                                 font-weight: lighter;
-                                text-align:  left;
+                                text-align: left;
                                 color: black;
                             }
-                            width: 100%;
+                            width: 90%;
                             margin-left: 10px;
-                            margin-top: 5px;
-                            padding: 20px;
+                            margin-top: px;
+                            padding: 25px;
                             .divider2 {
-                         
                                 width: 250px;
-                                margin:0 0px;
+                                margin: 0 0px;
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 1px;
                             }
                             .invoice-table {
-                                width: 100%;
+                                width: 90%;
                                 min-width: 0px;
-                                padding: 20px;
+                                padding: 30px;
                                 margin-left: 10px;
-                                margin-top: 5px;
+                                margin-top: 1px;
                                 // margin-top: 16pt;
                                 // font-size: 12px;
                                 // color: rgba(0, 0, 0, 0.87);
@@ -477,57 +454,51 @@ app-printfactura {
                                             // color: rgba(0, 0, 0, 0.87);
                                             // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                             // font-size: 10pt;
-                                                                                    max-width: 60pt;
-                                                                                    &:first-child {
-                                                                                        padding-left: 0;
-                                                                                    }
-                                                                                    &:last-child {
-                                                                                        padding-right: 0;
-                                                                                    }
-                                        
+                                            max-width: 60pt;
+                                            &:first-child {
+                                                padding-left: 0;
+                                            }
+                                            &:last-child {
+                                                padding-right: 0;
+                                            }
                                         }
-                                    
-                                        td{
-                                            padding-right: 40px;
+                                        td {
+                                            padding-right: 30px;
                                         }
                                     }
                                 }
                                 tbody {
                                     tr {
-                                  
-                                        td{
-                                        //    padding-right: 65px;
-                                     
-                             
+                                        td {
+                                            //    padding-right: 65px;
                                             &:first-child {
-                                            padding-left: 0;
+                                                padding-left: 0;
                                             }
                                             &:last-child {
-                                              padding-right: 0;
-                                          }     
+                                                padding-right: 0; //ultimo cambioa
+                                            }
                                         }
                                     }
-                                   
                                 }
-                             
                                 .title {
                                     font-size: 17px;
                                 }
                                 .detail {
-                                    margin-top: 8px;
+                                    margin-top: 1px;
                                     font-size: 8px;
                                     color: rgba(0, 0, 0, 0.54);
-                                    max-width: 360px;
+                                    max-width: 350px;
                                 }
                             }
                             .invoice-table-footer {
                                 box-shadow: none;
-                                width: 90%;
+                                width: 100%;
                                 min-width: 0px;
-                                padding: 15px;
-                            margin: 5px 0 5px 0;
+                                padding: 30px;
+                                margin: 5px 0 5px 0;
                                 tr {
                                     td {
+                                        //text-align: center;
                                         text-align: right;
                                         font-size: 14px;
                                         font-weight: bold;
@@ -543,7 +514,7 @@ app-printfactura {
                                             font-size: 12px;
                                             font-weight: bolder;
                                             padding: 4px 8px;
-                                            color:rgba(0, 0, 0, 1);
+                                            color: rgba(0, 0, 0, 1);
                                         }
                                     }
                                     &.total {
@@ -552,7 +523,6 @@ app-printfactura {
                                             border-top: 1px solid rgba(0, 0, 0, 0.12);
                                             font-size: 12px;
                                             font-weight: bolder;
-                                          
                                             color: rgba(0, 0, 0, 1);
                                         }
                                     }
@@ -560,19 +530,18 @@ app-printfactura {
                             }
                         }
                         .footer {
-                            .text1{
-                                margin-top: 15px;
-                                font-family:'Arial';
-                                font-size:small;
+                            .text1 {
+                                margin-top: 1px;
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-    
-                            .Exijela{
-                                margin-top: 35px;
-                                font-family:'Arial';
-                                font-size:small;
+                            .Exijela {
+                                margin-top: 1px;
+                                font-family: 'Arial';
+                                font-size: small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
@@ -580,7 +549,7 @@ app-printfactura {
                             .note {
                                 font-size: 15px;
                                 font-weight: 600;
-                                margin-bottom: 24px;
+                                margin-bottom: 24px; // cambio de 24 a 12
                             }
                             // IE10 fix
                             .logo,
@@ -596,7 +565,7 @@ app-printfactura {
                                 font-size: 12px;
                                 font-weight: 600;
                                 color: rgba(0, 0, 0, 0.54);
-                                line-height: 18px;
+                                line-height: 1px; // cambio del 18 a 1
                             }
                         }
                     }
@@ -604,10 +573,6 @@ app-printfactura {
             }
         }
     }
-
-
-
-
     /* PRINT STYLES */
     // @media print {
     //     /* Invoice Specific Styles */
@@ -694,18 +659,18 @@ app-printfactura {
     //                         }
     //                         .invoice-table-footer {
     //                             margin: 25px 0 5px 0;
-                                // tr {
-                                //     td {
-                                //         text-align: right;
-                                //         font-size: 14px;
-                                //         font-weight: bold;
-                                //         color: rgba(0, 0, 0, 0.54);
-                                //         border-bottom: none;
-                                //         padding: 5px 5px;
-                                //         &:first-child {
-                                //             text-align: left;
-                                //         }
-                                //     }
+    // tr {
+    //     td {
+    //         text-align: right;
+    //         font-size: 14px;
+    //         font-weight: bold;
+    //         color: rgba(0, 0, 0, 0.54);
+    //         border-bottom: none;
+    //         padding: 5px 5px;
+    //         &:first-child {
+    //             text-align: left;
+    //         }
+    //     }
     //                                 &.discount {
     //                                     td {
     //                                         padding-bottom: 12px;
@@ -718,7 +683,6 @@ app-printfactura {
     //                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
     //                                         font-size: 12px;
     //                                         font-weight: bolder;
-                                          
     //                                         color: rgba(0, 0, 0, 1);
     //                                     }
     //                                 }

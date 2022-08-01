@@ -219,7 +219,7 @@ reglas :any;
         pagotipo: ['']
     });
       this.EfectivoForm = this._formBuilder.group({
-        efectivo: [0],
+        efectivo: [''],
         nombreBancoE: [''],
     });
 
@@ -228,7 +228,7 @@ reglas :any;
         FechaV: ['', Validators.required],
         Nombre: ['', Validators.required],
         identidad: ['', Validators.required],
-        totalTarjeta: [0, Validators.required],
+        totalTarjeta: ['', Validators.required],
         nombreBancoT: [''],
     });
 
@@ -236,14 +236,14 @@ reglas :any;
         nombreBanco: ['', Validators.required],
         fechaCheque: ['', Validators.required],
         numeroCheque: ['', Validators.required],
-        totalCheque: [0, Validators.required],
+        totalCheque: ['', Validators.required],
     });
 
       this.TransForm = this._formBuilder.group({
         numeroTrans: ['', Validators.required],
         FechaTrans: ['', Validators.required],
         nombreBancoTT: [''],
-        totalTrans: [0, Validators.required],
+        totalTrans: ['', Validators.required],
         
     });
    }
@@ -368,12 +368,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                precio: Number(((this.Detalle.price)).toFixed(2)),
-               // precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
+               // precio: Number(((this.Detalle.price)).toFixed(2)),
+                precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
-               // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
+               // totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
                almacen: this.Detalle.cbod+"",
                //almacen: 0,
                 impuestocod: 0,
@@ -412,12 +412,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                //precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
-                precio: Number(((this.Detalle.price)).toFixed(2)),
+                precio: Number(((this.Detalle.price)/1.15).toFixed(2)),
+                //precio: Number(((this.Detalle.price)).toFixed(2)),
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
-               // totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
+                //totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.15).toFixed(2)),
                 almacen: this.Detalle.cbod+"",
                 //almacen: 0,
                 impuestocod: 0,
