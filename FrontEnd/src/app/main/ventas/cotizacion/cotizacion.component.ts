@@ -61,6 +61,7 @@ export class CotizacionComponent implements OnInit {
   socioItem: any;
 
   private _unsubscribeAll: Subject < any > ;
+    decimalPipe: any;
 
   constructor(private CotizacionesService: CotizacionesService,
       private activatedRoute: ActivatedRoute,
@@ -284,11 +285,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   for(let index=0;index<this.ELEMENT_DATA.length;index++){
   valor+=this.ELEMENT_DATA[index]['totaLine'];
   }
-  return valor*0.15;
+  return valor*0.1499998;
 }
   grandTotal():number{
-  let valor=0;
+  let  valor=0;
   valor=this.totalGeneral()+this.isv();
+ //Math.round
   return valor;
 }
   completeProducts(event) {
@@ -312,10 +314,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                precio: this.Detalle.price,
+                precio: Number(((this.Detalle.price)/1.1499998).toFixed(4)),
+                //precio: this.Detalle.price,
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: this.total(1, this.Detalle.price,0),
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.1499998).toFixed(4)),
+                 //totaLine: this.total(1, this.Detalle.price,0),
                 //almacen:1,
                 almacen:this.Detalle.cbod+"",
                 impuestocod:0,
@@ -351,10 +355,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
-                precio: this.Detalle.price,
+                //precio: this.Detalle.price,
+                precio: Number(((this.Detalle.price)/1.1499998).toFixed(4)),
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: this.total(1, this.Detalle.price,0),
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.1499998).toFixed(4)),
+                // totaLine: this.total(1, this.Detalle.price,0),
                 almacen:this.Detalle.cbod+"",
                // almacen:1,
                 impuestocod:0,
