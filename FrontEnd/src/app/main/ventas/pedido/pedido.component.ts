@@ -374,7 +374,8 @@ products: any;
             this.PedidoForm.get('RTN').setValue(this.PedidoE.RTN);
             this.PedidoForm.get('direccion').setValue(this.PedidoE.Direccion);
             this.PedidoForm.get('comentario').setValue(this.PedidoE.comentarios);
-     
+            this.ELEMENT_DATA.length=0;
+            this.refreshTable();
 
             //   this.PedidoE.SocioCode = event.target.value;
             //   this.PedidoE.NombreSocio = res[0]['nombre'];

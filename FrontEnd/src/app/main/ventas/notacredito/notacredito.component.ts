@@ -288,6 +288,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.NotaCreditoForm.get('RTN').setValue(this.NotaCreditoE.RTN);
               this.NotaCreditoForm.get('direccion').setValue(this.NotaCreditoE.Direccion);
               this.NotaCreditoForm.get('comentario').setValue(this.NotaCreditoE.comentarios);
+              this.ELEMENT_DATA.length=0;
+              this.refreshTable();
           },
           (err) => {
               console.log(err);
@@ -301,9 +303,10 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
       this.refreshTable();
   }
 
-  total(cant: number, precio: number, descuento: number): number {
-      return (cant * precio) - (cant * precio) * (descuento / 100);
-  }
+  total(cant: number, precio: number,descuento:number): number {
+    return (cant * precio)-(cant * precio*15/100)- (cant * precio)*(descuento/100);
+}
+
 
   totalGeneral(): number{
     let valor = 0;
@@ -313,13 +316,15 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     return valor;
   }
 
-  isv(): number{
-  let valor = 0;
-  for (let index = 0; index < this.ELEMENT_DATA.length; index++){
-  valor += this.ELEMENT_DATA[index]['totaLine'];
+  isv():number{
+    let valor=0;
+    for(let index=0;index<this.ELEMENT_DATA.length;index++){
+    valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
+    }
+    return valor*0.15;
   }
-  return valor * 0.15;
-}
+
+
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
