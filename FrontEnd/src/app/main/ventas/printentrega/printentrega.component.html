@@ -47,13 +47,13 @@
                 </div>
                 <div class="text1"> {{company.empresa}}</div>
                 <div class="divider1"></div>
-                <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
-                <div class="text">{{Encabezado.NombreSocio}}</div>
+                <div class="text1"> Cliente - {{Encabezado.SocioCode}}</div>
+                <div class="text1">{{Encabezado.NombreSocio}}</div>
                 <div class="divider1"></div>
-                <div class="text"> ENTREGA </div>
-                <div class="text"> {{Encabezado.numero}}</div>
-                <div class="text"> FECHA </div>
-                <div class="text"> {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
+                <div class="text1"> ENTREGA </div>
+                <div class="text1"> {{Encabezado.numero}}</div>
+                <div class="text1"> FECHA </div>
+                <div class="text1"> {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
 
                 <!-- <div class="text"> CAI </div>
                 <p class="text1">{{Encabezado.cai }} </p>
@@ -84,14 +84,19 @@
 
                         <tr>
                             <div>
-                                <td> CODIGO</td>
+                                <div class="detalle">
+                                    <td> CODIGO</td>
+                                </div>
                             </div>
 
                         </tr>
                         <tr>
                             <div>
-                                <td>DESCRIPCION</td>
+                                <div class="detalle">
+                                    <td>DESCRIPCION</td>
+                                </div>
                             </div>
+
                         </tr>
 
 
@@ -99,9 +104,9 @@
                         <tr>
                             <div>
 
-                                <td> PRECIO</td>
-                                <td class="text-right detal"> CANTIDAD</td>
-                                <td class="text-right"> TOTAL</td>
+                                <td class="detalle"> PRECIO</td>
+                                <td class="text-right detal detalle"> CANTIDAD</td>
+                                <td class="text-right detalle"> TOTAL</td>
 
 
                             </div>
@@ -127,8 +132,8 @@
 
 
 
-                            <div>{{det.itemCode}}</div>
-                            <div>{{det.itemName}}</div>
+                            <div class="detalle">{{det.itemCode}}</div>
+                            <div class="detalle">{{det.itemName}}</div>
 
                             <div>
 
@@ -154,13 +159,13 @@
                     </tbody>
 
                 </table>
-                <table class="simple invoice-table-footer">
+                <table class="invoice-table-footer">
                     <tbody>
-                        <tr class="subtotal">
+                        <tr class="discount">
                             <td>SUBTOTAL</td>
                             <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="tax">
+                        <tr class="discount">
                             <td>ISV</td>
                             <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
                         </tr>
@@ -168,7 +173,7 @@
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="subtotal">
+                        <tr class="total">
                             <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
                         </tr>
@@ -183,7 +188,7 @@
                         <!-- <img src="assets/images/logos/Genesis.jpg"> -->
                     </div>
                     <div class="small-note">
-{{company.comentarios}}
+                        {{company.comentarios}}
                     </div>
                 </div>
             </div>
