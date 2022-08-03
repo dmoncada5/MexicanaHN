@@ -230,7 +230,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.CotizacionForm.get("direccion").setValue(this.cotizacionE.Direccion);
               this.CotizacionForm.get("comentario").setValue(this.cotizacionE.comentarios);
               const indice: number = this.ELEMENT_DATA.length;
-              this.ELEMENT_DATA.splice(indice,indice);
+              this.ELEMENT_DATA.splice(indice,1,indice);
               this.refreshTable()       
           },
           (err) => {
