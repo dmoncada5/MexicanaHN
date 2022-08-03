@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BodegasComponent } from 'app/main/Configuracion/bodegas/bodegas.component';
 import { fill } from 'lodash';
+//import { Element } from '@angular/compiler';
 
 // this.userForm.get('cproy').value; obtener data de form
 
@@ -211,6 +212,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.selectedSerie = true;
    }
   complete(event) {
+
+    
+
+
+    // let indice=0;
+    // indice= this.ELEMENT_DATA.length
+    // this.ELEMENT_DATA.splice(0,indice) ;
+
       this.CotizacionesService.getOneSocio('/socios/edit', event.target.value).subscribe(
           (res) => {
               this.cotizacionE.SocioCode= event.target.value;
@@ -229,9 +238,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.CotizacionForm.get("RTN").setValue(this.cotizacionE.RTN);
               this.CotizacionForm.get("direccion").setValue(this.cotizacionE.Direccion);
               this.CotizacionForm.get("comentario").setValue(this.cotizacionE.comentarios);
-              const indice: number = this.ELEMENT_DATA.length;
-              this.ELEMENT_DATA.splice(indice,1,indice);
-              this.refreshTable()       
+
+            //   for (let i = this.ELEMENT_DATA.length; i > 0; i--) {
+            //     this.ELEMENT_DATA.pop();
+            //   }
+              this.ELEMENT_DATA.length=0;
+              this.refreshTable();
+              //this.Agregar(event);
+
           },
           (err) => {
               console.log(err);

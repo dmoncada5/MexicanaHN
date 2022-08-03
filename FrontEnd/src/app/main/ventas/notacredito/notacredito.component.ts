@@ -288,6 +288,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.NotaCreditoForm.get('RTN').setValue(this.NotaCreditoE.RTN);
               this.NotaCreditoForm.get('direccion').setValue(this.NotaCreditoE.Direccion);
               this.NotaCreditoForm.get('comentario').setValue(this.NotaCreditoE.comentarios);
+              this.ELEMENT_DATA.length=0;
+              this.refreshTable();
           },
           (err) => {
               console.log(err);

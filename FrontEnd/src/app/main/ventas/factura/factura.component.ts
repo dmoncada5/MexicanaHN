@@ -314,6 +314,9 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.FacturaForm.get('RTN').setValue(this.FacturaE.RTN);
               this.FacturaForm.get('direccion').setValue(this.FacturaE.Direccion);
               this.FacturaForm.get('comentario').setValue(this.FacturaE.comentarios);
+
+              this.ELEMENT_DATA.length=0;
+              this.refreshTable();
           },
           (err) => {
               console.log(err);
