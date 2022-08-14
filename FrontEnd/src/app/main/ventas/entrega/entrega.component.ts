@@ -507,12 +507,12 @@ PermisoEPago:any;
       const cnum = this.selectSerie[0]['cnum'];
       this.FacturaE.status='A';
       delete this.FacturaE.DocNum;
-  
+      let index = 0;
       this.guardarValidaciones('Lasagna', (valida: valida[]) => {
   
        
           const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
-          let index = 0;
+    
           ///////////////////// grabar en tabla//////////////////////////////////
           if (!validaciones) {
               this.facturaService.addfacturaEncabezado(this.FacturaE).then(respuesta => {
