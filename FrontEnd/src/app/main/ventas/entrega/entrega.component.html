@@ -188,10 +188,11 @@
                                 <mat-label>Productos</mat-label>
                                 <input [disabled]="!Ftupdate" matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
                                 <mat-autocomplete #autoproducts="matAutocomplete">
-                                    <mat-option [disabled]="!Ftupdate" *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
+                                    <mat-option class="options" [disabled]="!Ftupdate" *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
 
-                                        <span>{{products.ItemCode}} | </span>
-                                        <small>{{products.ItemName}}</small>
+                                        <div> <span>{{products.ItemCode}} | {{products.ItemName}}</span></div>
+
+                                        <!-- <small>{{products.ItemName}}</small> -->
 
                                     </mat-option>
                                 </mat-autocomplete>

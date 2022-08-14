@@ -1,10 +1,14 @@
 @import "src/@fuse/scss/fuse";
 app-entrega {
     .Subs {
-        padding-left: 70%;
+        padding-left: 100%;
     }
     .productItem {
-        padding-left: 10px;
+        font-size: inherit;
+        line-height: 2em;
+        height: unset;
+        white-space: unset;
+        border-bottom: var(--Gray1) solid 1px;
     }
     .products-table {
         flex: 1 1 auto;
@@ -65,15 +69,17 @@ app-entrega {
             flex: 0 1 150px;
         }
         .quantity-indicator {
-            display: inline-block;
-            vertical-align: middle;
-            width: 8px;
-            height: 8px;
+            display: table-row;
+            // display: inline-block;
+            vertical-align: small;
+            width: 1px;
+            height: 1px;
             border-radius: 4px;
-            margin-right: 8px;
+            margin-right: 1px;
             &+span {
+                //display: max($numbers: 2);
                 display: inline-block;
-                vertical-align: middle;
+                vertical-align: small;
             }
         }
         .active-icon {

@@ -202,31 +202,31 @@ PermisoEPago:any;
             pagotipo: ['']
         });
         this.EfectivoForm = this._formBuilder.group({
-            efectivo: [0],
+            efectivo: [''],
             nombreBancoE: [''],
         });
     
           this.TarjetaForm = this._formBuilder.group({
-            tarjetaNumber: ['', Validators.required],
-            FechaV: ['', Validators.required],
-            Nombre: ['', Validators.required],
-            identidad: ['', Validators.required],
-            totalTarjeta: [0, Validators.required],
+            tarjetaNumber: [''],
+            FechaV: [''],
+            Nombre: [''],
+            identidad: [''],
+            totalTarjeta: ['', Validators.required],
             nombreBancoT: [''],
         });
     
           this.ChequeForm = this._formBuilder.group({
-            nombreBanco: ['', Validators.required],
-            fechaCheque: ['', Validators.required],
-            numeroCheque: ['', Validators.required],
-            totalCheque: [0, Validators.required],
+            nombreBanco: [''],
+            fechaCheque: [''],
+            numeroCheque: [''],
+            totalCheque: ['', Validators.required],
         });
     
           this.TransForm = this._formBuilder.group({
-            numeroTrans: ['', Validators.required],
-            FechaTrans: ['', Validators.required],
+            numeroTrans: [''],
+            FechaTrans: [''],
             nombreBancoTT: [''],
-            totalTrans: [0, Validators.required],
+            totalTrans: ['', Validators.required],
             
         });
      }
@@ -512,12 +512,12 @@ PermisoEPago:any;
   
        
           const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
-  
+          let index = 0;
           ///////////////////// grabar en tabla//////////////////////////////////
           if (!validaciones) {
               this.facturaService.addfacturaEncabezado(this.FacturaE).then(respuesta => {
   
-                      for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+                      for (index = 0; index < this.ELEMENT_DATA.length; index++) {
   
                           this.facturaService.addfacturaDetalle(this.ELEMENT_DATA[index]);
                           // tslint:disable-next-line: max-line-length
@@ -550,7 +550,7 @@ PermisoEPago:any;
                       this.router.navigate(['ventas/entregas']);
                   });
           } else {
-              this._matSnackBar.open('Uno de los productos recae en inventario negativo o no existe en bodega!', 'OK', {
+              this._matSnackBar.open('Uno de los productos recae en inventario negativo o no existe en bodega! '+this.ELEMENT_DATA[index]['itemCode'] , 'OK',  {
                   verticalPosition: 'top',
                   duration: 2000
               });
