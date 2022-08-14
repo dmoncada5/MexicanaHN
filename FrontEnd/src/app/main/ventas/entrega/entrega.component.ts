@@ -81,7 +81,7 @@ totapagado= 0;
 saldo= 0;
 PermisoEPago:any;
    
-
+reglas :any;
   
     constructor(private facturaService: FacturasService,
                 private activatedRoute: ActivatedRoute,
@@ -304,12 +304,96 @@ PermisoEPago:any;
     }
     Change(event) {
     
-        const indice: number = this.ELEMENT_DATA.indexOf(event);
-        this.ELEMENT_DATA[indice]['totaLine'] = this.total(event['cantidad'], event['precio'], event['DescuentoLine']);
-        this.validarExist(event);
-        this.refreshTable();
+      
+    const indice: number = this.ELEMENT_DATA.indexOf(event);
+    this.ELEMENT_DATA[indice]['totaLine'] = this.total(event['cantidad'], event['precio'], event['DescuentoLine']);
+  //  this.validarExist(event);
+ this. validarExist(event,valor=>{
+
+
+this.Vreglas((err,ValorRegla)=>{
+
+    if (err){
+        return console.log(err);
     }
-  
+
+    if (valor && ValorRegla)  {
+this.validaciones=true;
+    }else{
+        this.validaciones=false;   
+    }
+
+})
+
+
+  });
+    this.refreshTable();
+    }
+    
+  Vreglas=(callback)=>
+  {
+
+
+    if (this.reglas[0].valido){
+    for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+
+       if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+        this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+            verticalPosition: 'top',
+            duration: 2000
+        });
+        this.validaciones = false;
+        callback(null,this.validaciones); 
+        return;
+       }  else{             this.validaciones = true;
+        callback(null,this.validaciones); }  }
+    }else{
+        callback(null,true);
+    }
+
+    }  
+    validarExist=(eve,callback)=>{
+        if( eve.tipo=== "I"){
+         let stock = 0;
+         this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
+             (res: any[]) => {
+                     if (res.length === 0){
+                         this.validaciones = false;
+                         this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
+                       verticalPosition: 'top',
+                       duration: 2000
+                   });
+                 }else{
+                 stock = res[0]['stock'];
+                 console.log('agre',res);
+                 if (eve.cantidad > stock) {
+                     this._matSnackBar.open('la cantidad de '+ eve.itemCode +' recae sobre inventario negativo', 'OK', {
+                         verticalPosition: 'top',
+                         duration: 5000
+                     });
+                     this.validaciones = false;
+                     
+     callback(this.validaciones);
+                     
+                 } else {
+                     if (this.selecSerieS == true){
+     
+                         this.validaciones = true;
+                         
+     callback(this.validaciones);
+                     }else{
+                         this.validaciones = false;
+                         
+     callback(this.validaciones);
+                     }
+                 }
+               }
+             }
+          
+         );
+     }
+    
+    }
     total(cant: number, precio: number, descuento: number): number {
         return (cant * precio) - (cant * precio) * (descuento / 100);
     }
@@ -420,36 +504,37 @@ PermisoEPago:any;
           }
       );
   }
-  validarExist(eve) {
-      let stock = 0;
-      this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
-          (res: any[]) => {
-                  if (res.length === 0){
-                      this.validaciones = false;
-                      this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
-                    verticalPosition: 'top',
-                    duration: 2000
-                });
-              }else{
-              stock = res[0]['stock'];
-              if (eve.cantidad > stock) {
-                  this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
-                      verticalPosition: 'top',
-                      duration: 2000
-                  });
-                  this.validaciones = false;
-              } else {
-                  if (this.selecSerieS == true){
+
+//   validarExist(eve) {
+//       let stock = 0;
+//       this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
+//           (res: any[]) => {
+//                   if (res.length === 0){
+//                       this.validaciones = false;
+//                       this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
+//                     verticalPosition: 'top',
+//                     duration: 2000
+//                 });
+//               }else{
+//               stock = res[0]['stock'];
+//               if (eve.cantidad > stock) {
+//                   this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
+//                       verticalPosition: 'top',
+//                       duration: 2000
+//                   });
+//                   this.validaciones = false;
+//               } else {
+//                   if (this.selecSerieS == true){
   
-                      this.validaciones = true;
-                  }else{
-                      this.validaciones = false;
-                  }
-              }
-            }
-          }
-      );
-  }
+//                       this.validaciones = true;
+//                   }else{
+//                       this.validaciones = false;
+//                   }
+//               }
+//             }
+//           }
+//       );
+//   }
     actions(event) {
         const indice: number = this.ELEMENT_DATA.indexOf(event);
         this.ELEMENT_DATA.splice(indice, 1);
@@ -550,10 +635,11 @@ PermisoEPago:any;
                       this.router.navigate(['ventas/entregas']);
                   });
           } else {
-              this._matSnackBar.open('Uno de los productos recae en inventario negativo o no existe en bodega!', 'OK', {
-                  verticalPosition: 'top',
-                  duration: 2000
-              });
+            this._matSnackBar.open('El producto '+validaciones.itemCode+' recae en inventario negativo o no existe en bodega!', 'OK', {
+                verticalPosition: 'top',
+                duration: 2000
+            });
+
   
   
           }
