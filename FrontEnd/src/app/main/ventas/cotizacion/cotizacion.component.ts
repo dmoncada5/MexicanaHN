@@ -10,6 +10,8 @@ import { cotizacionDetalle, cotizacionEncabezado } from '../interfaces/interface
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BodegasComponent } from 'app/main/Configuracion/bodegas/bodegas.component';
+import { fill } from 'lodash';
+//import { Element } from '@angular/compiler';
 
 // this.userForm.get('cproy').value; obtener data de form
 
@@ -61,6 +63,7 @@ export class CotizacionComponent implements OnInit {
   socioItem: any;
 
   private _unsubscribeAll: Subject < any > ;
+    decimalPipe: any;
 
   constructor(private CotizacionesService: CotizacionesService,
       private activatedRoute: ActivatedRoute,
@@ -209,6 +212,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.selectedSerie = true;
    }
   complete(event) {
+
+    
+
+
+    // let indice=0;
+    // indice= this.ELEMENT_DATA.length
+    // this.ELEMENT_DATA.splice(0,indice) ;
+
       this.CotizacionesService.getOneSocio('/socios/edit', event.target.value).subscribe(
           (res) => {
               this.cotizacionE.SocioCode= event.target.value;
@@ -227,7 +238,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
               this.CotizacionForm.get("RTN").setValue(this.cotizacionE.RTN);
               this.CotizacionForm.get("direccion").setValue(this.cotizacionE.Direccion);
               this.CotizacionForm.get("comentario").setValue(this.cotizacionE.comentarios);
-            
+
+            //   for (let i = this.ELEMENT_DATA.length; i > 0; i--) {
+            //     this.ELEMENT_DATA.pop();
+            //   }
+              this.ELEMENT_DATA.length=0;
+              this.refreshTable();
+              //this.Agregar(event);
+
           },
           (err) => {
               console.log(err);
@@ -242,7 +260,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   }
 
   total(cant: number, precio: number,descuento:number): number {
-      return (cant * precio)- (cant * precio)*(descuento/100);
+      return (cant * precio)-(cant * precio*15/100)- (cant * precio)*(descuento/100);
   }
 
   validarExist(eve) {
@@ -277,18 +295,20 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     valor+=this.ELEMENT_DATA[index]['totaLine'];
     }
     return valor;
+    //return valor-(valor*15/100);
   }
 
   isv():number{
   let valor=0;
   for(let index=0;index<this.ELEMENT_DATA.length;index++){
-  valor+=this.ELEMENT_DATA[index]['totaLine'];
+  valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
   }
   return valor*0.15;
 }
   grandTotal():number{
-  let valor=0;
+  let  valor=0;
   valor=this.totalGeneral()+this.isv();
+ //Math.round
   return valor;
 }
   completeProducts(event) {
@@ -312,10 +332,13 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 Linea: index,
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
+                //precio: Number((((this.Detalle.price))-((this.Detalle.price)*15/100)).toFixed(2)),
                 precio: this.Detalle.price,
                 cantidad: 1,
                 DescuentoLine: 0,
+               // totaLine: Number((((this.total(1, this.Detalle.price, 0)))-((this.total(1, this.Detalle.price, 0))*15/100)).toFixed(2)),
                 totaLine: this.total(1, this.Detalle.price,0),
+                //totaLine: this.total(),
                 //almacen:1,
                 almacen:this.Detalle.cbod+"",
                 impuestocod:0,
@@ -352,8 +375,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 precio: this.Detalle.price,
+                //precio: Number((((this.Detalle.price))-((this.Detalle.price)*15/100)).toFixed(2)),
+                //precio: Number(((this.Detalle.price)/1.1499998).toFixed(4)),
                 cantidad: 1,
                 DescuentoLine: 0,
+                //totaLine: Number(((this.total(1, this.Detalle.price, 0))/1.1499998).toFixed(4)),
+                //totaLine: Number((((this.total(1, this.Detalle.price, 0)))-((this.total(1, this.Detalle.price, 0))*15/100)).toFixed(2)),
                 totaLine: this.total(1, this.Detalle.price,0),
                 almacen:this.Detalle.cbod+"",
                // almacen:1,

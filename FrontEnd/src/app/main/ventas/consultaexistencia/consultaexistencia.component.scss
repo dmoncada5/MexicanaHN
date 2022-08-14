@@ -86,20 +86,29 @@ app-consultaexistencia {
             align-items: center;
             align-content: center;
         }
-        .mat-column-DocNum {
+        .mat-column-ItemCode {
             flex: 0 1 184px;
         }
-        .mat-column-SocioCode {
-            flex: 0 1 184px;
-        }
-        .mat-column-NombreSocio {
+        .mat-column-Nombre {
             flex: 0 1 450px;
         }
-        .mat-column-TotalDoc {
-            flex: 0 1 90px;
+        .mat-column-bodega {
+            flex: 0 1 184px;
         }
-        .mat-column-fechaDoc {
-            flex: 0 1 380px;
+        .mat-column-Inventario {
+            flex: 0 1 100px;
+        }
+        .mat-column-Minimo {
+            flex: 0 1 100px;
+        }
+        .mat-column-Maximo {
+            flex: 0 1 100px;
+        }
+        .mat-column-Comprometido {
+            flex: 0 1 100px;
+        }
+        .mat-column-Solicitado {
+            flex: 0 1 100px;
         }
         .active-icon {
             border-radius: 50%;

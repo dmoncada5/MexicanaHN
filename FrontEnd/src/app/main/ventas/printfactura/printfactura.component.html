@@ -47,61 +47,76 @@
                 </div>
                 <div class="text1">{{company.empresa}}</div>
                 <div class="text1">{{company.empresa_sociedad}}</div>
-                <div class="text1">{{company.direccion}}</div>
+                <div class="text1">{{company.direccion.substring(0,30)}}</div>
+                <div class="text1">{{company.direccion.substring(30,50)}}</div>
                 <div class="text1">Tel. : {{company.telefono}}</div>
                 <div class="text1">RTN : {{company.rtn}}</div>
                 <div class="text1">Correo : {{company.correo}}</div>
                 <div class="divider2"></div>
-       
 
-                <div class="text1"> FACTURA </div>
-                <div class="text1"> {{Encabezado.numero}} </div>
+
+                <div class="text1">
+                    <h3>FACTURA</h3>
+                </div>
+                <div class="text1">
+                    <h3>{{Encabezado.numero}}</h3>
+                </div>
                 <!-- <section id="date"></section> -->
-      
+
                 <!-- <div class="text1"> FECHA </div> -->
                 <div class="text1">FECHA : {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
-     
-                <div class="text1"> CAI </div>
-                <div class="text1">{{Encabezado.cai.substring(0,21) }}</div>
+
+                <!-- <div class="text1"> CAI </div> -->
+                <div class="text1"> CAI : {{Encabezado.cai.substring(0,21) }}</div>
 
                 <div class="text1">{{Encabezado.cai.substring(21,37) }} </div>
-              
-                <div class="text1"> FECHA LIMITE EMISION </div>
-                <div class="text1"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </div>
-      
-                <div class="text1"> RANGO </div>
-                <div class="text1"> {{Encabezado.fact_emini }} </div>
-                <div class="text1"> hasta </div>
-                <div class="text1"> {{Encabezado.fact_emifin}}</div>
-        
+
+                <!-- <div class="text1"> FECHA LIMITE EMISION </div> -->
+                <div class="text1"> FECHA LIMITE : {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </div>
+
+                <!-- <div class="text1"> RANGO </div> -->
+                <div class="text1"> RANGO : {{Encabezado.fact_emini }}</div>
+                <!-- <div class="text1"> hasta </div> -->
+                <div class="text1"> al {{Encabezado.fact_emifin}}</div>
+
                 <!-- <div class="divider2"></div> -->
                 <div class="nombre">____________________________</div>
+<<<<<<< HEAD
                 <div  class="cliente" >
                 CLIENTE: - {{Encabezado.SocioCode}} 
                    </div>
              <div class="nombre" >
                 NOMBRE: - {{Encabezado.NombreSocio}}
                       </div>
+=======
+                <div class="cliente">
+                    CLIENTE: - {{Encabezado.SocioCode}}
+                </div>
+                <div class="nombre">
+                    NOMBRE: - {{Encabezado.NombreSocio}}
+                </div>
+>>>>>>> c3f870f1926786f904c9e9e390fd54695e3633cd
 
-                      <div class="nombre">RTN:{{Encabezado.SocioCode}}</div>
-                      <!-- <div class="divider2"></div> -->
-                      <div class="nombre">____________________________</div>
-                      <!-- <div class="divider2"></div> -->
+                <div class="nombre">RTN:{{Encabezado.RTN}}</div>
+                <!-- <div class="divider2"></div> -->
+                <div class="nombre">____________________________</div>
+                <!-- <div class="divider2"></div> -->
             </div>
 
 
-         
+
             <div class="content">
                 <table class="simple invoice-table">
                     <thead>
-                        <th>
-                        </th>
+                        <!-- <th>
+                        </th> -->
 
-                        <tr class="detalle">
-                            <div >
-                                <td> CODIGO</td>
+                        <tr>
+                            <div>
+                                <div class="detalle">
+                                    <td> CODIGO</td>
+                                </div>
                             </div>
-
                         </tr>
                         <tr>
                             <div class="detalle">
@@ -125,10 +140,10 @@
                         <tr>
                             <th>
                             </th>
-                            <th>
+                            <!-- <th>
                             </th>
                             <th>
-                            </th>
+                            </th> -->
                         </tr>
 
 
@@ -139,9 +154,6 @@
                         <tr *ngFor="let det of Detalle">
 
 
-
-
-
                             <div class="detalle">{{det.itemCode}}</div>
                             <div class="detalle">{{det.itemName}}</div>
 
@@ -149,17 +161,10 @@
 
                                 <td> {{det.precio}}</td>
                                 <td> {{det.cantidad}}</td>
-                                <td class="text-right"> {{det.totaLine }}</td>
+                                <td class="text-right"> {{det.totaLine}}</td>
 
 
                             </div>
-
-
-
-
-
-
-
 
 
 
@@ -171,28 +176,28 @@
                 </table>
                 <table class=" invoice-table-footer">
                     <tbody>
-                        <tr class="discount" >
+                        <tr class="discount">
                             <td>IMP. EXENTO</td>
                             <td>{{0 | currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="discount" >
+                        <tr class="discount">
                             <td>IMP. EXONERADO</td>
                             <td>{{0 | currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="discount" >
+                        <tr class="discount">
                             <td>SUBTOTAL</td>
                             <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="discount" >
+                        <tr class="discount">
                             <td>ISV</td>
                             <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="discount" >
+                        <tr class="discount">
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="total" >
-                            <td >TOTAL</td>
+                        <tr class="total">
+                            <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
                         </tr>
                     </tbody>
@@ -201,33 +206,55 @@
 
 
 
+                <div class="footer">
+
+                    <div class="text1">
+
+
+                        <div>
+
+                            ORDEN COMPRA EXENTA_____
+                        </div>
+                        <div>
+                            No REG. EXONERADO________
+                        </div>
+                        <div>
+                            No REGISTRO SAG___________
+                        </div>
+                    </div>
+                    <div class="Exijela">
+                        "La Factura es beneficio de todos exijela"
+                    </div>
+
+
+
+                </div>
             </div>
-
-
+            <!-- 
 
             <div class="footer">
 
-<div class="text1">
+                <div class="text1">
 
 
-                <div >
+                    <div>
 
-                    ORDEN COMPRA EXENTA_____
+                        ORDEN COMPRA EXENTA_____
+                    </div>
+                    <div>
+                        No REG. EXONERADO________
+                    </div>
+                    <div>
+                        No REGISTRO SAG___________
+                    </div>
                 </div>
-                <div >
-                    No REG. EXONERADO________
-                </div>
-                <div >
-                    No REGISTRO SAG___________
-                </div>
-            </div>
                 <div class="Exijela">
-                  "La Factura es beneficio de todos exijela"
+                    "La Factura es beneficio de todos exijela"
                 </div>
 
 
-              
-            </div>
+
+            </div> -->
 
             <!--
 
