@@ -7,7 +7,7 @@
 }
 
 @page {
-    margin: 0 -6cm //cambjo a 4
+    margin: 0 -6cm
 }
 
 app-printentrega {
@@ -15,73 +15,74 @@ app-printentrega {
         &.modern {
             padding: 0;
             .invoice-container {
-                padding: 20px; //prueba de cambio de valor 40 a 20
-                //margin: 0;
+                padding: 40px;
                 margin: 0 auto;
                 .card {
                     width: 380px;
                     min-width: 380px;
                     max-width: 380px;
-                    padding: 35px; //prueba de cambio de valor 88 a 40
+                    padding: 88px;
                     overflow: hidden;
                     background: #FFFFFF;
-                    @include mat-elevation(5); //cambiar el valor de 7 a 5
+                    @include mat-elevation(7);
                     .header {
-                        .detalle {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .detalle{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
-                            text-align: left;
+                            text-align:  left;
                             color: black;
                         }
-                        .text1 {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .text1{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-                        .cliente {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .cliente{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: left;
-                            margin-top: 1px;
+                            margin-top: 12px;
                             color: black;
                         }
-                        .nombre {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .nombre{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: left;
+                           
                             color: black;
                         }
-                        .text {
-                            font-family: 'Arial';
+                        .text{
+                            font-family:'Arial' ;
                             font-size: small;
-                            font-weight: normal;
-                            text-align: center;
+                            font-weight:normal;
+                            text-align:  center;
                             color: black;
                         }
-                        .textCAI {
-                            font-family: 'Arial';
+                        .textCAI{
+                            font-family:'Arial' ;
                             font-size: small;
                             font-weight: lighter;
-                            text-align: left;
+                            text-align:  left;
                             color: black;
                         }
-                        .divider1 {
-                            width: 144px;
-                            margin: 0 48px;
-                            background-color: rgba(0, 0, 0, 0.12);
-                            height: 1px;
-                        }
-                        .divider2 {
-                            width: 250px;
-                            margin: 0 0px;
-                            background-color: rgba(0, 0, 0, 0.12);
-                            height: 1px;
-                        }
+                            .divider1 {
+                                width: 144px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                            .divider2 {
+                         
+                                width: 250px;
+                                margin:0 0px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
                         .ids {
                             line-height: 5px;
                             color: rgba(0, 0, 0, 0.54);
@@ -89,7 +90,7 @@ app-printentrega {
                                 width: 250px;
                             }
                             .seller {
-                                margin-bottom: 15px; // cambio de 50 a 15
+                                margin-bottom: 50px;
                                 .logo {
                                     width: 50px;
                                 }
@@ -105,98 +106,116 @@ app-printentrega {
                                 width: 1px;
                                 margin: 0 48px;
                                 background-color: rgba(0, 0, 0, 0.12);
-                                height: 50px; // cambiar 144 a 100
+                                height: 144px;
                             }
+                    
                         }
+                  
                     }
                     .content {
                         // width: 100%;
                         // min-width: 0px;
                         // padding: 20px;
                         // margin-left: 10px;
-                        margin-top: 0; // 1px
-                        .detalle {
-                            font-family: 'Arial';
-                            font-size: small;
+                        margin-top: 0px;
+                        .detalle{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
-                            text-align: left;
+                            text-align:  left;
                             color: black;
                         }
-                        .text1 {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .text1{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-                        .cliente {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .cliente{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: left;
-                            margin-top: 1px;
+                            margin-top: 35px;
                             color: black;
                         }
-                        .nombre {
-                            font-family: 'Arial';
-                            font-size: small;
+                        .nombre{
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: left;
+                           
                             color: black;
                         }
-                        .text {
-                            font-family: 'Arial';
+                        .text{
+                            font-family:'Arial' ;
                             font-size: small;
-                            font-weight: normal;
-                            text-align: center;
+                            font-weight:normal;
+                            text-align:  center;
                             color: black;
                         }
-                        .textCAI {
-                            font-family: 'Arial';
+                        .textCAI{
+                            font-family:'Arial' ;
                             font-size: small;
                             font-weight: lighter;
-                            text-align: left;
+                            text-align:  left;
                             color: black;
                         }
+
+
                         .invoice-table {
-                            margin-top: 0; //1px
+                            margin-top: 70px;
                             font-size: 12px;
                             color: rgba(0, 0, 0, 0.87);
+
                             // width: 100%;
                             // min-width: 0px;
                             // padding: 20px;
                             // margin-left: 10px;
-                            margin-top: 0; //1px
+                            margin-top: 5px;
                             thead {
                                 tr {
                                     th {
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
-                                    td {
-                                        padding-right: 40px; //cambiar panding 40px a 20px
+                                
+                                    td{
+                                        padding-right: 40px;
                                     }
                                 }
                             }
                             tbody {
                                 tr {
-                                    td {
-                                        padding-right: 55px;
+                              
+                                    td{
+                                        padding-right: 65px;
                                     }
                                 }
+                               
                             }
+                         
                             .title {
                                 font-size: 17px;
                             }
                             .detail {
-                                //margin-top: 1px;
+                                margin-top: 8px;
                                 font-size: 8px;
                                 color: rgba(0, 0, 0, 0.54);
                                 max-width: 360px;
                             }
                         }
                         .invoice-table-footer {
-                            // margin: 26px 0 25px 0; //96px cambioa a 100px
+                        // margin: 36px 0 96px 0;
+
+                       // padding: 2px 20px ;
+                       // margin-left: 35px;
+                        // width: 90%;
+                        // min-width: 0px;
+                        // padding: 20px;
+                        // margin-left: 35px;
+                        // margin-top: 5px;
                             tr {
                                 td {
                                     text-align: left;
@@ -204,7 +223,7 @@ app-printentrega {
                                     font-weight: bold;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
-                                    padding: 15px 100px; //cambio panding 15px a 100pc
+                                    padding: 5px 5px;
                                     &:first-child {
                                         text-align: left;
                                     }
@@ -213,16 +232,17 @@ app-printentrega {
                                     td {
                                         font-size: 12px;
                                         font-weight: bolder;
-                                        padding: 2px 30px; //cambio panding 8px a 18px
-                                        color: rgba(0, 0, 0, 1);
+                                        padding: 4px 8px;
+                                        color:rgba(0, 0, 0, 1);
                                     }
                                 }
                                 &.total {
                                     td {
-                                        padding: 16px 4px; //cambio de 32 a 16
+                                        padding: 32px 8px;
                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
                                         font-size: 12px;
                                         font-weight: bolder;
+                                      
                                         color: rgba(0, 0, 0, 1);
                                     }
                                 }
@@ -230,18 +250,19 @@ app-printentrega {
                         }
                     }
                     .footer {
-                        .text1 {
-                            margin-top: 1px;
-                            font-family: 'Arial';
-                            font-size: small;
+                        .text1{
+                            margin-top: 5px;
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
                         }
-                        .Exijela {
-                            margin-top: 1px;
-                            font-family: 'Arial';
-                            font-size: small;
+
+                        .Exijela{
+                            margin-top: 35px;
+                            font-family:'Arial';
+                            font-size:small;
                             font-weight: bolder;
                             text-align: center;
                             color: black;
@@ -249,7 +270,7 @@ app-printentrega {
                         .note {
                             font-size: 15px;
                             font-weight: 600;
-                            margin-bottom: 10px; //cambias de 24 a 10
+                            margin-bottom: 24px;
                         }
                         // IE10 fix
                         .logo,
@@ -265,22 +286,27 @@ app-printentrega {
                             font-size: 12px;
                             font-weight: 600;
                             color: rgba(0, 0, 0, 0.54);
-                            line-height: 1px; //cambio de 18 a 1
+                            line-height: 18px;
                         }
                     }
                 }
             }
         }
     }
-    /* PRINT STYLES */
+ /* PRINT STYLES */
     @media print {
+      
         /* Invoice Specific Styles */
         #invoice {
+          
             &.modern {
+             
                 background: white;
                 .invoice-container {
+                   
                     padding: 0;
-                    .card {
+                
+               .card {
                         // width: 100%;
                         // min-width: 0;
                         // background: none;
@@ -289,62 +315,64 @@ app-printentrega {
                         width: 100%;
                         min-width: 0px;
                         padding: 0px;
-                        // overflow: hidden;
+                       // overflow: hidden;
                         background: #FFFFFF;
+                       
                         .header {
-                            .detalle {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .detalle{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
-                                text-align: left;
+                                text-align:  left;
                                 color: black;
                             }
-                            .text1 {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .text1{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-                            .cliente {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .cliente{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: left;
                                 margin-left: 90px;
                                 color: black;
                             }
-                            .nombre {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .nombre{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: left;
                                 margin-left: 90px;
                                 color: black;
                             }
-                            .text {
-                                font-family: 'Arial';
+                            .text{
+                                font-family:'Arial' ;
                                 font-size: small;
-                                font-weight: normal;
-                                text-align: center;
+                                font-weight:normal;
+                                text-align:  center;
                                 color: black;
                             }
-                            .textCAI {
-                                font-family: 'Arial';
+                            .textCAI{
+                                font-family:'Arial' ;
                                 font-size: small;
                                 font-weight: lighter;
-                                text-align: left;
+                                text-align:  left;
                                 color: black;
                             }
                             .divider1 {
                                 width: 144px;
-                                margin: 0 0px; //cambio de 0 48px a 0 28px
+                                margin: 0 48px;
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 1px;
                             }
                             .divider2 {
+                         
                                 width: 250px;
-                                margin: 0 0px;
+                                margin:0 0px;
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 1px;
                             }
@@ -353,7 +381,7 @@ app-printentrega {
                                     width: 120pt;
                                 }
                                 .seller {
-                                    margin-bottom: 8pt; // cambio de 8 a 4
+                                    margin-bottom: 8pt;
                                     .logo {
                                         width: 60pt;
                                     }
@@ -365,13 +393,13 @@ app-printentrega {
                                     }
                                 }
                                 .divider {
-                                    margin: 0;
-                                    // margin: 0 12pt;
-                                    height: 100pt; //cambio a 50
+                                    margin: 0 12pt;
+                                    height: 100pt;
                                 }
                                 &.divider2 {
+                         
                                     width: 250px;
-                                    margin: 0 0px;
+                                    margin:0 0px;
                                     background-color: rgba(0, 0, 0, 0.12);
                                     height: 1px;
                                 }
@@ -387,65 +415,65 @@ app-printentrega {
                             }
                         }
                         .content {
-                            .detalle {
-                                font-family: 'Arial';
-                                font-size: small;
+                            margin-top: 5px;
+                            .detalle{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
-                                text-align: left;
+                                text-align:  left;
                                 color: black;
                             }
-                            .text1 {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .text1{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-                            .cliente {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .cliente{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
                                 margin-left: 135px;
-                                color: red;
+                                color:  red;
                             }
-                            .nombre {
-                                font-family: 'Arial';
-                                font-size: small;
+                            .nombre{
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
+                               
                                 color: black;
                             }
-                            .text {
-                                font-family: 'Arial';
+                            .text{
+                                font-family:'Arial' ;
                                 font-size: small;
-                                font-weight: normal;
-                                text-align: center;
+                                font-weight:normal;
+                                text-align:  center;
                                 color: black;
                             }
-                            .textCAI {
-                                font-family: 'Arial';
+                            .textCAI{
+                                font-family:'Arial' ;
                                 font-size: small;
                                 font-weight: lighter;
-                                text-align: left;
+                                text-align:  left;
                                 color: black;
                             }
-                            width: 90%;
-                            margin-left: 10px;
-                            margin-top: none; // 1px
-                            padding: 25px;
+                       
                             .divider2 {
+                         
                                 width: 250px;
-                                margin: 0 0px;
+                                margin:0 0px;
                                 background-color: rgba(0, 0, 0, 0.12);
                                 height: 1px;
                             }
                             .invoice-table {
-                                width: 90%;
+                                width: 100%;
                                 min-width: 0px;
-                                padding: 30px;
-                                margin-left: 11px; // valor 10px
-                                margin-top: none;
+                                padding: 20px;
+                                margin-left: 35px;
+                                margin-top: 0px;
                                 // margin-top: 16pt;
                                 // font-size: 12px;
                                 // color: rgba(0, 0, 0, 0.87);
@@ -455,51 +483,64 @@ app-printentrega {
                                             // color: rgba(0, 0, 0, 0.87);
                                             // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                             // font-size: 10pt;
-                                            max-width: 65pt; //cambio de 60pt a 50pt
-                                            &:first-child {
-                                                padding-left: 0;
-                                            }
-                                            &:last-child {
-                                                padding-right: 0;
-                                            }
+                                                                                    max-width: 60pt;
+                                                                                    &:first-child {
+                                                                                        padding-left: 0;
+                                                                                    }
+                                                                                    &:last-child {
+                                                                                        padding-right: 0;
+                                                                                    }
+                                        
                                         }
-                                        td {
-                                            padding-right: 25px; //35 es el va;lor 
+                                    
+                                        td{
+                                            padding-right: 40px;
                                         }
                                     }
                                 }
                                 tbody {
                                     tr {
-                                        td {
-                                            padding-right: 40px;
+                                  
+                                        td{
+                                        //    padding-right: 65px;
+                                     
+                             
                                             &:first-child {
-                                                padding-left: 0;
+                                            padding-left: 0;
                                             }
                                             &:last-child {
-                                                padding-right: 0; //ultimo cambioa
-                                            }
+                                              padding-right: 0;
+                                          }     
                                         }
                                     }
+                                   
                                 }
+                             
                                 .title {
                                     font-size: 17px;
                                 }
                                 .detail {
-                                    margin-top: none; //1px
+                                    margin-top: 8px;
                                     font-size: 8px;
                                     color: rgba(0, 0, 0, 0.54);
-                                    max-width: 350px; //cambio a 350
+                                    max-width: 360px;
                                 }
                             }
                             .invoice-table-footer {
-                                box-shadow: none;
-                                width: 100%;
-                                min-width: 0px;
-                                padding: 30px;
-                                //margin: 5px 0 5px 0;
+                            //     box-shadow: none;
+                            //     width: 90%;
+                            //     min-width: 0px;
+                            //     padding: 15px;
+                            // margin: 5px 0 5px 0;
+
+                            margin-top: 0px;
+                            width: 80%;
+                            min-width: 0px;
+                          padding: 2px 20px ;
+                            margin-left: 35px;
+                       
                                 tr {
                                     td {
-                                        //text-align: center;
                                         text-align: right;
                                         font-size: 14px;
                                         font-weight: bold;
@@ -511,19 +552,24 @@ app-printentrega {
                                         }
                                     }
                                     &.discount {
+                                   
                                         td {
+                                            margin-top: 0px;
                                             font-size: 12px;
                                             font-weight: bolder;
-                                            padding: 4px 8px; //cambios 4px 8px a 4px 16px
-                                            color: rgba(0, 0, 0, 1);
+                                            padding: 4px 8px;
+                                           line-height:8px;
+                                             color:rgba(0, 0, 0, 1);
                                         }
                                     }
                                     &.total {
                                         td {
-                                            padding: 32px 4px;
-                                            border-top: 1px solid rgba(0, 0, 0, 0.12);
+                                            padding: 4px 8px;
+                                           // border-top: 1px solid rgba(0, 0, 0, 0.12);
                                             font-size: 12px;
+                                            margin-top: 0px;
                                             font-weight: bolder;
+                                          
                                             color: rgba(0, 0, 0, 1);
                                         }
                                     }
@@ -531,18 +577,19 @@ app-printentrega {
                             }
                         }
                         .footer {
-                            .text1 {
-                                // margin-top: 1px;
-                                font-family: 'Arial';
-                                font-size: small;
+                            .text1{
+                                margin-top: 5px;
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
                             }
-                            .Exijela {
-                                margin-top: 1px;
-                                font-family: 'Arial';
-                                font-size: small;
+    
+                            .Exijela{
+                                margin-top: 10px;
+                                font-family:'Arial';
+                                font-size:small;
                                 font-weight: bolder;
                                 text-align: center;
                                 color: black;
@@ -550,7 +597,7 @@ app-printentrega {
                             .note {
                                 font-size: 15px;
                                 font-weight: 600;
-                                margin-bottom: 24px; // cambio de 24 a 12
+                                margin-bottom: 24px;
                             }
                             // IE10 fix
                             .logo,
@@ -566,7 +613,7 @@ app-printentrega {
                                 font-size: 12px;
                                 font-weight: 600;
                                 color: rgba(0, 0, 0, 0.54);
-                                line-height: 1px; // cambio del 18 a 1
+                                line-height: 18px;
                             }
                         }
                     }
@@ -574,6 +621,10 @@ app-printentrega {
             }
         }
     }
+
+
+
+
     /* PRINT STYLES */
     // @media print {
     //     /* Invoice Specific Styles */
@@ -660,18 +711,18 @@ app-printentrega {
     //                         }
     //                         .invoice-table-footer {
     //                             margin: 25px 0 5px 0;
-    // tr {
-    //     td {
-    //         text-align: right;
-    //         font-size: 14px;
-    //         font-weight: bold;
-    //         color: rgba(0, 0, 0, 0.54);
-    //         border-bottom: none;
-    //         padding: 5px 5px;
-    //         &:first-child {
-    //             text-align: left;
-    //         }
-    //     }
+                                // tr {
+                                //     td {
+                                //         text-align: right;
+                                //         font-size: 14px;
+                                //         font-weight: bold;
+                                //         color: rgba(0, 0, 0, 0.54);
+                                //         border-bottom: none;
+                                //         padding: 5px 5px;
+                                //         &:first-child {
+                                //             text-align: left;
+                                //         }
+                                //     }
     //                                 &.discount {
     //                                     td {
     //                                         padding-bottom: 12px;
@@ -684,6 +735,7 @@ app-printentrega {
     //                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
     //                                         font-size: 12px;
     //                                         font-weight: bolder;
+                                          
     //                                         color: rgba(0, 0, 0, 1);
     //                                     }
     //                                 }
