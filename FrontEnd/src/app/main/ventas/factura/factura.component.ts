@@ -615,11 +615,13 @@ this.validaciones=true;
     this.FacturaE.status='A';
     delete this.FacturaE.DocNum;
 
+
     this.guardarValidaciones('Lasagna', (valida: valida[]) => {
 
      
+
         const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
-console.log('valida',validaciones)
+
 
         ///////////////////// grabar en tabla//////////////////////////////////
         if (!validaciones) {
@@ -676,6 +678,16 @@ console.log('valida',validaciones)
                     // Change the location with new one
 
                     this.router.navigate(['ventas/facturas']);
+                }).catch(res=>{
+
+                    if (res.error.text=="El numero de la Factura ya existe!!"){
+                        this._matSnackBar.open(res.error.text, 'OK', {
+                            verticalPosition: 'top',
+                            duration: 2000
+                        });
+
+
+                    }
                 });
         } else {
 

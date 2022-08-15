@@ -184,7 +184,7 @@ class MainController {
     }
 
     async getOneDetalle(req, res) {
-        console.log(req.body)
+      
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -197,10 +197,22 @@ class MainController {
         }
     }
 
-    async addNewDataEncabezado(req, res) {
-
+    async addNewDataEncabezado(req, res ) {
+      
         try {
-            if (req.body.SocioCode != null) {
+            const pool1 = await poolPromise 
+            const val = await pool1.request()
+            .input('numero', sql.NVarChar, req.body.numero)
+            .query(queries.validarFactura)
+       
+           // console.log(parseInt(val.recordsets[0][0]["cantidad"]))
+
+
+            if (parseInt(val.recordsets[0][0]["cantidad"])>0){
+                res.send('El numero de la Factura ya existe!!')
+            } else          
+            {
+           if (req.body.SocioCode != null) {
                 const pool = await poolPromise
                 const result = await pool.request()
                     .input('fechaDoc', sql.NVarChar, req.body.fechaDoc)
@@ -231,13 +243,16 @@ class MainController {
                     .input('BaseDocRef', sql.NVarChar, req.body.BaseDocRef)
                     .query(queries.addNewFacturaEncabezado)
                 res.json(result)
+          
             } else {
                 res.send('Please fill all the details!')
-            }
+            }     
+        }
         } catch (error) {
             res.status(500)
             res.send(error.message)
         }
+     
     }
 
     async addNewDataDetalle(req, res) {

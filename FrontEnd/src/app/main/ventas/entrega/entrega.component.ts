@@ -659,7 +659,17 @@ if (res.length>0){
                       // Change the location with new one
   
                       this.router.navigate(['ventas/entregas']);
-                  });
+                  }).catch(res=>{
+
+                    if (res.error.text=="El numero de la Factura ya existe!!"){
+                        this._matSnackBar.open(res.error.text, 'OK', {
+                            verticalPosition: 'top',
+                            duration: 2000
+                        });
+
+
+                    }
+                });;
           } else {
             this._matSnackBar.open('El producto '+validaciones.itemCode+' recae en inventario negativo o no existe en bodega!', 'OK', {
                 verticalPosition: 'top',
