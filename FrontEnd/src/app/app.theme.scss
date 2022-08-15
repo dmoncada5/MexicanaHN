@@ -66,6 +66,7 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
 @import "src/app/main/autenticar/login/login.theme";
 @import "src/app/main/sample/project.theme";
 @import "src/app/main/ventas/consultaexistencia/consultaexistencia.theme";
+@import "src/app/main/configuracion/listaprecio/listaprecio.theme";
 //@import "src/app/main/configuracion/formapagos/formapagos.theme";
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -112,6 +113,7 @@ $typography: mat-typography-config( $font-family: 'Muli, Helvetica Neue, Arial, 
     @include app-notacreditosp-theme($theme);
     @include app-stocktransfers-theme($theme);
     @include app-consultaexistencia-theme($theme);
+    @include app-listaprecio-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
