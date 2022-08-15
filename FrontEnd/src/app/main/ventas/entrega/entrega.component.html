@@ -187,7 +187,8 @@
                             <mat-form-field appearance="outline" fxFlex="70" class="pr-4 productItem">
                                 <mat-label>Productos</mat-label>
                                 <input [disabled]="!Ftupdate" matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
-                                <mat-autocomplete #autoproducts="matAutocomplete">
+                                <mat-autocomplete autoActiveFirstOption #autoproducts="matAutocomplete" [displayWith]="displayFn">
+
                                     <mat-option class="options" [disabled]="!Ftupdate" *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
 
                                         <div> <span>{{products.ItemCode}} | {{products.ItemName}}</span></div>
