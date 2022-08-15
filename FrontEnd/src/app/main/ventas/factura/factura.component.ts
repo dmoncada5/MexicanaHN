@@ -363,8 +363,9 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
         }else{
             this.validaciones = true;
             this.facturaService.getInfo('/products/info', event.target.value, this.codlista).subscribe(
-          (res) => {
-
+          (res:any[]) => {
+       
+if (res.length>0){
               this.Detalle = res[0];
               const index = this.ELEMENT_DATA.length + 1;
               this.ELEMENT_DATA.push({
@@ -384,7 +385,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 tipo:this.Detalle.tipo,
                 costo:this.Detalle.costo
               });      
-           
+            }else{
+                this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
+                    verticalPosition: 'top',
+                    duration: 3000
+                }); 
+            }
               this.productItem = null;
               this.refreshTable();
           },
@@ -407,8 +413,8 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
         }else{
             this.validaciones = true;
             this.facturaService.getInfo('/products/info', this.productItem, this.codlista).subscribe(
-        (res) => {
-   
+        (res:any[]) => {
+   if(res.length>0){
            this.Detalle = res[0];
            const index = this.ELEMENT_DATA.length + 1;
            this.ELEMENT_DATA.push({
@@ -428,7 +434,12 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 tipo:this.Detalle.tipo,
                 costo:this.Detalle.costo
             });
-   
+        }else{
+            this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
+                verticalPosition: 'top',
+                duration: 3000
+            });      
+        }
            this.productItem = null;
            this.refreshTable();
         },
