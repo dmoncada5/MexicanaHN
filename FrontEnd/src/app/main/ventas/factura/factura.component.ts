@@ -218,7 +218,9 @@ reglas :any;
       this.statusForm = this._formBuilder.group({
         pagotipo: ['']
     });
-      this.EfectivoForm = this._formBuilder.group({
+    
+
+    this.EfectivoForm = this._formBuilder.group({
         efectivo: [0, Validators.required],
         nombreBancoE: [''],
     });
@@ -357,7 +359,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
         if ( !this.codlista) {
             this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
             this.validaciones = false;
         }else{
@@ -388,7 +390,7 @@ if (res.length>0){
             }else{
                 this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
                     verticalPosition: 'top',
-                    duration: 3000
+                    duration: 15000
                 }); 
             }
               this.productItem = null;
@@ -407,7 +409,7 @@ if (res.length>0){
         if ( !this.codlista) {
             this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
             this.validaciones = false;
         }else{
@@ -437,7 +439,7 @@ if (res.length>0){
         }else{
             this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
                 verticalPosition: 'top',
-                duration: 3000
+                duration: 15000
             });      
         }
            this.productItem = null;
@@ -500,7 +502,7 @@ this.validaciones=true;
        if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
             verticalPosition: 'top',
-            duration: 2000
+            duration: 15000
         });
         this.validaciones = false;
         callback(null,this.validaciones); 
@@ -524,7 +526,7 @@ this.validaciones=true;
                      this.validaciones = false;
                      this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
                    verticalPosition: 'top',
-                   duration: 2000
+                   duration: 15000
                });
              }else{
              stock = res[0]['stock'];
@@ -670,7 +672,7 @@ console.log('valida',validaciones)
                 .then(resp => {
                     this._matSnackBar.open('Factura Agregada!', 'OK', {
                         verticalPosition: 'top',
-                        duration: 2000
+                        duration: 15000
                     });
 
                     // Change the location with new one
@@ -681,7 +683,7 @@ console.log('valida',validaciones)
 
             this._matSnackBar.open('El producto '+validaciones.itemCode+' recae en inventario negativo o no existe en bodega!', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
 
 
@@ -834,7 +836,7 @@ update() {
         .then(resp => {
             this._matSnackBar.open('Factura Modificada!', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
 
             // Change the location with new one
@@ -1048,7 +1050,7 @@ guardarpago(){
 }else{
     this._matSnackBar.open('error al aplicar el pago!' , 'OK', {
         verticalPosition: 'top',
-        duration: 2000
+        duration: 15000
     });   
     
 }
@@ -1089,7 +1091,7 @@ this.facturaService.Deletepago(eve).subscribe((res)=>{
 
     this._matSnackBar.open('Pago Eliminado!' , 'OK', {
         verticalPosition: 'top',
-        duration: 2000
+        duration: 15000
     });   
 
     this.router.navigate(['ventas/facturas/']);

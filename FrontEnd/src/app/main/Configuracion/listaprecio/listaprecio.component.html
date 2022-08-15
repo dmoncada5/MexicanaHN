@@ -54,7 +54,9 @@
             <div class="search-wrapper mx-32 mx-md-0">
                 <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon>search</mat-icon>
-                    <input #filter placeholder="Buscar una lista">
+                    <input palceholder="Buscar Producto" (keyup)="applyFilter($event.target.value)">
+
+                    <!-- <input #filter placeholder="Buscar una lista"> -->
                 </div>
             </div>
 
@@ -143,6 +145,9 @@
                         </form>
                     </mat-tab>
                     <mat-tab label="Precios" *ngIf="pageType !='new'">
+                        <!-- <mat-form-field>
+                            <input matInput (keyup)="applyFilter($event.target.value)" palceholder="Buscar Producto" fxLayoutAlign="space-between center">
+                        </mat-form-field> -->
 
                         <div class="content-card">
 
