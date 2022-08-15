@@ -204,29 +204,29 @@ reglas :any;
             pagotipo: ['']
         });
         this.EfectivoForm = this._formBuilder.group({
-            efectivo: [0],
+            efectivo: [0, Validators.required],
             nombreBancoE: [''],
         });
     
           this.TarjetaForm = this._formBuilder.group({
-            tarjetaNumber: ['', Validators.required],
-            FechaV: ['', Validators.required],
-            Nombre: ['', Validators.required],
-            identidad: ['', Validators.required],
+            tarjetaNumber: [''],
+            FechaV: [''],
+            Nombre: [''],
+            identidad: [''],
             totalTarjeta: [0, Validators.required],
             nombreBancoT: [''],
         });
     
           this.ChequeForm = this._formBuilder.group({
-            nombreBanco: ['', Validators.required],
-            fechaCheque: ['', Validators.required],
-            numeroCheque: ['', Validators.required],
+            nombreBanco: [''],
+            fechaCheque: [''],
+            numeroCheque: [''],
             totalCheque: [0, Validators.required],
         });
     
           this.TransForm = this._formBuilder.group({
-            numeroTrans: ['', Validators.required],
-            FechaTrans: ['', Validators.required],
+            numeroTrans: [''],
+            FechaTrans: [''],
             nombreBancoTT: [''],
             totalTrans: [0, Validators.required],
             
@@ -342,7 +342,7 @@ this.validaciones=true;
        if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
             verticalPosition: 'top',
-            duration: 2000
+            duration: 15000
         });
         this.validaciones = false;
         callback(null,this.validaciones); 
@@ -363,7 +363,7 @@ this.validaciones=true;
                          this.validaciones = false;
                          this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
                        verticalPosition: 'top',
-                       duration: 2000
+                       duration: 15000
                    });
                  }else{
                  stock = res[0]['stock'];
@@ -371,7 +371,7 @@ this.validaciones=true;
                  if (eve.cantidad > stock) {
                      this._matSnackBar.open('la cantidad de '+ eve.itemCode +' recae sobre inventario negativo', 'OK', {
                          verticalPosition: 'top',
-                         duration: 5000
+                         duration: 15000
                      });
                      this.validaciones = false;
                      
@@ -427,7 +427,7 @@ this.validaciones=true;
         if ( !this.codlista) {
             this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
             this.validaciones = false;
         }else{
@@ -477,7 +477,7 @@ if (res.length>0){
         if ( !this.codlista) {
             this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
             this.validaciones = false;
         }else{
@@ -507,7 +507,7 @@ if (res.length>0){
         }else{
             this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
                 verticalPosition: 'top',
-                duration: 3000
+                duration: 15000
             });      
         }
            this.productItem = null;
@@ -539,14 +539,14 @@ if (res.length>0){
 //                       this.validaciones = false;
 //                       this._matSnackBar.open('La bodega no esta asignada al producto seleccionado', 'OK', {
 //                     verticalPosition: 'top',
-//                     duration: 2000
+//                     duration: 15000
 //                 });
 //               }else{
 //               stock = res[0]['stock'];
 //               if (eve.cantidad > stock) {
 //                   this._matSnackBar.open('la cantidad recae sobre inventario negativo', 'OK', {
 //                       verticalPosition: 'top',
-//                       duration: 2000
+//                       duration: 15000
 //                   });
 //                   this.validaciones = false;
 //               } else {
@@ -618,17 +618,19 @@ if (res.length>0){
       const cnum = this.selectSerie[0]['cnum'];
       this.FacturaE.status='A';
       delete this.FacturaE.DocNum;
-  
+      let index = 0;
       this.guardarValidaciones('Lasagna', (valida: valida[]) => {
   
        
           const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
-  
+    
           ///////////////////// grabar en tabla//////////////////////////////////
           if (!validaciones) {
+
+
               this.facturaService.addfacturaEncabezado(this.FacturaE).then(respuesta => {
   
-                      for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+                      for (index = 0; index < this.ELEMENT_DATA.length; index++) {
   
                           this.facturaService.addfacturaDetalle(this.ELEMENT_DATA[index]);
                           // tslint:disable-next-line: max-line-length
@@ -653,7 +655,7 @@ if (res.length>0){
                   .then(resp => {
                       this._matSnackBar.open('Entrega Agregada!', 'OK', {
                           verticalPosition: 'top',
-                          duration: 2000
+                          duration: 15000
                       });
   
                       // Change the location with new one
@@ -671,13 +673,13 @@ if (res.length>0){
                     }
                 });;
           } else {
+
             this._matSnackBar.open('El producto '+validaciones.itemCode+' recae en inventario negativo o no existe en bodega!', 'OK', {
                 verticalPosition: 'top',
-                duration: 2000
+                duration: 15000
             });
 
-  
-  
+
           }
   
           ///////////////////// FIN grabar en tabla//////////////////////////////////     
@@ -778,7 +780,7 @@ if (res.length>0){
           .then(resp => {
               this._matSnackBar.open('Entrega Modificada!', 'OK', {
                   verticalPosition: 'top',
-                  duration: 2000
+                  duration: 15000
               });
   
               // Change the location with new one
@@ -1017,7 +1019,7 @@ guardarpago(){
 }else{
     this._matSnackBar.open('error al aplicar el pago!' , 'OK', {
         verticalPosition: 'top',
-        duration: 2000
+        duration: 15000
     });   
     
 }
@@ -1057,7 +1059,7 @@ EliminarPago(eve){
     
         this._matSnackBar.open('Pago Eliminado!' , 'OK', {
             verticalPosition: 'top',
-            duration: 2000
+            duration: 15000
         });   
     
         this.router.navigate(['ventas/facturas/']);

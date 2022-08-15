@@ -99,7 +99,9 @@ this.listapreciosService.getListaPrecioOne('/listaprecios/edit/', params.id).sub
 
   }
 
-
+applyFilter(filterValue:string){
+    this.dataSource.filter=filterValue.trim().toLowerCase();
+}
   
   refreshTable() {
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);

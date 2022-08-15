@@ -18,6 +18,7 @@ import { PrecioComponent } from './precio.component';
 import { PreciosComponent } from '../precios/precios.component';
 import { GuardallGuard } from 'app/main/autenticar/guardall.guard';
 
+
 const routes = [
   {
       path     : 'configuracion/precios', 
