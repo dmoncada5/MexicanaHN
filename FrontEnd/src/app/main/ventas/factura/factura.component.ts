@@ -219,29 +219,29 @@ reglas :any;
         pagotipo: ['']
     });
       this.EfectivoForm = this._formBuilder.group({
-        efectivo: [''],
+        efectivo: ['', Validators.required],
         nombreBancoE: [''],
     });
 
       this.TarjetaForm = this._formBuilder.group({
-        tarjetaNumber: ['', Validators.required],
-        FechaV: ['', Validators.required],
-        Nombre: ['', Validators.required],
-        identidad: ['', Validators.required],
+        tarjetaNumber: [''],
+        FechaV: [''],
+        Nombre: [''],
+        identidad: [''],
         totalTarjeta: ['', Validators.required],
         nombreBancoT: [''],
     });
 
       this.ChequeForm = this._formBuilder.group({
-        nombreBanco: ['', Validators.required],
-        fechaCheque: ['', Validators.required],
-        numeroCheque: ['', Validators.required],
+        nombreBanco: [''],
+        fechaCheque: [''],
+        numeroCheque: [''],
         totalCheque: ['', Validators.required],
     });
 
       this.TransForm = this._formBuilder.group({
-        numeroTrans: ['', Validators.required],
-        FechaTrans: ['', Validators.required],
+        numeroTrans: [''],
+        FechaTrans: [''],
         nombreBancoTT: [''],
         totalTrans: ['', Validators.required],
         
