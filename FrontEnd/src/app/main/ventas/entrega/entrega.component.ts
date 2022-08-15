@@ -188,6 +188,8 @@ reglas :any;
                           totaLine: res[index]['totaLine'],
                           almacen: res[index]['almacen'],
                           impuestocod: 0,
+                          tipo:res[index]['tipo'],
+                          costo:res[index]['costo']
                       });
                   }
                   this.selectedSerie = true;
@@ -418,82 +420,106 @@ this.validaciones=true;
     valor = this.totalGeneral() + this.isv();
     return valor; 
   }
-    completeProducts(event) {
-      if (this.Ftupdate == true){
-          if ( !this.codlista) {
-              this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
-                  verticalPosition: 'top',
-                  duration: 2000
-              });
-              this.validaciones = false;
-          }else{
-              this.validaciones = true;
-              this.facturaService.getInfo('/products/info', event.target.value, this.codlista).subscribe(
-            (res) => {
-  
-                this.Detalle = res[0];
-                const index = this.ELEMENT_DATA.length + 1;
-                this.ELEMENT_DATA.push({
-                    DocNum: this.FacturaE.numero,
-                  Linea: index,
-                  itemCode: this.Detalle.ItemCode,
-                  itemName: this.Detalle.ItemName,
-                  precio: this.Detalle.price,
-                  cantidad: 1,
-                  DescuentoLine: 0,
-                  totaLine: this.total(1, this.Detalle.price, 0),
-                  almacen: this.Detalle.cbod+"",
-                  impuestocod: 0,
-                });      
-             
-                this.productItem = null;
-                this.refreshTable();
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
-          }
-  
-      }
-    }
-    Agregar(event){
-        if (this.Ftupdate == true){
-          if ( !this.codlista) {
-              this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
-                  verticalPosition: 'top',
-                  duration: 2000
-              });
-              this.validaciones = false;
-          }else{
-              this.validaciones = true;
-              this.facturaService.getInfo('/products/info', this.productItem, this.codlista).subscribe(
-          (res) => {
-             this.Detalle = res[0];
-             const index = this.ELEMENT_DATA.length + 1;
-             this.ELEMENT_DATA.push({
+  completeProducts(event) {
+
+    //this.almacen =JSON.parse(localStorage.getItem('almacen'));
+    if (this.Ftupdate == true){
+        if ( !this.codlista) {
+            this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
+                verticalPosition: 'top',
+                duration: 2000
+            });
+            this.validaciones = false;
+        }else{
+            this.validaciones = true;
+            this.facturaService.getInfo('/products/info', event.target.value, this.codlista).subscribe(
+          (res:any[]) => {
+       
+if (res.length>0){
+              this.Detalle = res[0];
+              const index = this.ELEMENT_DATA.length + 1;
+              this.ELEMENT_DATA.push({
                   DocNum: this.FacturaE.numero,
-                  Linea: index,
-                  itemCode: this.Detalle.ItemCode,
-                  itemName: this.Detalle.ItemName,
-                  precio: this.Detalle.price,
-                  cantidad: 1,
-                  DescuentoLine: 0,
-                  totaLine: this.total(1, this.Detalle.price, 0),
-                  almacen: this.Detalle.cbod+"",
-                  impuestocod: 0,
-              });
-          
-             this.productItem = null;
-             this.refreshTable();
+                Linea: index,
+                itemCode: this.Detalle.ItemCode,
+                itemName: this.Detalle.ItemName,
+               // precio: Number(((this.Detalle.price)).toFixed(2)),
+                precio: this.Detalle.price,
+                cantidad: 1,
+                DescuentoLine: 0,
+               // totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+               totaLine: this.total(1, this.Detalle.price,0),
+               almacen: this.Detalle.cbod+"",
+               //almacen: 0,
+                impuestocod: 0,
+                tipo:this.Detalle.tipo,
+                costo:this.Detalle.costo
+              });      
+            }else{
+                this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
+                    verticalPosition: 'top',
+                    duration: 3000
+                }); 
+            }
+              this.productItem = null;
+              this.refreshTable();
           },
           (err) => {
               console.log(err);
           }
       );
-      }
-  }
+        }
+
     }
+  }
+  Agregar(event){
+      if (this.Ftupdate == true){
+        if ( !this.codlista) {
+            this._matSnackBar.open('Debe de seleccionar un cliente', 'OK', {
+                verticalPosition: 'top',
+                duration: 2000
+            });
+            this.validaciones = false;
+        }else{
+            this.validaciones = true;
+            this.facturaService.getInfo('/products/info', this.productItem, this.codlista).subscribe(
+        (res:any[]) => {
+   if(res.length>0){
+           this.Detalle = res[0];
+           const index = this.ELEMENT_DATA.length + 1;
+           this.ELEMENT_DATA.push({
+                DocNum: this.FacturaE.numero,
+                Linea: index,
+                itemCode: this.Detalle.ItemCode,
+                itemName: this.Detalle.ItemName,
+                precio: this.Detalle.price,
+                //precio: Number(((this.Detalle.price)).toFixed(2)),
+                cantidad: 1,
+                DescuentoLine: 0,
+                //totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
+                totaLine: this.total(1, this.Detalle.price,0),
+                almacen: this.Detalle.cbod+"",
+                //almacen: 0,
+                impuestocod: 0,
+                tipo:this.Detalle.tipo,
+                costo:this.Detalle.costo
+            });
+        }else{
+            this._matSnackBar.open('El Articulo no tiene precio asignado', 'OK', {
+                verticalPosition: 'top',
+                duration: 3000
+            });      
+        }
+           this.productItem = null;
+           this.refreshTable();
+        },
+        (err) => {
+            console.log(err);
+        }
+    );
+    }
+}
+  }
   getbodegas(){
       
       const user = JSON.parse(localStorage.getItem('usuario'));
@@ -1055,7 +1081,7 @@ PermisoEliminarPago(){
   }
   
 export interface Element {
-    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number;
+    DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number;tipo: string; costo: number;
 }
 export interface valida {
     Linea: number;
