@@ -460,8 +460,9 @@ this.ComprasService.addCompraEncabezado(this.compraE).then(respuesta => {
         this.ComprasService.addCompraDetalle(this.ELEMENT_DATA[index]);
         // this.ComprasService.setExistencia('/products/setExistencia', this.ELEMENT_DATA[index]["itemCode"], this.ELEMENT_DATA[index]["almacen"], this.ELEMENT_DATA[index]["cantidad"])
         this.ComprasService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
+        if (this.typeDocum === 'ordencompra'){
         this.ComprasService.setOrdenExistencia('/products/setOrdenExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
-        
+        }
         
     }
     if (this.typeDocum === 'ordencompra'){
