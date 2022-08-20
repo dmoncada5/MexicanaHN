@@ -866,37 +866,15 @@ guardarpago(){
 
     this.facturaService.getAll('/pago/numpago').subscribe(
         (res) => {
-            this.pago.status='A';     
-    this.numpago = res[0]['pagoId'];
-
-       
+    this.pago.status='A';     
+    this.numpago = res[0]['pagoId'];    
     this.pago.pagoId = this.numpago;
     this.pago.fechaPago = new Date();
     this.pago.tipoDocumento ='ENTREGA'
     this.pago.NDocumento = this.FacturaE.numero;
     this.pago.totalPago = this.totalpago;
+    this.pago.formaPago=this.selectTypePago;
 
-    // this.efectivo.pagoId = this.numpago;
-    // this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
-
-    // this.tarjeta.pagoId = this.numpago;
-    // this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
-    // this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
-    // this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
-    // this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
-    // this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
-
-
-    // this.cheque.pagoId = this.numpago;
-    // this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
-    // this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
-    // this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
-    // this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
-
-    // this.transferencia.pagoId = this.numpago;
-    // this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
-    // this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
-    // this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
     this.efectivo.pagoId = this.numpago;
     this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
     this.efectivo.nombreBancoE = this.EfectivoForm.get('nombreBancoE').value;

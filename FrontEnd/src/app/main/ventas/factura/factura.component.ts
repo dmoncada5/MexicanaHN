@@ -934,8 +934,7 @@ guardarpago(){
         (res) => {
          
     this.numpago = res[0]['pagoId'];
-
-       this.pago.status='A';
+    this.pago.status='A';
     this.pago.pagoId = this.numpago;
     this.pago.fechaPago = new Date();
     this.pago.tipoDocumento ='FACTURA'
