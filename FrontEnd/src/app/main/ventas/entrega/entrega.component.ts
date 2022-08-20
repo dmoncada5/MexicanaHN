@@ -399,7 +399,15 @@ this.validaciones=true;
     total(cant: number, precio: number, descuento: number): number {
         return (cant * precio) - (cant * precio) * (descuento / 100);
     }
+    totalProductos(): number{
+        let valor = 0;
+        for (let index = 0; index < this.ELEMENT_DATA.length; index++){
+        valor += this.ELEMENT_DATA[index]['cantidad'];
+        }
+        return valor;
+    }
   
+
     totalGeneral(): number{
       let valor = 0;
       for (let index = 0; index < this.ELEMENT_DATA.length; index++){
