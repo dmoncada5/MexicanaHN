@@ -513,10 +513,10 @@ this.NotaCreditoE.UserCreate = user.usuario ;
     this.guardarValidaciones('Lasagna', (valida: valida[]) => {
 
      
-        const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
+      // const validaciones = valida.find(valor => valor.Stock === 'false' ||  valor.Stock === 'BODEGA');
 
         ///////////////////// grabar en tabla//////////////////////////////////
-        if (!validaciones) {
+        // if (!validaciones) {
             this.notacreditoService.addnotacreditoEncabezado(this.NotaCreditoE).then(respuesta => {
 
                     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
@@ -542,14 +542,14 @@ this.NotaCreditoE.UserCreate = user.usuario ;
 
                     this.router.navigate(['ventas/notacreditos']);
                 });
-        } else {
-            this._matSnackBar.open('Uno de los productos recae en inventario negativo o no existe en bodega!', 'OK', {
-                verticalPosition: 'top',
-                duration: 2000
-            });
+        // } else {
+        //     this._matSnackBar.open('Uno de los productos recae en inventario negativo o no existe en bodega!', 'OK', {
+        //         verticalPosition: 'top',
+        //         duration: 2000
+        //     });
 
 
-        }
+        // }
 
         ///////////////////// FIN grabar en tabla//////////////////////////////////     
 
