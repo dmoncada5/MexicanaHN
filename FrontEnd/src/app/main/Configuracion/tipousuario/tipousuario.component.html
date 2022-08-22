@@ -33,6 +33,18 @@
             </div>
             <!-- / APP TITLE -->
 
+
+            <!-- / APP TITLE -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input palceholder="Buscar Producto" (keyup)="applyFilter($event.target.value)">
+
+                    <!-- <input #filter placeholder="Buscar una lista"> -->
+                </div>
+            </div>
+
+
             <button mat-raised-button class="save-product-button" [disabled]="tipousuarioForm.invalid" *ngIf="pageType ==='new'" (click)="addTipoUsuario()">
         <span>ADD</span>
     </button>

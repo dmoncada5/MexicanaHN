@@ -40,6 +40,7 @@ const routes = [
   {
       path     : 'compras/:id/:tipo',
       component: CompraComponent,
+      canActivate: [GuardallGuard],
 
   }
  ];
