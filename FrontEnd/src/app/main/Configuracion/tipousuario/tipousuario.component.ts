@@ -79,7 +79,9 @@ this.tipouser=this.tusuario["tipou"];
     }
   }
 
-
+  applyFilter(filterValue:string){
+    this.dataSource.filter=filterValue.trim().toLowerCase();
+}
 
 permisos(){
 
