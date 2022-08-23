@@ -15,6 +15,7 @@ app-factura {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         width: 100%;
+        padding-left: 250px;
         .mat-header-row {
             min-height: 64px;
         }
@@ -44,7 +45,7 @@ app-factura {
             }
         }
         .mat-column-ItemCode {
-            flex: 0 1 190px;
+            flex: 0 1 250px;
         }
         .mat-column-ItemName {
             flex: 0 1 850px;

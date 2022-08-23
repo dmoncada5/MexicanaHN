@@ -110,9 +110,10 @@
                                         <mat-label>ID</mat-label>
                                         <input matInput placeholder="ID" formControlName="SocioCode" [(ngModel)]="socioItem" [matAutocomplete]="auto" [formControl]="socioCtrl" (keydown.enter)="complete($event)">
                                         <mat-autocomplete #auto="matAutocomplete">
+                                            <!-- <cdk-virtual-scroll-viewport [itemSize]="10"> </cdk-virtual-scroll-viewport> -->
                                             <mat-option *ngFor="let socios of filteredSocios | async" [value]="socios.csocio">
 
-                                                <span>{{socios.csocio}} | </span>
+                                                <spam>{{socios.csocio}} | </spam>
                                                 <small>{{socios.nombre}}</small>
 
                                             </mat-option>
@@ -207,10 +208,10 @@
                             <mat-form-field appearance="outline" fxFlex="70" class="pr-4 productItem">
                                 <mat-label>Productos</mat-label>
                                 <input matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
-                                <mat-autocomplete #autoproducts="matAutocomplete">
+                                <mat-autocomplete #autoproducts="matAutocomplete" panelWidth="300px">
                                     <mat-option *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
 
-                                        <span>{{products.ItemCode}} | </span>
+                                        <!-- <span>{{products.ItemCode}} | </span> -->
                                         <small>{{products.ItemName}}</small>
 
                                     </mat-option>

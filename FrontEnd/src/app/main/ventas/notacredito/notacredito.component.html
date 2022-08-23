@@ -54,7 +54,7 @@
                 <button mat-icon-button class="mr-16" *ngIf="pageType !='new'&& typeDocum=='notacredito'" (click)="update()">
         <!-- <span>UPDATE</span> -->
         <mat-icon>update</mat-icon>
-        
+
     </button>
                 <button mat-icon-button class="mr-16" [routerLink]="'/ventas/printnotacreditos/'+NotaCreditoE.numero">
         <mat-icon>print</mat-icon>
@@ -181,10 +181,11 @@
                             <mat-form-field appearance="outline" fxFlex="70" class="pr-4 productItem">
                                 <mat-label>Productos</mat-label>
                                 <input [disabled]="!Ftupdate" matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
-                                <mat-autocomplete #autoproducts="matAutocomplete">
+                                <span>{{products.ItemCode}} | </span>
+                                <mat-autocomplete #autoproducts="matAutocomplete" panelWidth="300px">
                                     <mat-option [disabled]="!Ftupdate" *ngFor="let products of filteredProducts | async" [value]="products.ItemCode">
 
-                                        <span>{{products.ItemCode}} | </span>
+                                        <!-- <span>{{products.ItemCode}} | </span> -->
                                         <small>{{products.ItemName}}</small>
 
                                     </mat-option>
@@ -330,7 +331,7 @@
                     </mat-tab>
 
 
-                    <!-- 
+                    <!--
 
                     <mat-tab label="Pagos" *ngIf="pageType !='new'&& typeDocum=='notacredito'">
                         <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
@@ -516,7 +517,7 @@
 
                             </form>
 
-                         
+
                         <div class="section pb-48">
 
                             <div class="pb-16" fxLayout="row" fxLayoutAlign="start center">
