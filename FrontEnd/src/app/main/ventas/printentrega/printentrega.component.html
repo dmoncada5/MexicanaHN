@@ -129,9 +129,6 @@
                         <tr *ngFor="let det of Detalle">
 
 
-
-
-
                             <div class="detalle">{{det.itemCode}}</div>
                             <div class="detalle">{{det.itemName}}</div>
 
@@ -145,16 +142,6 @@
                             </div>
 
 
-
-
-
-
-
-
-
-
-
-
                         </tr>
                     </tbody>
 
@@ -163,20 +150,21 @@
                     <tbody>
                         <tr class="discount">
                             <td>SUBTOTAL</td>
-                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>ISV</td>
-                            <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>DESCUENTO</td>
-                            <td>-{{0| currency:'LPS':'symbol'}}</td>
+                            <td>-{{0| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="total">
                             <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
