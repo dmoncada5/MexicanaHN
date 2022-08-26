@@ -168,7 +168,7 @@ class MainController {
 
 
     async getOneDetalle(req, res) {
-        console.log(req.body)
+ 
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -244,6 +244,7 @@ class MainController {
                     .input('totaLine', sql.Numeric(12, 2), req.body.totaLine)
                     .input('almacen', sql.NVarChar, req.body.almacen)
                     .input('tipo', sql.Char, req.body.tipo)
+                    .input('FechaVencimiento', sql.DateTime, req.body.FechaVen)
                     .query(queries.addNewCompraDetalle)
                 res.json(result)
             } else {
@@ -313,7 +314,7 @@ class MainController {
                 .input('impuestocod', sql.NVarChar, req.body.impuestocod)
                 .input('totaLine', sql.Numeric(12, 2), req.body.totaLine)
                 .input('almacen', sql.NVarChar, req.body.almacen)
-
+                .input('FechaVencimiento', sql.DateTime, req.body.FechaVen)
             .query(queries.updateCompraDetalle)
             res.json(result)
 

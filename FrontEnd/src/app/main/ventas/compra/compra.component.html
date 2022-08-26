@@ -260,23 +260,6 @@
                                     <mat-cell *matCellDef="let element"> {{element.totaLine | number:'1.4-4'}} </mat-cell>
                                 </ng-container>
 
-                                <!-- <ng-container matColumnDef="actions ">
-                                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
-                                    <mat-cell *matCellDef="let row ">
-                                        <button mat-button>Edit</button>
-                                    </mat-cell>
-                                </ng-container> -->
-
-                                <!-- <ng-container matColumnDef="Bodega">
-                                    <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <mat-select placeholder="Bodegas" [(ngModel)]="element.almacen">
-                                            <mat-option value="BOD1"> BOD1</mat-option>
-                                            <mat-option value="BOD2"> BOD2 </mat-option>
-                                            <mat-option value="BOD3"> BOD3 </mat-option>
-                                        </mat-select>
-                                    </mat-cell>
-                                </ng-container> -->
 
                                 <ng-container matColumnDef="Bodega">
                                     <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
@@ -288,6 +271,25 @@
                                         </mat-select>
                                     </mat-cell>
                                 </ng-container>
+
+
+                                <ng-container matColumnDef="FechaVen">
+                                    <mat-header-cell *matHeaderCellDef> Fecha Vencimiento </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <!-- <mat-form-field floatLabel="never ">
+                                            <input  type="date"    matInput  [value]="element.FechaVen" [(ngModel)]="element.FechaVen">
+                                        </mat-form-field> -->
+
+                                       
+                                        <input  [disabled]="!Ftupdate"  matInput [matDatepicker]="FechaDatePicker3"[value]="element.FechaVen" [(ngModel)]="element.FechaVen">
+                                        <mat-datepicker-toggle matSuffix [for]="FechaDatePicker3"></mat-datepicker-toggle>
+                                        <mat-datepicker #FechaDatePicker3></mat-datepicker>
+                                 
+                                    </mat-cell>
+                                </ng-container>
+
+
+                               
 
                                 <ng-container matColumnDef="actions">
                                     <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Actions</mat-header-cell>

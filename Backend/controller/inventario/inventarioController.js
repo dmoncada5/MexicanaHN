@@ -79,7 +79,7 @@ class MainController {
         }
     }
     async getInfoComp(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -130,7 +130,7 @@ class MainController {
 
 
     async setExistencia(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -146,7 +146,7 @@ class MainController {
     }
 
     async setComprometido(req, res) {
-        console.log(req.body)
+ 
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -165,7 +165,7 @@ class MainController {
 
 
     async pedidoExistencia(req, res) {
-        console.log(req.body)
+   
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -182,7 +182,7 @@ class MainController {
 
 
     async ordenExistencia(req, res) {
-        console.log(req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -199,7 +199,7 @@ class MainController {
 
 
     async setOrdenExistencia(req, res) {
-        console.log(req.body)
+    
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -216,13 +216,15 @@ class MainController {
 
 
     async comprasExistencia(req, res) {
-        console.log(req.body)
+console.log('exec',req.body)
         try {
             const pool = await poolPromise
             const result = await pool.request()
                 .input('ItemCode', sql.NVarChar, req.body.ItemCode)
                 .input('cbod', sql.Int, req.body.cbod)
                 .input('cantidad', sql.Int, req.body.cantidad)
+                .input('costo', sql.Int, req.body.costo)
+                .input('FechaVencimiento', sql.Date, req.body.FechaVencimiento)
                 .query(queries.comprasExistencia)
             res.json(result.recordset)
         } catch (error) {
