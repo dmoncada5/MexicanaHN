@@ -119,18 +119,11 @@
                                         <mat-label>Codigo Producto</mat-label>
                                         <input matInput placeholder="Codigo" name="ItemCode" formControlName="ItemCode">
                                     </mat-form-field>
-                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
+                                    <mat-form-field appearance="outline" floatLabel="always" fxFlex="65">
                                         <mat-label>Nombre Producto</mat-label>
                                         <input matInput placeholder="Nombre " name="ItemName" formControlName="ItemName">
                                     </mat-form-field>
-
-
-                                    <mat-form-field appearance="outline" fxFlex="30">
-                                        <mat-label>Fecha Creacion</mat-label>
-                                        <input matInput [matDatepicker]="creacionDatePicker" name="FechaCreacion" formControlName="FechaCreacion">
-                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
-                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
-                                    </mat-form-field>
+                           
                                 </div>
 
 
@@ -166,6 +159,19 @@
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
+                                    <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker1" name="FechaCreacion" formControlName="FechaCreacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker1></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field appearance="outline" fxFlex="30">
+                                        <mat-label>Fecha Creacion</mat-label>
+                                        <input matInput [matDatepicker]="creacionDatePicker" name="FechaCreacion" formControlName="FechaCreacion">
+                                        <mat-datepicker-toggle matSuffix [for]="creacionDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creacionDatePicker></mat-datepicker>
+                                    </mat-form-field> -->
 
                                 </div>
                                 <div fxLayout="row" fxLayoutAlign="space-between">

@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ComprasService } from '../compras/compras.service';
 import { compraDetalle, compraEncabezado } from '../interfaces/interfaces';
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     animations   : fuseAnimations
 })
 export class CompraComponent implements OnInit {
-  displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad', 'Descuento', 'Total', 'Bodega', 'actions'];
+  displayedColumns = ['Line', 'ItemCode', 'ItemName', 'Price', 'Cantidad', 'Descuento', 'Total', 'Bodega', 'FechaVen','actions'];
   ELEMENT_DATA: Element[] = [];
   ELEMENT_VALIDADOR: valida[] = [];
 //   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
@@ -97,11 +97,24 @@ export class CompraComponent implements OnInit {
 
       this.compraE.fechaDoc = new Date();
   }
-
+  getFormattedDate( originalDate ){
+    originalDate=new Date(originalDate);
+    originalDate= originalDate.toISOString().substring(0, originalDate.toISOString().length - 1)
+    console.log('fec', originalDate)
+ //return originalDate.toISOString().substring(0, originalDate.toISOString().length - 1);
+ return originalDate;
+}
   refreshTable() {
       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
+  convertToDate(dateString) {
+    //  Convert a "dd/MM/yyyy" string into a Date object
+    let d = dateString.split("/");
+    let dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
 
+    console.log('dat',dat)
+    return dat;     
+}
   ngOnInit(): void {
       const params = this.activatedRoute.snapshot.params;
       this.pageType = params.id;
@@ -135,6 +148,7 @@ export class CompraComponent implements OnInit {
           //this.ComprasService.getOne('/compra/Encabezado', params.id).subscribe(
          this.ComprasService.getOne(buscarE, params.id).subscribe(
               (res) => {
+      
                   this.compraE = res[0];
                   if (params.tipo != 'compra'){
                     this.compraE.BaseDocRef=res[0]['tipo'];
@@ -151,8 +165,12 @@ export class CompraComponent implements OnInit {
         this.ComprasService.getOne(buscarD, params.id).subscribe(
         //    this.ComprasService.getOne('/compra/Detalle', params.id).subscribe(
             (res: any[]) => {
-                for (let index = 0; index < res.length; index++){
-                    this.ELEMENT_DATA.push({
+     
+                for (let index = 0; index < res.length; index++){0
+              console.log('ca,=mb',(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
+                console.log('log',new Date(this.getFormattedDate(res[index]['FechaVencimiento'])))
+              console.log('tre',this.convertToDate(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
+              this.ELEMENT_DATA.push({
                         DocNum: params.id,
                         Linea: res[index]['Linea'],
                         itemCode: res[index]['itemCode'],
@@ -164,6 +182,8 @@ export class CompraComponent implements OnInit {
                         almacen: res[index]['almacen'],
                         impuestocod: 0,
                         tipo:res[index]['tipo'],
+                        FechaVen:this.getFormattedDate(res[index]['FechaVencimiento'])
+                      //  FechaVen:new Date(this.getFormattedDate(res[index]['FechaVencimiento']))
                     });
                 }
                 this.selectedSerie = true;
@@ -240,7 +260,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     // this.validarExist(event);
       this.refreshTable();
   }
-
+ 
   total(cant: number, precio: number, descuento: number): number {
       return (cant * precio) - (cant * precio) * (descuento / 100);
   }
@@ -323,6 +343,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
+                FechaVen:this.Detalle.FechaVencimiento
               });        
               this.productItem = null;
   
@@ -363,6 +384,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
                 tipo:this.Detalle.tipo,
+                FechaVen:this.Detalle.FechaVencimiento
             });
             this.productItem = null;
             this.refreshTable();
@@ -456,10 +478,10 @@ this.compraE.status ='A';
 this.ComprasService.addCompraEncabezado(this.compraE).then(respuesta => {
    
     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
-      
+      console.log('arr',new Date(this.ELEMENT_DATA[index]['FechaVen']))
         this.ComprasService.addCompraDetalle(this.ELEMENT_DATA[index]);
         // this.ComprasService.setExistencia('/products/setExistencia', this.ELEMENT_DATA[index]["itemCode"], this.ELEMENT_DATA[index]["almacen"], this.ELEMENT_DATA[index]["cantidad"])
-        this.ComprasService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
+        this.ComprasService.comprasExistencia('/products/comprasExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad'],this.ELEMENT_DATA[index]['precio'],this.ELEMENT_DATA[index]['FechaVen']); 
         if (this.typeDocum === 'ordencompra'){
         this.ComprasService.setOrdenExistencia('/products/setOrdenExistencia', this.ELEMENT_DATA[index]['itemCode'], this.ELEMENT_DATA[index]['almacen'], this.ELEMENT_DATA[index]['cantidad']); 
         }
@@ -641,7 +663,7 @@ this.ComprasService.addCompraEncabezado(this.compraE).then(respuesta => {
   }
 
 export interface Element {
-   DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number;almacen: string;impuestocod: number;tipo: string;
+   DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number;almacen: string;impuestocod: number;tipo: string;FechaVen:string;
   }
 export interface valida {
     Linea: number;

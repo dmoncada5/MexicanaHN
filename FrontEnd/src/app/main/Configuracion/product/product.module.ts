@@ -17,7 +17,7 @@ import { FuseWidgetModule } from '../../../../@fuse/components';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+//import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { GuardallGuard } from 'app/main/autenticar/guardall.guard';
 
 
@@ -56,8 +56,8 @@ const routes = [
 
     // {provide: DateAdapter, useClass: AppDateAdapter},
     // {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    // { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
   ]
  
 })

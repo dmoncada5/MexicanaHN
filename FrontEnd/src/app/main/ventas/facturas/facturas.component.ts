@@ -82,7 +82,7 @@ export class FacturasComponent implements OnInit {
    getFormattedDate( originalDate ){
        originalDate=new Date(originalDate);
     return originalDate.toISOString().substring(0, originalDate.toISOString().length - 1);
-}
+} 
 
    ngOnInit(): void {
     

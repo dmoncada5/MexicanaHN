@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
     ItemCode : null,
     ItemName : null,
     FechaCreacion : null,
-   // FechaVencimiento : null,
+  //  FechaVen : null,
     impuesto : null,
     costo : null, 
     observaciones : null,
@@ -53,6 +53,7 @@ this.productForm = _formBuilder.group({
   ItemCode : ['', ],
   ItemName : ['', Validators.required],
   FechaCreacion : ['', Validators.required],
+ // FechaVen : ['',Validators.required ],
  // FechaVencimiento : ['', ],
   impuesto : ['', Validators.required],
   costo : [''],
@@ -82,7 +83,7 @@ this.productForm = _formBuilder.group({
       this.products.FechaCreacion =new Date();
       this.productForm.get("FechaCreacion").setValue(this.products.FechaCreacion);
 
-
+ 
 }else
   if (params.id) {
 this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
@@ -92,6 +93,7 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
     this.productForm.controls.ItemCode.setValue(this.products['ItemCode']);
     this.productForm.controls.ItemName.setValue(this.products['ItemName']);
     this.productForm.controls.FechaCreacion.setValue(this.products['FechaCreacion']);
+ //   this.productForm.controls.FechaVen.setValue(this.products['FechaVencimiento']);
    // this.productForm.controls.FechaVencimiento.setValue(this.products['FechaVencimiento']);
     this.productForm.controls.impuesto.setValue(this.products['impuesto']);
     this.productForm.controls.costo.setValue(this.products['costo']); 
@@ -163,7 +165,7 @@ this.productsService.getProductOne('/productsI/edit/', params.id).subscribe(
  getCompany(){
    this.productsService.getAll('/company').subscribe(
      (res) => {
-       console.log(res)
+  
 this.company = res;
      }
    );

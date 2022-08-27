@@ -192,10 +192,10 @@ addCompraDetalle(cotizacion: any): Promise<any>
  }
 
 
- comprasExistencia(url: string, id: number | string, cbod: number | string, cantidad: number) {
+ comprasExistencia(url: string, id: number | string, cbod: number | string, cantidad: number,costo:number,FechaVencimiento:string) {
   let headers = new HttpHeaders();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad:cantidad});
+  const body = JSON.stringify({ItemCode: id, cbod: cbod,cantidad: cantidad, costo:costo,FechaVencimiento: FechaVencimiento});
   return new Promise((resolve, reject) => {
     this.http.post(`${this.API_URI}` + url, body, { headers: headers })
         .subscribe((response: any) => {

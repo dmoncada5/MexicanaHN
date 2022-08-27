@@ -12,7 +12,7 @@
     "pedidoExistencia": "exec comprometidoExistencia @ItemCode, @cbod, @cantidad",
     "ordenExistencia": "exec solicitadoExistencia @ItemCode, @cbod, @cantidad",
     "setOrdenExistencia": "exec restarSolicitadoExistencia @ItemCode, @cbod, @cantidad",
-    "comprasExistencia": "exec comprasExistencia @ItemCode, @cbod, @cantidad",
+    "comprasExistencia": "exec comprasExistencia @ItemCode, @cbod, @cantidad,@costo,@FechaVencimiento",
     "NCExistencia": "exec NCExistencia @ItemCode, @cbod, @cantidad",
     "ExecExistencia": "exec ValidarExistencias @tipo, @ItemCode, @cbod"
 
