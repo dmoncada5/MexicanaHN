@@ -77,7 +77,7 @@ class MainController {
         }
     }
     async postEfectivo(req, res) {
-
+        console.log(req.body); 
         try {
             if (req.body.pagoId != null && req.body.totalEfectivo != null) {
                 const pool = await poolPromise
@@ -98,7 +98,7 @@ class MainController {
     }
 
     async postTarjeta(req, res) {
-
+console.log(req.body); 
         try {
             if (req.body.pagoId != null && req.body.totalTarjeta != null) {
                 const pool = await poolPromise
@@ -109,7 +109,7 @@ class MainController {
                     .input('Nombre', sql.NVarChar, req.body.Nombre)
                     .input('identidad', sql.NVarChar, req.body.identidad)
                     .input('totalTarjeta', sql.Numeric(18, 2), req.body.totalTarjeta)
-                    .input('nombreBancoT', sql.VarChar, req.body.nombreBancoT)
+                    .input('nombreBancoT', sql.NVarChar, req.body.nombreBancoT)
                     .query(queries.addTarjeta)
                 res.json(result)
             } else {
@@ -121,7 +121,7 @@ class MainController {
         }
     }
     async postCheque(req, res) {
-
+        console.log(req.body); 
         try {
             if (req.body.pagoId != null && req.body.totalCheque != null) {
                 const pool = await poolPromise
@@ -148,7 +148,7 @@ class MainController {
 
 
     async postTransferencia(req, res) {
-
+        console.log(req.body); 
         try {
             if (req.body.pagoId != null && req.body.totaltrans != null) {
                 const pool = await poolPromise
