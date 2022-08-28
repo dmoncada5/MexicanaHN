@@ -203,35 +203,38 @@ reglas :any;
         this.statusForm = this._formBuilder.group({
             pagotipo: ['']
         });
+        
+    
         this.EfectivoForm = this._formBuilder.group({
-            efectivo: [0, Validators.required],
+            efectivo: ['', Validators.required],
+            whopaid: [''],
             nombreBancoE: [''],
         });
     
           this.TarjetaForm = this._formBuilder.group({
             tarjetaNumber: [''],
-            FechaV: [''],
+            FechaV: [new Date()],
             Nombre: [''],
             identidad: [''],
-            totalTarjeta: [0, Validators.required],
+            totalTarjeta: ['', Validators.required],
             nombreBancoT: [''],
         });
     
           this.ChequeForm = this._formBuilder.group({
             nombreBanco: [''],
-            fechaCheque: [''],
+            fechaCheque: [new Date()],
             numeroCheque: [''],
-            totalCheque: [0, Validators.required],
+            totalCheque: ['', Validators.required],
         });
     
           this.TransForm = this._formBuilder.group({
             numeroTrans: [''],
-            FechaTrans: [''],
+            FechaTrans: [new Date()],
             nombreBancoTT: [''],
-            totalTrans: [0, Validators.required],
+            totalTrans: ['', Validators.required],
             
         });
-     }
+       }
   getFormapagos(){
       this.facturaService.getAll('/formapagos').subscribe(
           (res) => {
