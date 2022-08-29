@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FacturasService } from '../facturas/facturas.service';
 import { facturaDetalle, facturaEncabezado, Order, pago, tarjeta, efectivo, cheque, transferencia } from '../interfaces/interfaces';
-import { format } from 'date-fns';
+import { endOfQuarter, format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -199,7 +199,7 @@ reglas :any;
                 }
             );
         }
-        
+
         this.statusForm = this._formBuilder.group({
             pagotipo: ['']
         });
@@ -820,7 +820,7 @@ VtotalPago(){
         else{
             efectivo=0;
         }
-        if(this.TarjetaForm.get('totalTarjeta').value>0){
+        if(this.TarjetaForm.get('totalTarjeta').value>0 ){
             tarjeta= Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
         }
         else {
@@ -838,6 +838,10 @@ VtotalPago(){
         else{
             trans=0;
         }
+
+
+
+
         console.log(efectivo);
         console.log(tarjeta);
         console.log(cheque);
@@ -848,6 +852,8 @@ VtotalPago(){
     Number.parseFloat(cheque.toString()) +
     Number.parseFloat(trans.toString());
     this.VsaldoVencido();
+
+
 //codigo de DAVID
     // this.totalpago = Number.parseFloat(this.EfectivoForm.get('efectivo').value) +
     // Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value)+
@@ -922,177 +928,7 @@ refreshpagos(){
      
 }
 
-// guardarpago(){
-
-//     this.facturaService.getAll('/pago/numpago').subscribe(
-//         (res) => {
-//             this.pago.status='A';     
-//     this.numpago = res[0]['pagoId'];
-
-       
-//     this.pago.pagoId = this.numpago;
-//     this.pago.fechaPago = new Date();
-//     this.pago.tipoDocumento ='ENTREGA'
-//     this.pago.NDocumento = this.FacturaE.numero;
-//     this.pago.totalPago = this.totalpago;
-
-//     // this.efectivo.pagoId = this.numpago;
-//     // this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
-
-//     // this.tarjeta.pagoId = this.numpago;
-//     // this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
-//     // this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
-//     // this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
-//     // this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
-//     // this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
-
-
-//     // this.cheque.pagoId = this.numpago;
-//     // this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
-//     // this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
-//     // this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
-//     // this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
-
-//     // this.transferencia.pagoId = this.numpago;
-//     // this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
-//     // this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
-//     // this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
-//     this.efectivo.pagoId = this.numpago;
-//     this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
-//     this.efectivo.nombreBancoE = this.EfectivoForm.get('nombreBancoE').value;
-
-//     this.tarjeta.pagoId = this.numpago;
-//     this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
-//     this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
-//     this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
-//     this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
-//     this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
-//     this.tarjeta.nombreBancoT = this.TarjetaForm.get('nombreBancoT').value;
-
-//     this.cheque.pagoId = this.numpago;
-//     this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
-//     this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
-//     this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
-//     this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
-
- 
-//     this.transferencia.pagoId = this.numpago;
-//     this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
-//     this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
-
-//     this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
-
-//     this.transferencia.nombreBancoTT = this.TransForm.get('nombreBancoTT').value;
-
-
-
-
-//     let pagoefectivo= false;
-//     let valefectivo= false;
-//     let pagotarjeta= false;
-//     let valtarjeta= false;
-//     let pagocheque= false;
-//     let valcheque= false;
-//     let pagotrans= false;
-//     let valtrans= false;
-//     let valgeneral= true;
-
-//     if ( Number.parseFloat( this.EfectivoForm.get('efectivo').value) > 0
-// || Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value) > 0
-// || Number.parseFloat(this.ChequeForm.get('totalCheque').value) > 0
-// || Number.parseFloat(this.TransForm.get('totalTrans').value) > 0){
-
-
-//         if ( Number.parseFloat( this.EfectivoForm.get('efectivo').value) > 0){
-//             pagoefectivo = true;
-//             valefectivo = true;
-            
-//         }else if (Number.parseFloat( this.EfectivoForm.get('efectivo').value) < 0){
-//      valefectivo = false;
-//         }
-    
-//         if (Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value) > 0){
-//           pagotarjeta = true;
-//           if (!this.TarjetaForm.invalid){
-//                 valtarjeta = true;
-//             }
-//         }     
-        
-            
-//         if (Number.parseFloat(this.ChequeForm.get('totalCheque').value) > 0){
-//             pagocheque = true;
-//             if (!this.ChequeForm.invalid){
-//                   valcheque = true;
-//               }
-//           }  
-
-//         if (Number.parseFloat(this.TransForm.get('totalTrans').value) > 0){
-//             pagotrans = true;
-//             if (!this.TransForm.invalid){
-//                   valtrans = true;
-//               }
-//           }  
-
-//         if (pagoefectivo && !valefectivo){
-//             valgeneral = false;
-//           }
-//         if (pagotarjeta && !valtarjeta){
-//             valgeneral = false;
-//           }
-//         if (pagocheque && !valcheque)
-//         {
-//             valgeneral = false;
-//         }
-//         if (pagotrans && ! valtrans){
-//             valgeneral = false;
-//         }
-
-//         if (valgeneral === true){
-
-            
-//         this.facturaService.addpago(this.pago);
-//         if (valefectivo === true){
-//     this.facturaService.addDetallepago('/pago/efectivo', this.efectivo);
-// }
-//         if (valtarjeta === true){
-//     this.facturaService.addDetallepago('/pago/tarjeta', this.tarjeta);
-// }
-//         if (valcheque === true){
-//     this.facturaService.addDetallepago('/pago/cheque', this.cheque);
-// }
-//         if (valtrans === true){
-//     this.facturaService.addDetallepago('/pago/transferencia', this.transferencia);
-// }
-//         this.totalpago = 0;
-//         this.EfectivoForm.reset();
-//         this.TarjetaForm.reset();
-//         this.ChequeForm.reset();
-//         this.TransForm.reset();
-//         this.statusForm.reset();
-//         this.EfectivoForm.get('efectivo').setValue(0);
-//         this.TarjetaForm.get('totalTarjeta').setValue(0);
-//         this.ChequeForm.get('totalCheque').setValue(0);
-//         this.TransForm.get('totalTrans').setValue(0);
-//         this.selectTypePago = '';
-//         this.refreshpagos();
-
-// }else{
-//     this._matSnackBar.open('error al aplicar el pago!' , 'OK', {
-//         verticalPosition: 'top',
-//         duration: 15000
-//     });   
-    
-// }
-// }
-
-
-
-// });
-
-
-// }
-
-guardarpago(){
+ guardarpago(){
     var efectivo=0;
     var tarjeta=0;
     var cheque=0;
@@ -1126,149 +962,81 @@ guardarpago(){
         console.log(tarjeta);
         console.log(cheque);
     console.log( trans);    
-    
-    
-        this.facturaService.getAll('/pago/numpago').subscribe(
-            (res) => {
-             
-        this.numpago = res[0]['pagoId'];
-    
-           this.pago.status='A';
-        this.pago.pagoId = this.numpago;
-        this.pago.fechaPago = new Date();
-        this.pago.tipoDocumento ='FACTURA'
-        this.pago.NDocumento = this.FacturaE.numero;
-        this.pago.totalPago = this.totalpago;
-        this.pago.formaPago=this.selectTypePago;
-    
-        this.efectivo.pagoId = this.numpago;
-        this.efectivo.totalEfectivo = Number.parseFloat(efectivo.toString());
-        // this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
-        this.efectivo.nombreBancoE = this.EfectivoForm.get('nombreBancoE').value;
-    
-        this.tarjeta.pagoId = this.numpago;
-        this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
-        this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
-        this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
-        this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
-        this.tarjeta.totalTarjeta = Number.parseFloat(tarjeta.toString());
-        // this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
-     
-        this.tarjeta.nombreBancoT = this.TarjetaForm.get('nombreBancoT').value;
-    
-        this.cheque.pagoId = this.numpago;
-        this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
-        this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
-        this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
-        this.cheque.totalCheque = Number.parseFloat(cheque.toString());
-        // this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
-    
-    
-    
-     
-        this.transferencia.pagoId = this.numpago;
-        this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
-        this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
-    
-        this.transferencia.totaltrans = Number.parseFloat(trans.toString());
-        // this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
-    
-        this.transferencia.nombreBancoTT = this.TransForm.get('nombreBancoTT').value;
-    
-        let pagoefectivo= false;
-        let valefectivo= false;
-        let pagotarjeta= false;
-        let valtarjeta= false;
-        let pagocheque= false;
-        let valcheque= false;
-        let pagotrans= false;
-        let valtrans= false;
-        let valgeneral= true;
-    
-    
-    
-    //     if ( Number.parseFloat( this.EfectivoForm.get('efectivo').value) > 0
-    // || Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value) > 0
-    // || Number.parseFloat(this.ChequeForm.get('totalCheque').value) > 0
-    // || Number.parseFloat(this.TransForm.get('totalTrans').value) > 0){
-    
-    
-    //         if ( Number.parseFloat( this.EfectivoForm.get('efectivo').value) > 0){
-    //             pagoefectivo = true;
-    //             valefectivo = true;
-                
-    //         }else if (Number.parseFloat( this.EfectivoForm.get('efectivo').value) < 0){
-    //      valefectivo = false;
-    //         }
-        
-    //         if (Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value) > 0){
-    //           pagotarjeta = true;
-    //           if (!this.TarjetaForm.invalid){
-    //                 valtarjeta = true;
-    //             }
-    //         }     
-            
-                
-    //         if (Number.parseFloat(this.ChequeForm.get('totalCheque').value) > 0){
-    //             pagocheque = true;
-    //             if (!this.ChequeForm.invalid){
-    //                   valcheque = true;
-    //               }
-    //           }  
-    
-    //         if (Number.parseFloat(this.TransForm.get('totalTrans').value) > 0){
-    //             pagotrans = true;
-    //             if (!this.TransForm.invalid){
-    //                   valtrans = true;
-    //               }
-    //           }  
-    
-    //         if (pagoefectivo && !valefectivo){
-    //             valgeneral = false;
-    //           }
-    //         if (pagotarjeta && !valtarjeta){
-    //             valgeneral = false;
-    //           }
-    //         if (pagocheque && !valcheque)
-    //         {
-    //             valgeneral = false;
-    //         }
-    //         if (pagotrans && ! valtrans){
-    //             valgeneral = false;
-    //         }
-    
-    //         if (valgeneral === true){
-    
-                
-    //         this.facturaService.addpago(this.pago);
-    //         if (valefectivo === true){
-    //     this.facturaService.addDetallepago('/pago/efectivo', this.efectivo);
-    // }
-    //         if (valtarjeta === true){
-    //     this.facturaService.addDetallepago('/pago/tarjeta', this.tarjeta);
-    // }
-    //         if (valcheque === true){
-    //     this.facturaService.addDetallepago('/pago/cheque', this.cheque);
-    // }
-    //         if (valtrans === true){
-    //     this.facturaService.addDetallepago('/pago/transferencia', this.transferencia);
-    // }
-    //         this.totalpago = 0;
-    //         this.EfectivoForm.reset();
-    //         this.TarjetaForm.reset();
-    //         this.ChequeForm.reset();
-    //         this.TransForm.reset();
-    //         this.statusForm.reset();
-    //         this.EfectivoForm.get('efectivo').setValue(0);
-    //         this.TarjetaForm.get('totalTarjeta').setValue(0);
-    //         this.ChequeForm.get('totalCheque').setValue(0);
-    //         this.TransForm.get('totalTrans').setValue(0);
-    //         this.selectTypePago = '';
-    //         this.refreshpagos();
-    
-    // }
-    
-        if ( Number.parseFloat(efectivo.toString()) > 0
+    this.facturaService.getAll('/pago/numpago').subscribe(
+        (res) => {
+            this.pago.status='A';     
+    this.numpago = res[0]['pagoId'];
+
+       
+    this.pago.pagoId = this.numpago;
+    this.pago.fechaPago = new Date();
+    this.pago.tipoDocumento ='ENTREGA'
+    this.pago.NDocumento = this.FacturaE.numero;
+    this.pago.totalPago = this.totalpago;
+
+    // this.efectivo.pagoId = this.numpago;
+    // this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
+
+    // this.tarjeta.pagoId = this.numpago;
+    // this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
+    // this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
+    // this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
+    // this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
+    // this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
+
+
+    // this.cheque.pagoId = this.numpago;
+    // this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
+    // this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
+    // this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
+    // this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
+
+    // this.transferencia.pagoId = this.numpago;
+    // this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
+    // this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
+    // this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
+    this.efectivo.pagoId = this.numpago;
+    this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
+    this.efectivo.nombreBancoE = this.EfectivoForm.get('nombreBancoE').value;
+
+    this.tarjeta.pagoId = this.numpago;
+    this.tarjeta.tarjetaNumber = this.TarjetaForm.get('tarjetaNumber').value;
+    this.tarjeta.FechaV = this.TarjetaForm.get('FechaV').value;
+    this.tarjeta.Nombre = this.TarjetaForm.get('Nombre').value;
+    this.tarjeta.identidad = this.TarjetaForm.get('identidad').value;
+    this.tarjeta.totalTarjeta = Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value);
+    this.tarjeta.nombreBancoT = this.TarjetaForm.get('nombreBancoT').value;
+
+    this.cheque.pagoId = this.numpago;
+    this.cheque.fecha = this.ChequeForm.get('fechaCheque').value;
+    this.cheque.nombreBanco = this.ChequeForm.get('nombreBanco').value;
+    this.cheque.numeroCheque = this.ChequeForm.get('numeroCheque').value;
+    this.cheque.totalCheque = Number.parseFloat(this.ChequeForm.get('totalCheque').value);
+
+ 
+    this.transferencia.pagoId = this.numpago;
+    this.transferencia.NumeroTrans = this.TransForm.get('numeroTrans').value;
+    this.transferencia.fecha = this.TransForm.get('FechaTrans').value;
+
+    this.transferencia.totaltrans = Number.parseFloat(this.TransForm.get('totalTrans').value);
+
+    this.transferencia.nombreBancoTT = this.TransForm.get('nombreBancoTT').value;
+
+
+
+
+    let pagoefectivo= false;
+    let valefectivo= false;
+    let pagotarjeta= false;
+    let valtarjeta= false;
+    let pagocheque= false;
+    let valcheque= false;
+    let pagotrans= false;
+    let valtrans= false;
+    let valgeneral= true;
+
+
+    if ( Number.parseFloat(efectivo.toString()) > 0
     || Number.parseFloat(tarjeta.toString()) > 0
     || Number.parseFloat(cheque.toString()) > 0
     || Number.parseFloat(trans.toString()) > 0){
@@ -1363,11 +1131,70 @@ guardarpago(){
     
     }
 
+
+
+    fillTotalAPagar() {
+       // this.VsaldoVencido();
+        //llena el campo valor de pago de EFECTIVO 
+        this.EfectivoForm.reset();
+        this.TarjetaForm.reset();
+        this.ChequeForm.reset();
+        this.TransForm.reset();
+      //  this.statusForm.reset();
+
+        console.log(this.statusForm.get('pagotipo').value);
+        if (this.statusForm.get('pagotipo').value === "EFECTIVO") {
+            this.ChequeForm.get('totalCheque').setValue('');
+            this.TransForm.get('totalTrans').setValue('');
+            this.TarjetaForm.get('totalTarjeta').setValue('');
+            this.EfectivoForm.get('efectivo').setValue(Number.parseFloat(this.saldoVencido.toString()));
+        }
+        else if(this.statusForm.get('pagotipo').value === "TARJETA"){
+            this.EfectivoForm.get('efectivo').setValue('');
+            this.ChequeForm.get('totalCheque').setValue('');
+            this.TransForm.get('totalTrans').setValue('');
+            this.TarjetaForm.get('totalTarjeta').setValue(Number.parseFloat(this.saldoVencido.toString()));
+
+        }
+        else if(this.statusForm.get('pagotipo').value === "CHEQUE"){
+            this.TarjetaForm.get('totalTarjeta').setValue('');
+            this.EfectivoForm.get('efectivo').setValue('');
+            this.TransForm.get('totalTrans').setValue('');
+            this.ChequeForm.get('totalCheque').setValue(Number.parseFloat(this.saldoVencido.toString()));
+        }
+        else if(this.statusForm.get('pagotipo').value === "TRANSFERENCIA"){
+            this.TarjetaForm.get('totalTarjeta').setValue('');
+            this.EfectivoForm.get('efectivo').setValue('');
+            this.ChequeForm.get('totalCheque').setValue('');
+            this.TransForm.get('totalTrans').setValue(Number.parseFloat(this.saldoVencido.toString()));
+
+        }
+        this.totalpago = 0;
+      //  this.selectTypePago = ''; 
+       // this.refreshpagos();
+       this.VtotalPago();
+ 
+    }
+
+
+    limpiar(){
+
+        this.TarjetaForm.get('totalTarjeta').setValue('');
+        this.EfectivoForm.get('efectivo').setValue('');
+        this.ChequeForm.get('totalCheque').setValue('');
+        this.TransForm.get('totalTrans').setValue('');
+
+    }
+
 updateStatus(): void
 {
+
+    this.limpiar();
     // const newStatusId = Number.parseInt(this.statusForm.get('pagotipo').value);
    this. selectTypePago = this.statusForm.get('pagotipo').value;
-   this.VtotalPago();
+  this.VtotalPago();
+   this.fillTotalAPagar();
+
 //    this.VsaldoVencido();
     // if ( !newStatusId )
     // {

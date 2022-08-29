@@ -1238,11 +1238,67 @@ console.log( trans);
 
 
 }
+
+limpiar(){
+
+    this.TarjetaForm.get('totalTarjeta').setValue('');
+    this.EfectivoForm.get('efectivo').setValue('');
+    this.ChequeForm.get('totalCheque').setValue('');
+    this.TransForm.get('totalTrans').setValue('');
+
+}
+
+fillTotalAPagar() {
+    // this.VsaldoVencido();
+     //llena el campo valor de pago de EFECTIVO 
+     this.EfectivoForm.reset();
+     this.TarjetaForm.reset();
+     this.ChequeForm.reset();
+     this.TransForm.reset();
+   //  this.statusForm.reset();
+
+     console.log(this.statusForm.get('pagotipo').value);
+     if (this.statusForm.get('pagotipo').value === "EFECTIVO") {
+         this.ChequeForm.get('totalCheque').setValue('');
+         this.TransForm.get('totalTrans').setValue('');
+         this.TarjetaForm.get('totalTarjeta').setValue('');
+         this.EfectivoForm.get('efectivo').setValue(Number.parseFloat(this.saldoVencido.toString()));
+     }
+     else if(this.statusForm.get('pagotipo').value === "TARJETA"){
+         this.EfectivoForm.get('efectivo').setValue('');
+         this.ChequeForm.get('totalCheque').setValue('');
+         this.TransForm.get('totalTrans').setValue('');
+         this.TarjetaForm.get('totalTarjeta').setValue(Number.parseFloat(this.saldoVencido.toString()));
+
+     }
+     else if(this.statusForm.get('pagotipo').value === "CHEQUE"){
+         this.TarjetaForm.get('totalTarjeta').setValue('');
+         this.EfectivoForm.get('efectivo').setValue('');
+         this.TransForm.get('totalTrans').setValue('');
+         this.ChequeForm.get('totalCheque').setValue(Number.parseFloat(this.saldoVencido.toString()));
+     }
+     else if(this.statusForm.get('pagotipo').value === "TRANSFERENCIA"){
+         this.TarjetaForm.get('totalTarjeta').setValue('');
+         this.EfectivoForm.get('efectivo').setValue('');
+         this.ChequeForm.get('totalCheque').setValue('');
+         this.TransForm.get('totalTrans').setValue(Number.parseFloat(this.saldoVencido.toString()));
+
+     }
+     this.totalpago = 0;
+   //  this.selectTypePago = ''; 
+    // this.refreshpagos();
+    this.VtotalPago();
+
+ }
+
+
 updateStatus(): void
 {
+    this.limpiar();
     // const newStatusId = Number.parseInt(this.statusForm.get('pagotipo').value);
    this. selectTypePago = this.statusForm.get('pagotipo').value;
    this.VtotalPago();
+   this.fillTotalAPagar();
 //    this.VsaldoVencido();
     // if ( !newStatusId )
     // {
