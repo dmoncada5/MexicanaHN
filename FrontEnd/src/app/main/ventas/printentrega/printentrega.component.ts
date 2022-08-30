@@ -3,6 +3,9 @@ import { AnonymousSubject } from 'rxjs/internal/Subject';
 import {PrintEntregaService} from '../print-entrega.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
+import { EntregasService } from '../entregas/entregas.service';
+import { FacturasService } from '../facturas/facturas.service';
+
 
 @Component({
   selector: 'app-printentrega',
@@ -23,9 +26,15 @@ DocNum:1
   company:any={
     empresa:null,
   }
+  vcambio:any;
+pagos:any={
+    whopaid:null,
+  }
+
   constructor(private prtservice: PrintEntregaService,
               private activatedRoute: ActivatedRoute,
-              private companyServices:  CompanysService
+              private companyServices:  CompanysService,
+              private facturasServices: FacturasService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -56,12 +65,37 @@ console.log(this.pageType)
       }
     )
 
+    this.facturasServices.getPagos('/pago/Bpago',this.doc.DocNum).subscribe(
+        (res) => {
+         this.pagos=res[0];
+         console.log('PAGOS',this.pagos)
+         console.log('Entregado',this.pagos.whopaid)
+
+
+        
+         if (Number.parseFloat(this.pagos.whopaid)>0){
+             this.vcambio= Number.parseFloat(this.pagos.whopaid)- Number.parseFloat(this.pagos.totalPago);
+         
+         }
+         else {
+             this.vcambio=0;
+         }
+         console.log(this.vcambio);
+
+        }
+        )
+
   }
+
 
   ngOnInit(): void {
 
 
-
   }
+
+
+
+
+
 
 }

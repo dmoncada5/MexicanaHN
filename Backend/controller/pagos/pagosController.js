@@ -19,7 +19,7 @@ class MainController {
         }
     }
     async Bpago(req, res) {
-
+        console.log('entro',req.body); 
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -30,11 +30,11 @@ class MainController {
             res.status(500)
             res.send(error.message)
         }
-    }
+    } 
 
 
     async postPago(req, res) {
-
+        console.log(req.body); 
         try {
             if (req.body.pagoId != null && req.body.fechaPago != null && req.body.totalPago != null) {
                 const pool = await poolPromise
@@ -46,6 +46,7 @@ class MainController {
                     .input('totalPago', sql.Numeric(25, 2), req.body.totalPago)
                     .input('status', sql.Char, req.body.status)
                     .input('formaPago', sql.VarChar, req.body.formaPago)
+                    .input('whopaid',  sql.Numeric(18, 2), req.body.whopaid)
                     .query(queries.addPago)
                     
                 res.json(result)

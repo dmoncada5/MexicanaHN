@@ -453,7 +453,7 @@ export interface compraDetalle
 
 export interface pago
  {
-  pagoId?: number; fechaPago?: Date;  tipoDocumento?: string; NDocumento?: string; totalPago?: number;status?:string;formaPago?:string
+  pagoId?: number; fechaPago?: Date;  tipoDocumento?: string; NDocumento?: string; totalPago?: number;status?:string;formaPago?:string; whopaid?: number
   }
 export interface tarjeta
   {

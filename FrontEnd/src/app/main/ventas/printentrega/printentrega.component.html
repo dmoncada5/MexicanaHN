@@ -165,6 +165,15 @@
                             <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
                         </tr>
 
+                        <tr class="Efectivo">
+                        <td>EFECTIVO </td>
+                        <td>{{ pagos.whopaid | currency:'L. ':'symbol'}}</td>
+                    </tr>
+                    
+                    <tr class="cambio">
+                        <td>CAMBIO </td>
+                        <td>{{ vcambio | currency:'L. ':'symbol'}}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

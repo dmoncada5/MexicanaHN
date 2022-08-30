@@ -424,10 +424,18 @@
                                         <mat-label>Valor</mat-label>
                                         <input matInput formControlName="efectivo" required (change)="VtotalPago()">
                                         <mat-icon matSuffix class="secondary-text">attach_money</mat-icon>
-
+ 
                                     </mat-form-field>
 
 
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
+                                        <mat-label>Cantidad Cliente</mat-label>
+                                        <input matInput formControlName="whopaid">
+                                        <mat-icon matSuffix class="secondary-text">attach_money</mat-icon>
+
+                                    </mat-form-field>
                                 </div>
                                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                                     <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
@@ -437,6 +445,7 @@
 
                                     </mat-form-field>
                                 </div>
+
                             </form>
 
 
@@ -616,6 +625,7 @@
                                 <thead>
                                     <tr>
                                         <th>TransactionID</th>
+                                        <th>Forma Pago</th>
                                         <th>Fecha Pago</th>
                                         <th>Total Pago</th>
 
@@ -628,6 +638,12 @@
                                                 {{pay.pagoId}}
                                             </span>
 
+                                        </td>
+                                        <td>
+
+                                            <span class="text-truncate">
+                                                {{ pay.formaPago }}
+                                            </span>
                                         </td>
                                         <td>
 

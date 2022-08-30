@@ -1121,6 +1121,7 @@ guardarpago(){
     var tarjeta=0;
     var cheque=0;
     var trans=0;
+    let whopaids;
     
         if(this.EfectivoForm.get('efectivo').value>0){
             efectivo=Number.parseFloat(this.EfectivoForm.get('efectivo').value);
@@ -1146,10 +1147,18 @@ guardarpago(){
         else{
             trans=0;
         }
-        console.log(efectivo);
-        console.log(tarjeta);
-        console.log(cheque);
-    console.log( trans);    
+    //     console.log(efectivo);
+    //     console.log(tarjeta);
+    //     console.log(cheque);
+    // console.log( trans);    
+
+
+if(this.EfectivoForm.get('whopaid').value>0){
+    whopaids=Number.parseFloat(this.EfectivoForm.get('whopaid').value);
+}else {
+    whopaids=0;
+}
+
     this.facturaService.getAll('/pago/numpago').subscribe(
         (res) => {
             this.pago.status='A';     
@@ -1161,7 +1170,8 @@ guardarpago(){
     this.pago.tipoDocumento ='ENTREGA'
     this.pago.NDocumento = this.FacturaE.numero;
     this.pago.totalPago = this.totalpago;
-
+    this.pago.formaPago=this.selectTypePago;
+    this.pago.whopaid=whopaids;
     // this.efectivo.pagoId = this.numpago;
     // this.efectivo.totalEfectivo = Number.parseFloat( this.EfectivoForm.get('efectivo').value);
 
@@ -1409,7 +1419,7 @@ EliminarPago(eve){
             duration: 15000
         });   
     
-        this.router.navigate(['ventas/facturas/']);
+        this.router.navigate(['ventas/entregas/']);
     });
     
     }
