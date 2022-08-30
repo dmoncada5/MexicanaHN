@@ -1,11 +1,11 @@
 {
     "pagoNum": "select isnull(max(pagoId),0)+1 as pagoId from pagos",
-    "addPago": "insert into pagos (pagoId,fechaPago,tipoDocumento,NDocumento,totalPago,status,formaPago) VALUES(@pagoId, @fechaPago, @tipoDocumento, @NDocumento, @totalPago,@status,@formaPago)",
+    "addPago": "insert into pagos (pagoId,fechaPago,tipoDocumento,NDocumento,totalPago,status,formaPago,whopaid) VALUES(@pagoId, @fechaPago, @tipoDocumento, @NDocumento, @totalPago,@status,@formaPago,@whopaid)",
     "addEfectivo": "insert into Efectivo (pagoId,totalEfectivo,nombreBancoE) VALUES(@pagoId , @totalEfectivo,@nombreBancoE )",
     "addTarjeta": "insert into Tarjeta (pagoId,tarjetaNumber,FechaV,Nombre,identidad,totalTarjeta,nombreBancoT) VALUES(@pagoId,@tarjetaNumber,@FechaV,@Nombre,@identidad,@totalTarjeta,@nombreBancoT)",
     "addCheque": "insert into cheque (pagoId,fecha,nombreBanco,numeroCheque,totalCheque) VALUES(@pagoId, @fecha, @nombreBanco, @numeroCheque, @totalCheque)",
     "addTransferencia": "insert into Transferencia (pagoId,NumeroTrans,fecha,totaltrans,nombreBancoTT) VALUES(@pagoId, @NumeroTrans, @fecha, @totaltrans,@nombreBancoTT)",
-    "Bpagos": "select  pagoId, fechaPago, totalPago from pagos WHERE NDocumento=@NDocumento AND status='A'",
+    "Bpagos": "select  pagoId, fechaPago, totalPago,formaPago,whopaid from pagos WHERE NDocumento=@NDocumento AND status='A'",
     "eliminarPago": "exec eliminarPago @pagoId"
 
 }

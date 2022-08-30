@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 import { facturaEncabezado } from '../interfaces/interfaces';
 import { MatTableDataSource } from '@angular/material/table';
+import { FacturasService } from '../facturas/facturas.service';
 
 @Component({
   selector: 'app-printfactura',
@@ -29,12 +30,17 @@ DocNum:1
   company:any={
 empresa:null
   }
+  vcambio:any;
+  pagos:any={
+    whopaid:null,
+  }
   FacturaE: facturaEncabezado = {};
   series: Object;
   numero2: any;
   constructor(private prtservice: PrintFacturaService,
               private activatedRoute: ActivatedRoute,
-              private companyServices: CompanysService
+              private companyServices: CompanysService,
+              private facturasServices: FacturasService
               ) { 
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
@@ -64,6 +70,27 @@ this.doc.DocNum=this.pageType;
     
       }
     )
+
+
+    this.facturasServices.getPagos('/pago/Bpago',this.doc.DocNum).subscribe(
+        (res) => {
+         this.pagos=res[0];
+         console.log('PAGOS',this.pagos)
+         console.log('Entregado',this.pagos.whopaid)
+
+
+        
+         if (Number.parseFloat(this.pagos.whopaid)>0){
+             this.vcambio= Number.parseFloat(this.pagos.whopaid)- Number.parseFloat(this.pagos.totalPago);
+         
+         }
+         else {
+             this.vcambio=0;
+         }
+         console.log(this.vcambio);
+
+        }
+        )
 
 
   }
