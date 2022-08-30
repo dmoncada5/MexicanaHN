@@ -68,7 +68,7 @@
 
                                     <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
                                         <mat-label>Compañia</mat-label>
-                                        <mat-select formControlName='ccomp' name="ccomp" [disabled]=true>
+                                        <mat-select formControlName='ccomp' name="ccomp">
                                             <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
                                                 {{comp.empresa}}
                                             </mat-option>
