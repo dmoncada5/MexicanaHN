@@ -1146,10 +1146,10 @@ if(this.EfectivoForm.get('whopaid').value>0){
     fillTotalAPagar() {
        // this.VsaldoVencido();
         //llena el campo valor de pago de EFECTIVO 
-        this.EfectivoForm.reset();
-        this.TarjetaForm.reset();
-        this.ChequeForm.reset();
-        this.TransForm.reset();
+        // this.EfectivoForm.reset();
+        // this.TarjetaForm.reset();
+        // this.ChequeForm.reset();
+        // this.TransForm.reset();
       //  this.statusForm.reset();
 
         console.log(this.statusForm.get('pagotipo').value);
