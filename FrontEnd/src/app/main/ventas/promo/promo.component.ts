@@ -9,6 +9,8 @@ import { PromosService } from '../promos/promos.service';
 import { Order, promoDetalle, promoEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { StringIterator } from 'lodash';
+import { MatCalendarBody } from '@angular/material/datepicker';
 
 
 @Component({
@@ -78,6 +80,7 @@ export class PromoComponent implements OnInit {
           
       this.getCompany();
       this.getbodegas();
+     
   }
 
   refreshTable() {
@@ -100,7 +103,7 @@ console.log(this.bodegas)
     this.getbodegas();
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
-
+ 
 
     if (params.id == 'new') {
 
@@ -170,7 +173,7 @@ console.log(this.bodegas)
                           itemCode: res[index]['itemCode'],
                           itemName: res[index]['itemName'],
                           cantidad: res[index]['cantidad'],
-                          cbod:res[index]['cbod'],
+                          almacen: res[index]['cbod']
                       
                       });
                   }
@@ -241,16 +244,18 @@ console.log(this.bodegas)
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,    
-                cbod:0,          
+                almacen : this.Detalle.cbod+""      
            
 
               });
+              this.refreshTable();
             },
           (err) => {
               console.log(err);
           }
         
             );}
+            
   }
 
 
@@ -314,7 +319,7 @@ actions(event) {
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,
-                cbod:0
+                almacen: this.Detalle.cbod+""
 
             });
        // console.log(DocNum);
@@ -450,5 +455,5 @@ createPromoForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; cbod: number;
+    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; almacen: string
 }

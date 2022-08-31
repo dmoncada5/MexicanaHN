@@ -153,7 +153,7 @@ class MainController {
         }
         ////////////////////////////////////////////
     async getOneDetalle(req, res) {
-
+        console.log(req.body)
         try {
             const pool = await poolPromise
             const result = await pool.request()
@@ -221,7 +221,7 @@ class MainController {
     //     } catch (error) {
     //         res.status(500)
     //         res.send(error.message)
-    //     }
+    //     } 
     // }
 
     async addNewDataDetalle(req, res) {
@@ -236,7 +236,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('cbod', sql.NVarChar, req.body.cbod)
+                    .input('cbod', sql.NVarChar, req.body.almacen)
                     .query(queries.addNewPromoDetalle)
                 res.json(result)
             } else {
@@ -312,7 +312,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('cbod', sql.NVarChar, req.body.cbod)
+                    .input('cbod', sql.NVarChar, req.body.almacen)
 
                 .query(queries.updatePromoDetalle)
                 res.json(result)
