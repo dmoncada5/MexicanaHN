@@ -173,7 +173,7 @@ console.log(this.bodegas)
                           itemCode: res[index]['itemCode'],
                           itemName: res[index]['itemName'],
                           cantidad: res[index]['cantidad'],
-                          almacen: res[index]['cbod']
+                          cbod: res[index]['cbod']
                       
                       });
                   }
@@ -188,43 +188,43 @@ console.log(this.bodegas)
  }
 
 //completar la informacion basica  
- complete(event) {
-    this.promoService.getOneSocio('/promo/promo', event.target.value).subscribe(
-        (res) => {
+//  complete(event) {
+//     this.promoService.getOneSocio('/promo/promo', event.target.value).subscribe(
+//         (res) => {
 
           
-          this.PromoE.ItemCode = res[0]['ItemCode'];
-          this.PromoE.ItemName = res[0]['ItemName'];
-          this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
-          this.PromoE.impuesto = res[0]['impuesto'];
-          this.PromoE.observaciones = res[0]['observaciones'];
-          this.PromoE.estado = res[0]['estado'];
-          this.PromoE.estado = res[0]['costo'];
+//           this.PromoE.ItemCode = res[0]['ItemCode'];
+//           this.PromoE.ItemName = res[0]['ItemName'];
+//           this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
+//           this.PromoE.impuesto = res[0]['impuesto'];
+//           this.PromoE.observaciones = res[0]['observaciones'];
+//           this.PromoE.estado = res[0]['estado'];
+//           this.PromoE.estado = res[0]['costo'];
          
-          this.PromoE.ItemCode = res[0]['ItemCode'];
-          this.PromoE.ItemName = res[0]['ItemName'];
-          this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
-          this.PromoE.impuesto = res[0]['impuesto'];
-          this.PromoE.observaciones = res[0]['observaciones'];
-          this.PromoE.estado = res[0]['estado'];
-          this.PromoE.costo = res[0]['costo'];
-          this.PromoForm.get('ItemCode').setValue(this.PromoE.ItemCode);
-          this.PromoForm.get('ItemName').setValue(this.PromoE.ItemName);
-          this.PromoForm.get('FechaCreacion').setValue(this.PromoE.FechaCreacion);
-          this.PromoForm.get('impuesto').setValue(this.PromoE.impuesto);
-          this.PromoForm.get('observaciones').setValue(this.PromoE.observaciones);
-          this.PromoForm.get('estado').setValue(this.PromoE.estado);
-          this.PromoForm.get('costo').setValue(this.PromoE.costo);
+//           this.PromoE.ItemCode = res[0]['ItemCode'];
+//           this.PromoE.ItemName = res[0]['ItemName'];
+//           this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
+//           this.PromoE.impuesto = res[0]['impuesto'];
+//           this.PromoE.observaciones = res[0]['observaciones'];
+//           this.PromoE.estado = res[0]['estado'];
+//           this.PromoE.costo = res[0]['costo'];
+//           this.PromoForm.get('ItemCode').setValue(this.PromoE.ItemCode);
+//           this.PromoForm.get('ItemName').setValue(this.PromoE.ItemName);
+//           this.PromoForm.get('FechaCreacion').setValue(this.PromoE.FechaCreacion);
+//           this.PromoForm.get('impuesto').setValue(this.PromoE.impuesto);
+//           this.PromoForm.get('observaciones').setValue(this.PromoE.observaciones);
+//           this.PromoForm.get('estado').setValue(this.PromoE.estado);
+//           this.PromoForm.get('costo').setValue(this.PromoE.costo);
 
-          //   this.PedidoE.SocioCode = event.target.value;
-          //   this.PedidoE.NombreSocio = res[0]['nombre'];
-          //   this.PedidoForm.get("NombreSocio").setValue(this.PedidoE.NombreSocio);
-        },
-        (err) => {
-            console.log(err);
-        }
-    );
-}
+//           //   this.PedidoE.SocioCode = event.target.value;
+//           //   this.PedidoE.NombreSocio = res[0]['nombre'];
+//           //   this.PedidoForm.get("NombreSocio").setValue(this.PedidoE.NombreSocio);
+//         },
+//         (err) => {
+//             console.log(err);
+//         }
+//     );
+// }
 
 
  //completar producto
@@ -244,7 +244,8 @@ console.log(this.bodegas)
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,    
-                almacen : this.Detalle.cbod+""      
+                cbod: this.Detalle.cbod
+   
            
 
               });
@@ -319,7 +320,7 @@ actions(event) {
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,
-                almacen: this.Detalle.cbod+""
+                cbod: this.Detalle.cbod
 
             });
        // console.log(DocNum);
@@ -455,5 +456,5 @@ createPromoForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; almacen: string
+    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; cbod: number
 }

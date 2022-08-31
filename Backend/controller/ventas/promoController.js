@@ -236,7 +236,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('cbod', sql.NVarChar, req.body.almacen)
+                    .input('cbod', sql.Int, req.body.cbod)
                     .query(queries.addNewPromoDetalle)
                 res.json(result)
             } else {
@@ -312,7 +312,7 @@ class MainController {
                     .input('itemCode', sql.NVarChar, req.body.itemCode)
                     .input('itemName', sql.NVarChar, req.body.itemName)
                     .input('cantidad', sql.Int, req.body.cantidad)
-                    .input('cbod', sql.NVarChar, req.body.almacen)
+                    .input('cbod', sql.Int, req.body.cbod)
 
                 .query(queries.updatePromoDetalle)
                 res.json(result)

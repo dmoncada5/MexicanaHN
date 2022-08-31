@@ -206,8 +206,10 @@
                                 <ng-container matColumnDef="Bodega">
                                     <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
-                                        <mat-select placeholder="Bodegas" [(ngModel)]="element.almacen">
-                                            <mat-option *ngFor="let bod of bodegas" value={{bod.cbod}}> {{bod.bodega}}</mat-option>
+                                        <mat-select placeholder="Bodegas"  name="cbod" [(ngModel)]="element.cbod">
+                                            <mat-option *ngFor="let bod of bodegas" [value]="bod.cbod"> 
+                                                {{bod.bodega}}
+                                            </mat-option>
 
                                         </mat-select>
                                     </mat-cell>

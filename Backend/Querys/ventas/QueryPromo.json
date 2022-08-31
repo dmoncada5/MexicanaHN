@@ -13,7 +13,7 @@
     "addNewPromoDetalle": "INSERT INTO [dbo].[listmaterials] (DocNum, Linea, itemCode, itemName, cantidad,cbod) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad,@cbod)",
     "deletePromoDetalle": "DELETE FROM [dbo].[listmaterials] WHERE DocNum=@DocNum",
     "updatePromoDetalle": "UPDATE [dbo].[listmaterials] SET  itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad cbod=@cbod WHERE DocNum = @DocNum and Linea=@Linea",
-    "getInfo": "select t1.ItemCode, t1.ItemName  FROM products t1 where t1.ItemCode=@ItemCode and t1.tipo='I' ",
+    "getInfo": "select t1.ItemCode, t1.ItemName,t1.cbod  FROM products t1 where t1.ItemCode=@ItemCode and t1.tipo='I' ",
     "addNewDataEPriceList": "INSERT INTO [dbo].[productsPrice] (ItemCode,Pricelist,price,CurrCode,factor,ccomp) SELECT T0.ItemCode ,T1.Pricelist,T0.costo,'LPS',0,1 FROM [dbo].[products] T0 INNER JOIN [dbo].[productsPrice] T1 ON T0.ITEMCODE<>T1.ITEMCODE WHERE tipo='P' AND T0.ItemCode NOT IN (SELECT T1.ItemCode FROM [dbo].[productsPrice] T1) GROUP BY T0.ItemCode, T1.Pricelist,T0.costo",
     "updateNewDataPriceList": "UPDATE [dbo].[productsPrice] SET price=@costo WHERE ItemCode=@ItemCode ",
 
