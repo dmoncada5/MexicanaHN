@@ -68,7 +68,7 @@
 
                                     <mat-form-field appearance="outline" floatLabel="always" fxFlex="30">
                                         <mat-label>Compañia</mat-label>
-                                        <mat-select formControlName='ccomp' name="ccomp" [disabled]=true>
+                                        <mat-select formControlName='ccomp' name="ccomp">
                                             <mat-option *ngFor="let comp of company" [value]="comp.ccomp">
                                                 {{comp.empresa}}
                                             </mat-option>
@@ -202,7 +202,17 @@
                                     </mat-cell>
                                 </ng-container>
 
+
                                 <ng-container matColumnDef="Bodega">
+                                    <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <mat-select placeholder="Bodegas" [(ngModel)]="element.almacen">
+                                            <mat-option *ngFor="let bod of bodegas" value={{bod.cbod}}> {{bod.bodega}}</mat-option>
+
+                                        </mat-select>
+                                    </mat-cell>
+                                </ng-container>
+                                <!-- <ng-container matColumnDef="Bodega">
                                     <mat-header-cell *matHeaderCellDef> Bodega </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <mat-select placeholder="Bodegas" [(ngModel)]="element.cbod">
@@ -210,7 +220,7 @@
 
                                         </mat-select>
                                     </mat-cell>
-                                </ng-container>
+                                </ng-container> -->
 
                                 <ng-container matColumnDef="actions">
                                     <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Actions</mat-header-cell>

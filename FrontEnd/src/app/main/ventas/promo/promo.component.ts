@@ -9,6 +9,8 @@ import { PromosService } from '../promos/promos.service';
 import { Order, promoDetalle, promoEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { StringIterator } from 'lodash';
+import { MatCalendarBody } from '@angular/material/datepicker';
 
 
 @Component({
@@ -40,7 +42,10 @@ export class PromoComponent implements OnInit {
     bodegas: any;
     //validaciones:boolean=false;
     private _unsubscribeAll: Subject < any > ;
-    company: any = [];
+    company: any = [{
+        ccomp:null,
+        empresa:null
+}];
     codlista: any;
   
   
@@ -73,6 +78,9 @@ export class PromoComponent implements OnInit {
                     }
                 );
           
+      this.getCompany();
+      this.getbodegas();
+     
   }
 
   refreshTable() {
@@ -95,7 +103,7 @@ console.log(this.bodegas)
     this.getbodegas();
     const params = this.activatedRoute.snapshot.params;
     this.pageType = params.id;
-
+ 
 
     if (params.id == 'new') {
 
@@ -106,14 +114,18 @@ console.log(this.bodegas)
         // let user=JSON.parse(localStorage.getItem('usuario'));
         // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));  
         this.Ftupdate = true;
+       // this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
         this.PromoE.FechaCreacion =new Date();
+        console.log(this.PromoE.ccomp);
         this.PromoForm.get("FechaCreacion").setValue(this.PromoE.FechaCreacion);
+       // this.PromoForm.get("ccomp").setValue( this.PromoE.ccomp);
         } else
         if (params.id) {
           this.getCompany();
           this.getbodegas();
+          this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
           let user=JSON.parse(localStorage.getItem('usuario'));
-          this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
+         // this.PromoForm.get("ccomp").setValue( this.PromoE.ccomp);
           this.Ftupdate = false;
         //   this.getFormapagos();
           let buscarE;
@@ -130,15 +142,24 @@ console.log(this.bodegas)
                 (res) => {
                     
                     this.PromoE = res[0];
-                    this.PromoE.ItemCode = res[0]['ItemCode'];
-                    this.PromoE.ItemName = res[0]['ItemName'];
-                    this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
-                    this.PromoE.impuesto = res[0]['impuesto'];
-                    this.PromoE.observaciones = res[0]['observaciones'];
-                    this.PromoE.estado = res[0]['estado'];
-                    this.PromoE.ccomp = res[0]['ccomp'];
-                    this.PromoE.costo = res[0]['costo'];
-                    this.PromoForm = this.createPromoForm();
+                    this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
+                    this.PromoForm.controls.ItemCode.setValue(this.PromoE["ItemCode"]);
+                    this.PromoForm.controls.ItemName.setValue(this.PromoE["ItemName"]);
+                    this.PromoForm.controls.FechaCreacion.setValue(this.PromoE["FechaCreacion"]);
+                    this.PromoForm.controls.impuesto.setValue(this.PromoE["impuesto"]);
+                    this.PromoForm.controls.observaciones.setValue(this.PromoE["observaciones"]);
+                    this.PromoForm.controls.estado.setValue(this.PromoE["estado"]);
+                     this.PromoForm.controls.costo.setValue(this.PromoE["costo"]);
+
+                    // this.PromoE.ItemCode = res[0]['ItemCode'];
+                    // this.PromoE.ItemName = res[0]['ItemName'];
+                    // this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
+                    // this.PromoE.impuesto = res[0]['impuesto'];
+                    // this.PromoE.observaciones = res[0]['observaciones'];
+                    // this.PromoE.estado = res[0]['estado'];
+                    // this.PromoE.ccomp = res[0]['ccomp'];
+                    // this.PromoE.costo = res[0]['costo'];
+                    // this.PromoForm = this.createPromoForm();
                 }
             );
 
@@ -152,7 +173,7 @@ console.log(this.bodegas)
                           itemCode: res[index]['itemCode'],
                           itemName: res[index]['itemName'],
                           cantidad: res[index]['cantidad'],
-                          cbod:res[index]['cbod'],
+                          almacen: res[index]['cbod']
                       
                       });
                   }
@@ -223,16 +244,18 @@ console.log(this.bodegas)
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,    
-                cbod:0,          
+                almacen : this.Detalle.cbod+""      
            
 
               });
+              this.refreshTable();
             },
           (err) => {
               console.log(err);
           }
         
             );}
+            
   }
 
 
@@ -296,7 +319,7 @@ actions(event) {
                 itemCode: this.Detalle.ItemCode,
                 itemName: this.Detalle.ItemName,
                 cantidad: 1,
-                cbod:0
+                almacen: this.Detalle.cbod+""
 
             });
        // console.log(DocNum);
@@ -412,13 +435,13 @@ update() {
 
 createPromoForm(): FormGroup {
     return this._formBuilder.group({
+        ccomp: [this.PromoE.ccomp, Validators.required],
         ItemCode: [this.PromoE.ItemCode, Validators.required],
         ItemName: [this.PromoE.ItemName, Validators.required],
         FechaCreacion: [this.PromoE.FechaCreacion, Validators.required],
         impuesto: [this.PromoE.impuesto, Validators.required],
         observaciones: [this.PromoE.observaciones],
         estado: [this.PromoE.estado],
-        ccomp: [this.PromoE.ccomp],
         costo: [this.PromoE.costo]
     });
 }
@@ -432,5 +455,5 @@ createPromoForm(): FormGroup {
 
 export interface Element {
     // tslint:disable-next-line: max-line-length
-    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; cbod: number;
+    DocNum: string; Linea: number; itemCode: string; itemName: string;cantidad: number; almacen: string
 }

@@ -104,7 +104,7 @@
                                     </mat-form-field> -->
                                     <mat-form-field appearance="outline" fxFlex="30" class="pr-4">
                                         <mat-label>ID</mat-label>
-                                        <input matInput placeholder="ID" formControlName="SocioCode" [(ngModel)]="socioItem" [matAutocomplete]="auto" [formControl]="socioCtrl" (keydown.enter)="complete($event)">
+                                        <input matInput placeholder="ID" formControlName="SocioCode" [matAutocomplete]="auto" [formControl]="socioCtrl" (keydown.enter)="complete($event)">
                                         <mat-autocomplete #auto="matAutocomplete">
                                             <mat-option *ngFor="let socios of filteredSocios | async" [value]="socios.csocio">
 
@@ -423,16 +423,16 @@
 
                                     </mat-form-field>
                                 </div>
-                                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-                                        <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
-                                            <mat-label>Cantidad Cliente</mat-label>
-                                            <input matInput formControlName="whopaid">
-                                            <mat-icon matSuffix class="secondary-text">attach_money</mat-icon>
-    
-                                        </mat-form-field>
-                                    </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
+                                        <mat-label>Cantidad Cliente</mat-label>
+                                        <input matInput formControlName="whopaid">
+                                        <mat-icon matSuffix class="secondary-text">attach_money</mat-icon>
 
-                                
+                                    </mat-form-field>
+                                </div>
+
+
                                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                                     <mat-form-field appearance="outline" fxFlex="70" class="pr-4">
                                         <mat-label>Banco</mat-label>
@@ -640,7 +640,7 @@
                                                 {{ pay.formaPago }}
                                             </span>
                                         </td>
-                                        
+
                                         <td>
 
                                             <span class="text-truncate">

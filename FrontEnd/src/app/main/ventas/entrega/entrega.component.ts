@@ -45,11 +45,11 @@ export class EntregaComponent implements OnInit {
     filteredSocios: Observable < any[] > ;
     filteredProducts: Observable < any[] > ;
     productItem: any;
-    socios: any;
-    // socios: any[] = [{
-    //     csocio: null,
-    //     nombre: null
-    // }];
+   // socios: any;
+    socios: any = [{
+        csocio: null,
+        nombre: null
+    }];
   bodegas: any;
   //   products: any[] = [{
   //       ItemCode: null,
@@ -63,8 +63,6 @@ export class EntregaComponent implements OnInit {
     ChequeForm: FormGroup;
     TransForm: FormGroup;
     tipoPagos: any;
-
-    
   order: Order;
   selectTypePago: any='';
   private _unsubscribeAll: Subject < any > ;
@@ -80,6 +78,7 @@ payment: any;
 totapagado= 0;
 saldo= 0;
 PermisoEPago:any;
+validarISV:any; 
    
 reglas :any;
   
@@ -88,7 +87,7 @@ reglas :any;
                 private _formBuilder: FormBuilder,
                 private _matSnackBar: MatSnackBar,
                 private router: Router) {
-             
+                    this.order = new Order();
         // Set the private defaults
                   this._unsubscribeAll = new Subject();
   
@@ -118,6 +117,7 @@ reglas :any;
                     );
             }
         );
+        this.FacturaE.fechaDoc=new Date();
     }
   
     refreshTable() {
@@ -154,12 +154,14 @@ reglas :any;
               buscarE = '/pedido/EncabezadoB';
               buscarD = '/pedido/Detalle';
               this.Ftupdate = true;
+              this.validarISV=true;
             }
           if (params.tipo =='cotizacion'){
               buscarE = '/cotizacion/Encabezado';
             //   buscarE = '/cotizacion/Encabezado';  //antes de tocarlo
               buscarD = '/cotizacion/Detalle';
               this.Ftupdate = true;
+              this.validarISV=true;
             }
           this.facturaService.getOne(buscarE, params.id).subscribe(
                 (res) => {
@@ -174,6 +176,7 @@ reglas :any;
                     this.FacturaForm = this.createcotizacionForm();
                 }
             );
+
           this.facturaService.getOne(buscarD, params.id).subscribe(
               (res: any[]) => {
                   for (let index = 0; index < res.length; index++){
@@ -234,6 +237,7 @@ reglas :any;
             totalTrans: ['', Validators.required],
             
         });
+
        }
   getFormapagos(){
       this.facturaService.getAll('/formapagos').subscribe(
@@ -295,6 +299,7 @@ reglas :any;
                 this.FacturaE.Direccion = res[0]['direccion'];
                 this.FacturaE.comentarios = res[0]['observaciones'];
                 this.codlista = res[0]['codlista'];
+
                 this.FacturaForm.get('NombreSocio').setValue(this.FacturaE.NombreSocio);
                 this.FacturaForm.get('RTN').setValue(this.FacturaE.RTN);
                 this.FacturaForm.get('direccion').setValue(this.FacturaE.Direccion);
@@ -1445,7 +1450,9 @@ PermisoEliminarPago(){
           RTN: [this.FacturaE.RTN],
          comentario: [this.FacturaE.comentarios],
            direccion: [this.FacturaE.Direccion]
+          
       });
+      
   }
   }
   
