@@ -111,31 +111,31 @@ console.log(this.bodegas)
 
       this.getCompany();
         this.getbodegas();
+
         let user=JSON.parse(localStorage.getItem('usuario'));
         // let user=JSON.parse(localStorage.getItem('usuario'));
         // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));  
         this.Ftupdate = true;
         this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
-      console.log("Entre",this.company.ccomp);
+      
         this.PromoE.FechaCreacion =new Date();
-        console.log(this.PromoE.ccomp);
         this.PromoForm.get("FechaCreacion").setValue(this.PromoE.FechaCreacion);
-       // this.PromoForm.get("ccomp").setValue( this.PromoE.ccomp);
+       
         } else
         if (params.id) {
           this.getCompany();
           this.getbodegas();
-          //this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
-          let user=JSON.parse(localStorage.getItem('usuario'));
-         // this.PromoForm.get("ccomp").setValue( this.PromoE.ccomp);
+          
+       //   let user=JSON.parse(localStorage.getItem('usuario'));
+        
           this.Ftupdate = false;
         //   this.getFormapagos();
           let buscarE;
           let buscarD;
           if (params.tipo == 'promo'){
             this.getCompany();
-            let user=JSON.parse(localStorage.getItem('usuario'));
-            this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
+           // let user=JSON.parse(localStorage.getItem('usuario'));
+           // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
               buscarE = '/promo/Encabezado';
               buscarD = '/promo/Detalle';
              }
@@ -144,14 +144,6 @@ console.log(this.bodegas)
                 (res) => {
                     
                     this.PromoE = res[0];
-                    // this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
-                    // this.PromoForm.controls.ItemCode.setValue(this.PromoE["ItemCode"]);
-                    // this.PromoForm.controls.ItemName.setValue(this.PromoE["ItemName"]);
-                    // this.PromoForm.controls.FechaCreacion.setValue(this.PromoE["FechaCreacion"]);
-                    // this.PromoForm.controls.impuesto.setValue(this.PromoE["impuesto"]);
-                    // this.PromoForm.controls.observaciones.setValue(this.PromoE["observaciones"]);
-                    // this.PromoForm.controls.estado.setValue(this.PromoE["estado"]);
-                    //  this.PromoForm.controls.costo.setValue(this.PromoE["costo"]);
 
                     this.PromoE.ItemCode = res[0]['ItemCode'];
                     this.PromoE.ItemName = res[0]['ItemName'];
