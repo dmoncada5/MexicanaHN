@@ -105,16 +105,17 @@ console.log(this.bodegas)
     this.pageType = params.id;
  
 
+    
     if (params.id == 'new') {
 
 
       this.getCompany();
         this.getbodegas();
-
+        let user=JSON.parse(localStorage.getItem('usuario'));
         // let user=JSON.parse(localStorage.getItem('usuario'));
         // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));  
         this.Ftupdate = true;
-      this.PromoForm.controls.ccomp.setValue(this.company[0]["ccomp"]);
+        this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
       console.log("Entre",this.company.ccomp);
         this.PromoE.FechaCreacion =new Date();
         console.log(this.PromoE.ccomp);
