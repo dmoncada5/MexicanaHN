@@ -114,7 +114,8 @@ console.log(this.bodegas)
         // let user=JSON.parse(localStorage.getItem('usuario'));
         // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));  
         this.Ftupdate = true;
-       // this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
+      this.PromoForm.controls.ccomp.setValue(this.company[0]["ccomp"]);
+      console.log("Entre",this.company.ccomp);
         this.PromoE.FechaCreacion =new Date();
         console.log(this.PromoE.ccomp);
         this.PromoForm.get("FechaCreacion").setValue(this.PromoE.FechaCreacion);
@@ -123,7 +124,7 @@ console.log(this.bodegas)
         if (params.id) {
           this.getCompany();
           this.getbodegas();
-          this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
+          //this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
           let user=JSON.parse(localStorage.getItem('usuario'));
          // this.PromoForm.get("ccomp").setValue( this.PromoE.ccomp);
           this.Ftupdate = false;
@@ -142,24 +143,24 @@ console.log(this.bodegas)
                 (res) => {
                     
                     this.PromoE = res[0];
-                    this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
-                    this.PromoForm.controls.ItemCode.setValue(this.PromoE["ItemCode"]);
-                    this.PromoForm.controls.ItemName.setValue(this.PromoE["ItemName"]);
-                    this.PromoForm.controls.FechaCreacion.setValue(this.PromoE["FechaCreacion"]);
-                    this.PromoForm.controls.impuesto.setValue(this.PromoE["impuesto"]);
-                    this.PromoForm.controls.observaciones.setValue(this.PromoE["observaciones"]);
-                    this.PromoForm.controls.estado.setValue(this.PromoE["estado"]);
-                     this.PromoForm.controls.costo.setValue(this.PromoE["costo"]);
+                    // this.PromoForm.controls.ccomp.setValue(this.PromoE["ccomp"]);
+                    // this.PromoForm.controls.ItemCode.setValue(this.PromoE["ItemCode"]);
+                    // this.PromoForm.controls.ItemName.setValue(this.PromoE["ItemName"]);
+                    // this.PromoForm.controls.FechaCreacion.setValue(this.PromoE["FechaCreacion"]);
+                    // this.PromoForm.controls.impuesto.setValue(this.PromoE["impuesto"]);
+                    // this.PromoForm.controls.observaciones.setValue(this.PromoE["observaciones"]);
+                    // this.PromoForm.controls.estado.setValue(this.PromoE["estado"]);
+                    //  this.PromoForm.controls.costo.setValue(this.PromoE["costo"]);
 
-                    // this.PromoE.ItemCode = res[0]['ItemCode'];
-                    // this.PromoE.ItemName = res[0]['ItemName'];
-                    // this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
-                    // this.PromoE.impuesto = res[0]['impuesto'];
-                    // this.PromoE.observaciones = res[0]['observaciones'];
-                    // this.PromoE.estado = res[0]['estado'];
-                    // this.PromoE.ccomp = res[0]['ccomp'];
-                    // this.PromoE.costo = res[0]['costo'];
-                    // this.PromoForm = this.createPromoForm();
+                    this.PromoE.ItemCode = res[0]['ItemCode'];
+                    this.PromoE.ItemName = res[0]['ItemName'];
+                    this.PromoE.FechaCreacion = res[0]['FechaCreacion'];
+                    this.PromoE.impuesto = res[0]['impuesto'];
+                    this.PromoE.observaciones = res[0]['observaciones'];
+                    this.PromoE.estado = res[0]['estado'];
+                    this.PromoE.ccomp = res[0]['ccomp'];
+                    this.PromoE.costo = res[0]['costo'];
+                    this.PromoForm = this.createPromoForm();
                 }
             );
 
