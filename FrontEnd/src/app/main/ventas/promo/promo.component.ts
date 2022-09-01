@@ -127,15 +127,16 @@ console.log(this.bodegas)
           this.getbodegas();
           
        //   let user=JSON.parse(localStorage.getItem('usuario'));
-        
+       let user=JSON.parse(localStorage.getItem('usuario'));
+       this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
           this.Ftupdate = false;
         //   this.getFormapagos();
           let buscarE;
           let buscarD;
           if (params.tipo == 'promo'){
             this.getCompany();
-           // let user=JSON.parse(localStorage.getItem('usuario'));
-           // this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
+           let user=JSON.parse(localStorage.getItem('usuario'));
+           this.PromoForm.controls.ccomp.setValue(parseInt(user.company));
               buscarE = '/promo/Encabezado';
               buscarD = '/promo/Detalle';
              }
