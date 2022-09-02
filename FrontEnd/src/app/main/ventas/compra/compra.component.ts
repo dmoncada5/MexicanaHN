@@ -112,7 +112,7 @@ export class CompraComponent implements OnInit {
     let d = dateString.split("/");
     let dat = new Date(d[2] + '/' + d[1] + '/' + d[0]);
 
-    console.log('dat',dat)
+   
     return dat;     
 }
   ngOnInit(): void {
@@ -155,7 +155,7 @@ export class CompraComponent implements OnInit {
                     this.compraE.BaseRef=res[0]['numero'];
                     this.compraE.numero = '';
                 }
-
+          
                   this.CompraForm = this.createcompraForm();
 
                 //   this.ComprasService.getOneSocio('/socios/edit', this.compraE.SocioCode).subscribe(
@@ -165,11 +165,17 @@ export class CompraComponent implements OnInit {
         this.ComprasService.getOne(buscarD, params.id).subscribe(
         //    this.ComprasService.getOne('/compra/Detalle', params.id).subscribe(
             (res: any[]) => {
-     
+         
                 for (let index = 0; index < res.length; index++){0
-              console.log('ca,=mb',(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
-                console.log('log',new Date(this.getFormattedDate(res[index]['FechaVencimiento'])))
-              console.log('tre',this.convertToDate(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
+              // console.log('ca,=mb',(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
+              //   console.log('log',new Date(this.getFormattedDate(res[index]['FechaVencimiento'])))
+              // console.log('tre',this.convertToDate(format(new Date(this.getFormattedDate(res[index]['FechaVencimiento'])),'dd/MM/yyyy')))
+              let fech;
+              if (params.tipo != 'ordencompra'){
+               
+               fech=this.getFormattedDate(res[index]['FechaVencimiento']);
+               }else{ console.log('ent') ;fech='';}
+
               this.ELEMENT_DATA.push({
                         DocNum: params.id,
                         Linea: res[index]['Linea'],
@@ -182,7 +188,9 @@ export class CompraComponent implements OnInit {
                         almacen: res[index]['almacen'],
                         impuestocod: 0,
                         tipo:res[index]['tipo'],
-                        FechaVen:this.getFormattedDate(res[index]['FechaVencimiento'])
+
+                 
+                        FechaVen:fech
                       //  FechaVen:new Date(this.getFormattedDate(res[index]['FechaVencimiento']))
                     });
                 }

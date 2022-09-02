@@ -216,7 +216,7 @@ class MainController {
 
 
     async comprasExistencia(req, res) {
-console.log('exec',req.body)
+
         try {
             const pool = await poolPromise
             const result = await pool.request()
