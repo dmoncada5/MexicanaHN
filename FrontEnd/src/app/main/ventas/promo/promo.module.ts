@@ -44,7 +44,9 @@ const routes = [
 
 
 @NgModule({
-        declarations: [PromoComponent],
+        declarations: [
+            PromoComponent
+        ],
         imports: [
           RouterModule.forChild(routes),
           MatFormFieldModule,
@@ -67,7 +69,22 @@ const routes = [
            NgxChartsModule,
            MatMenuModule,
           FuseSharedModule,
-          FuseWidgetModule
+          FuseWidgetModule,
+          MatFormFieldModule,
+          TranslateModule,
+          MatButtonModule,
+          MatFormFieldModule,
+          MatIconModule,
+          MatInputModule,
+          MatRippleModule,
+          MatSelectModule,
+          MatTabsModule,
+          MatTableModule,
+          MatSnackBarModule,
+          MatPaginatorModule,
+          FuseSharedModule,
+          FuseWidgetModule,
+          MatDatepickerModule,
         ],
         providers: [ 
       
