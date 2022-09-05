@@ -5,7 +5,7 @@
     "getCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
     "getOneCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
     "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from salidas t1  where t1.numero=@DocNum",
-    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacen from salidasDetalle where DocNum=@DocNum",
+    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacen from salidasDetalle where DocNum=@DocNum order by Linea asc",
     "addNewSalidaEncabezado": "INSERT INTO [dbo].[salidas] ( fechaDoc, UserCreate, LastUpdate, comentarios, serie , ccomp, numero,tipo,status) VALUES (  @fechaDoc, @UserCreate, @LastUpdate, @comentarios, @serie,  @ccomp, @numero,@tipo,@status)",
     "deleteSalidaEncabezado": "DELETE FROM [dbo].[salidas] WHERE DocNum = @DocNum",
     "updateSalidaEncabezado": "UPDATE [dbo].[salidas] SET fechaDoc=@fechaDoc, SocioCode=@SocioCode, NombreSocio=@NombreSocio, Direccion=@Direccion, impuesto=@impuesto, tasa=@tasa, TotalDoc=@TotalDoc, DescPorcentaje=@DescPorcentaje, Moneda=@Moneda, comentarios=@comentarios, vendedor=@vendedor, LastUpdate=@LastUpdate, UserCreate=@UserCreate , Serie=@Serie, ccomp=@ccomp, cai=@cai, fact_emini=@fact_emini, fact_emifin=@fact_emifin, correo=@correo, fecha_limite=@fecha_limite, numero=@numero, tipo=@tipo,RTN=@RTN, status=@status WHERE DocNum = @DocNum",

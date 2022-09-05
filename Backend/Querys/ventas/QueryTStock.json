@@ -5,7 +5,7 @@
     "getCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
     "getOneCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
     "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.UserCreate, t1.LastUpdate, t1.comentarios, t1.serie , t1.ccomp, t1.numero,t1.tipo,t1.status from traslado t1  where t1.numero=@DocNum",
-    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacenOrigen,almacenDestino from trasladoDetalle where DocNum=@DocNum",
+    "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, almacenOrigen,almacenDestino from trasladoDetalle where DocNum=@DocNum order by Linea asc",
     "addNewtrasladoEncabezado": "INSERT INTO [dbo].[traslado] ( fechaDoc, UserCreate, LastUpdate, comentarios, serie , ccomp, numero,tipo,status) VALUES (  @fechaDoc, @UserCreate, @LastUpdate, @comentarios, @serie,  @ccomp, @numero,@tipo,@status)",
     "deletetrasladoEncabezado": "DELETE FROM [dbo].[traslado] WHERE DocNum = @DocNum",
     "updatetrasladoEncabezado": "UPDATE [dbo].[traslado] SET fechaDoc=@fechaDoc, SocioCode=@SocioCode, NombreSocio=@NombreSocio, Direccion=@Direccion, impuesto=@impuesto, tasa=@tasa, TotalDoc=@TotalDoc, DescPorcentaje=@DescPorcentaje, Moneda=@Moneda, comentarios=@comentarios, vendedor=@vendedor, LastUpdate=@LastUpdate, UserCreate=@UserCreate , Serie=@Serie, ccomp=@ccomp, cai=@cai, fact_emini=@fact_emini, fact_emifin=@fact_emifin, correo=@correo, fecha_limite=@fecha_limite, numero=@numero, tipo=@tipo,RTN=@RTN, status=@status WHERE DocNum = @DocNum",
