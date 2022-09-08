@@ -15,6 +15,7 @@ router.post('/postearEncabezado', facturaController.addNewDataEncabezado);
 router.post('/postearDetalle', facturaController.addNewDataDetalle);
 router.put('/Encabezado', facturaController.updateDataeEncabezado);
 router.put('/Detalle', facturaController.updateDataDetalle);
+router.put('/Letras', facturaController.updateCantLetras);
 router.delete('/Encabezado', facturaController.deleteDataEncabezado);
 router.delete('/:DocNum', facturaController.deleteDataDetalle);
 router.put('/statusC', facturaController.upStatus); // lo que agrege Javier
