@@ -693,10 +693,13 @@ this.validaciones=true;
                     if (res.error.text=="El numero de la Factura ya existe!!"){
                         this._matSnackBar.open(res.error.text, 'OK', {
                             verticalPosition: 'top',
-                            duration: 2000
+                            duration: 15000
+                            
                         });
 
-
+                        this.FacturaE.Serie='';
+                        // this.FacturaE.DocNum ='';
+                        this.FacturaE.numero='';
                     }
                 });
         } else {

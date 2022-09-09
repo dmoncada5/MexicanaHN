@@ -686,6 +686,9 @@ if (res.length>0){
                         });
 
 
+                        this.FacturaE.Serie='';
+                        // this.FacturaE.DocNum ='';
+                        this.FacturaE.numero='';
                     }
                 });;
           } else {
