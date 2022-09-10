@@ -177,9 +177,8 @@
                     <mat-tab label="Productos">
 
                         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-
-
-                            <mat-form-field appearance="outline" fxFlex="70" class="pr-4 productItem">
+                            <!-- <table class="simple invoice-table-footer Subs"> -->
+                            <mat-form-field appearance="outline" fxFlex="60" class="pr-4 productItem">
                                 <mat-label>Productos</mat-label>
                                 <input [disabled]="!Ftupdate" matInput placeholder="Productos" [(ngModel)]="productItem" aria-label="Productos" [matAutocomplete]="autoproducts" [formControl]="productosCtrl" (keydown.enter)="completeProducts($event)">
                                 <mat-autocomplete #autoproducts="matAutocomplete" panelWidth="300px">
@@ -196,6 +195,18 @@
                             <button mat-raised-button [disabled]="productItem==null" class="save-product-button accent-800" fxFlex="10" (click)="Agregar($event)">Agregar</button>
 
 
+
+                            <!-- </table> -->
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <table *ngIf="ELEMENT_DATA.length>0 && Ftupdate" class="simple invoice-table-footer Subs">
+                                <tbody>
+                                    <tr class="total">
+                                        <td>TOTAL</td>
+                                        <td>{{ FacturaE.TotalDoc | currency:' LPS ':'symbol'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <br>
 
