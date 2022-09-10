@@ -31,8 +31,9 @@ constructor(private rpt:ReportesService){
 report(){
   this.rpt.getarticulosVendidos('/Rfinanzas/articulosVendidos',this.desde,this.hasta).subscribe(
     (res)=>{
+      this.totalVendidos=0;
   this.datos=res;
-  console.log(res)
+
   for(let i=0; i<this.datos.length;i++){
     this.totalVendidos+=this.datos[i]["Vendidas"];
 

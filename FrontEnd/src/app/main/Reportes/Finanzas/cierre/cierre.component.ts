@@ -21,7 +21,8 @@ export class CierreComponent implements OnInit {
     this.totalpagado=0;
     this.ReportesService.CierreDiario('/Rfinanzas/CierreDiario',this.desde,this.hasta).subscribe(
       (res)=>{
-        
+        this. datos=0;
+        this.totalpagado=0;
        this. datos=res;
        for(let i=0; i<this.datos.length;i++){
       
