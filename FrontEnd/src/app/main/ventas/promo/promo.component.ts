@@ -386,7 +386,7 @@ update() {
     this.PromoE.observaciones = this.PromoForm.get('observaciones').value;
     this.PromoE.estado = this.PromoForm.get('estado').value;
     this.PromoE.costo = this.PromoForm.get('costo').value;
-
+    this.PromoE.ccomp = this.PromoForm.get('ccomp').value;
 
     // 
     //     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
