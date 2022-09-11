@@ -1,6 +1,6 @@
 {
-    "getAllDataS": "SELECT * FROM [dbo].[solicitudts] where status ='A'   order by DocNum desc",
-    "getAllData": "SELECT  * FROM [dbo].[solicitudts] where tipo=@tipo_documento   order by DocNum desc",
+    "getAllDataS": "SELECT * FROM [dbo].[solicitudts] where status ='A'   order by DocNum asc",
+    "getAllData": "SELECT  * FROM [dbo].[solicitudts] where tipo=@tipo_documento   order by DocNum asc",
     "formato": "exec FormatNumeracion @numero",
     "getCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
     "getOneCorrelativo": "select * from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",

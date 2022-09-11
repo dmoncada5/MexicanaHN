@@ -1,11 +1,11 @@
 {
 
-    "getAllDataP": "SELECT * FROM [dbo].[cotizacion] where  status ='A'",
-    "getAllData": "SELECT  * FROM [dbo].[cotizacion] where  status ='A'",
+    "getAllDataP": "SELECT * FROM [dbo].[cotizacion] where  status ='A' order by numero asc",
+    "getAllData": "SELECT  * FROM [dbo].[cotizacion] where  status ='A' order by numero asc",
     "formato": "exec FormatNumeracion @numero",
-    "getCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento ",
-    "getOneCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc",
-    "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate, t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero, t1.tipo, t1.RTN, t1.status from cotizacion t1  where t1.numero=@DocNum",
+    "getCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=@tipo_documento order by numero asc",
+    "getOneCorrelativo": "select *from numeracion where ccomp=@ccomp and tipo_documento=tipo_documento and cnum=@csuc ",
+    "getOneEncabezado": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate, t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero, t1.tipo, t1.RTN, t1.status from cotizacion t1  where t1.numero=@DocNum order by numero asc",
     "getOneDetalle": "select DocNum, Linea, itemCode, itemName, cantidad, precio, DescuentoLine, impuestocod, totaLine, almacen,tipo from cotDetalle where DocNum=@DocNum order by Linea asc",
     "addNewCotizacionEncabezado": "INSERT INTO [dbo].[cotizacion] ( fechaDoc, SocioCode, NombreSocio, Direccion, impuesto, tasa, TotalDoc, DescPorcentaje, Moneda, comentarios, vendedor, LastUpdate, UserCreate, Serie, ccomp, cai, fact_emini, fact_emifin, correo, fecha_limite, numero, tipo, RTN, status) VALUES ( @fechaDoc, @SocioCode, @NombreSocio, @Direccion, @impuesto,@tasa, @TotalDoc, @DescPorcentaje, @Moneda, @comentarios, @vendedor, @LastUpdate, @UserCreate, @Serie, @ccomp, @cai, @fact_emini, @fact_emifin, @correo, @fecha_limite, @numero, @tipo, @RTN, @status)",
     "deleteCotizacionEncabezado": "DELETE FROM [dbo].[cotizacion] WHERE DocNum = @DocNum",
