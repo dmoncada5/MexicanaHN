@@ -377,7 +377,7 @@ this.validaciones=true;
                  stock = res[0]['stock'];
                  console.log('agre',res);
                  if (eve.cantidad > stock) {
-                     this._matSnackBar.open('la cantidad de '+ eve.itemCode +' recae sobre inventario negativo', 'OK', {
+                     this._matSnackBar.open('la cantidad de '+ eve.itemCode +' - '+eve.itemName+' recae sobre inventario negativo', 'OK', {
                          verticalPosition: 'top',
                          duration: 15000
                      });
@@ -686,6 +686,9 @@ if (res.length>0){
                         });
 
 
+                        this.FacturaE.Serie='';
+                        // this.FacturaE.DocNum ='';
+                        this.FacturaE.numero='';
                     }
                 });;
           } else {

@@ -162,6 +162,7 @@ reglas :any;
         if (params.tipo == 'factura'){
             buscarE = '/factura/Encabezado';
             buscarD = '/factura/Detalle';
+           
           }
         if (params.tipo == 'pedido'){
             buscarE = '/pedido/EncabezadoB';
@@ -174,6 +175,8 @@ reglas :any;
             buscarD = '/cotizacion/Detalle';
             this.Ftupdate = true;
           }
+       //   this.facturaService.updateCantLetras(this.FacturaE.numero.toString());
+   
         this.facturaService.getOne(buscarE, params.id).subscribe(
               (res) => {
             
@@ -186,6 +189,8 @@ reglas :any;
                   }
                   // this.series.cnum=res["Serie"];
                   this.FacturaForm = this.createcotizacionForm();
+                  this.facturaService.updateCantLetras(this.FacturaE.numero.toString());
+   
               }
           );
         this.facturaService.getOne(buscarD, params.id).subscribe(
@@ -534,7 +539,7 @@ this.validaciones=true;
              stock = res[0]['stock'];
              console.log('agre',res);
              if (eve.cantidad > stock) {
-                 this._matSnackBar.open('la cantidad de '+ eve.itemCode +' recae sobre inventario negativo', 'OK', {
+                 this._matSnackBar.open('la cantidad de '+ eve.itemCode +' - '+eve.itemName+' recae sobre inventario negativo', 'OK', {
                      verticalPosition: 'top',
                      duration: 5000
                  });
@@ -663,7 +668,7 @@ this.validaciones=true;
                     
                        }
                     }
-                 
+ 
                     if (this.typeDocum === 'pedido'){
                      this.facturaService.updatestatus(this.pageType, 'C');
                     }
@@ -671,6 +676,7 @@ this.validaciones=true;
                         this.facturaService.updatestatusC(this.pageType, 'C');
                        }
                     this.facturaService.updateCorrelativo(cnum);
+
 
                 })
                 .then(resp => {
@@ -687,10 +693,13 @@ this.validaciones=true;
                     if (res.error.text=="El numero de la Factura ya existe!!"){
                         this._matSnackBar.open(res.error.text, 'OK', {
                             verticalPosition: 'top',
-                            duration: 2000
+                            duration: 15000
+                            
                         });
 
-
+                        this.FacturaE.Serie='';
+                        // this.FacturaE.DocNum ='';
+                        this.FacturaE.numero='';
                     }
                 });
         } else {
@@ -702,8 +711,7 @@ this.validaciones=true;
 
 
         }
-
-        ///////////////////// FIN grabar en tabla//////////////////////////////////     
+             ///////////////////// FIN grabar en tabla//////////////////////////////////     
 
 
     });

@@ -261,6 +261,19 @@ addfacturaDetalle(cotizacion: any): Promise<any>
              }, reject);
      });
  }
+ updateCantLetras(numero : string)
+ {
+    let headers = new HttpHeaders();
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify({numero: numero});
+  
+    return new Promise((resolve, reject) => {
+     this.http.put(`${this.API_URI}` + '/factura/Letras' , body, { headers: headers })
+    .subscribe((response: any) => {
+        resolve(response);
+       }, reject);
+});
+ }
  DeletefacturaDetalle(DocNum: number)
  {
     return this.http.delete(`${this.API_URI}` + '/factura' + `/${DocNum}`);

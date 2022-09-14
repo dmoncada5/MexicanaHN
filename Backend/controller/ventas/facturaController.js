@@ -351,6 +351,26 @@ class MainController {
             res.send(error.message)
         }
     }
+
+    async updateCantLetras(req, res) {
+        console.log(req.body)
+        try {
+            if (req.body.numero != null) {
+                const pool = await poolPromise
+                const result = await pool.request()
+                    .input('numero', sql.NVarChar, req.body.numero)
+                    .query(queries.updateCantLetras)
+                res.json(result)
+            } else {
+                res.send('Please fill all the details!')
+            }
+        } catch (error) {
+            res.status(500)
+            res.send(error.message)
+        }
+    }
+
+
     async deleteDataEncabezado(req, res) {
 
         try {

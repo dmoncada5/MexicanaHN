@@ -130,6 +130,7 @@ export class AppComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        
         // Subscribe to config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))

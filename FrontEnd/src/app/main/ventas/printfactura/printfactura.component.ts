@@ -50,7 +50,7 @@ this.doc.DocNum=this.pageType;
       res=>{
         this.Encabezado=res[0];
         this.numero1=res[0]['fact_emini']
-
+console.log('en letras'+this.Encabezado.CantidadLetas.toString());
       }
     );
     this.prtservice.getDetalle('/factura/Detalle',this.doc.DocNum).subscribe(

@@ -183,17 +183,24 @@
                             <td>{{0 | currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
-                            <td>SUBTOTAL</td>
+                            <td>IMP. GRAVADO 15%</td>
                             <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
-                            <td>ISV</td>
+                            <td>IMP. GRAVADO 18%</td>
+                            <td>{{0| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>ISV 15%</td>
                             <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>ISV 18%</td>
+                            <td>{{0| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'L. ':'symbol'}}</td>
-                        </tr>
                         <tr class="total">
                             <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
@@ -202,28 +209,34 @@
                             <td>EFECTIVO </td>
                             <td>{{ pagos.whopaid | currency:'L. ':'symbol'}}</td>
                         </tr>
-                        
                         <tr class="cambio">
                             <td>CAMBIO </td>
                             <td>{{ vcambio | currency:'L. ':'symbol'}}</td>
                         </tr>
+                        
                     </tbody>
                 </table>
 
-
-
-
+<!-- 
+                <div class="nombre">
+                    {{Encabezado.CantidadLetas}}
+                </div> -->
             </div>
 
 
 
             <div class="footer">
-
+                <div class="Exijela">
+                    {{Encabezado.CantidadLetas}}
+                </div>
                 <div class="text1">
-
-
+                   <div class="Exijela">
+                        "ORIGINAL CLIENTE"
+                        <div>
+                        "COPIA EMISOR"
+                    </div>
+                </div>
                     <div>
-
                         ORDEN COMPRA EXENTA_____
                     </div>
                     <div>
@@ -237,9 +250,16 @@
                     "La Factura es beneficio de todos exijela"
                 </div>
 
-
-
             </div>
+
+
+
+
+       
+
+
+
+
 
             <!--
 
@@ -282,3 +302,4 @@
     </div>
 
 </div>
+
