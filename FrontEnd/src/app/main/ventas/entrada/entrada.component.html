@@ -23,10 +23,10 @@
                     <div class="h2">
                         Entrada de Mercaderia Manual - # {{EntradaE.numero}}
                     </div>
-                    <div class="subtitle secondary-text">
+                    <!-- <div class="subtitle secondary-text">
                         <span>Cliente: </span>
                         <span>{{EntradaE.cuser} </span>
-                    </div>
+                    </div> -->
                 </div>
 
 
@@ -36,7 +36,7 @@
 
             <mat-form-field appearance="outline" fxFlex="25">
                 <mat-label>Serie</mat-label>
-                <mat-select [disabled]="!Ftupdate" [(ngModel)]="EntradaE.Serie" required (selectionChange)="numerosuc($event.value)">
+                <mat-select [disabled]="!Ftupdate" [(ngModel)]="EntradaE.serie" required (selectionChange)="numerosuc($event.value)">
 
                     <mat-option *ngFor="let serie of series" [value]="serie.cnum">
                         {{serie.Serie}}

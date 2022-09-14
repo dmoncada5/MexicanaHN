@@ -28,6 +28,7 @@ totalpagos:number=0;
 }
 
 report(){
+  this.totalpagos=0;
   this.rpt.getpagoRecibidos('/Rfinanzas/pagosRecibidos',this.desde,this.hasta).subscribe(
     (res)=>{
   this.datos=res;

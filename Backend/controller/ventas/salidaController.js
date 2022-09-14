@@ -145,7 +145,7 @@ class MainController {
                     .input('UserCreate', sql.NVarChar, req.body.UserCreate)
                     .input('comentarios', sql.NVarChar, req.body.comentarios)
                     .input('LastUpdate', sql.DateTime, req.body.LastUpdate)
-                    .input('Serie', sql.NVarChar, req.body.Serie)
+                    .input('Serie', sql.NVarChar, req.body.serie)
                     .input('ccomp', sql.Numeric, req.body.ccomp)
                     .input('numero', sql.NVarChar, req.body.numero)
                     .input('tipo', sql.NVarChar, req.body.tipo)

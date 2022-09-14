@@ -129,7 +129,7 @@ products: any;
       this.Ftupdate = false;
       this.getNumerion();
       this.getbodegas();
-    //   this.getFormapagos();
+ 
       let buscarE;
       let buscarD;
       if (params.tipo == 'salida'){
@@ -141,10 +141,12 @@ products: any;
             (res) => {
                
                 this.SalidaE = res[0];
+
+              
                 if (params.tipo != 'salida'){
 
                 }
-                // this.series.cnum=res["Serie"];
+
                 this.SalidaForm = this.createcotizacionForm();
             }
         );
@@ -159,13 +161,13 @@ products: any;
                       precio: res[index]['precio'],
                       cantidad: res[index]['cantidad'],
                       almacen: res[index]['almacen'],
-                      //tipo:res[index]['tipo'],
+             
                   });
               }
               this.selectedSerie = true;
               this.validaciones = true;
               this.refreshTable();
-        //ks      this.totalGeneral();
+  
             }
         );
     }
@@ -183,8 +185,9 @@ products: any;
     const user = JSON.parse(localStorage.getItem('usuario'));
     this.salidasService.getnumeracion('/salida/correlativo', user.company, 'Salida Mercaderia').subscribe(
         (res) => {
-         //   this.EntradaE.DocNum=res[0]['Correlativo'];
+
            this.series = res; 
+    
         }
     );
    }
@@ -423,7 +426,7 @@ this.bodegas = res;
     // this.SalidaE.fechaDoc=  format(new Date(this.SalidaE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
     this.docum.DocNum = this.SalidaE.DocNum;
     this.SalidaE.tipo = 'SALIDA';
-    this.SalidaE.Serie = this.selectSerie[0]['cnum'];
+    this.SalidaE.serie = this.selectSerie[0]['cnum'];
     this.SalidaE.ccomp = this.selectSerie[0]['ccomp']; 
     this.SalidaE.comentarios = this.SalidaForm.get('comentario').value;
 
@@ -611,9 +614,9 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-        id:[this.SalidaE.id,Validators.required],
+        id:[this.SalidaE.UserCreate,Validators.required],
         fechaDoc: [this.SalidaE.fechaDoc, Validators.required],
-        serie: [this.SalidaE.Serie, Validators.required],
+        serie: [this.SalidaE.serie, Validators.required],
         comentario: [this.SalidaE.comentarios],
 
     });

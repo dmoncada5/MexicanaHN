@@ -214,7 +214,7 @@ this.EntradaForm.get('id').setValue(this.user.usuario);
     this.entradasService.getOnenumeracion('/entrada/correlativoOne', user.company, 'entrada', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
- 
+
             this.entradasService.getformato('/entrada/formato', res1[0]['correlativo']).subscribe(
                 (res) => {
                     this.selecSerieS = true;
@@ -411,14 +411,18 @@ this.bodegas = res;
 
   save() {
 
-    this.EntradaE.UserCreate = this.socios[0]['usuario'];
+    //this.EntradaE.UserCreate = this.socios[0]['usuario'];
+
+    this.EntradaE.UserCreate = this.EntradaForm.get("id").value;
     this.EntradaE.comentarios = '';
     //this.EntradaE.fechaDoc = this.EntradaForm.get(format('fechaDoc','yyyy-MM-dd HH:mm:ss')).value;
     this.EntradaE.LastUpdate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     // this.EntradaE.fechaDoc=  format(new Date(this.EntradaE.fechaDoc), "yyyy-MM-dd HH:mm:ss");
     this.docum.DocNum = this.EntradaE.DocNum;
     this.EntradaE.tipo = 'ENTRADA';
-    this.EntradaE.Serie = this.selectSerie[0]['cnum'];
+    this.EntradaE.serie = this.selectSerie[0]['cnum'];
+    //this.EntradaE.serie =this.selectSerie[0]['cnum']; ;
+   
     this.EntradaE.ccomp = this.selectSerie[0]['ccomp']; 
     this.EntradaE.comentarios = this.EntradaForm.get('comentario').value;
 
@@ -605,9 +609,9 @@ update() {
 
 createcotizacionForm(): FormGroup {
     return this._formBuilder.group({
-        id:[this.EntradaE.id,Validators.required],
+        id:[this.EntradaE.UserCreate,Validators.required],
         fechaDoc: [this.EntradaE.fechaDoc, Validators.required],
-        serie: [this.EntradaE.Serie, Validators.required],
+        serie: [this.EntradaE.serie, Validators.required],
         comentario: [this.EntradaE.comentarios],
 
     });

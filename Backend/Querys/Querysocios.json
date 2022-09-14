@@ -1,6 +1,6 @@
 {
-    "getAllData": "SELECT * FROM [dbo].[socionegocio]",
-    "getOne": "SELECT  * FROM [dbo].[socionegocio] where csocio=@csocio",
+    "getAllData": "SELECT * FROM [dbo].[socionegocio] order by csocio asc",
+    "getOne": "SELECT  * FROM [dbo].[socionegocio] where csocio=@csocio order by csocio asc",
     "addNewSocio": "INSERT INTO [dbo].[socionegocio] (csocio, nombre, ccomp, ccate,grupoid, rtn, direccion, telefono, celular, correo, sitio_web, contacto, observaciones, fecha_creacion, estado,codlista ) VALUES (@csocio, @nombre, @ccomp, @ccate,@grupoid, @rtn, @direccion, @telefono, @celular, @correo, @sitio_web, @contacto, @observaciones, @fecha_creacion, @estado,@codlista ) ",
     "deleteSocio": "DELETE FROM [dbo].[socionegocio] WHERE csocio = @csocio",
     "updateSocioDetails": "UPDATE [dbo].[socionegocio] SET nombre=@nombre, ccomp=@ccomp, ccate=@ccate, grupoid=@grupoid, rtn=@rtn, direccion=@direccion, telefono=@telefono, celular=@celular, correo=@correo, sitio_web=@sitio_web, contacto=@contacto, observaciones=@observaciones, fecha_creacion=@fecha_creacion, estado=@estado,codlista=@codlista  WHERE csocio = @csocio",

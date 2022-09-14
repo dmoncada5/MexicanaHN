@@ -183,7 +183,7 @@ export interface promoEncabezado {
     impuesto?: string;
     observaciones?: string;
     estado?: string;
-    ccomp?: string;
+    ccomp?: number;
     costo?:  number;
     tipo?:  string;
     DocNum?: string;
@@ -218,7 +218,7 @@ export interface promoDetalle
     UserCreate?: string;
     comentarios?: string;
     LastUpdate?: string;
-    Serie?: string;
+    serie?: number;
     ccomp?: string;
     numero?: string;
     tipo?: string;
@@ -298,7 +298,7 @@ export interface promoDetalle
       UserCreate?: string;
       comentarios?: string;
       LastUpdate?: string;
-      Serie?: string;
+      serie?: number;
       ccomp?: string;
       numero?: string;
       tipo?: string;
