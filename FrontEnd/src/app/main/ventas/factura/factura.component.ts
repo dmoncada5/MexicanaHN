@@ -283,15 +283,29 @@ getFormapagos(){
     this.facturaService.getOnenumeracion('/factura/correlativoOne', user.company, 'Factura', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
- 
+//  console.log("seleccion de seri ",this.selectSerie);
             this.facturaService.getformato('/factura/formato', res1[0]['correlativo']).subscribe(
                 (res) => {
 this.selecSerieS = true;
+
+ let arr=res1[0]['fact_emifin'].slice(11,19);
+//  console.log("haber si =", Number(arr));
+//  console.log("Comparar ",Number(arr)," <= ",res1[0]['correlativo']);
+if (Number(arr)<=res1[0]['correlativo']){
+    this._matSnackBar.open('llego a limite de facturas emitidas para este CAI ', 'OK', {
+        verticalPosition: 'top',
+        duration: 9000
+        
+    }); this.FacturaE.Serie='';
+}else{
 this.FacturaE.DocNum = res1[0]['correlativo'];
 this.FacturaE.numero = res1[0]['prefijo'] + res[0]['Numero'];
+// console.log("DocNum = ",this.FacturaE.DocNum);
+// console.log("numero = ",this.FacturaE.numero );
 for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                         this.ELEMENT_DATA[index]['DocNum'] = this.FacturaE.numero;
                         }
+                    }
                 }
             );
         //   this.series=res; 
