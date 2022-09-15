@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
+import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
 
 @Component({
   selector: 'app-factura',
@@ -505,8 +506,11 @@ this.validaciones=true;
 
     if (this.reglas[0].valido){
     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+// console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
+// console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
 
-       if(  this.ELEMENT_DATA[index]['costo'] < this.ELEMENT_DATA[index]['totaLine'] ){
+
+       if(  this.ELEMENT_DATA[index]['precio'] < this.ELEMENT_DATA[index]['costo']  ){
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
             verticalPosition: 'top',
             duration: 15000
