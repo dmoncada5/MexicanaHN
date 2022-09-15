@@ -423,6 +423,7 @@ if (res.length>0){
             this.validaciones = true;
             this.facturaService.getInfo('/products/info', this.productItem, this.codlista).subscribe(
         (res:any[]) => {
+
    if(res.length>0){
            this.Detalle = res[0];
            const index = this.ELEMENT_DATA.length + 1;
@@ -502,11 +503,13 @@ this.validaciones=true;
   Vreglas=(callback)=>
   {
 
-
+    console.log('regla',this.reglas[0].valido)
     if (this.reglas[0].valido){
     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+        console.log('cor', this.ELEMENT_DATA[index]['precio'] ,'total -- costo', this.ELEMENT_DATA[index]['costo'])
+       if( this.ELEMENT_DATA[index]['precio'] < this.ELEMENT_DATA[index]['costo']){
 
-       if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+        
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
             verticalPosition: 'top',
             duration: 15000
@@ -537,7 +540,7 @@ this.validaciones=true;
                });
              }else{
              stock = res[0]['stock'];
-             console.log('agre',res);
+        
              if (eve.cantidad > stock) {
                  this._matSnackBar.open('la cantidad de '+ eve.itemCode +' - '+eve.itemName+' recae sobre inventario negativo', 'OK', {
                      verticalPosition: 'top',
