@@ -372,7 +372,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
-  return valor; 
+  return Math.round(valor); 
 }
   completeProducts(event) {
 
