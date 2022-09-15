@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-factura',
@@ -514,30 +515,62 @@ this.validaciones=true;
 }
 
 
-  Vreglas=(callback)=>
-  {
+Vreglas=(callback)=>
+{
 
 
-    if (this.reglas[0].valido){
-    for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
-        console.log('cor', this.ELEMENT_DATA[index]['totaLine'] ,'total -- costo', this.ELEMENT_DATA[index]['costo'])
-       if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+  if (this.reglas[0].valido){
+  for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+//  console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
+//  console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
+// console.log("Arreglo",this.ELEMENT_DATA);
+// console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
+    this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+          verticalPosition: 'top',
+          duration: 15000
+      });
+      this.validaciones = false;
+      callback(null,this.validaciones); 
+      return;
+     }  else{             this.validaciones = true;
+      callback(null,this.validaciones); }  }
+  }else{
+      callback(null,true);
+  }
 
-        
-        this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
-            verticalPosition: 'top',
-            duration: 15000
-        });
-        this.validaciones = false;
-        callback(null,this.validaciones); 
-        return;
-       }  else{             this.validaciones = true;
-        callback(null,this.validaciones); }  }
-    }else{
-        callback(null,true);
-    }
+  }  
 
-    }  
+
+
+
+
+
+//   Vreglas=(callback)=>
+//   {
+
+
+//     if (this.reglas[0].valido){
+//     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+//         console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+//         console.log("arreglo",this.ELEMENT_DATA)
+//        if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
+
+//        // console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['totaLine']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+//         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+//             verticalPosition: 'top',
+//             duration: 15000
+//         });
+//         this.validaciones = false;
+//         callback(null,this.validaciones); 
+//         return;
+//        }  else{             this.validaciones = true;
+//         callback(null,this.validaciones); }  }
+//     }else{
+//         callback(null,true);
+//     }
+
+//     }  
 
 
 
