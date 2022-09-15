@@ -15,7 +15,7 @@
     "addNewFacturaDetalle": "INSERT INTO [dbo].[facturaDetalle] (DocNum, Linea, itemCode, itemName, cantidad, precio, DescuentoLine, impuestocod, totaLine, almacen,tipo) VALUES (@DocNum, @Linea, @itemCode, @itemName, @cantidad, @precio, @DescuentoLine, @impuestocod, @totaLine, @almacen,@tipo)",
     "deleteFacturaDetalle": "DELETE FROM [dbo].[facturaDetalle] WHERE DocNum = @DocNum",
     "updateFacturaDetalle": "UPDATE [dbo].[facturaDetalle] SET  Linea=@Linea, itemCode=@itemCode, itemName=@itemName, cantidad=@cantidad, precio=@precio, DescuentoLine=@DescuentoLine, impuestocod=@impuestocod, totaLine=@totaLine, almacen=@almacen WHERE DocNum = @DocNum",
-    "validarFactura":"select count(*) as cantidad from factura where numero=@numero",
+    "validarFactura": "select count(*) as cantidad from factura where numero=@numero",
     "updateSatusFactura": "UPDATE [dbo].[factura] SET status=@status WHERE numero = @DocNum",
     "getOneEncabezadoB": "SELECT t1.DocNum, t1.fechaDoc, t1.SocioCode, t1.NombreSocio, t1.Direccion, t1.impuesto, t1.tasa, t1.TotalDoc, t1.DescPorcentaje, t1.Moneda, t1.comentarios, t1.vendedor, t1.LastUpdate, t1.UserCreate,t1.Serie, t1.ccomp, t1.cai, t1.fact_emini, t1.fact_emifin, t1.correo, t1.fecha_limite, t1.numero,t1.tipo,t1.RTN,t1.status from factura t1  where t1.numero=@DocNum",
     "widgetFactura": "exec [widget-Facturas]",
