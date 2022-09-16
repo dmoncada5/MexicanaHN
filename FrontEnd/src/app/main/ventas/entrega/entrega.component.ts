@@ -347,7 +347,7 @@ this.validaciones=true;
     if (this.reglas[0].valido){
     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
 
-       if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+       if( this.ELEMENT_DATA[index]['precio'] < this.ELEMENT_DATA[index]['costo']){
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
             verticalPosition: 'top',
             duration: 15000
