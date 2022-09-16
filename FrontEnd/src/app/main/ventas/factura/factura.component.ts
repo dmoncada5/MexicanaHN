@@ -7,10 +7,11 @@ import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FacturasService } from '../facturas/facturas.service';
 import { facturaDetalle, facturaEncabezado, Order, pago, tarjeta, efectivo, cheque, transferencia } from '../interfaces/interfaces';
-import { format } from 'date-fns';
+import { format, getDate } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-factura',
@@ -283,15 +284,49 @@ getFormapagos(){
     this.facturaService.getOnenumeracion('/factura/correlativoOne', user.company, 'Factura', event).subscribe(
         (res1) => {
             this.selectSerie = res1;
- 
+       console.log("seleccion de seri ",this.selectSerie);
             this.facturaService.getformato('/factura/formato', res1[0]['correlativo']).subscribe(
                 (res) => {
 this.selecSerieS = true;
+let hoy=new Date();
+let fechalimite=new Date(res1[0]['fecha_limite']);
+let dias=(fechalimite.getTime()-hoy.getTime())/(1000*60*60*24);
+//console.log("fecha menos 15 dias " ,res1[0]['fecha_limite']);
+//console.log("Fecha limite", fechalimite, "   Dias= ",dias);
+if (dias<15){
+    this._matSnackBar.open('QUEDAN 15 DIAS PARA EL VENCIMIENTO DE FACTURAS PARA ESTE CAI, CONTACTE A SU CONTADOR PARA QUE SOLICITE UNA NUEVA NUMERACION ', 'OK', {
+        verticalPosition: 'top',
+        duration: 9000
+        
+    });
+}
+ let arr=res1[0]['fact_emifin'].slice(11,19);
+ let FactFal=Number(arr)-res1[0]['correlativo'];
+ console.log("cuantas facturas faltan ", FactFal);
+ if (FactFal<15){
+    this._matSnackBar.open('QUEDAN '+FactFal+' FACTURAS DISPONIBLE PARA ESTE CAI, CONTACTE A SU CONTADOR PARA QUE SOLICITE UNA NUEVA NUMERACION ', 'OK', {
+        verticalPosition: 'top',
+        duration: 9000
+        
+    }); 
+}
+//  console.log("haber si =", Number(arr));
+//  console.log("Comparar ",Number(arr)," <= ",res1[0]['correlativo']);
+if (Number(arr)<=res1[0]['correlativo'] || dias<0){
+    this._matSnackBar.open('llego a limite de facturas emitidas para este CAI ', 'OK', {
+        verticalPosition: 'top',
+        duration: 9000
+        
+    }); this.FacturaE.Serie='';
+}else{
 this.FacturaE.DocNum = res1[0]['correlativo'];
 this.FacturaE.numero = res1[0]['prefijo'] + res[0]['Numero'];
+// console.log("DocNum = ",this.FacturaE.DocNum);
+// console.log("numero = ",this.FacturaE.numero );
 for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                         this.ELEMENT_DATA[index]['DocNum'] = this.FacturaE.numero;
                         }
+                    }
                 }
             );
         //   this.series=res; 
@@ -357,7 +392,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
-  return valor; 
+  return Math.round(valor); 
 }
   completeProducts(event) {
 
@@ -500,30 +535,62 @@ this.validaciones=true;
 }
 
 
-  Vreglas=(callback)=>
-  {
+Vreglas=(callback)=>
+{
 
 
-    if (this.reglas[0].valido){
-    for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
-        console.log('cor', this.ELEMENT_DATA[index]['precio'] ,'total -- costo', this.ELEMENT_DATA[index]['costo'])
-       if( this.ELEMENT_DATA[index]['precio'] < this.ELEMENT_DATA[index]['costo']){
+  if (this.reglas[0].valido){
+  for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+//  console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
+//  console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
+// console.log("Arreglo",this.ELEMENT_DATA);
+// console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
+    this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+          verticalPosition: 'top',
+          duration: 15000
+      });
+      this.validaciones = false;
+      callback(null,this.validaciones); 
+      return;
+     }  else{             this.validaciones = true;
+      callback(null,this.validaciones); }  }
+  }else{
+      callback(null,true);
+  }
 
-        
-        this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
-            verticalPosition: 'top',
-            duration: 15000
-        });
-        this.validaciones = false;
-        callback(null,this.validaciones); 
-        return;
-       }  else{             this.validaciones = true;
-        callback(null,this.validaciones); }  }
-    }else{
-        callback(null,true);
-    }
+  }  
 
-    }  
+
+
+
+
+
+//   Vreglas=(callback)=>
+//   {
+
+
+//     if (this.reglas[0].valido){
+//     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+//         console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+//         console.log("arreglo",this.ELEMENT_DATA)
+//        if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
+
+//        // console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['totaLine']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+//         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+//             verticalPosition: 'top',
+//             duration: 15000
+//         });
+//         this.validaciones = false;
+//         callback(null,this.validaciones); 
+//         return;
+//        }  else{             this.validaciones = true;
+//         callback(null,this.validaciones); }  }
+//     }else{
+//         callback(null,true);
+//     }
+
+//     }  
 
 
 

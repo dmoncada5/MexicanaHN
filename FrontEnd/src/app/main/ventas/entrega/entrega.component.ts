@@ -340,29 +340,62 @@ this.validaciones=true;
     this.refreshTable();
     }
     
-  Vreglas=(callback)=>
-  {
 
 
-    if (this.reglas[0].valido){
-    for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
-
-       if( this.ELEMENT_DATA[index]['precio'] < this.ELEMENT_DATA[index]['costo']){
+    Vreglas=(callback)=>
+    {
+    
+    
+      if (this.reglas[0].valido){
+      for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+    //  console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
+    //  console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
+    // console.log("Arreglo",this.ELEMENT_DATA);
+    // console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
+    if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
-            verticalPosition: 'top',
-            duration: 15000
-        });
-        this.validaciones = false;
-        callback(null,this.validaciones); 
-        return;
-       }  else{             this.validaciones = true;
-        callback(null,this.validaciones); }  }
-    }else{
-        callback(null,true);
-    }
+              verticalPosition: 'top',
+              duration: 15000
+          });
+          this.validaciones = false;
+          callback(null,this.validaciones); 
+          return;
+         }  else{             this.validaciones = true;
+          callback(null,this.validaciones); }  }
+      }else{
+          callback(null,true);
+      }
+    
+      }  
+    
 
-    }  
-    validarExist=(eve,callback)=>{
+
+//   Vreglas=(callback)=>
+//   {
+
+
+//     if (this.reglas[0].valido){
+//     for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
+
+//        if( this.ELEMENT_DATA[index]['totaLine'] < this.ELEMENT_DATA[index]['costo']){
+//         this._matSnackBar.open('El total del articulo esta por debajo del costo', 'OK', {
+//             verticalPosition: 'top',
+//             duration: 15000
+//         });
+//         this.validaciones = false;
+//         callback(null,this.validaciones); 
+//         return;
+//        }  else{             this.validaciones = true;
+//         callback(null,this.validaciones); }  }
+//     }else{
+//         callback(null,true);
+//     }
+
+//     }  
+
+
+
+validarExist=(eve,callback)=>{
         if( eve.tipo=== "I"){
          let stock = 0;
          this.facturaService.getExistencia('/products/Existencia', eve.itemCode, eve.almacen).subscribe(
@@ -404,9 +437,11 @@ this.validaciones=true;
      }
     
     }
+    
     total(cant: number, precio: number, descuento: number): number {
         return (cant * precio) - (cant * precio) * (descuento / 100);
     }
+    
     totalProductos(): number{
         let valor = 0;
         for (let index = 0; index < this.ELEMENT_DATA.length; index++){
