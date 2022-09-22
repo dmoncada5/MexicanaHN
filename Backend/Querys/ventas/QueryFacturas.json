@@ -1,6 +1,6 @@
 {
-    "getAllDataF": "SELECT * FROM [dbo].[factura] where status ='A' and tipo='FACTURA'",
-    "getAllDataE": "SELECT * FROM [dbo].[factura] where status ='A' and tipo='ENTREGA'",
+    "getAllDataF": "SELECT * FROM [dbo].[factura] where status ='A' and tipo='FACTURA' order by DocNum desc ",
+    "getAllDataE": "SELECT * FROM [dbo].[factura] where status ='A' and tipo='ENTREGA' order by DocNum desc",
     "getAllData": "SELECT case when (select sum(A.totalpago) from pagos A where A.NDocumento=t0.numero and A.tipoDocumento=@tipo_documento and status='A')>=t0.TotalDoc then 'PAGADO' else 'PENDIENTE' end 'STATUS', t0.DocNum, t0.fechaDoc, t0.SocioCode, t0.NombreSocio, t0.Direccion, t0.impuesto, t0.tasa, t0.TotalDoc, t0.DescPorcentaje, t0.Moneda, t0.comentarios, t0.vendedor, t0.LastUpdate, t0.UserCreate, t0.Serie, t0.ccomp, t0.cai, t0.fact_emini, t0.fact_emifin, t0.correo, t0.fecha_limite, t0.numero, t0.tipo, t0.RTN FROM [dbo].[factura] t0 where tipo=@tipo_documento order by DocNum desc",
 
     "updateCantLetras": "UPDATE factura  SET factura.CantidadLetas=[dbo].[CantidadConLetra](factura.TotalDoc) where dbo.factura.numero=@numero",
