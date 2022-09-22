@@ -312,7 +312,7 @@ if (dias<15){
 }
 //  console.log("haber si =", Number(arr));
 //  console.log("Comparar ",Number(arr)," <= ",res1[0]['correlativo']);
-if (Number(arr)<=res1[0]['correlativo'] || dias<0){
+if (Number(arr)<res1[0]['correlativo'] || dias<0){
     this._matSnackBar.open('llego a limite de facturas emitidas para este CAI ', 'OK', {
         verticalPosition: 'top',
         duration: 9000
