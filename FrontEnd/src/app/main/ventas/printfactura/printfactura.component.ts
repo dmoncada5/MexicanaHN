@@ -95,6 +95,36 @@ console.log('en letras'+this.Encabezado.CantidadLetas.toString());
 
   }
 
+
+exonerado(): number{
+    let valor=0;
+
+    if(Number(this.Encabezado.impuesto)==0){
+        valor =this.Encabezado.TotalDoc-this.Encabezado.impuesto;
+        return valor;
+
+    }
+    else {
+        return valor;
+    }
+
+}
+
+gravado15(): number{
+    let valor=0;
+
+    if(Number(this.Encabezado.impuesto)>0){
+        valor =this.Encabezado.TotalDoc-this.Encabezado.impuesto;
+        return valor;
+
+    }
+    else {
+        return valor;
+    }
+
+}
+
+
   ngOnInit(): void {
 
 

@@ -12,8 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
 import { DecimalPipe } from '@angular/common';
-import { MatCheckboxChange } from '@angular/material/checkbox';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+
+
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
@@ -26,6 +26,7 @@ export class FacturaComponent implements OnInit {
   ELEMENT_DATA: Element[] = []; 
   ELEMENT_VALIDADOR: valida[] = [];
   formap: validapago[] = [];
+  exonerado=false;
 //   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.ELEMENT_DATA);
   FacturaE: facturaEncabezado = {};
@@ -337,10 +338,10 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.selectedSerie = true;
    }
 
-   onChange(ob: MatCheckboxChange){
-    console.log("PQR checked: " + ob.checked);
+//    onChange(ob: MatCheckboxChange){
+//     console.log("PQR checked: " + ob.checked);
 
-   }
+//    }
 
    
   complete(event) {
@@ -391,8 +392,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
    // valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
     valor+=(this.ELEMENT_DATA[index]['totaLine']);
     }
+    if(this.exonerado){
+        return valor=0;
+    }
+    else {
     return valor*0.15;
   }
+}
+
 
   grandTotal(): number{
   let valor = 0;
