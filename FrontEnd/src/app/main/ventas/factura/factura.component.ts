@@ -12,7 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
 import { DecimalPipe } from '@angular/common';
-
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
@@ -336,6 +337,10 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.selectedSerie = true;
    }
 
+   onChange(ob: MatCheckboxChange){
+    console.log("PQR checked: " + ob.checked);
+
+   }
 
    
   complete(event) {
@@ -394,6 +399,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   valor = this.totalGeneral() + this.isv();
   return Math.round(valor); 
 }
+
   completeProducts(event) {
 
     //this.almacen =JSON.parse(localStorage.getItem('almacen'));

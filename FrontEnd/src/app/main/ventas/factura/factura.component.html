@@ -195,10 +195,18 @@
                             <button mat-raised-button [disabled]="productItem==null" class="save-product-button accent-800" fxFlex="10" (click)="Agregar($event)">Agregar</button>
 
 
+                            <!-- <mat-checkbox fxFlex="60" fxLayoutAlign="start left" class="pr-4" ></mat-checkbox>
+                               <input type="checkbox" name="ExoneradoCHK" > -->
+                            <!-- <mat-checkbox (change)="onChange($event)"> Factura Exonerado</mat-checkbox> -->
+
+                            <div style="display: flex; flex-direction:column;align-items:left;justify-content: left;">
+                                <mat-checkbox (change)="onChange($event)"> Exonerado</mat-checkbox>
+
+                            </div>
 
                             <!-- </table> -->
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                        <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                             <table *ngIf="ELEMENT_DATA.length>0 && Ftupdate" class="simple invoice-table-footer Subs">
                                 <tbody>
                                     <tr class="total">
@@ -207,7 +215,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+    
+                        </div> -->
+
+
+
                         <br>
 
                         <div class="content-card">

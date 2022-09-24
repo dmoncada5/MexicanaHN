@@ -22,7 +22,7 @@ import { FuseWidgetModule } from '../../../../@fuse/components';
 import {FacturasService} from '../facturas/facturas.service'
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { FacturaComponent } from '../factura/factura.component';
-import {GuardallGuard} from '../../../main/autenticar/guardall.guard'
+import {GuardallGuard} from '../../../main/autenticar/guardall.guard';
 import { BuscarPService } from '../buscar-pedido/buscar-p.service';
 import { BuscarCService } from '../buscarcotizacion/buscar-c.service';
 const routes = [

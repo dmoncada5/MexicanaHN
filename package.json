@@ -4,5 +4,23 @@
   },
   "devDependencies": {
     "eslint": "^8.23.0"
-  }
+  },
+  "name": "mexicanahn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmoncada5/MexicanaHN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmoncada5/MexicanaHN/issues"
+  },
+  "homepage": "https://github.com/dmoncada5/MexicanaHN#readme",
+  "description": ""
 }
