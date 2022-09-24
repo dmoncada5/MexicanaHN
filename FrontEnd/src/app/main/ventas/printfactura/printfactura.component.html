@@ -180,11 +180,11 @@
                         </tr>
                         <tr class="discount">
                             <td>IMP. EXONERADO</td>
-                            <td>{{0 | currency:'L. ':'symbol'}}</td>
+                            <td>{{ exonerado() | currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>IMP. GRAVADO 15%</td>
-                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
+                            <td>{{ gravado15()| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>IMP. GRAVADO 18%</td>
