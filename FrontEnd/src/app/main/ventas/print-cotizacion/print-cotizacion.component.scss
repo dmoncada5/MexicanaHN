@@ -47,9 +47,9 @@ app-print-cotizacion {
                             }
                             .divider {
                                 width: 1px;
-                                margin: 0 12px;
+                                margin: 0 10px;
                                 background-color: rgba(0, 0, 0, 0.12);
-                                height: 70px;
+                                height: 35px;
                             }
                         }
                         .summary {
@@ -73,8 +73,8 @@ app-print-cotizacion {
                     }
                     .content {
                         .invoice-table {
-                            margin-top: 96px;
-                            font-size: 15px;
+                            margin-top: 76px;
+                            font-size: 10px;
                             color: rgba(0, 0, 0, 0.87);
                             thead {
                                 tr {
@@ -200,8 +200,8 @@ app-print-cotizacion {
                                     }
                                 }
                                 .divider {
-                                    margin: 0 8pt;
-                                    height: 100pt;
+                                    margin: 0 4pt;
+                                    height: 50pt;
                                 }
                             }
                             .summary {
@@ -216,12 +216,13 @@ app-print-cotizacion {
                         }
                         .content {
                             .invoice-table {
-                                margin-top: 8pt;
+                                // margin-top: 1pt;
+                                margin: 5pt 0;
                                 thead {
                                     tr {
                                         th {
-                                            font-size: 8pt;
-                                            max-width: 60pt;
+                                            // font-size: 2pt;
+                                            // max-width: 10pt;
                                             &:first-child {
                                                 padding-left: 0;
                                             }
@@ -244,7 +245,7 @@ app-print-cotizacion {
                                     }
                                 }
                                 .title {
-                                    font-size: 10pt;
+                                    font-size: 5pt;
                                 }
                                 .detail {
                                     margin-top: 2pt;
@@ -253,11 +254,11 @@ app-print-cotizacion {
                                 }
                             }
                             .invoice-table-footer {
-                                margin: 16pt 0;
+                                margin: 5pt 0;
                                 tr {
                                     td {
-                                        font-size: 13pt;
-                                        padding: 4pt 4pt;
+                                        font-size: 10pt;
+                                        padding: 2pt 2pt;
                                         &:first-child {
                                             text-align: left;
                                             padding-left: 0;

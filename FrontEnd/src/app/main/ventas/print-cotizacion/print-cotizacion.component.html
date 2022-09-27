@@ -20,8 +20,8 @@
                         <div class="detail">
                             <div class="title">{{this.company.empresa}}</div>
                             <div class="text1">{{company.empresa_sociedad}}</div>
-                            <div class="text1">{{company.direccion.substring(0,30)}}</div>
-                            <div class="text1">{{company.direccion.substring(30,60)}}</div>
+                            <div class="text1">{{company.direccion}}</div>
+                            <!-- <div class="text1">{{company.direccion.substring(30,60)}}</div> -->
                             <!-- <div class="text1">Tel. : {{company.telefono}}</div>
                             <div class="text1">RTN : {{company.rtn}}</div>
                             <div class="text1">Correo : {{company.correo}}</div> -->
@@ -95,13 +95,13 @@
                                 <div class="detail">{{det.itemName}}</div>
                             </td>
                             <td class="detail">
-                                {{det.precio| currency:'LPS':'symbol'}}
+                                {{det.precio| currency:'L. ':'symbol'}}
                             </td>
                             <td class="detail">
                                 {{det.cantidad}}
                             </td>
                             <td class="detail">
-                                {{det.totaLine | currency:'LPS':'symbol'}}
+                                {{det.totaLine | currency:'L. ':'symbol'}}
                             </td>
                         </tr>
                     </tbody>
@@ -111,19 +111,19 @@
                     <tbody>
                         <tr class="detail">
                             <td>SUBTOTAL</td>
-                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="detail">
                             <td>ISV</td>
-                            <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="detail">
                             <td>DESCUENTO</td>
-                            <td>-{{0| currency:'LPS':'symbol'}}</td>
+                            <td>-{{0| currency:'L. ':'symbol'}}</td>
                         </tr>
                         <tr class="detail">
                             <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
                         </tr>
                     </tbody>
                 </table>
