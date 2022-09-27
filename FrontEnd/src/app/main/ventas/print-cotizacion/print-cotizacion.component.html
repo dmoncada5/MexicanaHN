@@ -74,12 +74,12 @@
             </div>
 
             <div class="content">
-                <table class="simple invoice-table">
+                <table class="invoice-table">
                     <thead>
                         <tr>
                             <th class="detail">CODIGO</th>
+                                                 
                             <th class="detail">DESCRIPCION</th>
-
                             <th class="detail">PRECIO</th>
                             <th class="detail">CANTIDAD</th>
                             <th class="detail">TOTAL</th>
@@ -88,11 +88,12 @@
                     <tbody>
                         <tr *ngFor="let det of Detalle">
                             <td>
-                                <div class="detail">{{det.itemCode}}</div>
-
+                                {{det.itemCode}}
+                                
                             </td>
-                            <td class="text-left">
-                                <div class="detail">{{det.itemName}}</div>
+                           
+                            <td class="detail">
+                                {{det.itemName}}
                             </td>
                             <td class="detail">
                                 {{det.precio| currency:'L. ':'symbol'}}
@@ -136,7 +137,7 @@
                         <img src="assets/images/logos/logo.jpg">
                     </div>
                     <div class="small-note">
-                        Productos 100% natural para bajar de peso
+                        Dulces Mexicanos y Mas...
                     </div>
                 </div>
             </div>
