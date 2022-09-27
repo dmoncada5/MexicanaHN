@@ -19,6 +19,12 @@
 
                         <div class="detail">
                             <div class="title">{{this.company.empresa}}</div>
+                            <div class="text1">{{company.empresa_sociedad}}</div>
+                            <div class="text1">{{company.direccion.substring(0,30)}}</div>
+                            <div class="text1">{{company.direccion.substring(30,60)}}</div>
+                            <!-- <div class="text1">Tel. : {{company.telefono}}</div>
+                            <div class="text1">RTN : {{company.rtn}}</div>
+                            <div class="text1">Correo : {{company.correo}}</div> -->
                             <!-- <div *ngIf="invoice?.from.address" class="address">
                                 {{invoice.from.address}}
                             </div>
@@ -34,29 +40,9 @@
                         </div>
                     </div>
 
-                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
-                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
-                            <div>CLIENTE</div>
-                        </div>
 
-                        <div class="divider"></div>
 
-                        <div class="detail">
-                            <!-- <div class="title">{{Encabezado.NombreSocio}}</div> -->
-                            <div class="address">
-                                Plaza Fesmar 13 avenida, 6 calle S.O. Barrio Suyapa, S.P.S Honduras
-                            </div>
-                            <div class="phone">
-                                <span>Phone:</span>
-                            </div>
-                            <div class="email">
-                                <span>Email:</span> genesis.sm@gmail.com
-                            </div>
-                            <div class="website">
-                                <span>Comentarios:</span> {{Encabezado.comentarios}}
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <table class="summary">
@@ -64,7 +50,18 @@
                         <td class="label">COTIZACION</td>
                         <td class="value">{{Encabezado.DocNum}}</td>
                     </tr>
-
+                    <tr>
+                        <td class="label">Tel. :</td>
+                        <td class="value"> {{company.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">RTN : </td>
+                        <td class="value">{{company.rtn}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Correo : </td>
+                        <td class="value">{{company.correo}}</td>
+                    </tr>
                     <tr>
                         <td class="label">FECHA</td>
                         <td class="value">{{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</td>
@@ -81,27 +78,30 @@
                 <table class="simple invoice-table">
                     <thead>
                         <tr>
-                            <th>DESCRIPCION</th>
+                            <th class="detail">CODIGO</th>
+                            <th class="detail">DESCRIPCION</th>
 
-                            <th class="text-right">PRECIO</th>
-                            <th class="text-right">CANTIDAD</th>
-                            <th class="text-right">TOTAL</th>
+                            <th class="detail">PRECIO</th>
+                            <th class="detail">CANTIDAD</th>
+                            <th class="detail">TOTAL</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let det of Detalle">
                             <td>
-                                <div class="title">{{det.itemCode}}</div>
+                                <div class="detail">{{det.itemCode}}</div>
+
+                            </td>
+                            <td class="text-left">
                                 <div class="detail">{{det.itemName}}</div>
                             </td>
-
-                            <td class="text-right">
+                            <td class="detail">
                                 {{det.precio| currency:'LPS':'symbol'}}
                             </td>
-                            <td class="text-right">
+                            <td class="detail">
                                 {{det.cantidad}}
                             </td>
-                            <td class="text-right">
+                            <td class="detail">
                                 {{det.totaLine | currency:'LPS':'symbol'}}
                             </td>
                         </tr>
@@ -110,19 +110,19 @@
 
                 <table class="simple invoice-table-footer">
                     <tbody>
-                        <tr class="subtotal">
+                        <tr class="detail">
                             <td>SUBTOTAL</td>
                             <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="tax">
+                        <tr class="detail">
                             <td>ISV</td>
                             <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="discount">
+                        <tr class="detail">
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'LPS':'symbol'}}</td>
                         </tr>
-                        <tr class="total">
+                        <tr class="detail">
                             <td>TOTAL</td>
                             <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
                         </tr>
