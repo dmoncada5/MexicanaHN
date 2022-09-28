@@ -50,6 +50,7 @@ this.doc.DocNum=this.pageType;
       res=>{
         this.Encabezado=res[0];
         this.numero1=res[0]['fact_emini']
+        console.log(this.Encabezado);
 console.log('en letras'+this.Encabezado.CantidadLetas.toString());
       }
     );

@@ -61,7 +61,7 @@
 
                 <!-- <div class="text1"> FECHA </div> -->
                 <div class="text1">FECHA : {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
-
+                <div class="text1"> HORA : {{Encabezado.Hora }}</div>
                 <div class="text1"> CAI </div>
                 <div class="text1">{{Encabezado.cai.substring(0,21) }}</div>
 
@@ -201,23 +201,23 @@
                         <tr class="discount">
                             <td>DESCUENTO</td>
                             <td>-{{0| currency:'L. ':'symbol'}}</td>
-                        <tr class="total">
-                            <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
-                        </tr>
-                        <tr class="Efectivo">
-                            <td>EFECTIVO </td>
-                            <td>{{ pagos.whopaid | currency:'L. ':'symbol'}}</td>
-                        </tr>
-                        <tr class="cambio">
-                            <td>CAMBIO </td>
-                            <td>{{ vcambio | currency:'L. ':'symbol'}}</td>
-                        </tr>
-                        
+                            <tr class="total">
+                                <td>TOTAL</td>
+                                <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
+                            </tr>
+                            <tr class="Efectivo">
+                                <td>EFECTIVO </td>
+                                <td>{{ pagos.whopaid | currency:'L. ':'symbol'}}</td>
+                            </tr>
+                            <tr class="cambio">
+                                <td>CAMBIO </td>
+                                <td>{{ vcambio | currency:'L. ':'symbol'}}</td>
+                            </tr>
+
                     </tbody>
                 </table>
 
-<!-- 
+                <!-- 
                 <div class="nombre">
                     {{Encabezado.CantidadLetas}}
                 </div> -->
@@ -230,12 +230,12 @@
                     {{Encabezado.CantidadLetas}}
                 </div>
                 <div class="text1">
-                   <div class="Exijela">
+                    <div class="Exijela">
                         "ORIGINAL CLIENTE"
                         <div>
-                        "COPIA EMISOR"
+                            "COPIA EMISOR"
+                        </div>
                     </div>
-                </div>
                     <div>
                         ORDEN COMPRA EXENTA_____
                     </div>
@@ -255,7 +255,7 @@
 
 
 
-       
+
 
 
 
@@ -302,4 +302,3 @@
     </div>
 
 </div>
-
