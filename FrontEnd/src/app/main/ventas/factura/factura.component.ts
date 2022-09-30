@@ -106,6 +106,7 @@ reglas :any;
                 this.socios=res;
             //   this.socios[0] = res[0];
             //   this.socios[1] = res[1];
+            console.log("socios = ",this.socios)
               this.filteredSocios = this.socioCtrl.valueChanges
                   .pipe(
                       startWith(''),
