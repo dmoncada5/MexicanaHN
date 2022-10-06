@@ -29,7 +29,7 @@ const routes = [
   {
       path     : 'reporte/reporteFacturas',
       component: reporteFacturasComponent,
-      //canActivate: [GuardallGuard],
+      canActivate: [GuardallGuard],
   }];
 
 @NgModule({
