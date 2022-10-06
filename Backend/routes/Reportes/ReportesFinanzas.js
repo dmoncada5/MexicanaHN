@@ -7,6 +7,7 @@ router.post('/SaldoCliente', RfinanzasController.SaldoClientes);
 router.post('/pagosRecibidos', RfinanzasController.pagosRecibidos);
 router.post('/FacturaXTarjeta', RfinanzasController.FacturaXTarjeta);
 router.post('/gastos', RfinanzasController.gastos);
+router.post('/reporteFacturas', RfinanzasController.reporteFacturas);
 router.post('/articulosVendidos', RfinanzasController.articulosVendidos);
 router.post('/CierreDiario', RfinanzasController.CierreDiario);
 
