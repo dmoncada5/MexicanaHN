@@ -9,6 +9,7 @@ import {CotizacionModule} from '../ventas/cotizacion/cotizacion.module';
 import { CotizacionesService } from './cotizaciones/cotizaciones.service';
 import {PrintCotizacionModule} from './print-cotizacion/print-cotizacion.module';
 import {PrintfacturaModule} from './printfactura/printfactura.module';
+import {PrintEntradaModule} from './printentrada/printentrada.module';
 
 import {PrintTrasladoModule} from './printtraslado/printtraslado.module';
 
@@ -92,6 +93,7 @@ import { StocktransfersModule } from './stocktransfers/stocktransfers.module';
 import { StocktransferModule } from './stocktransfer/stocktransfer.module';
 
 import {StocktransfersService} from './stocktransfers/stocktransfers.service'
+import { PrintSalidaModule } from './printsalida/printsalida.module';
  @NgModule({
     imports: [
         CotizacionesModule,
@@ -129,6 +131,8 @@ import {StocktransfersService} from './stocktransfers/stocktransfers.service'
         EntregasModule,
         EntregaModule,
         PrintentregaModule,
+        PrintEntradaModule,
+        PrintSalidaModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,
