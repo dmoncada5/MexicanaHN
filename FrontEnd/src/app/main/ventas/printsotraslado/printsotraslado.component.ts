@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import {PrintTrasladoService} from '../print-traslados.service'
+import {PrintSolicitudTrasladoService} from '../print-sotraslados.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 
 @Component({
-  selector: 'app-printtraslado',
-  templateUrl: './printtraslado.component.html',
-  styleUrls: ['./printtraslado.component.scss'],
+  selector: 'app-printsotraslado',
+  templateUrl: './printsotraslado.component.html',
+  styleUrls: ['./printsotraslado.component.scss'],
   encapsulation: ViewEncapsulation.None
 
 })
-export class PrintTrasladoComponent implements OnInit {
+export class PrintSolicitudTrasladoComponent implements OnInit {
   Encabezado:any={
     TotalDoc:0
   };
@@ -23,7 +23,7 @@ DocNum:1
   company:any={
     empresa:null
   }
-  constructor(private prtservice: PrintTrasladoService,
+  constructor(private prtservice: PrintSolicitudTrasladoService,
               private activatedRoute: ActivatedRoute,
               private companyServices: CompanysService
               ) { 
@@ -31,13 +31,13 @@ DocNum:1
     this.pageType = params.id;
 this.doc.DocNum=this.pageType; 
 console.log(this.pageType)
-    this.prtservice.getFactura('/stocktransfer/Encabezado',this.doc).then(
+    this.prtservice.getFactura('/solicitudt/Encabezado',this.doc).then(
       res=>{
         this.Encabezado=res[0];
         console.log('detalle',this.Encabezado)
       }
     );
-    this.prtservice.getDetalle('/stocktransfer/Detalle',this.doc.DocNum).subscribe(
+    this.prtservice.getDetalle('/solicitudt/Detalle',this.doc.DocNum).subscribe(
       (res)=>{
         this.Detalle=res;
     

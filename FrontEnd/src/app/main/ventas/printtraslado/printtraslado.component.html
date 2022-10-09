@@ -1,29 +1,31 @@
 <div id="invoice" class="modern page-layout blank" fxLayout="row">
 
-
     <div class="invoice-container">
-
-
 
         <!-- INVOICE -->
         <div class="card">
 
-            <div class="header">
-
-
-
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
 
                 <div class="ids" fxLayout="column">
 
                     <div fxLayout="row" class="seller" fxLayoutAlign="start center">
 
-                
+                        <div class="logo">
+                            <img src="assets/images/logos/logo.jpg">
+                        </div>
 
-                        <!-- <div class="divider"></div> -->
+                        <div class="divider"></div>
 
-                        <!-- <div class="detail"> -->
-                        <!-- <div class="title">GENESIS HEALTH</div> -->
-                        <!-- <div *ngIf="invoice?.from.address" class="address">
+                        <div class="detail">
+                            <div class="title">{{this.company.empresa}}</div>
+                            <div class="text1">{{company.empresa_sociedad}}</div>
+                            <div class="text1">{{company.direccion}}</div>
+                            <!-- <div class="text1">{{company.direccion.substring(30,60)}}</div> -->
+                            <!-- <div class="text1">Tel. : {{company.telefono}}</div>
+                            <div class="text1">RTN : {{company.rtn}}</div>
+                            <div class="text1">Correo : {{company.correo}}</div> -->
+                            <!-- <div *ngIf="invoice?.from.address" class="address">
                                 {{invoice.from.address}}
                             </div>
                             <div *ngIf="invoice?.from.phone" class="phone">
@@ -35,148 +37,107 @@
                             <div *ngIf="invoice?.from.website" class="website">
                                 <span>Web:</span> {{invoice.from.website}}
                             </div> -->
-                        <!-- </div> -->
-
+                        </div>
                     </div>
-
-                   
-           
-                      
-               
-                 
+                    <div class="title">CLIENTE :- {{Encabezado.SocioCode}}</div>
+                    <div class="title">NOMBRE :- {{Encabezado.NombreSocio}}</div>
                 </div>
-                <div class="text1">{{company.empresa}} </div>
-                <div class="divider1"></div>
-                <div class="text"> Cliente - {{Encabezado.SocioCode}}</div>
-                <div class="text" >{{Encabezado.NombreSocio}}</div>
-        <div class="divider1"></div>
-<div class="text">    FACTURA </div><div class="text">    {{Encabezado.numero}}</div>
-<div class="text">    FECHA </div><div class="text">    {{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</div>
-
-<div class="text">    CAI </div>
-<p class="text1">{{Encabezado.cai }} </p>
-<div> <p class="text1">{{Encabezado.cai }} </p>    </div>
-<div class="text">    FECHA LIMITE EMISION  </div>
-<div class="text"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}}  </div>
-<div class="text">    RANGO </div><div class="text">    {{Encabezado.fact_emini }} hasta {{Encabezado.fact_emifin}}</div>
 
 
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label">TRASLADO DE MERCADERIA</td>
+                        <td class="value">{{Encabezado.DocNum}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Tel. :</td>
+                        <td class="value"> {{company.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">RTN : </td>
+                        <td class="value">{{company.rtn}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Correo : </td>
+                        <td class="value">{{company.correo}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">FECHA</td>
+                        <td class="value">{{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</td>
+                    </tr>
 
-        
-             
-          
-               
-
-            
+                    <tr>
+                        <td class="label">TOTAL </td>
+                        <td class="value">{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                    </tr>
+                </table>
             </div>
 
-      
-        <div class="content">
-                <table class="simple invoice-table">
+            <div class="content">
+                <table class="invoice-table">
                     <thead>
-                        <th>
-                        </th>
-                     
-                           <tr>
-                            <div> <td > CODIGO</td>  </div>
-                            
-                           </tr> 
-                            <tr>
-                                <div>
-                             <td >DESCRIPCION</td>   
-                            </div>
-                            </tr> 
-          
+                        <tr>
+                            <th class="detail">CODIGO</th>
 
-
-                            <tr>
-                                <div  >
-                   
-                                    <td >    PRECIO</td>  
-                                    <td class="text-right detal" >   CANTIDAD</td>  
-                                    <td class="text-right">  TOTAL</td>  
-                                    
-                                  
-                                </div>
-                            </tr>
-                      
-                            <tr>
-                                <th>
-                                </th>   
-                                <th>
-                                </th>   
-                                <th>
-                                </th>   
-                            </tr>
-                                 
-                          
+                            <th class="detail">DESCRIPCION</th>
+                            <th class="detail">PRECIO</th>
+                            <th class="detail">CANTIDAD</th>
+                            <th class="detail">TOTAL</th>
+                        </tr>
                     </thead>
+                    <tbody>
+                        <tr *ngFor="let det of Detalle">
+                            <td>
+                                {{det.itemCode}}
 
+                            </td>
 
-             <tbody>
-                <tr *ngFor="let det of Detalle">
-
-            
-                    
-                      
-                 
-                <div >{{det.itemCode}}</div>   
-                <div >{{det.itemName}}</div>   
-    
-                <div  >
-                   
-                    <td >    {{det.precio}}</td>  
-                    <td  >   {{det.cantidad}}</td>  
-                    <td  class="text-right">    {{det.totaLine }}</td>  
-                    
-                  
-                </div>
-            
-                       
-                
-               
-                        
-                  
-
-
-
-
-
-                
-                </tr>
+                            <td class="detail">
+                                {{det.itemName}}
+                            </td>
+                            <td class="detail">
+                                {{det.precio| currency:'L. ':'symbol'}}
+                            </td>
+                            <td class="detail">
+                                {{det.cantidad}}
+                            </td>
+                            <td class="detail">
+                                {{det.totaLine | currency:'L. ':'symbol'}}
+                            </td>
+                        </tr>
                     </tbody>
-                 
-                </table> 
+                </table>
+
                 <table class="simple invoice-table-footer">
                     <tbody>
-                        <tr class="subtotal">
+                        <tr class="detail">
                             <td>SUBTOTAL</td>
-                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="tax">
+                        <tr class="detail">
                             <td>ISV</td>
-                            <td>{{Encabezado.impuesto| currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="discount">
+                        <tr class="detail">
                             <td>DESCUENTO</td>
-                            <td>-{{0| currency:'LPS':'symbol'}}</td>
+                            <td>-{{0| currency:'L. ':'symbol'}}</td>
                         </tr>
-                        <tr class="subtotal">
+                        <tr class="detail">
                             <td>TOTAL</td>
-                            <td>{{Encabezado.TotalDoc | currency:'LPS':'symbol'}}</td>
+                            <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="footer">
-                <div class="note"></div>
+                <div class="note">Esta cotizacion tiene validez por 15 dias apartir de la fecha de impresion</div>
                 <div fxLayout="row" fxLayoutAlign="start start">
                     <div class="logo">
-                        <!-- <img src="assets/images/logos/Genesis.jpg"> -->
+                        <img src="assets/images/logos/logo.jpg">
                     </div>
                     <div class="small-note">
-                   {{company.comentarios}}
+                        Dulces Mexicanos y Mas...
                     </div>
                 </div>
             </div>
@@ -196,7 +157,7 @@
 
             <!--
 
-            Example: 
+            Example:
             --------
 
             Initial page content!

@@ -25,14 +25,15 @@ import { CotizacionesComponent } from '../cotizaciones/cotizaciones.component'
 import { StocktransfersComponent } from '../stocktransfers/stocktransfers.component'
 
 import { MatMenuModule } from '@angular/material/menu';
-import { PrintTrasladoComponent } from './printtraslado.component';
+import { PrintSolicitudTrasladoComponent } from './printsotraslado.component';
+import { SolicitudtsComponent } from '../solicitudts/solicitudts.component';
 const routes = [
   {
-      path     : 'ventas/stocktransfers',
-      component: StocktransfersComponent,
+      path     : 'ventas/solicitudts',
+      component: SolicitudtsComponent,
   }];
 @NgModule({
-  declarations: [PrintTrasladoComponent],
+  declarations: [PrintSolicitudTrasladoComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -59,4 +60,4 @@ const routes = [
     FuseWidgetModule
   ]
 })
-export class PrintTrasladoModule { }
+export class PrintSolicitudTrasladoModule { }
