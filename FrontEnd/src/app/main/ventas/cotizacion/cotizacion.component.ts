@@ -260,7 +260,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   }
 
   total(cant: number, precio: number,descuento:number): number {
-      return (cant * precio)-(cant * precio*15/100)- (cant * precio)*(descuento/100);
+      return (cant * precio) - (cant * precio)*(descuento/100);
   }
 
   validarExist(eve) {
@@ -294,7 +294,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     for(let index=0;index<this.ELEMENT_DATA.length;index++){
     valor+=this.ELEMENT_DATA[index]['totaLine'];
     }
-    return valor;
+    return valor/1.15;
     //return valor-(valor*15/100);
   }
 
@@ -303,7 +303,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   for(let index=0;index<this.ELEMENT_DATA.length;index++){
   valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
   }
-  return valor*0.15;
+  return valor/1.15*0.15;
 }
   grandTotal():number{
   let  valor=0;
