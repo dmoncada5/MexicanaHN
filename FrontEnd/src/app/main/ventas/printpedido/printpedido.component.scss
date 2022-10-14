@@ -30,7 +30,7 @@ app-printpedido {
                             line-height: 22px;
                             color: rgba(0, 0, 0, 0.54);
                             .detail {
-                                width: 160px;
+                                width: 180px;
                             }
                             .seller {
                                 margin-bottom: 80px;
@@ -47,13 +47,13 @@ app-printpedido {
                             }
                             .divider {
                                 width: 1px;
-                                margin: 0 48px;
+                                margin: 0 10px;
                                 background-color: rgba(0, 0, 0, 0.12);
-                                height: 144px;
+                                height: 35px;
                             }
                         }
                         .summary {
-                            font-size: 15px;
+                            font-size: 10px;
                             .label {
                                 color: rgba(0, 0, 0, 0.54);
                                 text-align: right;
@@ -63,7 +63,7 @@ app-printpedido {
                                 color: rgba(0, 0, 0, 1);
                             }
                             .code {
-                                font-size: 35px;
+                                font-size: 25px;
                                 font-weight: 300;
                                 td {
                                     padding-bottom: 32px;
@@ -73,12 +73,13 @@ app-printpedido {
                     }
                     .content {
                         .invoice-table {
-                            margin-top: 96px;
-                            font-size: 15px;
+                            margin-top: 76px;
+                            font-size: 10px;
                             color: rgba(0, 0, 0, 0.87);
                             thead {
                                 tr {
                                     th {
+                                        padding: 0 25px;
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
@@ -87,6 +88,7 @@ app-printpedido {
                             tbody {
                                 tr {
                                     td {
+                                        padding: 0 25px;
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
@@ -107,7 +109,7 @@ app-printpedido {
                             tr {
                                 td {
                                     text-align: right;
-                                    font-size: 17px;
+                                    font-size: 15px;
                                     font-weight: 600;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
@@ -119,6 +121,14 @@ app-printpedido {
                                 &.discount {
                                     td {
                                         padding-bottom: 32px;
+                                    }
+                                }
+                                &.detail {
+                                    td {
+                                        margin-top: 8px;
+                                        font-size: 12px;
+                                        color: rgba(0, 0, 0, 0.54);
+                                        max-width: 360px;
                                     }
                                 }
                                 &.total {
@@ -177,7 +187,7 @@ app-printpedido {
                         .header {
                             .ids {
                                 .detail {
-                                    width: 120pt;
+                                    width: 180pt;
                                 }
                                 .seller {
                                     margin-bottom: 8pt;
@@ -192,8 +202,8 @@ app-printpedido {
                                     }
                                 }
                                 .divider {
-                                    margin: 0 12pt;
-                                    height: 100pt;
+                                    margin: 0 4pt;
+                                    height: 50pt;
                                 }
                             }
                             .summary {
@@ -208,12 +218,13 @@ app-printpedido {
                         }
                         .content {
                             .invoice-table {
-                                margin-top: 16pt;
+                                // margin-top: 1pt;
+                                margin: 5pt 0;
                                 thead {
                                     tr {
                                         th {
-                                            font-size: 10pt;
-                                            max-width: 60pt;
+                                            // font-size: 2pt;
+                                            // max-width: 10pt;
                                             &:first-child {
                                                 padding-left: 0;
                                             }
@@ -226,6 +237,7 @@ app-printpedido {
                                 tbody {
                                     tr {
                                         td {
+                                            // padding:0 25px;
                                             &:first-child {
                                                 padding-left: 0;
                                             }
@@ -236,26 +248,32 @@ app-printpedido {
                                     }
                                 }
                                 .title {
-                                    font-size: 10pt;
+                                    font-size: 5pt;
                                 }
                                 .detail {
-                                    margin-top: 4pt;
-                                    font-size: 9pt;
+                                    margin-top: 2pt;
+                                    font-size: 8pt;
                                     max-width: none;
                                 }
                             }
                             .invoice-table-footer {
-                                margin: 16pt 0;
                                 tr {
                                     td {
-                                        font-size: 13pt;
-                                        padding: 4pt 4pt;
+                                        font-size: 10pt;
+                                        padding: 0pt 10pt;
                                         &:first-child {
                                             text-align: left;
                                             padding-left: 0;
                                         }
                                         &:last-child {
                                             padding-right: 0;
+                                        }
+                                    }
+                                    &.detail {
+                                        td {
+                                            font-size: 8pt;
+                                            color: rgba(0, 0, 0, 0.54);
+                                            max-width: 360pt;
                                         }
                                     }
                                     &.discount {

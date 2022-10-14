@@ -96,6 +96,7 @@ import {StocktransfersService} from './stocktransfers/stocktransfers.service'
 import { PrintSalidaModule } from './printsalida/printsalida.module';
 import { PrintSolicitudTrasladoComponent } from './printsotraslado/printsotraslado.component';
 import { PrintSolicitudTrasladoModule } from './printsotraslado/printsotraslado.module';
+import { PrintPedidoModule } from './printpedido/printpedido.module';
  @NgModule({
     imports: [
         CotizacionesModule,
@@ -136,6 +137,7 @@ import { PrintSolicitudTrasladoModule } from './printsotraslado/printsotraslado.
         PrintentregaModule,
         PrintEntradaModule,
         PrintSalidaModule,
+        PrintPedidoModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,

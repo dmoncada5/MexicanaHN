@@ -259,9 +259,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
       this.refreshTable();
   }
 
-  total(cant: number, precio: number,descuento:number): number {
-      return (cant * precio) - (cant * precio)*(descuento/100);
-  }
+
 
   validarExist(eve) {
     let stock = 0;
@@ -289,21 +287,27 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
         }
     )
 }
+
+
+total(cant: number, precio: number,descuento:number): number {
+    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+}
+
   totalGeneral():number{
     let valor=0;
     for(let index=0;index<this.ELEMENT_DATA.length;index++){
     valor+=this.ELEMENT_DATA[index]['totaLine'];
     }
-    return valor/1.15;
+    return valor;
     //return valor-(valor*15/100);
   }
 
   isv():number{
   let valor=0;
   for(let index=0;index<this.ELEMENT_DATA.length;index++){
-  valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
+  valor+=(this.ELEMENT_DATA[index]['totaLine']);//*this.ELEMENT_DATA[index]['cantidad']);
   }
-  return valor/1.15*0.15;
+  return valor*0.15;
 }
   grandTotal():number{
   let  valor=0;

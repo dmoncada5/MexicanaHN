@@ -78,7 +78,7 @@
                     <thead>
                         <tr>
                             <th class="detail">CODIGO</th>
-                                                 
+
                             <th class="detail">DESCRIPCION</th>
                             <th class="detail">PRECIO</th>
                             <th class="detail">CANTIDAD</th>
@@ -89,9 +89,9 @@
                         <tr *ngFor="let det of Detalle">
                             <td>
                                 {{det.itemCode}}
-                                
+
                             </td>
-                           
+
                             <td class="detail">
                                 {{det.itemName}}
                             </td>
@@ -102,7 +102,7 @@
                                 {{det.cantidad}}
                             </td>
                             <td class="detail">
-                                {{det.totaLine | currency:'L. ':'symbol'}}
+                                {{det.precio*det.cantidad | currency:'L. ':'symbol'}}
                             </td>
                         </tr>
                     </tbody>

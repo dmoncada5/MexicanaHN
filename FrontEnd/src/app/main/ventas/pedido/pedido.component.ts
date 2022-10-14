@@ -395,8 +395,9 @@ products: any;
   }
 
   total(cant: number, precio: number,descuento:number): number {
-    return (cant * precio)-(cant * precio*15/100)- (cant * precio)*(descuento/100);
+    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
 }
+
 
   totalGeneral(): number{
     let valor = 0;
