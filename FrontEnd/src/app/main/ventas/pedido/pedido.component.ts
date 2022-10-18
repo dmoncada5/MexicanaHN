@@ -410,11 +410,11 @@ products: any;
   isv():number{
     let valor=0;
     for(let index=0;index<this.ELEMENT_DATA.length;index++){
-    valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
+    valor+=(this.ELEMENT_DATA[index]['totaLine']);//*this.ELEMENT_DATA[index]['cantidad']);
     }
     return valor*0.15;
   }
-
+  
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
