@@ -289,8 +289,13 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
 }
 
 
+// total(cant: number, precio: number,descuento:number): number {
+//     return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+// }
 total(cant: number, precio: number,descuento:number): number {
-    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+    let valor=0;
+    valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
+    return Number(valor.toFixed(4));
 }
 
   totalGeneral():number{

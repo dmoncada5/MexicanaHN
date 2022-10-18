@@ -9,6 +9,7 @@ import { PedidosService } from '../pedidos/pedidos.service';
 import { Order, pedidoDetalle, pedidoEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { angularMath } from 'angular-ts-math/dist/angular-ts-math/angular-ts-math';
 
 @Component({
   selector: 'app-pedido',
@@ -395,7 +396,9 @@ products: any;
   }
 
   total(cant: number, precio: number,descuento:number): number {
-    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+    let valor=0;
+    valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
+    return Number(valor.toFixed(4));
 }
 
 
@@ -414,7 +417,7 @@ products: any;
     }
     return valor*0.15;
   }
-  
+
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
