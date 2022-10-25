@@ -25,7 +25,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatAutocomplete, MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import {PrintCotizacionComponent} from '../print-cotizacion/print-cotizacion.component'
- 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 const routes = [
   {
       path     : 'ventas/cotizaciones',
@@ -56,6 +56,7 @@ const routes = [
     MatSnackBarModule,
     MatPaginatorModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     MatChipsModule,
     MatSortModule,
      NgxChartsModule,

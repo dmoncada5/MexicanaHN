@@ -382,7 +382,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
 total(cant: number, precio: number,descuento:number): number {
     let valor=0;
     valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
-    return Number(valor.toFixed(2));
+    return Number(valor.toFixed(4));
 }
 
   totalGeneral(): number{

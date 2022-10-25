@@ -42,6 +42,11 @@
             </mat-form-field>
 
 
+            <div>
+                <mat-checkbox [(ngModel)]="entrega">Entrega</mat-checkbox>
+            </div>
+
+
 
             <div>
                 <button mat-icon-button class="mr-16" [disabled]="!selecSerieS || !validaciones || ELEMENT_DATA.length==0" *ngIf="pageType ==='new'" (click)="save()">

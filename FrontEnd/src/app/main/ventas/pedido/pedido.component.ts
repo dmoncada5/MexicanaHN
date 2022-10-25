@@ -31,6 +31,7 @@ export class PedidoComponent implements OnInit {
   validaciones = false;
   Ftupdate = true;
   codlista: any;
+  entrega=false;
   docum: any =
       {
           DocNum: ''   
@@ -397,9 +398,21 @@ products: any;
 
   total(cant: number, precio: number,descuento:number): number {
     let valor=0;
+    if(this.entrega){
+        valor= (cant * precio)- (cant * precio)*(descuento/100);
+        return Number(valor.toFixed(4));
+    }
+    else{ 
     valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
     return Number(valor.toFixed(4));
+    }
+
 }
+//   total(cant: number, precio: number,descuento:number): number {
+//     let valor=0;
+//     valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
+//     return Number(valor.toFixed(4));
+// }
 
 
   totalGeneral(): number{
@@ -413,10 +426,25 @@ products: any;
   isv():number{
     let valor=0;
     for(let index=0;index<this.ELEMENT_DATA.length;index++){
-    valor+=(this.ELEMENT_DATA[index]['totaLine']);//*this.ELEMENT_DATA[index]['cantidad']);
+   // valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
+    valor+=(this.ELEMENT_DATA[index]['totaLine']);
     }
+    if(this.entrega){
+        return valor=0;
+    }
+    else {
     return valor*0.15;
   }
+}
+
+
+//   isv():number{
+//     let valor=0;
+//     for(let index=0;index<this.ELEMENT_DATA.length;index++){
+//     valor+=(this.ELEMENT_DATA[index]['totaLine']);//*this.ELEMENT_DATA[index]['cantidad']);
+//     }
+//     return valor*0.15;
+//   }
 
   grandTotal(): number{
   let valor = 0;

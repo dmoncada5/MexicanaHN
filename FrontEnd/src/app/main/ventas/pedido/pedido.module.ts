@@ -26,6 +26,7 @@ import {MatAutocomplete, MatAutocompleteModule} from '@angular/material/autocomp
 import { MatMenuModule } from '@angular/material/menu';
 import {PrintPedidoComponent} from '../printpedido/printpedido.component';
 import { PedidoComponent } from './pedido.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes = [
     {
@@ -60,6 +61,7 @@ const routes = [
           MatTableModule,
           MatSnackBarModule,
           MatPaginatorModule,
+          MatCheckboxModule,
           MatDatepickerModule,
           MatChipsModule,
           MatSortModule,
