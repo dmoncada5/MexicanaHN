@@ -9,7 +9,7 @@ import { PedidosService } from '../pedidos/pedidos.service';
 import { Order, pedidoDetalle, pedidoEncabezado } from '../interfaces/interfaces';
 import { format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { angularMath } from 'angular-ts-math/dist/angular-ts-math/angular-ts-math';
+
 
 @Component({
   selector: 'app-pedido',
