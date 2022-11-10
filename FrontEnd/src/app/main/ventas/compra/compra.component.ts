@@ -395,6 +395,7 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
                 FechaVen:this.Detalle.FechaVencimiento
             });
             this.productItem = null;
+            this.ELEMENT_DATA.reverse();
             this.refreshTable();
         },
         (err) => {

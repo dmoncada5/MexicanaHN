@@ -518,6 +518,7 @@ products: any;
             });
         
            this.productItem = null;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {

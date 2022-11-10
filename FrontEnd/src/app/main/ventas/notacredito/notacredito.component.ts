@@ -405,6 +405,7 @@ grandTotalSINIVA(): number{
         
            this.productItem = null;
            this.validarISV=true;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {

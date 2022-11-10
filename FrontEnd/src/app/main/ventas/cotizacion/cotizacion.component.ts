@@ -413,6 +413,7 @@ total(cant: number, precio: number,descuento:number): number {
                 tipo:this.Detalle.tipo
             });
             this.productItem=null;
+            this.ELEMENT_DATA.reverse();
             this.refreshTable();
         },
         (err) => {

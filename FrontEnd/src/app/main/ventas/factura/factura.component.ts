@@ -506,6 +506,7 @@ if (res.length>0){
             });      
         }
            this.productItem = null;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {
