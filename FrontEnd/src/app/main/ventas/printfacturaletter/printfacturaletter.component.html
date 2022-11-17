@@ -1,0 +1,276 @@
+<div id="invoice" class="modern page-layout blank" fxLayout="row">
+    <div class="invoice-container">
+        <!-- INVOICE -->
+        <div class="card">
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="ids" fxLayout="column">
+                    <div fxLayout="row" class="seller" fxLayoutAlign="start center">
+
+                        <div class="logo">
+                            <img src="assets/images/logos/logo.jpg">
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">{{this.company.empresa}}</div>
+                            <div >{{company.empresa_sociedad}}</div>
+                            <div >{{company.direccion.substring(0,30)}} {{company.direccion.substring(30,60)}}</div>
+                            <div >Tel. : {{company.telefono}} RTN : {{company.rtn}} Correo : {{company.correo}}</div>
+               
+            
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                            <div class="cliente">
+                                CLIENTE: - {{Encabezado.SocioCode}}  
+                            </div>
+                            <div class="nombre">
+                              
+                                
+                            </div>
+                   
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="address"> NOMBRE: - {{Encabezado.NombreSocio}}</div>
+                            <div class="address">RTN:{{Encabezado.RTN}}</div>
+
+
+                            <!-- <div class="title">{{Encabezado.NombreSocio}}</div> -->
+                         
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+                <table class="summary">
+                    <tr class="code" >
+                        <td class="label">FACTURA</td>
+                        <td class="value">{{Encabezado.numero}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">FECHA</td>
+                        <td class="value">{{Encabezado.fechaDoc |date: 'dd/MM/yyyy'}}</td>
+                    </tr>
+<tr>
+    <td  class="label"> CAI </td>
+    <td class="value">{{Encabezado.cai}}</td>
+
+</tr>
+<tr>
+    <td class="label"> FECHA LIMITE EMISION </td>
+    <td class="value"> {{Encabezado.fecha_limite |date: 'dd/MM/yyyy'}} </td>
+</tr>
+<tr>
+    <td class="label"> RANGO </td>
+    <td class="value"> {{Encabezado.fact_emini }} a {{ Encabezado.fact_emifin}}</td>
+
+</tr> 
+
+
+
+                </table>
+
+
+
+  
+
+        </div>
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <tr>
+                            <th>DESCRIPCION</th>
+
+                            <th class="text-right">PRECIO</th>
+                            <th class="text-right">CANTIDAD</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+                        <tr *ngFor="let det of Detalle">
+
+
+
+
+                        
+                                <td>
+                                    <div class="title">{{det.itemCode}}</div>
+                                    <div class="detail">{{det.itemName}}</div>
+                                </td>
+    
+                                <td class="text-right title">
+                                    {{det.precio| currency:'LPS':'symbol'}}
+                                </td>
+                                <td class="text-right title">
+                                    {{det.cantidad}}
+                                </td>
+                                <td class="text-right title">
+                                    {{det.totaLine | currency:'LPS':'symbol'}}
+                                </td>
+                            </tr>
+                    </tbody>
+
+                </table>
+
+                <table class="  invoice-table-footer " fxLayout="row" fxLayoutAlign="space-between start" >
+
+                    <div fxLayout="row"  fxLayoutAlign="start center">
+                    
+            
+                    
+                        <tbody>
+
+                            <tr class="discount">
+                            <td>ORIGINAL CLIENTE - COPIA EMISOR</td>
+                           </tr>
+                           <tr class="discount">
+                            <td> ORDEN COMPRA EXENTA_____</td>
+                           </tr>
+                           <tr class="discount">
+                            <td> ORDEN COMPRA EXENTA_____</td>
+                           </tr>
+                           <tr class="discount">
+                            <td> No REGISTRO SAG________</td>
+                           </tr>
+                            <tr class="discount">
+                            <td>     {{Encabezado.CantidadLetas}}</td>
+                            </tr>
+                            <tr class="discount">
+                            <td>"La Factura es beneficio de todos exijela"</td>
+                            </tr>
+                            
+                        </tbody>
+                
+    
+                    </div>
+
+       
+
+
+
+                    <tbody>
+                        <tr class="discount">
+                            <td>IMP. EXENTO</td>
+                            <td>{{0 | currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>IMP. EXONERADO</td>
+                            <td>{{0 | currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>IMP. GRAVADO 15%</td>
+                            <td>{{Encabezado.TotalDoc-Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>IMP. GRAVADO 18%</td>
+                            <td>{{0| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>ISV 15%</td>
+                            <td>{{Encabezado.impuesto| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>ISV 18%</td>
+                            <td>{{0| currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>DESCUENTO</td>
+                            <td>-{{0| currency:'L. ':'symbol'}}</td>
+                        <tr class="total">
+                            <td>TOTAL</td>
+                            <td>{{Encabezado.TotalDoc | currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="Efectivo">
+                            <td>EFECTIVO </td>
+                            <td>{{ pagos.whopaid | currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        <tr class="cambio">
+                            <td>CAMBIO </td>
+                            <td>{{ vcambio | currency:'L. ':'symbol'}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+<!-- 
+                <div class="nombre">
+                    {{Encabezado.CantidadLetas}}
+                </div> -->
+            </div>
+
+
+            <div class="footer">
+              
+
+            </div>
+
+
+
+
+       
+
+
+
+
+
+            <!--
+
+            Use the following elements to add breaks to your pages. This will make sure that the section in between
+            these elements will be printed on a new page. The following two elements must be used before and after the
+            page content that you want to show as a new page. So, you have to wrap your content with them.
+
+            Elements:
+            ---------
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+            <!--
+
+            Example: 
+            --------
+
+            Initial page content!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the second page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the third page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+        </div>
+        <!-- / INVOICE -->
+
+    </div>
+
+</div>
+

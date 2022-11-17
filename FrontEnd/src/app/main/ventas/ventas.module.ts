@@ -91,7 +91,10 @@ import { BuscarOService } from './buscar-orden/buscar-o.service';
 import { StocktransfersModule } from './stocktransfers/stocktransfers.module';
 import { StocktransferModule } from './stocktransfer/stocktransfer.module';
 
-import {StocktransfersService} from './stocktransfers/stocktransfers.service'
+import {StocktransfersService} from './stocktransfers/stocktransfers.service';
+import { PrintfacturaletterComponent } from './printfacturaletter/printfacturaletter.component'
+import { PrintfacturaletterModule } from './printfacturaletter/printfacturaletter.module';
+
  @NgModule({
     imports: [
         CotizacionesModule,
@@ -137,7 +140,8 @@ import {StocktransfersService} from './stocktransfers/stocktransfers.service'
        BuscarEntregaModule,
        BuscarFacturaModule,
        BuscarOrdenModule,
-       BuscarTrasladoModule,   
+       BuscarTrasladoModule, 
+       PrintfacturaletterModule  
        
     ],
     providers   : [

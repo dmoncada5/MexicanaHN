@@ -37,6 +37,7 @@ export class FacturaComponent implements OnInit {
       {
           DocNum: ''   
     };
+    impresion =['Listin','Carta'];
     selectBod: any;
   FacturaForm: FormGroup;
   pageType: any;
@@ -50,6 +51,9 @@ export class FacturaComponent implements OnInit {
   filteredProducts: Observable < any[] > ; 
   productItem: any;
   socioItem: any;
+
+
+
 
   socios: any;
   //   socios: any[] = [{
@@ -86,6 +90,7 @@ saldo= 0;
 PermisoEPago:any;
 reglas :any;
 
+tipoimpre=true;
 
   constructor(private facturaService: FacturasService,
               private activatedRoute: ActivatedRoute,
@@ -93,6 +98,7 @@ reglas :any;
               private _matSnackBar: MatSnackBar,
               private router: Router,
               private ValidacionesServices:ValidacionesService) {
+                this.tipoimpre=true;
            
                 this.order = new Order();
       // Set the private defaults
@@ -139,7 +145,7 @@ reglas :any;
   }
 
   ngOnInit(): void {
-
+    this.tipoimpre=true;
       const params = this.activatedRoute.snapshot.params;
       this.pageType = params.id;
       this.typeDocum = params.tipo;
@@ -541,8 +547,8 @@ Vreglas=(callback)=>
 
   if (this.reglas[0].valido){
   for (let index = 0; index < this.ELEMENT_DATA.length; index++) {
-//  console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
-//  console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
+    // console.log("precio venta",this.ELEMENT_DATA[index]['precio']);
+    // console.log("precio costo",this.ELEMENT_DATA[index]['costo']);
 // console.log("Arreglo",this.ELEMENT_DATA);
 // console.log("comparacion= ",Number(this.ELEMENT_DATA[index]['precio']), "<" ,Number(this.ELEMENT_DATA[index]['costo']))
 if( Number(this.ELEMENT_DATA[index]['precio']) < Number(this.ELEMENT_DATA[index]['costo'])){
@@ -1439,6 +1445,15 @@ createcotizacionForm(): FormGroup {
        comentario: [this.FacturaE.comentarios],
          direccion: [this.FacturaE.Direccion]
     });
+}
+
+impre(e){   
+if (e==='Listin') {
+
+    this.tipoimpre=true;
+}else{
+    this.tipoimpre=false;
+}
 }
 }
 

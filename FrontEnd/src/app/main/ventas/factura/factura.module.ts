@@ -27,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {PrintfacturaComponent} from '../printfactura/printfactura.component';
 import { FacturaComponent } from './factura.component';
 import { GuardallGuard } from 'app/main/autenticar/guardall.guard';
+import { PrintfacturaletterComponent } from '../printfacturaletter/printfacturaletter.component';
 
 const routes = [
     {
@@ -39,7 +40,14 @@ const routes = [
     {
       path: 'ventas/printfacturas/:id',
       component: PrintfacturaComponent
-    }];
+    },
+    {
+      path: 'ventas/printfacturasLetter/:id',
+      component: PrintfacturaletterComponent
+    }
+  
+  
+  ];
   
 
 

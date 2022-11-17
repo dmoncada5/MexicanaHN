@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "msnodesqlv8": "^2.6.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.23.0"
-  }
-}

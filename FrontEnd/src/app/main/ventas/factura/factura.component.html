@@ -46,6 +46,16 @@
 
 
 
+            <mat-form-field appearance="outline" fxFlex="15">
+                <mat-label>Impresion</mat-label>
+                <mat-select  (selectionChange)="impre($event.value)">
+                    <mat-option *ngFor="let imp of impresion" [value]="imp" >
+                        {{imp}}
+                    </mat-option>
+                </mat-select> 
+
+            </mat-form-field>
+
             <div>
 
 
@@ -58,7 +68,15 @@
         <mat-icon>update</mat-icon>
         
     </button>
-                <button mat-icon-button class="mr-16" [routerLink]="'/ventas/printfacturas/'+FacturaE.numero">
+                <button *ngIf="tipoimpre===true" mat-icon-button class="mr-16" [routerLink]="'/ventas/printfacturas/'+FacturaE.numero">
+                   
+        <mat-icon>print</mat-icon>
+    </button>
+
+
+
+    <button *ngIf="tipoimpre===false" mat-icon-button class="mr-16" [routerLink]="'/ventas/printfacturasLetter/'+FacturaE.numero">
+                   
         <mat-icon>print</mat-icon>
     </button>
             </div>
@@ -191,14 +209,14 @@
                                 </mat-autocomplete>
 
                             </mat-form-field>
-
+                  
                             <button mat-raised-button [disabled]="productItem==null" class="save-product-button accent-800" fxFlex="10" (click)="Agregar($event)">Agregar</button>
 
 
 
                             <!-- </table> -->
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                        <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                             <table *ngIf="ELEMENT_DATA.length>0 && Ftupdate" class="simple invoice-table-footer Subs">
                                 <tbody>
                                     <tr class="total">
@@ -208,7 +226,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <br>
+                        <br> -->
 
                         <div class="content-card">
 
