@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { ValidacionesService } from 'app/main/Configuracion/validaciones/validaciones.service';
 import { DecimalPipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
@@ -25,6 +26,7 @@ export class FacturaComponent implements OnInit {
   ELEMENT_DATA: Element[] = []; 
   ELEMENT_VALIDADOR: valida[] = [];
   formap: validapago[] = [];
+  exonerado=false;
 //   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.ELEMENT_DATA);
   FacturaE: facturaEncabezado = {};
@@ -110,6 +112,7 @@ tipoimpre=true;
                 this.socios=res;
             //   this.socios[0] = res[0];
             //   this.socios[1] = res[1];
+            console.log("socios = ",this.socios)
               this.filteredSocios = this.socioCtrl.valueChanges
                   .pipe(
                       startWith(''),
@@ -318,7 +321,7 @@ if (dias<15){
 }
 //  console.log("haber si =", Number(arr));
 //  console.log("Comparar ",Number(arr)," <= ",res1[0]['correlativo']);
-if (Number(arr)<=res1[0]['correlativo'] || dias<0){
+if (Number(arr)<res1[0]['correlativo'] || dias<0){
     this._matSnackBar.open('llego a limite de facturas emitidas para este CAI ', 'OK', {
         verticalPosition: 'top',
         duration: 9000
@@ -342,6 +345,10 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
     this.selectedSerie = true;
    }
 
+//    onChange(ob: MatCheckboxChange){
+//     console.log("PQR checked: " + ob.checked);
+
+//    }
 
    
   complete(event) {
@@ -374,8 +381,14 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
   }
 
 
-  total(cant: number, precio: number,descuento:number): number {
-    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+//   total(cant: number, precio: number,descuento:number): number {
+//     return (cant * precio/1.15)- (cant * precio)*(descuento/100);
+// }
+
+total(cant: number, precio: number,descuento:number): number {
+    let valor=0;
+    valor= (cant * precio/1.15)- (cant * precio)*(descuento/100);
+    return Number(valor.toFixed(4));
 }
 
   totalGeneral(): number{
@@ -392,14 +405,21 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
    // valor+=(this.ELEMENT_DATA[index]['precio']*this.ELEMENT_DATA[index]['cantidad']);
     valor+=(this.ELEMENT_DATA[index]['totaLine']);
     }
+    if(this.exonerado){
+        return valor=0;
+    }
+    else {
     return valor*0.15;
   }
+}
+
 
   grandTotal(): number{
   let valor = 0;
   valor = this.totalGeneral() + this.isv();
   return Math.round(valor); 
 }
+
   completeProducts(event) {
 
     //this.almacen =JSON.parse(localStorage.getItem('almacen'));
@@ -492,6 +512,7 @@ if (res.length>0){
             });      
         }
            this.productItem = null;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {

@@ -496,6 +496,15 @@ export const navigation: FuseNavigation[] = [
                     
                     },
                     {
+                        id: 'reporteFacturas',
+                        title: 'Reporte de Facturas',
+                        type: 'item',
+                        url: 'reporte/reporteFacturas',
+                        exactMatch: true,
+                    
+                    },
+                    
+                    {
                         id: 'saldocliente',
                         title: 'Saldo Cliente',
                         type: 'item',

@@ -303,9 +303,11 @@ for (let index = 0; index < this.ELEMENT_DATA.length; index++){
       this.refreshTable();
   }
 
+  
   total(cant: number, precio: number,descuento:number): number {
-    return (cant * precio)-(cant * precio*15/100)- (cant * precio)*(descuento/100);
+    return (cant * precio/1.15)- (cant * precio)*(descuento/100);
 }
+
 
 
   totalGeneral(): number{
@@ -358,7 +360,7 @@ grandTotalSINIVA(): number{
                 precio: this.Detalle.price,
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: this.total(1, this.Detalle.price, 0),
+                totaLine: Number(((this.total(1, this.Detalle.price, 0))).toFixed(2)),
                 almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
               });      
@@ -396,13 +398,14 @@ grandTotalSINIVA(): number{
                 precio: this.Detalle.price,
                 cantidad: 1,
                 DescuentoLine: 0,
-                totaLine: this.total(1, this.Detalle.price, 0),
+                totaLine: this.total(1, this.Detalle.price,0),
                 almacen: this.Detalle.cbod+"",
                 impuestocod: 0,
             });
         
            this.productItem = null;
            this.validarISV=true;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {

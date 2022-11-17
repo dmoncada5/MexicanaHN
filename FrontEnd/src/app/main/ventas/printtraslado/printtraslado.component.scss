@@ -2,7 +2,7 @@
 @page {
     size: auto;
     /* auto es el valor inicial */
-    margin: auto;
+    margin: 0mm;
     /* afecta el margen en la configuración de impresión */
 }
 
@@ -10,99 +10,87 @@
     margin: 0 -6cm
 }
 
-.text1 {
-    font-family: 'Arial';
-    font-size: small;
-    font-weight: bolder;
-    text-align: center;
-    color: black;
-}
-
-.text {
-    font-family: 'Arial';
-    font-size: small;
-    font-weight: normal;
-    text-align: center;
-    color: black;
-}
-
-.textCAI {
-    font-family: 'Arial';
-    font-size: small;
-    font-weight: lighter;
-    text-align: left;
-    color: black;
-}
-
 app-printtraslado {
     #invoice {
         &.modern {
             padding: 0;
             .invoice-container {
-                padding: 40px;
+                padding: 64px;
                 margin: 0 auto;
                 .card {
-                    width: 380px;
-                    min-width: 380px;
-                    max-width: 380px;
+                    width: 1020px;
+                    min-width: 1020px;
+                    max-width: 1020px;
                     padding: 88px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
                     .header {
-                        .divider1 {
-                            width: 144px;
-                            margin: 0 48px;
-                            background-color: rgba(0, 0, 0, 0.12);
-                            height: 1px;
-                        }
                         .ids {
-                            line-height: 5px;
+                            line-height: 22px;
                             color: rgba(0, 0, 0, 0.54);
                             .detail {
-                                width: 250px;
+                                width: 180px;
                             }
                             .seller {
-                                margin-bottom: 50px;
+                                margin-bottom: 80px;
                                 .logo {
-                                    width: 50px;
+                                    width: 156px;
                                 }
                             }
                             .client {
                                 .label {
-                                    width: 50px;
-                                    font-size: 12px;
-                                    font-weight: 100;
+                                    width: 156px;
+                                    font-size: 24px;
+                                    font-weight: 300;
                                 }
                             }
                             .divider {
                                 width: 1px;
-                                margin: 0 48px;
+                                margin: 0 10px;
                                 background-color: rgba(0, 0, 0, 0.12);
-                                height: 144px;
+                                height: 35px;
+                            }
+                        }
+                        .summary {
+                            font-size: 10px;
+                            .label {
+                                color: rgba(0, 0, 0, 0.54);
+                                text-align: right;
+                                padding-right: 16px;
+                            }
+                            .value {
+                                color: rgba(0, 0, 0, 1);
+                            }
+                            .code {
+                                font-size: 25px;
+                                font-weight: 300;
+                                td {
+                                    padding-bottom: 32px;
+                                }
                             }
                         }
                     }
                     .content {
                         .invoice-table {
-                            margin-top: 70px;
-                            font-size: 12px;
+                            margin-top: 76px;
+                            font-size: 10px;
                             color: rgba(0, 0, 0, 0.87);
                             thead {
                                 tr {
                                     th {
+                                        padding: 0 25px;
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                                    }
-                                    td {
-                                        padding-right: 40px;
                                     }
                                 }
                             }
                             tbody {
                                 tr {
                                     td {
-                                        padding-right: 65px;
+                                        padding: 0 25px;
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                     }
                                 }
                             }
@@ -111,7 +99,7 @@ app-printtraslado {
                             }
                             .detail {
                                 margin-top: 8px;
-                                font-size: 8px;
+                                font-size: 12px;
                                 color: rgba(0, 0, 0, 0.54);
                                 max-width: 360px;
                             }
@@ -120,9 +108,9 @@ app-printtraslado {
                             margin: 32px 0 96px 0;
                             tr {
                                 td {
-                                    text-align: left;
-                                    font-size: 12px;
-                                    font-weight: 500;
+                                    text-align: right;
+                                    font-size: 15px;
+                                    font-weight: 600;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
                                     padding: 8px 8px;
@@ -132,14 +120,22 @@ app-printtraslado {
                                 }
                                 &.discount {
                                     td {
-                                        padding-bottom: 12px;
+                                        padding-bottom: 32px;
+                                    }
+                                }
+                                &.detail {
+                                    td {
+                                        margin-top: 8px;
+                                        font-size: 12px;
+                                        color: rgba(0, 0, 0, 0.54);
+                                        max-width: 360px;
                                     }
                                 }
                                 &.total {
                                     td {
                                         padding: 32px 8px;
                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
-                                        font-size: 12px;
+                                        font-size: 35px;
                                         font-weight: 300;
                                         color: rgba(0, 0, 0, 1);
                                     }
@@ -191,7 +187,7 @@ app-printtraslado {
                         .header {
                             .ids {
                                 .detail {
-                                    width: 120pt;
+                                    width: 180pt;
                                 }
                                 .seller {
                                     margin-bottom: 8pt;
@@ -206,8 +202,8 @@ app-printtraslado {
                                     }
                                 }
                                 .divider {
-                                    margin: 0 12pt;
-                                    height: 100pt;
+                                    margin: 0 4pt;
+                                    height: 50pt;
                                 }
                             }
                             .summary {
@@ -222,12 +218,13 @@ app-printtraslado {
                         }
                         .content {
                             .invoice-table {
-                                margin-top: 16pt;
+                                // margin-top: 1pt;
+                                margin: 5pt 0;
                                 thead {
                                     tr {
                                         th {
-                                            font-size: 10pt;
-                                            max-width: 60pt;
+                                            // font-size: 2pt;
+                                            // max-width: 10pt;
                                             &:first-child {
                                                 padding-left: 0;
                                             }
@@ -240,6 +237,7 @@ app-printtraslado {
                                 tbody {
                                     tr {
                                         td {
+                                            // padding:0 25px;
                                             &:first-child {
                                                 padding-left: 0;
                                             }
@@ -250,26 +248,32 @@ app-printtraslado {
                                     }
                                 }
                                 .title {
-                                    font-size: 10pt;
+                                    font-size: 5pt;
                                 }
                                 .detail {
-                                    margin-top: 4pt;
-                                    font-size: 9pt;
+                                    margin-top: 2pt;
+                                    font-size: 8pt;
                                     max-width: none;
                                 }
                             }
                             .invoice-table-footer {
-                                margin: 16pt 0;
                                 tr {
                                     td {
                                         font-size: 10pt;
-                                        padding: 4pt 4pt;
+                                        padding: 0pt 10pt;
                                         &:first-child {
                                             text-align: left;
                                             padding-left: 0;
                                         }
                                         &:last-child {
                                             padding-right: 0;
+                                        }
+                                    }
+                                    &.detail {
+                                        td {
+                                            font-size: 8pt;
+                                            color: rgba(0, 0, 0, 0.54);
+                                            max-width: 360pt;
                                         }
                                     }
                                     &.discount {

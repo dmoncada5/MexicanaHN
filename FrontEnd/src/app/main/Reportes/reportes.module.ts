@@ -8,7 +8,7 @@ import {ReportesService} from '../Reportes/reportes.service';
 import { EstadiscoItemsComponent } from './Finanzas/estadisco-items/estadisco-items.component';
 import { DatosSociosComponent } from './Socios/datos-socios/datos-socios.component';
 import { FacturasXTarjetasModule } from './Finanzas/facturas-xtarjetas/facturas-xtarjetas.module';
-import { GastosComponent } from './Finanzas/gastos/gastos.component';
+import { reporteFacturasModule } from './Finanzas/reporteFacturas/reporteFacturas.module';
 import { GastosModule } from '../Reportes/Finanzas/gastos/gastos.module';
 import {CierreModule} from '../Reportes/Finanzas/cierre/cierre.module'
 
@@ -20,6 +20,7 @@ EstadiscoItemsModule,
 DatosSociosModule,
 FacturasXTarjetasModule,
 GastosModule,
+reporteFacturasModule,
 CierreModule
 ],
 providers   : [

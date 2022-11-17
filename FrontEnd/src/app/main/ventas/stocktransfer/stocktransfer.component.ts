@@ -366,6 +366,7 @@ this.StocktransferForm.get('id').setValue(this.user.usuario);
             });
         
            this.productItem = null;
+           this.ELEMENT_DATA.reverse();
            this.refreshTable();
         },
         (err) => {

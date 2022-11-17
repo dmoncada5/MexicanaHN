@@ -279,7 +279,12 @@ app-printfactura {
         }
     }
     /* PRINT STYLES */
-    @media print {
+    //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
+    @media print //and(orientation: landscape)
+    {
+        // image-resolution: 4000;
+        // text-decoration: solid;
+        // display: none !important;
         /* Invoice Specific Styles */
         #invoice {
             &.modern {
@@ -528,11 +533,11 @@ app-printfactura {
                                     }
                                     &.total {
                                         td {
-                                            padding: 4px 8px;
-                                            // border-top: 1px solid rgba(0, 0, 0, 0.12);
-                                            font-size: 12px;
                                             margin-top: 0px;
+                                            font-size: 14px;
                                             font-weight: bolder;
+                                            padding: 4px 8px;
+                                            line-height: 8px;
                                             color: rgba(0, 0, 0, 1);
                                         }
                                     }

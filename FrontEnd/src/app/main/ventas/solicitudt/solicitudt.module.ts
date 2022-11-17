@@ -24,12 +24,18 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 //import {PrintsolicitudtComponent} from '../printsolicitudt/printsolicitudt.component';
 import { SolicitudtComponent } from './solicitudt.component';
+import { PrintSolicitudTrasladoComponent } from '../printsotraslado/printsotraslado.component';
 
 const routes = [
     {
         
         path     : 'ventas/solicitudts',
         component: SolicitudtsComponent,
+    }
+    ,
+    {
+      path: 'ventas/printsotraslado/:id',
+      component: PrintSolicitudTrasladoComponent
     }
 ];
   

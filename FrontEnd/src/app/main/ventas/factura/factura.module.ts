@@ -28,6 +28,7 @@ import {PrintfacturaComponent} from '../printfactura/printfactura.component';
 import { FacturaComponent } from './factura.component';
 import { GuardallGuard } from 'app/main/autenticar/guardall.guard';
 import { PrintfacturaletterComponent } from '../printfacturaletter/printfacturaletter.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes = [
     {
@@ -73,6 +74,7 @@ const routes = [
           MatDatepickerModule,
           MatChipsModule,
           MatSortModule,
+          MatCheckboxModule,
            NgxChartsModule,
            MatMenuModule,
           FuseSharedModule,

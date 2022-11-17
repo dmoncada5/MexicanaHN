@@ -83,6 +83,27 @@ class MainController {
             res.send(error.message)
         }
     }
+
+    async reporteFacturas(req, res) {
+
+
+        try {
+            const pool = await poolPromise
+            const result = await pool.request()
+                .input('Desde', sql.Date, req.body.Desde)
+                .input('Hasta', sql.Date, req.body.Hasta)
+                .query(queries.reporteFacturas)
+            res.json(result.recordset)
+        } catch (error) {
+            res.status(500)
+            res.send(error.message)
+        }
+    }
+
+
+
+
+
     async articulosVendidos(req, res) {
 
 

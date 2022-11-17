@@ -9,6 +9,7 @@ import {CotizacionModule} from '../ventas/cotizacion/cotizacion.module';
 import { CotizacionesService } from './cotizaciones/cotizaciones.service';
 import {PrintCotizacionModule} from './print-cotizacion/print-cotizacion.module';
 import {PrintfacturaModule} from './printfactura/printfactura.module';
+import {PrintEntradaModule} from './printentrada/printentrada.module';
 
 import {PrintTrasladoModule} from './printtraslado/printtraslado.module';
 
@@ -129,9 +130,13 @@ import { PrintfacturaletterModule } from './printfacturaletter/printfacturalette
         PrintnotacreditopModule,
         PrintpcompraModule,
         PrintTrasladoModule,
+        //PrintSolicitudTrasladoModule,
         EntregasModule,
         EntregaModule,
         PrintentregaModule,
+        PrintEntradaModule,
+        //PrintSalidaModule,
+       // PrintPedidoModule,
         BuscarPedidoModule,
         BuscarcotizacionModule,
        // PrintpedidoModule,

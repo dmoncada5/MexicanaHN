@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CompanysService } from 'app/main/Configuracion/companys/companys.service';
 
 @Component({
-  selector: 'app-printfactura',
+  selector: 'app-printtraslado',
   templateUrl: './printtraslado.component.html',
   styleUrls: ['./printtraslado.component.scss'],
   encapsulation: ViewEncapsulation.None
@@ -31,13 +31,13 @@ DocNum:1
     this.pageType = params.id;
 this.doc.DocNum=this.pageType; 
 console.log(this.pageType)
-    this.prtservice.getFactura('/factura/Encabezado',this.doc).then(
+    this.prtservice.getFactura('/stocktransfer/Encabezado',this.doc).then(
       res=>{
         this.Encabezado=res[0];
         console.log('detalle',this.Encabezado)
       }
     );
-    this.prtservice.getDetalle('/factura/Detalle',this.doc.DocNum).subscribe(
+    this.prtservice.getDetalle('/stocktransfer/Detalle',this.doc.DocNum).subscribe(
       (res)=>{
         this.Detalle=res;
     

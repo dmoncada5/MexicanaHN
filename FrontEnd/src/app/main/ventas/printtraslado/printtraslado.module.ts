@@ -28,7 +28,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PrintTrasladoComponent } from './printtraslado.component';
 const routes = [
   {
-      path     : 'ventas/facturas',
+      path     : 'ventas/stocktransfers',
       component: StocktransfersComponent,
   }];
 @NgModule({

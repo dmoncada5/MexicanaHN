@@ -52,12 +52,14 @@
                     <mat-icon>add_circle_outline</mat-icon>
                 </button>
 
-                <button mat-icon-button class="mr-16" *ngIf="pageType !='new'&& typeDocum=='factura'" (click)="update()">
+                <button mat-icon-button class="mr-16" *ngIf="pageType !='new'&& typeDocum=='Traslados'" (click)="update()">
                     <!-- <span>UPDATE</span> -->
                     <mat-icon>update</mat-icon>
         
     </button>
-
+                <button mat-icon-button class="mr-16" [routerLink]="'/ventas/printtraslado/'+StocktransferE.numero">
+        <mat-icon>print</mat-icon>
+    </button>
                 <!-- 
                 <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(StocktransferE.numero)">
         <mat-icon>delete</mat-icon>

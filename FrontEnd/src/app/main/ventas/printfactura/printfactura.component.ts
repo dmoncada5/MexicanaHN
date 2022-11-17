@@ -50,6 +50,7 @@ this.doc.DocNum=this.pageType;
       res=>{
         this.Encabezado=res[0];
         this.numero1=res[0]['fact_emini']
+        console.log(this.Encabezado);
 console.log('en letras'+this.Encabezado.CantidadLetas.toString());
       }
     );
@@ -94,6 +95,36 @@ console.log('en letras'+this.Encabezado.CantidadLetas.toString());
 
 
   }
+
+
+exonerado(): number{
+    let valor=0;
+
+    if(Number(this.Encabezado.impuesto)==0){
+        valor =this.Encabezado.TotalDoc-this.Encabezado.impuesto;
+        return valor;
+
+    }
+    else {
+        return valor;
+    }
+
+}
+
+gravado15(): number{
+    let valor=0;
+
+    if(Number(this.Encabezado.impuesto)>0){
+        valor =this.Encabezado.TotalDoc-this.Encabezado.impuesto;
+        return valor;
+
+    }
+    else {
+        return valor;
+    }
+
+}
+
 
   ngOnInit(): void {
 
