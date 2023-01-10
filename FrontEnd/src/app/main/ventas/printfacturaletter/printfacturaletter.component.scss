@@ -9,7 +9,7 @@
 @page {
     margin: 0 -1cm
 }
- 
+
 app-printfacturaletter {
     #invoice {
         &.modern {
@@ -21,16 +21,16 @@ app-printfacturaletter {
                     width: 1020px;
                     min-width: 1020px;
                     max-width: 1020px;
-                //    padding: 10px;
+                    //    padding: 10px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
                     .header {
                         .ids {
-                             line-height: 22px;
+                            line-height: 22px;
                             color: rgba(0, 0, 0, 0.54);
                             .detail {
-                                width: 300px;
+                                width: 500px;
                             }
                             .seller {
                                 margin-bottom: 20px;
@@ -40,7 +40,7 @@ app-printfacturaletter {
                                 }
                             }
                             .client {
-                                 padding-left: 10px;
+                                padding-left: 10px;
                                 .label {
                                     padding-left: 10px;
                                     width: 100px;
@@ -77,13 +77,15 @@ app-printfacturaletter {
                     .content {
                         .invoice-table {
                             margin-top: 10px;
-                            font-size: 15px;
+                            margin: 20pt 0;
+                            font-size: 12px;
                             color: rgba(0, 0, 0, 0.87);
                             thead {
                                 tr {
                                     th {
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+                                        padding: 0pt 35pt;
                                     }
                                 }
                             }
@@ -92,6 +94,7 @@ app-printfacturaletter {
                                     td {
                                         color: rgba(0, 0, 0, 0.87);
                                         border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+                                        padding: 0pt 35pt;
                                     }
                                 }
                             }
@@ -100,16 +103,16 @@ app-printfacturaletter {
                             }
                             .detail {
                                 margin-top: 0.5px;
-                                font-size: 10px;
+                                font-size: 12px;
                                 color: rgba(0, 0, 0, 0.54);
-                                max-width: 360px;
+                                max-width: 500px;
                             }
                         }
                         .invoice-table-footer {
                             margin: 32px 0 50px 0;
                             text-align: right;
-                           padding-right: 10px;
-                           padding-left: 40px;
+                            padding-right: 10px;
+                            padding-left: 40px;
                             tr {
                                 td {
                                     text-align: right;
@@ -117,8 +120,8 @@ app-printfacturaletter {
                                     font-weight: 600;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
-                                 
-                                    padding: left 350px;;
+                                    padding: left 350px;
+                                    ;
                                     &:first-child {
                                         text-align: left;
                                     }
@@ -174,9 +177,9 @@ app-printfacturaletter {
             &.modern {
                 background: white;
                 .invoice-container {
-                    padding: 0;
+                    padding: 30;
                     .card {
-                        width: 100%;
+                        width: 95%;
                         min-width: 0;
                         background: none;
                         padding: 0;
@@ -184,51 +187,51 @@ app-printfacturaletter {
                         .header {
                             .ids {
                                 line-height: 22px;
-                               color: rgba(0, 0, 0, 0.54);
-                               .detail {
-                                   width: 300px;
-                               }
-                               .seller {
-                                   margin-bottom: 20px;
-                                   .logo {
-                                       width: 80px;
-                                       padding-left: 20px;
-                                   }
-                               }
-                               .client {
+                                color: rgba(0, 0, 0, 0.54);
+                                .detail {
+                                    width: 300px;
+                                }
+                                .seller {
+                                    margin-bottom: 20px;
+                                    .logo {
+                                        width: 80px;
+                                        padding-left: 20px;
+                                    }
+                                }
+                                .client {
                                     padding-left: 10px;
-                                   .label {
-                                       padding-left: 10px;
-                                       width: 100px;
-                                       font-size: 20px;
-                                       font-weight: 250;
-                                   }
-                               }
-                               .divider {
-                                   width: 1px;
-                                   margin: 0 48px;
-                                   background-color: rgba(0, 0, 0, 0.12);
-                                   height: 50px;
-                               }
-                           }
-                           .summary {
-                               font-size: 12px;
-                               .label {
-                                   color: rgba(0, 0, 0, 0.54);
-                                   text-align: right;
-                                   padding-right: 10px;
-                               }
-                               .value {
-                                   color: rgba(0, 0, 0, 1);
-                               }
-                               .code {
-                                   font-size: 16px;
-                                   font-weight: 50;
-                                   td {
-                                       padding-bottom: 32px;
-                                   }
-                               }
-                           }
+                                    .label {
+                                        padding-left: 10px;
+                                        width: 100px;
+                                        font-size: 20px;
+                                        font-weight: 250;
+                                    }
+                                }
+                                .divider {
+                                    width: 1px;
+                                    margin: 0 48px;
+                                    background-color: rgba(0, 0, 0, 0.12);
+                                    height: 50px;
+                                }
+                            }
+                            .summary {
+                                font-size: 12px;
+                                .label {
+                                    color: rgba(0, 0, 0, 0.54);
+                                    text-align: right;
+                                    padding-right: 10px;
+                                }
+                                .value {
+                                    color: rgba(0, 0, 0, 1);
+                                }
+                                .code {
+                                    font-size: 16px;
+                                    font-weight: 50;
+                                    td {
+                                        padding-bottom: 32px;
+                                    }
+                                }
+                            }
                         }
                         .content {
                             .invoice-table {
@@ -264,8 +267,8 @@ app-printfacturaletter {
                             .invoice-table-footer {
                                 margin: 32px 0 50px 0;
                                 text-align: right;
-                               padding-right: 10px;
-                               padding-left: 40px;
+                                padding-right: 10px;
+                                padding-left: 40px;
                                 tr {
                                     td {
                                         text-align: right;
@@ -273,8 +276,8 @@ app-printfacturaletter {
                                         font-weight: 600;
                                         color: rgba(0, 0, 0, 0.54);
                                         border-bottom: none;
-                                     
-                                        padding: left 350px;;
+                                        padding: left 350px;
+                                        ;
                                         &:first-child {
                                             text-align: left;
                                         }
