@@ -1301,6 +1301,7 @@ if(this.EfectivoForm.get('whopaid').value>0){
         if (pagocheque && !valcheque)
         {
             valgeneral = false;
+            
         }
         if (pagotrans && ! valtrans){
             valgeneral = false;
