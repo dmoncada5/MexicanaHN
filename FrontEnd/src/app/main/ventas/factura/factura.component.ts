@@ -200,6 +200,8 @@ tipoimpre=true;
                   // this.series.cnum=res["Serie"];
                   this.FacturaForm = this.createcotizacionForm();
                   this.facturaService.updateCantLetras(this.FacturaE.numero.toString());
+                  this.FacturaForm.get("SocioCode").setValue(this.FacturaE.SocioCode);
+                  this.socioItem=this.FacturaE.SocioCode;
    
               }
           );

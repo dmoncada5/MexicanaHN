@@ -6,6 +6,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FacturasService } from '../facturas/facturas.service';
+
 import { facturaDetalle, facturaEncabezado, Order, pago, tarjeta, efectivo, cheque, transferencia } from '../interfaces/interfaces';
 import { endOfQuarter, format } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -79,7 +80,7 @@ totapagado= 0;
 saldo= 0;
 PermisoEPago:any;
 validarISV:any; 
-   
+socioItem: any;
 reglas :any;
   
     constructor(private facturaService: FacturasService,
@@ -95,6 +96,7 @@ reglas :any;
                   this.facturaService.getAll('/socios').subscribe(
             (res) => {
                 this.socios=res;
+                console.log(res,'socios')
                 // this.socios[0] = res[0];
                 // this.socios[1] = res[1];
                 this.filteredSocios = this.socioCtrl.valueChanges
@@ -102,6 +104,7 @@ reglas :any;
                         startWith(''),
                         map(state => state ? this._filterSocios(state) : this.socios.slice())
                     );
+                  //  this.FacturaForm.get("SocioCode").setValue(this.FacturaE.SocioCode);
             }
         );
   
@@ -167,13 +170,15 @@ reglas :any;
                 (res) => {
               
                     this.FacturaE = res[0];
+                    console.log(this.FacturaE,'cot')
+                    console.log(res[0],'cotres')
                     if (params.tipo != 'entrega'){
                         this.FacturaE.BaseDocRef=res[0]['tipo'];
                         this.FacturaE.BaseRef=res[0]['numero'];
                         this.FacturaE.numero ='';
                     }
                     // this.series.cnum=res["Serie"];
-                    this.FacturaForm = this.createcotizacionForm();
+             
                 }
             );
 
@@ -199,6 +204,9 @@ reglas :any;
                   this.validaciones = true;
                   this.refreshTable();
                   this.totalGeneral();
+                  this.FacturaForm = this.createcotizacionForm();
+                  this.FacturaForm.get("SocioCode").setValue(this.FacturaE.SocioCode);
+this.socioItem=this.FacturaE.SocioCode;
                 }
             );
         }
@@ -287,6 +295,7 @@ reglas :any;
     complete(event) {
         this.facturaService.getOneSocio('/socios/edit', event.target.value).subscribe(
             (res) => {
+          
                 this.FacturaE.SocioCode = event.target.value;
                 this.FacturaE.NombreSocio = res[0]['nombre'];
                 this.FacturaE.RTN = res[0]['rtn'];

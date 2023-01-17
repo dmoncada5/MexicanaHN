@@ -49,7 +49,7 @@ export class CotizacionComponent implements OnInit {
   selectBod:any;
   productosCtrl = new FormControl();
   socioCtrl = new FormControl();
-  filteredSocios: Observable < any[] > ;
+  filteredSocios: Observable < any[] > ; 
   filteredProducts: Observable < any[] > ;
   productItem: any;
   socios: any;
