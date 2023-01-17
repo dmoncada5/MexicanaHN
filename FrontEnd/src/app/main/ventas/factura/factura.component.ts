@@ -1174,7 +1174,7 @@ if(this.EfectivoForm.get('whopaid').value>0){
     let valgeneral= true;
 
 
-
+/// prueba
 //     if ( Number.parseFloat( this.EfectivoForm.get('efectivo').value) > 0
 // || Number.parseFloat(this.TarjetaForm.get('totalTarjeta').value) > 0
 // || Number.parseFloat(this.ChequeForm.get('totalCheque').value) > 0
@@ -1301,7 +1301,7 @@ if(this.EfectivoForm.get('whopaid').value>0){
         if (pagocheque && !valcheque)
         {
             valgeneral = false;
-            
+
         }
         if (pagotrans && ! valtrans){
             valgeneral = false;
