@@ -44,7 +44,15 @@
 
             </mat-form-field>
 
+            <mat-form-field appearance="outline" fxFlex="15">
+                <mat-label>Impresion</mat-label>
+                <mat-select  (selectionChange)="impre($event.value)">
+                    <mat-option *ngFor="let imp of impresion" [value]="imp" >
+                        {{imp}}
+                    </mat-option>
+                </mat-select> 
 
+            </mat-form-field>
 
             <!-- </form> -->
 
@@ -64,10 +72,18 @@
         <mat-icon>update</mat-icon>
         
     </button>
-                <button mat-icon-button class="mr-16" [routerLink]="'/ventas/printentregas/'+FacturaE.numero">
+                <button *ngIf="tipoimpre===true" mat-icon-button class="mr-16" [routerLink]="'/ventas/printentregas/'+FacturaE.numero">
         <mat-icon>print</mat-icon>
     </button>
-            </div>
+
+    <button *ngIf="tipoimpre===false" mat-icon-button class="mr-16" [routerLink]="'/ventas/printfacturasLetter/'+FacturaE.numero">
+        <mat-icon>print</mat-icon>
+        </button>
+        
+
+
+
+</div>
 
         </div>
         <!-- / HEADER -->

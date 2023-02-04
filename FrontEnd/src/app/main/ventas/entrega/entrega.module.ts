@@ -25,6 +25,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatAutocomplete, MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import {PrintentregaComponent} from '../printentrega/printentrega.component';
+import { PrintfacturaletterComponent } from '../printfacturaletter/printfacturaletter.component';
 import { EntregaComponent } from './entrega.component';
 
 const routes = [
@@ -37,6 +38,10 @@ const routes = [
   {
     path:'ventas/printentregas/:id',
     component: PrintentregaComponent
+  },
+  {
+    path: 'ventas/printfacturasLetter/:id',
+    component: PrintfacturaletterComponent
   }];
 
 @NgModule({

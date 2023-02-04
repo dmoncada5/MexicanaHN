@@ -18,9 +18,9 @@ app-printfacturaletter {
                 padding: 10px;
                 margin: 0 auto;
                 .card {
-                    width: 1020px;
-                    min-width: 1020px;
-                    max-width: 1020px;
+                    width: 880px;
+                    min-width: 880px;
+                    max-width: 880px;
                     //    padding: 10px;
                     overflow: hidden;
                     background: #FFFFFF;
@@ -171,9 +171,11 @@ app-printfacturaletter {
         }
     }
     /* PRINT STYLES */
-    @media print {
-        /* Invoice Specific Styles */
-        #invoice {
+    @media print  {
+
+          
+          /* Invoice Specific Styles */
+          #invoice {
             &.modern {
                 background: white;
                 .invoice-container {
@@ -183,6 +185,7 @@ app-printfacturaletter {
                         min-width: 0;
                         background: none;
                         padding: 0;
+                        padding-left: 30;
                         box-shadow: none;
                         .header {
                             .ids {
@@ -192,19 +195,19 @@ app-printfacturaletter {
                                     width: 300px;
                                 }
                                 .seller {
-                                    margin-bottom: 20px;
+                                    margin-bottom: 80px;
                                     .logo {
-                                        width: 80px;
-                                        padding-left: 20px;
+                                        width: 180px;
+                                        padding-left: 80px;
                                     }
                                 }
                                 .client {
-                                    padding-left: 10px;
+                                    padding-left: 20px;
                                     .label {
-                                        padding-left: 10px;
+                                        padding-left: 60px;
                                         width: 100px;
-                                        font-size: 20px;
-                                        font-weight: 250;
+                                        font-size: 15px;
+                                        font-weight: 200;
                                     }
                                 }
                                 .divider {
@@ -318,4 +321,5 @@ app-printfacturaletter {
             }
         }
     }
-}
+    }
+        

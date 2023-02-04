@@ -26,10 +26,15 @@ import { FacturasComponent } from '../facturas/facturas.component';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { PrintfacturaletterComponent } from './printfacturaletter.component';
+import { EntregasComponent } from '../entregas/entregas.component';
 const routes = [
   {
       path     : 'ventas/facturas',
       component: FacturasComponent,
+
+  },{
+    path     : 'ventas/entregas',
+    component: EntregasComponent
   }];
 
 @NgModule({

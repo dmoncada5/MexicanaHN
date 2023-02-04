@@ -34,6 +34,7 @@ export class EntregaComponent implements OnInit {
         {
             DocNum: ''   
       };
+      impresion =['Listin','Carta'];
       selectBod: any;
     FacturaForm: FormGroup;
     pageType: any;
@@ -82,12 +83,16 @@ PermisoEPago:any;
 validarISV:any; 
 socioItem: any;
 reglas :any;
-  
+
+tipoimpre=true;
+
     constructor(private facturaService: FacturasService,
                 private activatedRoute: ActivatedRoute,
                 private _formBuilder: FormBuilder,
                 private _matSnackBar: MatSnackBar,
                 private router: Router) {
+                    this.tipoimpre=true;
+
                     this.order = new Order();
         // Set the private defaults
                   this._unsubscribeAll = new Subject();
@@ -128,7 +133,7 @@ reglas :any;
     }
   
     ngOnInit(): void {
-  
+        this.tipoimpre=true;
         const params = this.activatedRoute.snapshot.params;
         this.pageType = params.id;
         this.typeDocum = params.tipo;
@@ -1503,8 +1508,23 @@ PermisoEliminarPago(){
       });
       
   }
-  }
+
   
+
+  impre(e){   
+    if (e==='Listin') {
+    
+        this.tipoimpre=true;
+    }else{
+        this.tipoimpre=false;
+    }
+    }
+    }
+
+
+
+
+
 export interface Element {
     DocNum: string; Linea: number; itemCode: string; itemName: string; precio: number; cantidad: number; DescuentoLine: number; totaLine: number; almacen: string; impuestocod: number;tipo: string; costo: number;
 }
