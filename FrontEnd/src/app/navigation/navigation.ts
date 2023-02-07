@@ -193,6 +193,14 @@ export const navigation: FuseNavigation[] = [
                                 exactMatch: true,
                             },
                             {
+
+                                        id        : 'bodegas',
+                                        title     : 'Bodegas',
+                                        type      : 'item',
+                                        url       : '/configuracion/bodegas',
+                                        exactMatch: true
+                                    },
+                            {
                                 id: 'sucursales',
                                 title: 'Sucursales',
                                 type: 'item',
