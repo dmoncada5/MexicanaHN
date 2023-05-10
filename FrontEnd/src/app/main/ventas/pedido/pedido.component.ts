@@ -446,11 +446,13 @@ products: any;
 //     return valor*0.15;
 //   }
 
-  grandTotal(): number{
-  let valor = 0;
-  valor = this.totalGeneral() + this.isv();
-  return valor;
-}
+grandTotal():number{
+    let  valor=0;
+    valor=this.totalGeneral()+this.isv();
+   //Math.round
+    return Math.round(valor);
+  } 
+  
   completeProducts(event) {
     if (this.Ftupdate == true){
         if ( !this.codlista) {

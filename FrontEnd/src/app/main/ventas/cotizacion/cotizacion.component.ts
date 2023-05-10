@@ -334,7 +334,7 @@ total(cant: number, precio: number,descuento:number): number {
   let  valor=0;
   valor=this.totalGeneral()+this.isv();
  //Math.round
-  return valor;
+  return Math.round(valor);
 }
   completeProducts(event) {
 
