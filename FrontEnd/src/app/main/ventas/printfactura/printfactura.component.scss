@@ -280,8 +280,9 @@ app-printfactura {
     }
     /* PRINT STYLES */
     //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
-    @media print //and(orientation: landscape)
-    {
+    //@media print 
+    //@media print and(orientation: landscape){
+      @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
         // image-resolution: 4000;
         // text-decoration: solid;
         // display: none !important;
