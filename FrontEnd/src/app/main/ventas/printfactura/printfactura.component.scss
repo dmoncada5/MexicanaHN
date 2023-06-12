@@ -158,7 +158,7 @@ app-printfactura {
                             color: black;
                         }
                         .invoice-table {
-                            margin-top: 40px;
+                            margin-top: 20px;
                             font-size: 10px;
                             color: rgba(0, 0, 0, 0.87);
                             // width: 100%;
@@ -279,8 +279,14 @@ app-printfactura {
         }
     }
     /* PRINT STYLES */
-      @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
+
+      @media print and(min - width: 0.05 in) and(max - width: 0.05 in) {
    /// @media print //and(orientation: landscape){
+
+    //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
+    //@media print 
+    //@media print and(orientation: landscape){
+
         // image-resolution: 4000;
         // text-decoration: solid;
         // display: none !important;
@@ -451,7 +457,7 @@ app-printfactura {
                                 min-width: 0px;
                                 padding: 20px;
                                 margin-left: 35px;
-                                margin-top: 0px;
+                               // margin-top: 0px;
                                 // margin-top: 16pt;
                                 // font-size: 12px;
                                 // color: rgba(0, 0, 0, 0.87);
@@ -722,4 +728,4 @@ app-printfactura {
     //         }
     //     }
     // }
-}
+    }
