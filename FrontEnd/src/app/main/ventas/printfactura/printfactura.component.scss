@@ -2,7 +2,7 @@
 @page {
     //size: auto;
     /* auto es el valor inicial */
-    margin: 1px;
+    margin: 1mm;
     /* afecta el margen en la configuración de impresión */
 }
 
@@ -21,7 +21,7 @@ app-printfactura {
                     width: 380px;
                     min-width: 380px;
                     max-width: 380px;
-                    padding: 55px;
+                    padding: 70px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
