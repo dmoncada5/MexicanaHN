@@ -17,13 +17,13 @@ app-printfactura {
         &.modern {
             padding: 0;
             .invoice-container {
-                padding: 40px;
+                padding: 10px;
                 margin: 0 auto;
                 .card {
-                    width: 380px;
-                    min-width: 380px;
-                    max-width: 380px;
-                    padding: 88px;
+                    width: 76mm;
+                    min-width: 76mm;
+                    max-width: 76mm;
+                    padding: 22px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
@@ -289,7 +289,7 @@ app-printfactura {
     }
  /* PRINT STYLES */
     // @media print {
-        @media print and(min - width: 0.01 in) and(max - width: 0.01 in) {
+        @media print and(min - width: 0.1 in) and(max - width: 0.1 in) {
         /* Invoice Specific Styles */
         #invoice {
           
@@ -306,7 +306,7 @@ app-printfactura {
                         // background: none;
                         // padding: 0;
                         box-shadow: none;
-                        width: 100%;
+                        width: 95%;
                         min-width: 0px;
                         padding: 0px;
                        // overflow: hidden;
@@ -479,13 +479,13 @@ app-printfactura {
                                             // color: rgba(0, 0, 0, 0.87);
                                             // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                             // font-size: 10pt;
-                                                                                    max-width: 60pt;
-                                                                                    &:first-child {
-                                                                                        padding-left: 0;
-                                                                                    }
-                                                                                    &:last-child {
-                                                                                        padding-right: 0;
-                                                                                    }
+                                           max-width: 60pt;
+                                       &:first-child {
+                                           padding-left: 0;
+                                         }
+                                         &:last-child {
+                                      padding-right: 0;
+                                        }
                                         
                                         }
                                     
