@@ -288,8 +288,8 @@ app-printfactura {
         }
     }
  /* PRINT STYLES */
-    @media print {
-      
+    // @media print {
+        @media print and(min - width: 0.01 in) and(max - width: 0.01 in) {
         /* Invoice Specific Styles */
         #invoice {
           
