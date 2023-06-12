@@ -875,9 +875,8 @@ app-printfactura {
     }
     /* PRINT STYLES */
 
-      @media print and(min - width: 0.05 in) and(max - width: 0.05 in) {
-   /// @media print //and(orientation: landscape){
-
+   //   @media print and(min - width: 0.05 in) and(max - width: 0.05 in) {
+    @media print {
     //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
     //@media print 
     //@media print and(orientation: landscape){
