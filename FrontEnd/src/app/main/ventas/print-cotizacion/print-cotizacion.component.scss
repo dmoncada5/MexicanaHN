@@ -1,14 +1,14 @@
 @import "src/@fuse/scss/fuse";
 @page {
-    size: auto;
+    //size: auto;
     /* auto es el valor inicial */
-    margin: 0mm;
+    margin: 12mm;
     /* afecta el margen en la configuración de impresión */
 }
 
-@page {
-    margin: 0 -6cm
-}
+// @page {
+//     margin: 0 -6cm
+// }
  
 app-print-cotizacion {
     #invoice {
@@ -17,13 +17,13 @@ app-print-cotizacion {
             .invoice-container {
                 padding: 64px;
                // border: solid 1px #000;
-               margin: 0 auto;
+               margin: 1mm;
 
                 .card {
                     width: 880px;
                     min-width: 880px;
                     max-width: 880px;
-                    padding: 88px;
+                    padding: 70px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
