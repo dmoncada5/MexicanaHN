@@ -158,14 +158,14 @@ app-printfactura {
                             color: black;
                         }
                         .invoice-table {
-                            margin-top: 70px;
-                            font-size: 12px;
+                            margin-top: 40px;
+                            font-size: 10px;
                             color: rgba(0, 0, 0, 0.87);
                             // width: 100%;
                             // min-width: 0px;
                             // padding: 20px;
                             // margin-left: 10px;
-                            margin-top: 5px;
+                            margin-top: 3px;
                             thead {
                                 tr {
                                     th {
@@ -185,11 +185,11 @@ app-printfactura {
                                 }
                             }
                             .title {
-                                font-size: 17px;
+                                font-size: 12px;
                             }
                             .detail {
-                                margin-top: 8px;
-                                font-size: 8px;
+                                margin-top: 2px;
+                                font-size: 5px;
                                 color: rgba(0, 0, 0, 0.54);
                                 max-width: 360px;
                             }
@@ -237,7 +237,7 @@ app-printfactura {
                     }
                     .footer {
                         .text1 {
-                            margin-top: 5px;
+                            margin-top: 1px;
                             font-family: 'Arial';
                             font-size: small;
                             font-weight: bolder;
@@ -245,7 +245,7 @@ app-printfactura {
                             color: black;
                         }
                         .Exijela {
-                            margin-top: 35px;
+                            margin-top: 2px;
                             font-family: 'Arial';
                             font-size: small;
                             font-weight: bolder;
@@ -268,7 +268,7 @@ app-printfactura {
                             margin-right: 24px;
                         }
                         .small-note {
-                            font-size: 12px;
+                            font-size: 10px;
                             font-weight: 600;
                             color: rgba(0, 0, 0, 0.54);
                             line-height: 18px;
@@ -279,9 +279,8 @@ app-printfactura {
         }
     }
     /* PRINT STYLES */
-    //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
-    @media print //and(orientation: landscape)
-    {
+      @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
+   /// @media print //and(orientation: landscape){
         // image-resolution: 4000;
         // text-decoration: solid;
         // display: none !important;
@@ -397,7 +396,7 @@ app-printfactura {
                             }
                         }
                         .content {
-                            margin-top: 5px;
+                            margin-top: 1px;
                             .detalle {
                                 font-family: 'Arial';
                                 font-size: small;
@@ -470,9 +469,9 @@ app-printfactura {
                                                 padding-right: 0;
                                             }
                                         }
-                                        td {
-                                            padding-right: 40px;
-                                        }
+                                        // td {
+                                        //     padding-right: 40px;
+                                        // }
                                     }
                                 }
                                 tbody {
@@ -489,11 +488,11 @@ app-printfactura {
                                     }
                                 }
                                 .title {
-                                    font-size: 17px;
+                                    font-size: 10px;
                                 }
                                 .detail {
-                                    margin-top: 8px;
-                                    font-size: 8px;
+                                    margin-top: 4px;
+                                    font-size: 6px;
                                     color: rgba(0, 0, 0, 0.54);
                                     max-width: 360px;
                                 }
@@ -554,7 +553,7 @@ app-printfactura {
                                 color: black;
                             }
                             .Exijela {
-                                margin-top: 10px;
+                                margin-top: 2px;
                                 font-family: 'Arial';
                                 font-size: small;
                                 font-weight: bolder;

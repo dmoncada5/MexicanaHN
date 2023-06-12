@@ -16,11 +16,13 @@ app-print-cotizacion {
             padding: 0;
             .invoice-container {
                 padding: 64px;
-                margin: 0 auto;
+               // border: solid 1px #000;
+               margin: 0 auto;
+
                 .card {
-                    width: 1020px;
-                    min-width: 1020px;
-                    max-width: 1020px;
+                    width: 880px;
+                    min-width: 880px;
+                    max-width: 880px;
                     padding: 88px;
                     overflow: hidden;
                     background: #FFFFFF;
@@ -178,6 +180,8 @@ app-print-cotizacion {
                 background: white;
                 .invoice-container {
                     padding: 0;
+                    margin: 0 auto;
+
                     .card {
                         width: 100%;
                         min-width: 0;
