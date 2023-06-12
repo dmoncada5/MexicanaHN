@@ -1,14 +1,23 @@
 @import "src/@fuse/scss/fuse";
+
 @page {
-    size: auto;
+    //size: auto;
     /* auto es el valor inicial */
-    margin: 0mm;
+    margin: 12mm;
     /* afecta el margen en la configuración de impresión */
 }
 
-@page {
-    margin: 0 -1cm
-}
+
+// @page {
+//     size: auto;
+//     /* auto es el valor inicial */
+//     margin: 0mm;
+//     /* afecta el margen en la configuración de impresión */
+// }
+
+// @page {
+//     margin: 0 -1cm
+// }
 
 app-printfacturaletter {
     #invoice {
