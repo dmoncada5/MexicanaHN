@@ -1,10 +1,761 @@
+
+
 @import "src/@fuse/scss/fuse";
 @page {
-    //size: auto;
+    size: auto;
     /* auto es el valor inicial */
-    margin: 1mm;
+    margin: auto;
     /* afecta el margen en la configuración de impresión */
 }
+
+@page {
+    margin: 0 -6cm
+}
+
+app-printfactura {
+    #invoice {
+        &.modern {
+            padding: 0;
+            .invoice-container {
+                padding: 40px;
+                margin: 0 auto;
+                .card {
+                    width: 380px;
+                    min-width: 380px;
+                    max-width: 380px;
+                    padding: 88px;
+                    overflow: hidden;
+                    background: #FFFFFF;
+                    @include mat-elevation(7);
+                    .header {
+                        .detalle{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align:  left;
+                            color: black;
+                        }
+                        .text1{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: center;
+                            color: black;
+                        }
+                        .cliente{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: left;
+                            margin-top: 35px;
+                            color: black;
+                        }
+                        .nombre{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: left;
+                           
+                            color: black;
+                        }
+                        .text{
+                            font-family:'Arial' ;
+                            font-size: small;
+                            font-weight:normal;
+                            text-align:  center;
+                            color: black;
+                        }
+                        .textCAI{
+                            font-family:'Arial' ;
+                            font-size: small;
+                            font-weight: lighter;
+                            text-align:  left;
+                            color: black;
+                        }
+                            .divider1 {
+                                width: 144px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                            .divider2 {
+                         
+                                width: 250px;
+                                margin:0 0px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                        .ids {
+                            line-height: 5px;
+                            color: rgba(0, 0, 0, 0.54);
+                            .detail {
+                                width: 250px;
+                            }
+                            .seller {
+                                margin-bottom: 50px;
+                                .logo {
+                                    width: 50px;
+                                }
+                            }
+                            .client {
+                                .label {
+                                    width: 50px;
+                                    font-size: 12px;
+                                    font-weight: 100;
+                                }
+                            }
+                            .divider {
+                                width: 1px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 144px;
+                            }
+                    
+                        }
+                  
+                    }
+                    .content {
+                        // width: 100%;
+                        // min-width: 0px;
+                        // padding: 20px;
+                        // margin-left: 10px;
+                        margin-top: 5px;
+                        .detalle{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align:  left;
+                            color: black;
+                        }
+                        .text1{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: center;
+                            color: black;
+                        }
+                        .cliente{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: left;
+                            margin-top: 35px;
+                            color: black;
+                        }
+                        .nombre{
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: left;
+                           
+                            color: black;
+                        }
+                        .text{
+                            font-family:'Arial' ;
+                            font-size: small;
+                            font-weight:normal;
+                            text-align:  center;
+                            color: black;
+                        }
+                        .textCAI{
+                            font-family:'Arial' ;
+                            font-size: small;
+                            font-weight: lighter;
+                            text-align:  left;
+                            color: black;
+                        }
+
+
+                        .invoice-table {
+                            margin-top: 70px;
+                            font-size: 12px;
+                            color: rgba(0, 0, 0, 0.87);
+
+                            // width: 100%;
+                            // min-width: 0px;
+                            // padding: 20px;
+                            // margin-left: 10px;
+                            margin-top: 5px;
+                            thead {
+                                tr {
+                                    th {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                
+                                    td{
+                                        padding-right: 40px;
+                                    }
+                                }
+                            }
+                            tbody {
+                                tr {
+                              
+                                    td{
+                                        padding-right: 65px;
+                                    }
+                                }
+                               
+                            }
+                         
+                            .title {
+                                font-size: 17px;
+                            }
+                            .detail {
+                                margin-top: 8px;
+                                font-size: 8px;
+                                color: rgba(0, 0, 0, 0.54);
+                                max-width: 360px;
+                            }
+                        }
+                        .invoice-table-footer {
+                        margin: 36px 0 96px 0;
+                            tr {
+                                td {
+                                    text-align: left;
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    color: rgba(0, 0, 0, 0.54);
+                                    border-bottom: none;
+                                    padding: 5px 5px;
+                                    &:first-child {
+                                        text-align: left;
+                                    }
+                                }
+                                &.discount {
+                                    td {
+                                        font-size: 12px;
+                                        font-weight: bolder;
+                                        padding: 4px 8px;
+                                        color:rgba(0, 0, 0, 1);
+                                    }
+                                }
+                                &.total {
+                                    td {
+                                        padding: 32px 8px;
+                                        border-top: 1px solid rgba(0, 0, 0, 0.12);
+                                        font-size: 12px;
+                                        font-weight: bolder;
+                                      
+                                        color: rgba(0, 0, 0, 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .footer {
+                        .text1{
+                            margin-top: 15px;
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: center;
+                            color: black;
+                        }
+
+                        .Exijela{
+                            margin-top: 35px;
+                            font-family:'Arial';
+                            font-size:small;
+                            font-weight: bolder;
+                            text-align: center;
+                            color: black;
+                        }
+                        .note {
+                            font-size: 15px;
+                            font-weight: 600;
+                            margin-bottom: 24px;
+                        }
+                        // IE10 fix
+                        .logo,
+                        .small-note {
+                            -ms-flex: 0 1 auto;
+                        }
+                        .logo {
+                            width: 32px;
+                            min-width: 32px;
+                            margin-right: 24px;
+                        }
+                        .small-note {
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: rgba(0, 0, 0, 0.54);
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+ /* PRINT STYLES */
+    @media print {
+      
+        /* Invoice Specific Styles */
+        #invoice {
+          
+            &.modern {
+             
+                background: white;
+                .invoice-container {
+                   
+                    padding: 0;
+                
+               .card {
+                        // width: 100%;
+                        // min-width: 0;
+                        // background: none;
+                        // padding: 0;
+                        box-shadow: none;
+                        width: 100%;
+                        min-width: 0px;
+                        padding: 0px;
+                       // overflow: hidden;
+                        background: #FFFFFF;
+                       
+                        .header {
+                            .detalle{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align:  left;
+                                color: black;
+                            }
+                            .text1{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                                color: black;
+                            }
+                            .cliente{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: left;
+                                margin-left: 90px;
+                                color: black;
+                            }
+                            .nombre{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: left;
+                                margin-left: 90px;
+                                color: black;
+                            }
+                            .text{
+                                font-family:'Arial' ;
+                                font-size: small;
+                                font-weight:normal;
+                                text-align:  center;
+                                color: black;
+                            }
+                            .textCAI{
+                                font-family:'Arial' ;
+                                font-size: small;
+                                font-weight: lighter;
+                                text-align:  left;
+                                color: black;
+                            }
+                            .divider1 {
+                                width: 144px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                            .divider2 {
+                         
+                                width: 250px;
+                                margin:0 0px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                            .ids {
+                                .detail {
+                                    width: 120pt;
+                                }
+                                .seller {
+                                    margin-bottom: 8pt;
+                                    .logo {
+                                        width: 60pt;
+                                    }
+                                }
+                                .client {
+                                    .label {
+                                        width: 60pt;
+                                        font-size: 16pt;
+                                    }
+                                }
+                                .divider {
+                                    margin: 0 12pt;
+                                    height: 100pt;
+                                }
+                                &.divider2 {
+                         
+                                    width: 250px;
+                                    margin:0 0px;
+                                    background-color: rgba(0, 0, 0, 0.12);
+                                    height: 1px;
+                                }
+                            }
+                            .summary {
+                                font-size: 10pt;
+                                .code {
+                                    font-size: 18pt;
+                                    td {
+                                        padding-bottom: 10pt;
+                                    }
+                                }
+                            }
+                        }
+                        .content {
+                            .detalle{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align:  left;
+                                color: black;
+                            }
+                            .text1{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                                color: black;
+                            }
+                            .cliente{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                                margin-left: 135px;
+                                color:  red;
+                            }
+                            .nombre{
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                               
+                                color: black;
+                            }
+                            .text{
+                                font-family:'Arial' ;
+                                font-size: small;
+                                font-weight:normal;
+                                text-align:  center;
+                                color: black;
+                            }
+                            .textCAI{
+                                font-family:'Arial' ;
+                                font-size: small;
+                                font-weight: lighter;
+                                text-align:  left;
+                                color: black;
+                            }
+                            width: 100%;
+                            margin-left: 10px;
+                            margin-top: 5px;
+                            padding: 20px;
+                            .divider2 {
+                         
+                                width: 250px;
+                                margin:0 0px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 1px;
+                            }
+                            .invoice-table {
+                                width: 100%;
+                                min-width: 0px;
+                                padding: 20px;
+                                margin-left: 10px;
+                                margin-top: 5px;
+                                // margin-top: 16pt;
+                                // font-size: 12px;
+                                // color: rgba(0, 0, 0, 0.87);
+                                thead {
+                                    tr {
+                                        th {
+                                            // color: rgba(0, 0, 0, 0.87);
+                                            // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                            // font-size: 10pt;
+                                                                                    max-width: 60pt;
+                                                                                    &:first-child {
+                                                                                        padding-left: 0;
+                                                                                    }
+                                                                                    &:last-child {
+                                                                                        padding-right: 0;
+                                                                                    }
+                                        
+                                        }
+                                    
+                                        td{
+                                            padding-right: 40px;
+                                        }
+                                    }
+                                }
+                                tbody {
+                                    tr {
+                                  
+                                        td{
+                                        //    padding-right: 65px;
+                                     
+                             
+                                            &:first-child {
+                                            padding-left: 0;
+                                            }
+                                            &:last-child {
+                                              padding-right: 0;
+                                          }     
+                                        }
+                                    }
+                                   
+                                }
+                             
+                                .title {
+                                    font-size: 17px;
+                                }
+                                .detail {
+                                    margin-top: 8px;
+                                    font-size: 8px;
+                                    color: rgba(0, 0, 0, 0.54);
+                                    max-width: 360px;
+                                }
+                            }
+                            .invoice-table-footer {
+                                box-shadow: none;
+                                width: 90%;
+                                min-width: 0px;
+                                padding: 15px;
+                            margin: 5px 0 5px 0;
+                                tr {
+                                    td {
+                                        text-align: right;
+                                        font-size: 14px;
+                                        font-weight: bold;
+                                        color: rgba(0, 0, 0, 0.54);
+                                        border-bottom: none;
+                                        padding: 5px 5px;
+                                        &:first-child {
+                                            text-align: left;
+                                        }
+                                    }
+                                    &.discount {
+                                        td {
+                                            font-size: 12px;
+                                            font-weight: bolder;
+                                            padding: 4px 8px;
+                                            color:rgba(0, 0, 0, 1);
+                                        }
+                                    }
+                                    &.total {
+                                        td {
+                                            padding: 32px 8px;
+                                            border-top: 1px solid rgba(0, 0, 0, 0.12);
+                                            font-size: 12px;
+                                            font-weight: bolder;
+                                          
+                                            color: rgba(0, 0, 0, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .footer {
+                            .text1{
+                                margin-top: 15px;
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                                color: black;
+                            }
+    
+                            .Exijela{
+                                margin-top: 35px;
+                                font-family:'Arial';
+                                font-size:small;
+                                font-weight: bolder;
+                                text-align: center;
+                                color: black;
+                            }
+                            .note {
+                                font-size: 15px;
+                                font-weight: 600;
+                                margin-bottom: 24px;
+                            }
+                            // IE10 fix
+                            .logo,
+                            .small-note {
+                                -ms-flex: 0 1 auto;
+                            }
+                            .logo {
+                                width: 32px;
+                                min-width: 32px;
+                                margin-right: 24px;
+                            }
+                            .small-note {
+                                font-size: 12px;
+                                font-weight: 600;
+                                color: rgba(0, 0, 0, 0.54);
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    /* PRINT STYLES */
+    // @media print {
+    //     /* Invoice Specific Styles */
+    //     #invoice {
+    //         &.modern {
+    //             background: white;
+    //             .invoice-container {
+    //                 padding: 0;
+    //                 .card {
+    //                     width: 100%;
+    //                     min-width: 0;
+    //                     background: none;
+    //                     padding: 0;
+    //                     box-shadow: none;
+    //                     .header {
+    //                         .ids {
+    //                             .detail {
+    //                                 width: 120pt;
+    //                             }
+    //                             .seller {
+    //                                 margin-bottom: 8pt;
+    //                                 .logo {
+    //                                     width: 60pt;
+    //                                 }
+    //                             }
+    //                             .client {
+    //                                 .label {
+    //                                     width: 60pt;
+    //                                     font-size: 16pt;
+    //                                 }
+    //                             }
+    //                             .divider {
+    //                                 margin: 0 12pt;
+    //                                 height: 100pt;
+    //                             }
+    //                         }
+    //                         .summary {
+    //                             font-size: 10pt;
+    //                             .code {
+    //                                 font-size: 18pt;
+    //                                 td {
+    //                                     padding-bottom: 10pt;
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                     .content {
+    //                         .invoice-table {
+    //                             margin-top: 16pt;
+    //                             thead {
+    //                                 tr {
+    //                                     th {
+    //                                         font-size: 10pt;
+    //                                         max-width: 60pt;
+    //                                         &:first-child {
+    //                                             padding-left: 0;
+    //                                         }
+    //                                         &:last-child {
+    //                                             padding-right: 0;
+    //                                         }
+    //                                     }
+    //                                 }
+    //                             }
+    //                             tbody {
+    //                                 tr {
+    //                                     td {
+    //                                         &:first-child {
+    //                                             padding-left: 0;
+    //                                         }
+    //                                         &:last-child {
+    //                                             padding-right: 0;
+    //                                         }
+    //                                     }
+    //                                 }
+    //                             }
+    //                             .title {
+    //                                 font-size: 10pt;
+    //                             }
+    //                             .detail {
+    //                                 margin-top: 4pt;
+    //                                 font-size: 9pt;
+    //                                 max-width: none;
+    //                             }
+    //                         }
+    //                         .invoice-table-footer {
+    //                             margin: 25px 0 5px 0;
+                                // tr {
+                                //     td {
+                                //         text-align: right;
+                                //         font-size: 14px;
+                                //         font-weight: bold;
+                                //         color: rgba(0, 0, 0, 0.54);
+                                //         border-bottom: none;
+                                //         padding: 5px 5px;
+                                //         &:first-child {
+                                //             text-align: left;
+                                //         }
+                                //     }
+    //                                 &.discount {
+    //                                     td {
+    //                                         padding-bottom: 12px;
+    //                                         font-weight: bolder;
+    //                                     }
+    //                                 }
+    //                                 &.total {
+    //                                     td {
+    //                                         padding: 32px 8px;
+    //                                         border-top: 1px solid rgba(0, 0, 0, 0.12);
+    //                                         font-size: 12px;
+    //                                         font-weight: bolder;
+                                          
+    //                                         color: rgba(0, 0, 0, 1);
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                     .footer {
+    //                         .note {
+    //                             font-size: 10pt;
+    //                             margin-bottom: 8pt;
+    //                         }
+    //                         .logo {
+    //                             font-size: 14pt;
+    //                             margin-right: 8pt;
+    //                         }
+    //                         .small-note {
+    //                             font-size: 8pt;
+    //                             line-height: normal;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+
+// @import "src/@fuse/scss/fuse";
+// @page {
+//     //size: auto;
+//     /* auto es el valor inicial */
+//     margin: 1mm;
+//     /* afecta el margen en la configuración de impresión */
+// }
 
 // @page {
 //     margin: 0 -6cm
@@ -599,592 +1350,3 @@
 
 
 
-
-    
-// @page {
-//     margin: 0 -6cm
-// }
-
-app-printfactura {
-    #invoice {
-        &.modern {
-            padding: 0;
-            .invoice-container {
-                padding: 40px;
-                margin: 0 auto;
-                .card {
-                    width: 380px;
-                    min-width: 380px;
-                    max-width: 380px;
-                    padding: 88px;
-                    overflow: hidden;
-                    background: #FFFFFF;
-                    @include mat-elevation(7);
-                    .header {
-                        .detalle {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            color: black;
-                        }
-                        .text1 {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: center;
-                            color: black;
-                        }
-                        .cliente {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            margin-top: 12px;
-                            color: black;
-                        }
-                        .nombre {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            color: black;
-                        }
-                        .text {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: normal;
-                            text-align: center;
-                            color: black;
-                        }
-                        .textCAI {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: lighter;
-                            text-align: left;
-                            color: black;
-                        }
-                        .divider1 {
-                            width: 144px;
-                            margin: 0 48px;
-                            background-color: rgba(0, 0, 0, 0.12);
-                            height: 1px;
-                        }
-                        .divider2 {
-                            width: 250px;
-                            margin: 0 0px;
-                            background-color: rgba(0, 0, 0, 0.12);
-                            height: 1px;
-                        }
-                        .ids {
-                            line-height: 5px;
-                            color: rgba(0, 0, 0, 0.54);
-                            .detail {
-                                width: 250px;
-                            }
-                            .seller {
-                                margin-bottom: 50px;
-                                .logo {
-                                    width: 50px;
-                                }
-                            }
-                            .client {
-                                .label {
-                                    width: 50px;
-                                    font-size: 12px;
-                                    font-weight: 100;
-                                }
-                            }
-                            .divider {
-                                width: 1px;
-                                margin: 0 48px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 144px;
-                            }
-                        }
-                    }
-                    .content {
-                        // width: 100%;
-                        // min-width: 0px;
-                        // padding: 20px;
-                        // margin-left: 10px;
-                        margin-top: 0px;
-                        .detalle {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            color: black;
-                        }
-                        .text1 {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: center;
-                            color: black;
-                        }
-                        .cliente {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            margin-top: 35px;
-                            color: black;
-                        }
-                        .nombre {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: left;
-                            color: black;
-                        }
-                        .text {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: normal;
-                            text-align: center;
-                            color: black;
-                        }
-                        .textCAI {
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: lighter;
-                            text-align: left;
-                            color: black;
-                        }
-                        .invoice-table {
-                            margin-top: 20px;
-                            font-size: 10px;
-                            color: rgba(0, 0, 0, 0.87);
-                            // width: 100%;
-                            // min-width: 0px;
-                            // padding: 20px;
-                            // margin-left: 10px;
-                            margin-top: 3px;
-                            thead {
-                                tr {
-                                    th {
-                                        color: rgba(0, 0, 0, 0.87);
-                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                                    }
-                                    td {
-                                        padding-right: 40px;
-                                    }
-                                }
-                            }
-                            tbody {
-                                tr {
-                                    td {
-                                        padding-right: 65px;
-                                    }
-                                }
-                            }
-                            .title {
-                                font-size: 12px;
-                            }
-                            .detail {
-                                margin-top: 2px;
-                                font-size: 5px;
-                                color: rgba(0, 0, 0, 0.54);
-                                max-width: 360px;
-                            }
-                        }
-                        .invoice-table-footer {
-                            // margin: 36px 0 96px 0;
-                            // padding: 2px 20px ;
-                            // margin-left: 35px;
-                            // width: 90%;
-                            // min-width: 0px;
-                            // padding: 20px;
-                            // margin-left: 35px;
-                            // margin-top: 5px;
-                            tr {
-                                td {
-                                    text-align: left;
-                                    font-size: 14px;
-                                    font-weight: bold;
-                                    color: rgba(0, 0, 0, 0.54);
-                                    border-bottom: none;
-                                    padding: 5px 5px;
-                                    &:first-child {
-                                        text-align: left;
-                                    }
-                                }
-                                &.discount {
-                                    td {
-                                        font-size: 12px;
-                                        font-weight: bolder;
-                                        padding: 4px 8px;
-                                        color: rgba(0, 0, 0, 1);
-                                    }
-                                }
-                                &.total {
-                                    td {
-                                        padding: 32px 8px;
-                                        border-top: 1px solid rgba(0, 0, 0, 0.12);
-                                        font-size: 12px;
-                                        font-weight: bolder;
-                                        color: rgba(0, 0, 0, 1);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .footer {
-                        .text1 {
-                            margin-top: 1px;
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: center;
-                            color: black;
-                        }
-                        .Exijela {
-                            margin-top: 2px;
-                            font-family: 'Arial';
-                            font-size: small;
-                            font-weight: bolder;
-                            text-align: center;
-                            color: black;
-                        }
-                        .note {
-                            font-size: 15px;
-                            font-weight: 600;
-                            margin-bottom: 24px;
-                        }
-                        // IE10 fix
-                        .logo,
-                        .small-note {
-                            -ms-flex: 0 1 auto;
-                        }
-                        .logo {
-                            width: 32px;
-                            min-width: 32px;
-                            margin-right: 24px;
-                        }
-                        .small-note {
-                            font-size: 10px;
-                            font-weight: 600;
-                            color: rgba(0, 0, 0, 0.54);
-                            line-height: 18px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    /* PRINT STYLES */
-
-   //   @media print and(min - width: 0.05 in) and(max - width: 0.05 in) {
-    @media print {
-    //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
-    //@media print 
-    //@media print and(orientation: landscape){
-
-        // image-resolution: 4000;
-        // text-decoration: solid;
-        // display: none !important;
-        /* Invoice Specific Styles */
-        #invoice {
-            &.modern {
-                background: white;
-                .invoice-container {
-                    padding: 0;
-                    .card {
-                        // width: 100%;
-                        // min-width: 0;
-                        // background: none;
-                        // padding: 0;
-                        box-shadow: none;
-                        width: 95%;
-                        min-width: 0px;
-                        padding: 0px;
-                        // overflow: hidden;
-                        background: #FFFFFF;
-                        .header {
-                            .detalle {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: left;
-                                color: black;
-                            }
-                            .text1 {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                color: black;
-                            }
-                            .cliente {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: left;
-                                margin-left: 90px;
-                                color: black;
-                            }
-                            .nombre {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: left;
-                                margin-left: 90px;
-                                color: black;
-                            }
-                            .text {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: normal;
-                                text-align: center;
-                                color: black;
-                            }
-                            .textCAI {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: lighter;
-                                text-align: left;
-                                color: black;
-                            }
-                            .divider1 {
-                                width: 144px;
-                                margin: 0 48px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 1px;
-                            }
-                            .divider2 {
-                                width: 250px;
-                                margin: 0 0px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 1px;
-                            }
-                            .ids {
-                                .detail {
-                                    width: 120pt;
-                                }
-                                .seller {
-                                    margin-bottom: 8pt;
-                                    .logo {
-                                        width: 60pt;
-                                    }
-                                }
-                                .client {
-                                    .label {
-                                        width: 60pt;
-                                        font-size: 16pt;
-                                    }
-                                }
-                                .divider {
-                                    margin: 0 12pt;
-                                    height: 100pt;
-                                }
-                                &.divider2 {
-                                    width: 250px;
-                                    margin: 0 0px;
-                                    background-color: rgba(0, 0, 0, 0.12);
-                                    height: 1px;
-                                }
-                            }
-                            .summary {
-                                font-size: 10pt;
-                                .code {
-                                    font-size: 18pt;
-                                    td {
-                                        padding-bottom: 10pt;
-                                    }
-                                }
-                            }
-                        }
-                        .content {
-                            margin-top: 1px;
-                            .detalle {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: left;
-                                color: black;
-                            }
-                            .text1 {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                color: black;
-                            }
-                            .cliente {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                margin-left: 135px;
-                                color: red;
-                            }
-                            .nombre {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                color: black;
-                            }
-                            .text {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: normal;
-                                text-align: center;
-                                color: black;
-                            }
-                            .textCAI {
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: lighter;
-                                text-align: left;
-                                color: black;
-                            }
-                            .divider2 {
-                                width: 250px;
-                                margin: 0 0px;
-                                background-color: rgba(0, 0, 0, 0.12);
-                                height: 1px;
-                            }
-                            .invoice-table {
-                                width: 100%;
-                                min-width: 0px;
-                                padding: 20px;
-                                margin-left: 35px;
-                               // margin-top: 0px;
-                                // margin-top: 16pt;
-                                // font-size: 12px;
-                                // color: rgba(0, 0, 0, 0.87);
-                                thead {
-                                    tr {
-                                        th {
-                                            // color: rgba(0, 0, 0, 0.87);
-                                            // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                                            // font-size: 10pt;
-                                            max-width: 60pt;
-                                            &:first-child {
-                                                padding-left: 0;
-                                            }
-                                            &:last-child {
-                                                padding-right: 0;
-                                            }
-                                        }
-                                        // td {
-                                        //     padding-right: 40px;
-                                        // }
-                                    }
-                                }
-                                tbody {
-                                    tr {
-                                        td {
-                                            //    padding-right: 65px;
-                                            &:first-child {
-                                                padding-left: 0;
-                                            }
-                                            &:last-child {
-                                                padding-right: 0;
-                                            }
-                                        }
-                                    }
-                                }
-                                .title {
-                                    font-size: 10px;
-                                }
-                                .detail {
-                                    margin-top: 4px;
-                                    font-size: 6px;
-                                    color: rgba(0, 0, 0, 0.54);
-                                    max-width: 360px;
-                                }
-                            }
-                            .invoice-table-footer {
-                                //     box-shadow: none;
-                                //     width: 90%;
-                                //     min-width: 0px;
-                                //     padding: 15px;
-                                // margin: 5px 0 5px 0;
-                                margin-top: 0px;
-                                width: 80%;
-                                min-width: 0px;
-                                padding: 2px 20px;
-                                margin-left: 35px;
-                                tr {
-                                    td {
-                                        text-align: right;
-                                        font-size: 12px;
-                                        font-weight: bold;
-                                        color: rgba(0, 0, 0, 0.54);
-                                        border-bottom: none;
-                                        padding: 5px 5px;
-                                        &:first-child {
-                                            text-align: left;
-                                        }
-                                    }
-                                    &.discount {
-                                        td {
-                                            margin-top: 0px;
-                                            font-size: 12px;
-                                            font-weight: bolder;
-                                            padding: 4px 8px;
-                                            line-height: 8px;
-                                            color: rgba(0, 0, 0, 1);
-                                        }
-                                    }
-                                    &.total {
-                                        td {
-                                            margin-top: 0px;
-                                            font-size: 14px;
-                                            font-weight: bolder;
-                                            padding: 4px 8px;
-                                            line-height: 8px;
-                                            color: rgba(0, 0, 0, 1);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .footer {
-                            .text1 {
-                                margin-top: 5px;
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                color: black;
-                            }
-                            .Exijela {
-                                margin-top: 2px;
-                                font-family: 'Arial';
-                                font-size: small;
-                                font-weight: bolder;
-                                text-align: center;
-                                color: black;
-                            }
-                            .note {
-                                font-size: 15px;
-                                font-weight: 600;
-                                margin-bottom: 24px;
-                            }
-                            // IE10 fix
-                            .logo,
-                            .small-note {
-                                -ms-flex: 0 1 auto;
-                            }
-                            .logo {
-                                width: 32px;
-                                min-width: 32px;
-                                margin-right: 24px;
-                            }
-                            .small-note {
-                                font-size: 12px;
-                                font-weight: 600;
-                                color: rgba(0, 0, 0, 0.54);
-                                line-height: 18px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
