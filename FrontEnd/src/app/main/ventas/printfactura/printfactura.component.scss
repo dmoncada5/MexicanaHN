@@ -21,7 +21,7 @@ app-printfactura {
                     width: 380px;
                     min-width: 380px;
                     max-width: 380px;
-                    padding: 88px;
+                    padding: 80px;
                     overflow: hidden;
                     background: #FFFFFF;
                     @include mat-elevation(7);
@@ -280,7 +280,7 @@ app-printfactura {
     }
     /* PRINT STYLES */
 
-      @media print and(min - width: 0.05 in) and(max - width: 0.05 in) {
+      @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
    /// @media print //and(orientation: landscape){
 
     //  @media print and(min - width: 0.5 in) and(max - width: 0.5 in) {
